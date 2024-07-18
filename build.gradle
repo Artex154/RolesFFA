@@ -26,7 +26,7 @@ repositories {
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.8.8-R0.1-SNAPSHOT"
 
-    implementation "be.raft.crafty:crafty-builder:1.8.8-1.0.2"
+    implementation 'be.raft.crafty:crafty-builder:1.8.8-2.0.1'
 }
 
 def targetJavaVersion = 8

@@ -1,16 +1,34 @@
 package be.artex.rolesffa;
 
+import be.artex.rolesffa.api.Role;
+import be.artex.rolesffa.api.SPItem;
+import be.artex.rolesffa.api.items.Choose;
+import be.artex.rolesffa.api.roles.Sanemi;
+import be.artex.rolesffa.listeners.inventory.InventoryClick;
+import be.artex.rolesffa.listeners.player.PlayerInteract;
 import be.artex.rolesffa.listeners.player.PlayerJoin;
 import be.artex.rolesffa.listeners.player.PlayerQuit;
+import be.artex.rolesffa.listeners.player.PlayerRespawn;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
+    public static Plugin instance;
 
     @Override
     public void onEnable() {
+        instance = this;
+
+        SPItem.Utils.registeredSPitems.add(new Choose());
+
+        Role.Utils.registeredRoles.add(new Sanemi());
+
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClick(), this);
     }
 
     @Override
