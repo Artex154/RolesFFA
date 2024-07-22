@@ -1,6 +1,7 @@
 package be.artex.rolesffa.api;
 
 import be.raft.crafty.item.ItemBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -15,7 +16,7 @@ import java.util.Random;
 
 public interface Role {
     String getName();
-    String getDescription();
+    TextComponent getDescription();
     ItemStack getItemStack();
     Team getCamp();
     Team getType();

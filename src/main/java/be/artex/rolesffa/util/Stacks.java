@@ -18,8 +18,10 @@ public class Stacks {
     public static final ItemStack SANEMI = ItemBuilder.create(Material.QUARTZ)
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
-                    ChatColor.GRAY + " • Il possède " + ChatColor.AQUA + "vitesse I" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " • Il possède l'" + ChatColor.AQUA + "Immense Speed" + ChatColor.GRAY + " qui lui permet d'effectuer un " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".      ", ChatColor.GRAY + " • Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".", " ", ChatColor.GRAY + " • Inspiration: " + ChatColor.YELLOW + "UHCWorld - Nakime Party" + ChatColor.GRAY + ".", " ")
+                    ChatColor.GRAY + " • Il possède " + ChatColor.AQUA + "Vitesse I" + ChatColor.GRAY + ".", " ",
+                    ChatColor.GRAY + " • Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ",
+                    ChatColor.GRAY + " • Il possède l'" + ChatColor.AQUA + "Immense Speed" + ChatColor.GRAY + " qui lui permet d'effectuer un " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".      ",
+                    ChatColor.GRAY + " • Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack DPS = ItemBuilder.create(Material.DIAMOND_SWORD)

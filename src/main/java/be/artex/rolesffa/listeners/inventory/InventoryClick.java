@@ -31,9 +31,8 @@ public class InventoryClick implements Listener {
             Inventory teamInventory = foundTeam.getInventory();
 
             for (Role role : Role.Utils.registeredRoles) {
-                if (role.getType().equals(foundTeam) || role.getCamp().equals(foundTeam)) {
+                if (role.getType().equals(foundTeam) || role.getCamp().equals(foundTeam))
                     teamInventory.setItem(role.getPlacement(), role.getItemStack());
-                }
             }
 
             teamInventory.setItem(0, Stacks.border());
@@ -57,9 +56,8 @@ public class InventoryClick implements Listener {
         Role foundRole = null;
 
         for (Role role : Role.Utils.registeredRoles) {
-            if (role.getItemStack().equals(event.getCurrentItem())) {
+            if (role.getItemStack().equals(event.getCurrentItem()))
                 foundRole = role;
-            }
         }
 
         if (foundRole != null) {
