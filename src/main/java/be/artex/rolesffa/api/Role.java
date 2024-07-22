@@ -2,6 +2,7 @@ package be.artex.rolesffa.api;
 
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -29,18 +30,33 @@ public interface Role {
             player.getInventory().clear();
 
             setupInventory(player.getInventory());
+
+            player.setGameMode(GameMode.SURVIVAL);
+
+            Random random = new Random();
+            Location location = new Location(Bukkit.getWorlds().get(0), random.nextInt(100), 0, random.nextInt(100));
+
+            location.setY(location.getWorld().getHighestBlockYAt(location));
+
+            player.teleport(location);
         }
 
         public static void setupInventory(PlayerInventory playerInventory) {
-            if (new Random().nextBoolean()) {
+            if (new Random().nextBoolean() && new Random().nextBoolean()) {
+                playerInventory.addItem(ItemBuilder.create(Material.IRON_SWORD).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
+                playerInventory.setHelmet(ItemBuilder.create(Material.DIAMOND_HELMET).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+                playerInventory.setBoots(ItemBuilder.create(Material.DIAMOND_BOOTS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+            } else {
+                playerInventory.addItem(ItemBuilder.create(Material.DIAMOND_SWORD).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
+
+                if (new Random().nextBoolean()) {
+                    playerInventory.setHelmet(ItemBuilder.create(Material.IRON_HELMET).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
+                    playerInventory.setBoots(ItemBuilder.create(Material.DIAMOND_BOOTS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+                }
+
                 playerInventory.setHelmet(ItemBuilder.create(Material.DIAMOND_HELMET).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
                 playerInventory.setBoots(ItemBuilder.create(Material.IRON_BOOTS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
-            } else {
-                playerInventory.setHelmet(ItemBuilder.create(Material.IRON_HELMET).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
-                playerInventory.setBoots(ItemBuilder.create(Material.DIAMOND_BOOTS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
             }
-
-            playerInventory.addItem(ItemBuilder.create(Material.DIAMOND_SWORD).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
 
             playerInventory.setChestplate(ItemBuilder.create(Material.DIAMOND_CHESTPLATE).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
             playerInventory.setLeggings(ItemBuilder.create(Material.IRON_LEGGINGS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
@@ -57,11 +73,6 @@ public interface Role {
             playerInventory.addItem(new ItemStack(Material.ARROW, 32));
             playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
             playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
-        }
-
-
-        public static Location getRandomLocation() {
-            return new Location(Bukkit.getWorlds().get(0), new Random().nextInt(), new Random().nextInt(), new Random().nextInt());
         }
     }
 }
