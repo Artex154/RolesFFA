@@ -19,17 +19,17 @@ public class Sanemi implements Role {
     @Override
     public TextComponent getDescription() {
         TextComponent description = new TextComponent(StringUtils.line);
-        description.addExtra("  " + getName());
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Rôle: " + getName());
         description.addExtra("\n");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez " + ChatColor.AQUA + "Vitesse I " + ChatColor.GRAY + "de façon permanente.");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez " + ChatColor.AQUA + "Vitesse I " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez une " + ChatColor.AQUA + "lame de Nichirine" + ChatColor.GRAY + ".");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".");
         description.addExtra("\n");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez l'" + ChatColor.AQUA + "Immense Speed " + ChatColor.GRAY + "qui vous permet de faire un " + ChatColor.AQUA + "dash"  + ChatColor.GRAY + " en avant.");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Vous écoperez de " + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "15 secondes" + ChatColor.GRAY + "après votre " + ChatColor.AQUA + " dash" + ChatColor.GRAY + ".");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez l'" + ChatColor.AQUA + "Immense Speed " + ChatColor.GRAY + "qui vous permet de faire un " + ChatColor.AQUA + "dash"  + ChatColor.GRAY + " en avant.");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous écoperez de " + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "15 secondes " + ChatColor.GRAY + "après votre " + ChatColor.AQUA + " dash" + ChatColor.GRAY + ".");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".");
         description.addExtra("\n");
-        description.addExtra(" " + StringUtils.dot + " " + ChatColor.GRAY + "Inspiration: " + ChatColor.YELLOW + "Nakime Party + Artex54");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Inspiration: " + ChatColor.YELLOW + "Nakime Party + Artex54");
         description.addExtra(StringUtils.line);
 
         return description;
@@ -57,6 +57,6 @@ public class Sanemi implements Role {
 
     @Override
     public void onAssigned(Player player) {
-        Role.Utils.baseSetup(player);
+        Role.Utils.baseSetup(player, this);
     }
 }

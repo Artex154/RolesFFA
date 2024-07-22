@@ -4,5 +4,5 @@ import org.bukkit.ChatColor;
 
 public class StringUtils {
     public static final String dot = "•";
-    public static final String line = ChatColor.GRAY + "" + ChatColor.STRIKETHROUGH + "------------------------------------";
+    public static final String line = ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "------------------------------------";
 }

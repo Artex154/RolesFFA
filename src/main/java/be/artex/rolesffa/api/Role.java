@@ -27,7 +27,7 @@ public interface Role {
     class Utils {
         public static ArrayList<Role> registeredRoles = new ArrayList<>();
 
-        public static void baseSetup(Player player) {
+        public static void baseSetup(Player player, Role role) {
             player.getInventory().clear();
 
             setupInventory(player.getInventory());
@@ -40,6 +40,8 @@ public interface Role {
             location.setY(location.getWorld().getHighestBlockYAt(location));
 
             player.teleport(location);
+
+            player.spigot().sendMessage(role.getDescription());
         }
 
         public static void setupInventory(PlayerInventory playerInventory) {
