@@ -17,13 +17,14 @@ public class PlayerJoin implements Listener {
         Player player = event.getPlayer();
         PlayerInventory playerInventory = player.getInventory();
 
-        if (!WorldUtils.isWorldInitialized) {
+        if (!WorldUtils.isWorldInitialized)
             WorldUtils.initializeWorld();
-        }
 
-        if (!player.getGameMode().equals(GameMode.ADVENTURE)) {
+        if (!WorldUtils.isWorldBorderInitialized(Bukkit.getWorlds().get(0)))
+            WorldUtils.initializeWorldBorder(Bukkit.getWorlds().get(0));
+
+        if (!player.getGameMode().equals(GameMode.ADVENTURE))
             player.setGameMode(GameMode.ADVENTURE);
-        }
 
         playerInventory.clear();
 

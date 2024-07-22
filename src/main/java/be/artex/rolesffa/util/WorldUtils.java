@@ -3,10 +3,15 @@ package be.artex.rolesffa.util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.block.Block;
 
 public class WorldUtils {
     public static boolean isWorldInitialized = false;
+
+    public static boolean isWorldBorderInitialized(World world) {
+        return world.getWorldBorder().getSize() == 200;
+    }
 
     public static void initializeWorld() {
         int halfSize = 6;
@@ -34,5 +39,12 @@ public class WorldUtils {
         }
 
         isWorldInitialized = true;
+    }
+
+    public static void initializeWorldBorder(World world) {
+        WorldBorder border = world.getWorldBorder();
+
+        border.setCenter(0, 0);
+        border.setSize(200);
     }
 }
