@@ -12,9 +12,9 @@ public enum Team {
 
     SLAYER(20, Stacks.SLAYER, Bukkit.createInventory(null, 54, "Slayers"));
 
-    private int placement;
-    private ItemStack stack;
-    private Inventory inventory;
+    private final int placement;
+    private final ItemStack stack;
+    private final Inventory inventory;
 
     Team(int placement, ItemStack stack, Inventory inventory) {
         this.placement = placement;
