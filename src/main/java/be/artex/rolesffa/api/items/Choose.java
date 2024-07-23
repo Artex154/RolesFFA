@@ -3,6 +3,7 @@ package be.artex.rolesffa.api.items;
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.util.Stacks;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
@@ -14,6 +15,11 @@ public class Choose implements SPItem {
     @Override
     public ItemStack getItemStack() {
         return Stacks.CHOOSE_BOOK;
+    }
+
+    @Override
+    public TextComponent getDescription() {
+        return null;
     }
 
     @Override
