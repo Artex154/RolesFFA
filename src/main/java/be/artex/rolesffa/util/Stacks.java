@@ -38,7 +38,7 @@ public class Stacks {
 
     public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
             .displayName(ChatColor.AQUA + "Lame de Nichirine")
-            .setLore(" ", ChatColor.GRAY + "Click droit pour avoir une lame aléatire entre:",
+            .setLore(" ", ChatColor.GRAY + "Click droit pour avoir une lame aléatoire entre:",
                     ChatColor.GRAY + StringUtils.dot + ChatColor.DARK_GRAY + "Lame de Force (+5% de dégats)",
                     ChatColor.GRAY + StringUtils.dot + ChatColor.YELLOW + "Lame de Vitesse (+7% de vitesse)",
                     ChatColor.GRAY + StringUtils.dot + ChatColor.LIGHT_PURPLE + "Lame de Vie (+2 coeurs)",
