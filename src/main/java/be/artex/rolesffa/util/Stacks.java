@@ -36,6 +36,16 @@ public class Stacks {
             .displayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "HEALER")
             .build();
 
+    public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
+            .displayName(ChatColor.AQUA + "Lame de Nichirine")
+            .setLore(" ", ChatColor.GRAY + "Click droit pour avoir une lame aléatire entre:",
+                    ChatColor.GRAY + StringUtils.dot + ChatColor.DARK_GRAY + "Lame de Force (+5% de dégats)",
+                    ChatColor.GRAY + StringUtils.dot + ChatColor.YELLOW + "Lame de Vitesse (+7% de vitesse)",
+                    ChatColor.GRAY + StringUtils.dot + ChatColor.LIGHT_PURPLE + "Lame de Vie (+2 coeurs)",
+                    ChatColor.GRAY + StringUtils.dot + ChatColor.GRAY + "Lame de Résistance (+5% de résistance)",
+                    ChatColor.GRAY + StringUtils.dot + ChatColor.GREEN + "Lame de NoFall")
+            .build();
+
     public static ItemStack border() {
         ItemStack border = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3);
         ItemMeta itemMeta = border.getItemMeta();
