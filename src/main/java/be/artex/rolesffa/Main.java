@@ -1,6 +1,8 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
+import be.artex.rolesffa.api.items.ImmenseSpeed;
+import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.api.roles.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.PlayerInteract;
@@ -19,9 +21,11 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        SPItemUtils.registeredSPitems.add(new Choose());
+        SPItemUtils.registerItem(new ImmenseSpeed());
+        SPItemUtils.registerItem(new Choose());
+        SPItemUtils.registerItem(new Lame());
 
-        RoleUtils.registeredRoles.add(new Sanemi());
+        RoleUtils.registerRole(new Sanemi());
 
         // Plugin startup logic
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);

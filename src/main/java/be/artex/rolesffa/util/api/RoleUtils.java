@@ -1,5 +1,6 @@
 package be.artex.rolesffa.util.api;
 
+import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -16,6 +17,10 @@ import java.util.Random;
 
 public class RoleUtils {
     public static ArrayList<Role> registeredRoles = new ArrayList<>();
+
+    public static void registerRole(Role role) {
+        registeredRoles.add(role);
+    }
 
     public static void baseSetup(Player player, Role role) {
         player.getInventory().clear();

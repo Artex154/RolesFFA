@@ -10,7 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class Lame implements SPItem {
+public class Lame extends SPItem {
 
     @Override
     public ItemStack getItemStack() {

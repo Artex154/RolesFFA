@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class Choose implements SPItem {
+public class Choose extends SPItem {
     public static Inventory inv = Bukkit.createInventory(null, 54, "Teams");
 
     @Override
