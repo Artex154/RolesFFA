@@ -22,9 +22,7 @@ public class Cooldown {
     public void addPlayer(UUID uuid, CooldownType type) {
         cooldowns.add(uuid);
 
-        Bukkit.getScheduler().runTaskLater(Main.instance, () ->{
-            cooldowns.remove(uuid);
-        }, type.getTime());
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> cooldowns.remove(uuid), type.getTime());
     }
 
     public boolean isPlayerInCooldown(UUID uuid) {
