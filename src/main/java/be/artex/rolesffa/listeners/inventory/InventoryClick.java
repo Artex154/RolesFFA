@@ -3,6 +3,7 @@ package be.artex.rolesffa.listeners.inventory;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.util.api.RoleUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,16 +24,20 @@ public class InventoryClick implements Listener {
         Team foundTeam = null;
 
         for (Team team : Team.values()) {
-            if (team.getItemStack().equals(event.getCurrentItem()))
+            if (team.getItemStack().equals(event.getCurrentItem())) {
                 foundTeam = team;
+                break;
+            }
         }
 
         if (foundTeam != null) {
             Inventory teamInventory = foundTeam.getInventory();
 
-            for (Role role : Role.Utils.registeredRoles) {
-                if (role.getType().equals(foundTeam) || role.getCamp().equals(foundTeam))
+            for (Role role : RoleUtils.registeredRoles) {
+                if (role.getType().equals(foundTeam) || role.getCamp().equals(foundTeam)) {
                     teamInventory.setItem(role.getPlacement(), role.getItemStack());
+                    break;
+                }
             }
 
             teamInventory.setItem(0, Stacks.border());
@@ -55,9 +60,11 @@ public class InventoryClick implements Listener {
 
         Role foundRole = null;
 
-        for (Role role : Role.Utils.registeredRoles) {
-            if (role.getItemStack().equals(event.getCurrentItem()))
+        for (Role role : RoleUtils.registeredRoles) {
+            if (role.getItemStack().equals(event.getCurrentItem())) {
                 foundRole = role;
+                break;
+            }
         }
 
         if (foundRole != null) {
