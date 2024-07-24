@@ -1,4 +1,4 @@
-package be.artex.rolesffa.util;
+package be.artex.rolesffa.util.cooldown;
 
 import be.artex.rolesffa.Main;
 import org.bukkit.Bukkit;

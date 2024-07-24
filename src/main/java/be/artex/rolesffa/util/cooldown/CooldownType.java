@@ -1,4 +1,4 @@
-package be.artex.rolesffa.util;
+package be.artex.rolesffa.util.cooldown;
 
 public enum CooldownType {
     IMMENSE_SPEED(70*20L);
