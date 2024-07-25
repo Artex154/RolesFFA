@@ -38,17 +38,18 @@ public class Stacks {
 
     public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
             .displayName(ChatColor.AQUA + "Lame de Nichirine")
-            .setLore(ChatColor.GRAY + "Click droit pour avoir une lame aléatoire entre:",
+            .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.DARK_GRAY + " Lame de Force (+5% de dégats)",
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.YELLOW + " Lame de Vitesse (+7% de vitesse)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.LIGHT_PURPLE + "Lame de Vie (+2 coeurs)",
+                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.LIGHT_PURPLE + " Lame de Vie (+2 coeurs)",
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GRAY + " Lame de Résistance (+5% de résistance)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GREEN + " Lame de NoFall")
+                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GREEN + " Lame de NoFall", " ")
             .build();
 
     public static final ItemStack IMMENSE_SPEED = ItemBuilder.create(Material.NETHER_STAR)
             .displayName(ChatColor.AQUA + "Immense Speed")
-            .setLore(ChatColor.GRAY + " " + StringUtils.dot + " En faissant click droit vous ferez un " + ChatColor.AQUA + "dash.",
+            .setLore(ChatColor.GRAY + " " + StringUtils.dot + " En faissant clique droit vous ferez un " + ChatColor.AQUA + "dash.",
+                    ChatColor.GRAY + " " + StringUtils.dot + " Vous aurez " + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + " après votre " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".",
                     ChatColor.GRAY + " " + StringUtils.dot + " Cooldown: " + ChatColor.YELLOW + "70 secondes")
             .build();
 
