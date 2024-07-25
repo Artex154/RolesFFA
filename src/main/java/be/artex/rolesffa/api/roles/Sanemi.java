@@ -2,20 +2,22 @@ package be.artex.rolesffa.api.roles;
 
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.Role;
+import be.artex.rolesffa.api.items.ImmenseSpeed;
+import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.StringUtils;
+import be.artex.rolesffa.util.api.RoleUtils;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class Sanemi implements Role {
+public class Sanemi extends Role {
     @Override
     public String getName() {
         return ChatColor.GREEN + "Sanemi";
     }
 
-    // TODO: add a description
     @Override
     public TextComponent getDescription() {
         TextComponent description = new TextComponent(StringUtils.line);
@@ -23,13 +25,12 @@ public class Sanemi implements Role {
         description.addExtra("\n");
         description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez " + ChatColor.AQUA + "Vitesse I " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".");
-        description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez l'" + ChatColor.AQUA + "Immense Speed " + ChatColor.GRAY + "qui vous permet de faire un " + ChatColor.AQUA + "dash"  + ChatColor.GRAY + " en avant.");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous écoperez de " + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "15 secondes " + ChatColor.GRAY + "après votre " + ChatColor.AQUA + " dash" + ChatColor.GRAY + ".");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".");
-        description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Inspiration: " + ChatColor.YELLOW + "Nakime Party + Artex54");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez une ");
+        description.addExtra(new Lame().getDescription());
+        description.addExtra(ChatColor.GRAY + ".");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez l'");
+        description.addExtra(new ImmenseSpeed().getDescription());
+        description.addExtra(ChatColor.GRAY + ".");
         description.addExtra(StringUtils.line);
 
         return description;
@@ -57,6 +58,8 @@ public class Sanemi implements Role {
 
     @Override
     public void onAssigned(Player player) {
-        Role.Utils.baseSetup(player, this);
+        RoleUtils.baseSetup(player, this);
+        player.getInventory().addItem(Stacks.IMMENSE_SPEED);
+        player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
     }
 }
