@@ -8,7 +8,5 @@ public abstract class SPItem {
     public abstract ItemStack getItemStack();
     public abstract TextComponent getDescription();
 
-
-
     public abstract void onClick(PlayerInteractEvent event);
 }

@@ -5,10 +5,7 @@ import be.artex.rolesffa.api.items.ImmenseSpeed;
 import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.api.roles.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
-import be.artex.rolesffa.listeners.player.PlayerInteract;
-import be.artex.rolesffa.listeners.player.PlayerJoin;
-import be.artex.rolesffa.listeners.player.PlayerQuit;
-import be.artex.rolesffa.listeners.player.PlayerRespawn;
+import be.artex.rolesffa.listeners.player.*;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.api.SPItemUtils;
 import org.bukkit.plugin.Plugin;
@@ -33,6 +30,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+        getServer().getPluginManager().registerEvents(new EntityHitEntity(), this);
     }
 
     @Override

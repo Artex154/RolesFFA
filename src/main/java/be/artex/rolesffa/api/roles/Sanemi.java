@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class Sanemi extends Role {
+
     @Override
     public String getName() {
         return ChatColor.GREEN + "Sanemi";

@@ -1,6 +1,5 @@
 package be.artex.rolesffa.util.api;
 
-import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.Bukkit;
