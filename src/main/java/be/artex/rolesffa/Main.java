@@ -24,13 +24,13 @@ public final class Main extends JavaPlugin {
 
         RoleUtils.registerRole(new Sanemi());
 
-        // Plugin startup logic
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         getServer().getPluginManager().registerEvents(new EntityHitEntity(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
     }
 
     @Override
