@@ -24,17 +24,17 @@ public class Cooldown {
         return cooldowns.get(id);
     }
 
-    public void addPlayer(UUID uuid, long time, Cooldown cooldown) {
+    public void addPlayer(UUID uuid, long time) {
         if (playerCooldowns.contains(uuid))
             return;
 
-        cooldowns.put(cooldown.id, cooldown);
-
         playerCooldowns.add(uuid);
+
+        cooldowns.put(id, this);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             playerCooldowns.remove(uuid);
-            cooldowns.put(cooldown.id, cooldown);
+            cooldowns.put(id, this);
         }, time);
     }
 

@@ -2,6 +2,7 @@ package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
+import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
 import org.bukkit.ChatColor;
@@ -32,5 +33,8 @@ public class PlayerDeath implements Listener {
         }
 
         event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
+
+        RoleUtils.setPlayerRole(player.getUniqueId(), null);
+        Lame.setPlayerLame(player.getUniqueId(), null);
     }
 }

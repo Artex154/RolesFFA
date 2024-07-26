@@ -57,6 +57,6 @@ public class ImmenseSpeed extends SPItem {
         Vector clampedDash = new Vector(clampedX, clampedY, clampedZ);
         player.setVelocity(clampedDash);
 
-        cooldown.addPlayer(player.getUniqueId(), 70*20L, cooldown);
+        cooldown.addPlayer(player.getUniqueId(), 70*20L);
     }
 }

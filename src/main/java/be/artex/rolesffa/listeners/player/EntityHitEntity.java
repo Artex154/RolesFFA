@@ -1,6 +1,8 @@
 package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
+import be.artex.rolesffa.api.items.Lame;
+import be.artex.rolesffa.util.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +19,9 @@ public class EntityHitEntity implements Listener {
 
             if (player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))
                 damage = damage / 1.95;
+
+            if (Lame.hasPlayerALame(player.getUniqueId()) && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.STRENGTH))
+                damage = (damage / 100) * 105;
         }
 
 
@@ -25,6 +30,9 @@ public class EntityHitEntity implements Listener {
 
             if (player.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE))
                 damage = (damage / 70) * 84;
+
+            if (Lame.hasPlayerALame(player.getUniqueId()) && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.RESISTANCE))
+                damage = (damage * 100) / 105;
         }
 
         Main.instance.getLogger().info("Nerfed damage: " + event.getDamage() + " to " + damage + ".");
