@@ -60,6 +60,9 @@ public class Sanemi extends Role {
     @Override
     public void onAssigned(Player player) {
         RoleUtils.baseSetup(player, this);
+
+        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+
         player.getInventory().addItem(Stacks.IMMENSE_SPEED);
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
     }

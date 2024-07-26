@@ -1,5 +1,6 @@
 package be.artex.rolesffa.util.api;
 
+import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.Bukkit;
@@ -12,10 +13,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 public class RoleUtils {
     public static ArrayList<Role> registeredRoles = new ArrayList<>();
+    public static HashMap<UUID, Role> playerRoles = new HashMap<>();
 
     public static void registerRole(Role role) {
         registeredRoles.add(role);
@@ -36,6 +40,19 @@ public class RoleUtils {
         player.teleport(location);
 
         player.spigot().sendMessage(role.getDescription());
+    }
+
+    public static Role getPlayerRole(UUID uuid) {
+        if (playerRoles.get(uuid) != null)
+            return playerRoles.get(uuid);
+
+        Main.instance.getLogger().warning(uuid.toString() + " (" + Bukkit.getPlayer(uuid).getName() + ")" + " has no role.");
+
+        return null;
+    }
+
+    public static void setPlayerRole(UUID uuid, Role role) {
+        playerRoles.put(uuid, role);
     }
 
     public static void setupInventory(PlayerInventory playerInventory) {
