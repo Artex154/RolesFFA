@@ -1,5 +1,6 @@
 package be.artex.rolesffa.api.items;
 
+import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
@@ -7,13 +8,19 @@ import be.artex.rolesffa.util.Stacks;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class ImmenseSpeed extends SPItem {
+
+    public static ArrayList<UUID> noFall = new ArrayList<>();
 
     @Override
     public ItemStack getItemStack() {
@@ -56,6 +63,10 @@ public class ImmenseSpeed extends SPItem {
 
         Vector clampedDash = new Vector(clampedX, clampedY, clampedZ);
         player.setVelocity(clampedDash);
+
+        noFall.add(player.getUniqueId());
+
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> noFall.remove(player.getUniqueId()), 15*20);
 
         cooldown.addPlayer(player.getUniqueId(), 70*20L);
     }

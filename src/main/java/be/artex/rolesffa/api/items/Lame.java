@@ -80,7 +80,6 @@ public class Lame extends SPItem {
             case 4:
                 setPlayerLame(playerUUID, LameType.NOFALL);
                 player.sendMessage(ChatColor.GRAY + "Vous avez reçu la lame de nichirine " + ChatColor.GREEN + "verte" + ChatColor.GRAY + " (" + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + ").");
-                // TODO: add system for noFall
                 break;
         }
 

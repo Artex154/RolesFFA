@@ -31,6 +31,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         getServer().getPluginManager().registerEvents(new EntityHitEntity(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamage(), this);
     }
 
     @Override
