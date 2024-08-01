@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class Cooldown {
-    public final String id;
+    private final String id;
     private final ArrayList<UUID> playerCooldowns;
     private static final HashMap<String, Cooldown> cooldowns = new HashMap<>();
 
@@ -18,10 +18,7 @@ public class Cooldown {
     }
 
     public static Cooldown get(String id) {
-        if (cooldowns.get(id) == null)
-            return new Cooldown(id);
-
-        return cooldowns.get(id);
+        return cooldowns.computeIfAbsent(id, Cooldown::new);
     }
 
     public void addPlayer(UUID uuid, long time) {
@@ -30,15 +27,20 @@ public class Cooldown {
 
         playerCooldowns.add(uuid);
 
-        cooldowns.put(id, this);
-
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             playerCooldowns.remove(uuid);
+
             cooldowns.put(id, this);
         }, time);
     }
 
     public boolean isPlayerInCooldown(UUID uuid) {
         return playerCooldowns.contains(uuid);
+    }
+
+    public static void removePlayerFromAllCooldowns(UUID uuid) {
+        for (Cooldown cooldown : cooldowns.values()) {
+            cooldown.playerCooldowns.remove(uuid);
+        }
     }
 }

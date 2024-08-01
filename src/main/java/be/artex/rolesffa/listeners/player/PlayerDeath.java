@@ -5,6 +5,7 @@ import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
+import be.artex.rolesffa.util.cooldown.Cooldown;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,8 @@ public class PlayerDeath implements Listener {
         Player killer = player.getKiller();
 
         Role role = RoleUtils.getPlayerRole(player.getUniqueId());
+
+        Cooldown.removePlayerFromAllCooldowns(player.getUniqueId());
 
         if (role == null) {
             Main.instance.getLogger().warning(player.getUniqueId().toString() + " (" + player.getName() + ") died with no role");
