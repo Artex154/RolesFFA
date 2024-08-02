@@ -9,7 +9,6 @@ public abstract class Role {
     public abstract TextComponent getDescription();
     public abstract ItemStack getItemStack();
     public abstract Team getCamp();
-    public abstract Team getType();
     public abstract int getPlacement();
 
     public abstract void onAssigned(Player player);

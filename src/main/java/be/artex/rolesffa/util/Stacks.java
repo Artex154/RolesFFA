@@ -15,6 +15,10 @@ public class Stacks {
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SLAYER")
             .build();
 
+    public static final ItemStack LG = ItemBuilder.create(Material.REDSTONE)
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "LOUP-GAROUS")
+            .build();
+
     public static final ItemStack SANEMI = ItemBuilder.create(Material.QUARTZ)
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
@@ -22,6 +26,12 @@ public class Stacks {
                     ChatColor.GRAY + " • Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ",
                     ChatColor.GRAY + " • Il possède l'" + ChatColor.AQUA + "Immense Speed" + ChatColor.GRAY + " qui lui permet d'effectuer un " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".      ",
                     ChatColor.GRAY + " • Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack LG_ROLE = ItemBuilder.create(Material.ROTTEN_FLESH)
+            .displayName(ChatColor.RED + "Loup-Garou")
+            .setLore(" ",
+                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack DPS = ItemBuilder.create(Material.DIAMOND_SWORD)

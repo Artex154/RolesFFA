@@ -11,6 +11,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class Sanemi extends Role {
 
@@ -48,11 +50,6 @@ public class Sanemi extends Role {
     }
 
     @Override
-    public Team getType() {
-        return Team.DPS;
-    }
-
-    @Override
     public int getPlacement() {
         return 20;
     }
@@ -65,5 +62,7 @@ public class Sanemi extends Role {
 
         player.getInventory().addItem(Stacks.IMMENSE_SPEED);
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
+
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
     }
 }
