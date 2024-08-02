@@ -1,7 +1,6 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
-import be.artex.rolesffa.api.items.ImmenseSpeed;
 import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.api.roles.LG;
 import be.artex.rolesffa.api.roles.Sanemi;
@@ -19,7 +18,6 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        SPItemUtils.registerItem(new ImmenseSpeed());
         SPItemUtils.registerItem(new Choose());
         SPItemUtils.registerItem(new Lame());
 

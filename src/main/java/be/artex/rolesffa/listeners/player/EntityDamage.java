@@ -1,6 +1,5 @@
 package be.artex.rolesffa.listeners.player;
 
-import be.artex.rolesffa.api.items.ImmenseSpeed;
 import be.artex.rolesffa.api.items.Lame;
 import be.artex.rolesffa.util.lame.LameType;
 import org.bukkit.entity.Player;
@@ -23,12 +22,7 @@ public class EntityDamage implements Listener {
 
         UUID playerUUID = player.getUniqueId();
 
-        if (Lame.getPlayerLame(playerUUID) != null && Lame.getPlayerLame(playerUUID).equals(LameType.NOFALL)) {
-            event.setCancelled(true);
-            return;
-        }
-
-        if (ImmenseSpeed.noFall.contains(playerUUID))
+        if (Lame.getPlayerLame(playerUUID) != null && Lame.getPlayerLame(playerUUID).equals(LameType.NOFALL))
             event.setCancelled(true);
     }
 }
