@@ -2,7 +2,6 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
 import be.artex.rolesffa.api.items.Lame;
-import be.artex.rolesffa.api.roles.LG;
 import be.artex.rolesffa.api.roles.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.*;
@@ -22,7 +21,6 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Lame());
 
         RoleUtils.registerRole(new Sanemi());
-        RoleUtils.registerRole(new LG());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
