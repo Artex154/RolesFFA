@@ -63,5 +63,10 @@ public class PlayerDeath implements Listener {
 
         RoleUtils.setPlayerRole(player.getUniqueId(), null);
         Lame.setPlayerLame(player.getUniqueId(), null);
+
+        for (Role r : RoleUtils.registeredRoles) {
+            if (r.equals(RoleUtils.getPlayerRole(killer.getUniqueId())))
+                r.onPlayerKill(event);
+        }
     }
 }
