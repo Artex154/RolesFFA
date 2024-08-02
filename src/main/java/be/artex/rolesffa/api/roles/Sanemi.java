@@ -28,7 +28,7 @@ public class Sanemi extends Role {
         description.addExtra("\n");
         description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "Force I " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitessez" + ChatColor.GRAY + " supplémentaire. (stackable)");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + " supplémentaire. (stackable)");
         description.addExtra("\n");
         description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Vous possédez une ");
         description.addExtra(new Lame().getDescription());

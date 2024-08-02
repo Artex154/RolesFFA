@@ -22,10 +22,9 @@ public class Stacks {
     public static final ItemStack SANEMI = ItemBuilder.create(Material.QUARTZ)
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
-                    ChatColor.GRAY + " • Il possède " + ChatColor.AQUA + "Vitesse I" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " • Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " • Il possède l'" + ChatColor.AQUA + "Immense Speed" + ChatColor.GRAY + " qui lui permet d'effectuer un " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".      ",
-                    ChatColor.GRAY + " • Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".", " ")
+                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
+                    ChatColor.GRAY + " • Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
+                    ChatColor.GRAY + " • Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack LG_VENGEUR = ItemBuilder.create(Material.ROTTEN_FLESH)
