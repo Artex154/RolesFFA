@@ -24,11 +24,13 @@ public class Sanemi extends Role {
     @Override
     public TextComponent getDescription() {
         TextComponent description = new TextComponent(StringUtils.line);
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Rôle: " + getName());
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Rôle: " + getName());
         description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez " + ChatColor.AQUA + "Vitesse I " + ChatColor.GRAY + "de façon permanente.");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "Force I " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
-        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + " " + ChatColor.GRAY + "Vous possédez une ");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitessez" + ChatColor.GRAY + " supplémentaire. (stackable)");
+        description.addExtra("\n");
+        description.addExtra("\n " + ChatColor.DARK_GRAY + StringUtils.dot + ChatColor.GRAY + " Vous possédez une ");
         description.addExtra(new Lame().getDescription());
         description.addExtra(ChatColor.GRAY + ".");
         description.addExtra(StringUtils.line);
@@ -59,7 +61,7 @@ public class Sanemi extends Role {
 
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
     }
 
     @Override
