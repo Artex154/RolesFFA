@@ -18,9 +18,9 @@ public class EntityHitEntity implements Listener {
             Player player = (Player) event.getDamager();
 
             if (player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))
-                damage = damage / 1.95;
+                damage = damage / 1.70;
 
-            if (Lame.hasPlayerALame(player.getUniqueId()) && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.STRENGTH))
+            if (Lame.getPlayerLame(player.getUniqueId()) != null && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.STRENGTH))
                 damage = (damage / 100) * 105;
         }
 
@@ -31,7 +31,7 @@ public class EntityHitEntity implements Listener {
             if (player.hasPotionEffect(PotionEffectType.DAMAGE_RESISTANCE))
                 damage = (damage / 70) * 84;
 
-            if (Lame.getPlayerLame(player.getUniqueId()) == null && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.RESISTANCE))
+            if (Lame.getPlayerLame(player.getUniqueId()) != null && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.RESISTANCE))
                 damage = (damage * 100) / 105;
         }
 
