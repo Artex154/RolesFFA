@@ -28,22 +28,11 @@ public class Stacks {
                     ChatColor.GRAY + " • Cooldown: " + ChatColor.YELLOW + "70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
-    public static final ItemStack LG_ROLE = ItemBuilder.create(Material.ROTTEN_FLESH)
-            .displayName(ChatColor.RED + "Loup-Garou")
+    public static final ItemStack LG_VENGEUR = ItemBuilder.create(Material.ROTTEN_FLESH)
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Loup-Vengeur")
             .setLore(" ",
-                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ")
-            .build();
-
-    public static final ItemStack DPS = ItemBuilder.create(Material.DIAMOND_SWORD)
-            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "DPS")
-            .build();
-
-    public static final ItemStack TANK = ItemBuilder.create(Material.DIAMOND_CHESTPLATE)
-            .displayName(ChatColor.BLUE + "" + ChatColor.BOLD + "TANK")
-            .build();
-
-    public static final ItemStack HEALER = ItemBuilder.create(Material.GOLDEN_APPLE)
-            .displayName(ChatColor.LIGHT_PURPLE + "" + ChatColor.BOLD + "HEALER")
+                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
+                    ChatColor.GRAY + " • Pour chaque " + ChatColor.RED + "loup" + ChatColor.GRAY + " qui meurt, il gagne un " + ChatColor.LIGHT_PURPLE + "coeur " + ChatColor.GRAY + "permanent.        ", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
@@ -54,13 +43,6 @@ public class Stacks {
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.LIGHT_PURPLE + " Lame de Vie (+2 coeurs)",
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GRAY + " Lame de Résistance (+5% de résistance)",
                     ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GREEN + " Lame de NoFall", " ")
-            .build();
-
-    public static final ItemStack IMMENSE_SPEED = ItemBuilder.create(Material.NETHER_STAR)
-            .displayName(ChatColor.AQUA + "Immense Speed")
-            .setLore(ChatColor.GRAY + " " + StringUtils.dot + " En faissant clique droit vous ferez un " + ChatColor.AQUA + "dash.",
-                    ChatColor.GRAY + " " + StringUtils.dot + " Vous aurez " + ChatColor.GREEN + "NoFall" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + " après votre " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".",
-                    ChatColor.GRAY + " " + StringUtils.dot + " Cooldown: " + ChatColor.YELLOW + "70 secondes")
             .build();
 
     public static ItemStack border() {
