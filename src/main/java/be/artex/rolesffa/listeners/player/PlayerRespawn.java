@@ -13,5 +13,6 @@ public class PlayerRespawn implements Listener {
         event.setRespawnLocation(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));
         event.getPlayer().getInventory().setItem(4, Stacks.CHOOSE_BOOK);
         event.getPlayer().setMaxHealth(20);
+        event.getPlayer().setWalkSpeed(0.2f);
     }
 }
