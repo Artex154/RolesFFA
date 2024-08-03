@@ -22,26 +22,26 @@ public class Stacks {
     public static final ItemStack SANEMI = ItemBuilder.create(Material.QUARTZ)
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
-                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " • Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
-                    ChatColor.GRAY + " • Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack LG_VENGEUR = ItemBuilder.create(Material.ROTTEN_FLESH)
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Loup-Vengeur")
             .setLore(" ",
-                    ChatColor.GRAY + " • Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " • Pour chaque " + ChatColor.RED + "loup" + ChatColor.GRAY + " qui meurt, il gagne un " + ChatColor.LIGHT_PURPLE + "coeur " + ChatColor.GRAY + "permanent.        ", " ")
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.RED + "loup" + ChatColor.GRAY + " qui meurt, il gagne un " + ChatColor.LIGHT_PURPLE + "coeur " + ChatColor.GRAY + "permanent.        ", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
             .displayName(ChatColor.AQUA + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.DARK_GRAY + " Lame de Force (+5% de dégats)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.YELLOW + " Lame de Vitesse (+7% de vitesse)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.LIGHT_PURPLE + " Lame de Vie (+2 coeurs)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GRAY + " Lame de Résistance (+5% de résistance)",
-                    ChatColor.GRAY + " " + StringUtils.dot + ChatColor.GREEN + " Lame de NoFall", " ")
+                    StringUtils.dot + "Lame de Force (+5% de dégats)",
+                    StringUtils.dot + ChatColor.YELLOW + "Lame de Vitesse (+7% de vitesse)",
+                    StringUtils.dot + ChatColor.LIGHT_PURPLE + "Lame de Vie (+2 coeurs)",
+                    StringUtils.dot + ChatColor.GRAY + "Lame de Résistance (+5% de résistance)",
+                    StringUtils.dot + ChatColor.GREEN + "Lame de NoFall", " ")
             .build();
 
     public static ItemStack border() {
