@@ -36,6 +36,23 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GREEN + "Lame de NoFall", " ")
             .build();
 
+    public static final ItemStack KUSARIGAMA = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Kusarigama")
+            .addEnchant(Enchantment.ARROW_DAMAGE, 1)
+            .addItemFlags(ItemFlag.HIDE_ENCHANTS)
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.  ",
+                    StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack GYOMEI = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gyomei")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède Resistance I.", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.AQUA + "Kusarigama" + ChatColor.GRAY + ".",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+            .build();
+
     public static ItemStack border() {
         Item border = new Item(new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));
 
