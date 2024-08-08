@@ -56,19 +56,19 @@ public class RoleUtils {
     }
 
     public static void setupInventory(PlayerInventory playerInventory) {
-        playerInventory.setHelmet(ItemBuilder.create(Material.DIAMOND_HELMET).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.setBoots(ItemBuilder.create(Material.DIAMOND_BOOTS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.addItem(ItemBuilder.create(Material.DIAMOND_SWORD).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
+        playerInventory.setHelmet(new ItemBuilder<>(new ItemStack(Material.DIAMOND_HELMET)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+        playerInventory.setBoots(new ItemBuilder<>(new ItemStack(Material.DIAMOND_BOOTS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
 
-        playerInventory.setChestplate(ItemBuilder.create(Material.DIAMOND_CHESTPLATE).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.setLeggings(ItemBuilder.create(Material.IRON_LEGGINGS).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
-        playerInventory.addItem(ItemBuilder.create(Material.DIAMOND_PICKAXE).addEnchant(Enchantment.DIG_SPEED, 3).build());
+        playerInventory.setChestplate(new ItemBuilder<>(new ItemStack(Material.DIAMOND_CHESTPLATE)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
+        playerInventory.setLeggings(new ItemBuilder<>(new ItemStack(Material.IRON_LEGGINGS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
+        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.DIAMOND_PICKAXE)).addEnchant(Enchantment.DIG_SPEED, 3).build());
         playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));
         playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
         playerInventory.addItem(new ItemStack(Material.GOLDEN_APPLE, 14));
         playerInventory.addItem(new ItemStack(Material.GOLDEN_CARROT, 64));
         playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));
-        playerInventory.addItem(ItemBuilder.create(Material.BOW).addEnchant(Enchantment.ARROW_DAMAGE, 3).build());
+        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.BOW)).addEnchant(Enchantment.ARROW_DAMAGE, 3).build());
         playerInventory.addItem(new ItemStack(Material.WATER_BUCKET));
         playerInventory.addItem(new ItemStack(Material.WATER_BUCKET));
         playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));

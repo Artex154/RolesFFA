@@ -2,13 +2,11 @@ package be.artex.rolesffa.api;
 
 import be.artex.rolesffa.util.Stacks;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public enum Team {
-    SLAYER(20, Stacks.SLAYER, Bukkit.createInventory(null, 54, "Slayers")),
-    LG(21, Stacks.LG, Bukkit.createInventory(null, 54, "Loup-garous"));
+    SLAYER(20, Stacks.SLAYER, Bukkit.createInventory(null, 54, "Slayers"));
 
     private final int placement;
     private final ItemStack stack;

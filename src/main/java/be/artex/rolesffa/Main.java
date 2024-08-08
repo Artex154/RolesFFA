@@ -1,8 +1,9 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
+import be.artex.rolesffa.api.items.Kusarigama;
 import be.artex.rolesffa.api.items.Lame;
-import be.artex.rolesffa.api.roles.LGVengeur;
+import be.artex.rolesffa.api.roles.Gyomei;
 import be.artex.rolesffa.api.roles.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.*;
@@ -13,19 +14,17 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin {
     public static Plugin instance;
-    public static LGVengeur lgv;
 
     @Override
     public void onEnable() {
         instance = this;
 
-        lgv = new LGVengeur();
-
         SPItemUtils.registerItem(new Choose());
         SPItemUtils.registerItem(new Lame());
+        SPItemUtils.registerItem(new Kusarigama());
 
         RoleUtils.registerRole(new Sanemi());
-        RoleUtils.registerRole(lgv);
+        RoleUtils.registerRole(new Gyomei());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

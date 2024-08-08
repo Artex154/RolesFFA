@@ -1,25 +1,24 @@
 package be.artex.rolesffa.util;
 
+import be.raft.crafty.item.Item;
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 public class Stacks {
-    public static final ItemStack CHOOSE_BOOK = ItemBuilder.create(Material.ENCHANTED_BOOK)
+    public static final ItemStack CHOOSE_BOOK = new ItemBuilder<>(new ItemStack(Material.ENCHANTED_BOOK))
             .displayName(ChatColor.RESET + "Choisis ton rôle")
             .build();
 
-    public static final ItemStack SLAYER = ItemBuilder.create(Material.IRON_SWORD)
+    public static final ItemStack SLAYER = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SLAYER")
             .build();
 
-    public static final ItemStack LG = ItemBuilder.create(Material.REDSTONE)
-            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "LOUP-GAROUS")
-            .build();
-
-    public static final ItemStack SANEMI = ItemBuilder.create(Material.QUARTZ)
+    public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
                     StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
@@ -27,15 +26,8 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
-    public static final ItemStack LG_VENGEUR = ItemBuilder.create(Material.ROTTEN_FLESH)
-            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Loup-Vengeur")
-            .setLore(" ",
-                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
-                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.RED + "loup" + ChatColor.GRAY + " qui meurt, il gagne un " + ChatColor.LIGHT_PURPLE + "coeur " + ChatColor.GRAY + "permanent.        ", " ")
-            .build();
-
-    public static final ItemStack LAME_DE_NICHIRINE = ItemBuilder.create(Material.NETHER_STAR)
-            .displayName(ChatColor.AQUA + "Lame de Nichirine")
+    public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
                     StringUtils.dot + "Lame de Force (+5% de dégats)",
                     StringUtils.dot + ChatColor.YELLOW + "Lame de Vitesse (+7% de vitesse)",
@@ -45,11 +37,10 @@ public class Stacks {
             .build();
 
     public static ItemStack border() {
-        ItemStack border = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3);
-        ItemMeta itemMeta = border.getItemMeta();
-        itemMeta.setDisplayName(" ");
-        border.setItemMeta(itemMeta);
+        Item border = new Item(new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));
 
-        return border;
+        border.setName(" ");
+
+        return border.toItemStack();
     }
 }

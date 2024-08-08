@@ -4,7 +4,6 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.items.Lame;
-import be.artex.rolesffa.api.roles.LGVengeur;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
@@ -61,17 +60,6 @@ public class PlayerDeath implements Listener {
 
             return;
         }
-
-        if (role.getCamp().equals(Team.LG)) {
-            RoleUtils.playerRoles.forEach((uuid, playerRole) -> {
-                if (playerRole.equals(Main.lgv)) {
-                    Player p = Bukkit.getPlayer(uuid);
-
-                    p.setMaxHealth(p.getMaxHealth() + 2);
-                }
-            });
-        }
-
 
         event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
 
