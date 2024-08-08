@@ -28,10 +28,6 @@ public class Lame extends SPItem {
         return playerLames.get(uuid);
     }
 
-    public static boolean hasPlayerALame(UUID uuid) {
-        return playerLames.get(uuid) == null;
-    }
-
     @Override
     public ItemStack getItemStack() {
         return Stacks.LAME_DE_NICHIRINE;

@@ -1,4 +1,4 @@
-package be.artex.rolesffa.api.roles;
+package be.artex.rolesffa.api.roles.slayer;
 
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.Role;
