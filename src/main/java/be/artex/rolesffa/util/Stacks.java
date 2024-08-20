@@ -13,8 +13,20 @@ public class Stacks {
             .displayName(ChatColor.RESET + "Choisis ton rôle")
             .build();
 
-    public static final ItemStack SLAYER = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
-            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SLAYER")
+    public static final ItemStack SLAYERS = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SLAYERS")
+            .build();
+
+    public static final ItemStack SOLDATS = new ItemBuilder<>(new ItemStack(Material.BOW))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SOLDATS")
+            .build();
+
+    public static final ItemStack SHINOBIS = new ItemBuilder<>(new ItemStack(Material.EMERALD))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "SHINOBIS")
+            .build();
+
+    public static final ItemStack PIRATES = new ItemBuilder<>(new ItemStack(Material.BOAT))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "PIRATES")
             .build();
 
     public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))

@@ -6,7 +6,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public enum Team {
-    SLAYER(20, Stacks.SLAYER, Bukkit.createInventory(null, 54, "Slayers"));
+    SLAYER(20, Stacks.SLAYERS, Bukkit.createInventory(null, 54, "Slayers")),
+    SHINOBIS(21, Stacks.SHINOBIS, Bukkit.createInventory(null, 54, "Shinobis")),
+    SOLDATS(22, Stacks.SOLDATS, Bukkit.createInventory(null, 54, "Soldats")),
+    PIRATES(23, Stacks.PIRATES, Bukkit.createInventory(null, 54, "Pirates")),;
 
     private final int placement;
     private final ItemStack stack;

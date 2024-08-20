@@ -1,8 +1,8 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
-import be.artex.rolesffa.api.items.Kusarigama;
-import be.artex.rolesffa.api.items.Lame;
+import be.artex.rolesffa.api.items.gyomei.Kusarigama;
+import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
 import be.artex.rolesffa.api.roles.slayer.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
