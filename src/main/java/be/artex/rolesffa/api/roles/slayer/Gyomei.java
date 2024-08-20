@@ -2,8 +2,8 @@ package be.artex.rolesffa.api.roles.slayer;
 
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.api.items.Kusarigama;
-import be.artex.rolesffa.api.items.Lame;
+import be.artex.rolesffa.api.items.gyomei.Kusarigama;
+import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;

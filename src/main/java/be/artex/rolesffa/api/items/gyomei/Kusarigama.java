@@ -1,4 +1,4 @@
-package be.artex.rolesffa.api.items;
+package be.artex.rolesffa.api.items.gyomei;
 
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.util.Stacks;

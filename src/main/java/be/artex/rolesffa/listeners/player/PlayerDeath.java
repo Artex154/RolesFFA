@@ -2,7 +2,7 @@ package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
-import be.artex.rolesffa.api.items.Lame;
+import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
