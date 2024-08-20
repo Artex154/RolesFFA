@@ -9,5 +9,6 @@ public abstract class SPItem {
     public abstract @NotNull ItemStack getItemStack();
     public abstract @NotNull TextComponent getDescription();
 
-    public abstract void onClick(PlayerInteractEvent event);
+    public void onClick(PlayerInteractEvent event) {
+    }
 }
