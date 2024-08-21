@@ -2,6 +2,8 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
+import be.artex.rolesffa.api.items.luffy.Gear4;
+import be.artex.rolesffa.api.items.pixis.Alcool;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
 import be.artex.rolesffa.api.roles.slayer.Sanemi;
@@ -22,6 +24,8 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Choose());
         SPItemUtils.registerItem(new Lame());
         SPItemUtils.registerItem(new Kusarigama());
+        SPItemUtils.registerItem(new Gear4());
+        SPItemUtils.registerItem(new Alcool());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
