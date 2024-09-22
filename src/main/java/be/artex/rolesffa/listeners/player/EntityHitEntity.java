@@ -7,6 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class EntityHitEntity implements Listener {
@@ -17,13 +19,26 @@ public class EntityHitEntity implements Listener {
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
 
-            if (player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))
-                damage = damage / 1.70;
+            if (player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE)) {
+                int effectAmplifier = 0;
+
+                for (PotionEffect effect : player.getActivePotionEffects()) {
+                    if (effect.getType().equals(PotionEffectType.INCREASE_DAMAGE)) {
+                        effectAmplifier = effect.getAmplifier();
+                        break;
+                    }
+                }
+
+                double percentage = 1.0 + (effectAmplifier * 1.3);
+
+                damage = damage / (1.87 + (percentage / 100));
+                damage = (damage / 10) * 14;
+            }
 
             if (Lame.getPlayerLame(player.getUniqueId()) != null && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.STRENGTH))
                 damage = (damage / 100) * 105;
-        }
 
+        }
 
         if (event.getEntity() instanceof Player) {
             Player player = (Player) event.getEntity();
