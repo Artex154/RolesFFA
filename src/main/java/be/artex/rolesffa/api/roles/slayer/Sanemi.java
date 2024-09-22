@@ -26,7 +26,7 @@ public class Sanemi extends Role {
         TextComponent description = new TextComponent(StringUtils.line);
         description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Rôle: " + getName());
         description.addExtra("\n");
-        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+40% de force " + ChatColor.GRAY + "de façon permanente.");
+        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+30% de force " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
         description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + " supplémentaire. (stackable)");
         description.addExtra("\n");
@@ -51,6 +51,11 @@ public class Sanemi extends Role {
     @Override
     public int getPlacement() {
         return 20;
+    }
+
+    @Override
+    public int getStrength() {
+        return 13;
     }
 
     @Override

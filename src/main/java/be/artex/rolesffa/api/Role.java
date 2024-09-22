@@ -11,7 +11,8 @@ public abstract class Role {
     public abstract @NotNull TextComponent getDescription();
     public abstract @NotNull ItemStack getItemStack();
     public abstract @NotNull Team getCamp();
-    public abstract @NotNull int getPlacement();
+    public abstract int getPlacement();
+    public abstract int getStrength();
 
     public abstract void onAssigned(Player player);
 
