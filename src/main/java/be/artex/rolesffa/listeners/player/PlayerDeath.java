@@ -23,6 +23,7 @@ public class PlayerDeath implements Listener {
         Role role = RoleUtils.getPlayerRole(player.getUniqueId());
 
         Cooldown.removePlayerFromAllCooldowns(player.getUniqueId());
+        Cooldown.removePlayerFromAllCooldowns(killer.getUniqueId());
 
         int goldenApples = 0;
         int arrow = 0;
