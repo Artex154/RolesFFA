@@ -1,5 +1,6 @@
 package be.artex.rolesffa.listeners.player;
 
+import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.WorldUtils;
 import org.bukkit.*;
@@ -28,6 +29,8 @@ public class PlayerJoin implements Listener {
 
         playerInventory.clear();
 
+        Lame.setPlayerLame(event.getPlayer().getUniqueId(), null);
+
         ItemStack air = new ItemStack(Material.AIR);
 
         ItemStack[] armorContent = {air, air, air, air};
@@ -40,6 +43,8 @@ public class PlayerJoin implements Listener {
 
         player.setMaxHealth(20);
         player.setHealth(20);
+
+        player.setWalkSpeed(0.2f);
 
         playerInventory.setItem(4, Stacks.CHOOSE_BOOK);
 
