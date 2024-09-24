@@ -4,6 +4,7 @@ import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -54,11 +55,6 @@ public class Sanemi extends Role {
     }
 
     @Override
-    public int getStrength() {
-        return 13;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         RoleUtils.baseSetup(player, this);
 
@@ -67,6 +63,8 @@ public class Sanemi extends Role {
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
+
+        Strength.playerStrength.put(player.getUniqueId(), 13f);
     }
 
     @Override

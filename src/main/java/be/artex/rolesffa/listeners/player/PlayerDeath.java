@@ -4,6 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
+import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
@@ -66,14 +67,12 @@ public class PlayerDeath implements Listener {
         RoleUtils.setPlayerRole(player.getUniqueId(), null);
         Lame.setPlayerLame(player.getUniqueId(), null);
 
-        for (Role r : RoleUtils.registeredRoles) {
-            if (r.equals(RoleUtils.getPlayerRole(killer.getUniqueId())))
-                r.onPlayerKill(event);
-        }
+        RoleUtils.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 
         killer.setHealth(killer.getMaxHealth());
 
         Dash.playerWithSpeed.remove(player.getUniqueId());
 
+        Strength.playerStrength.put(player.getUniqueId(), null);
     }
 }

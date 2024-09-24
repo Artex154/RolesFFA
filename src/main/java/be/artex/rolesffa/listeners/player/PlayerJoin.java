@@ -2,6 +2,7 @@ package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.WorldUtils;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -55,5 +56,7 @@ public class PlayerJoin implements Listener {
         event.setJoinMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "+" + ChatColor.DARK_GRAY + "] " + player.getName());
 
         player.teleport(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));
+
+        Strength.playerStrength.put(player.getUniqueId(), null);
     }
 }
