@@ -4,8 +4,10 @@ import be.artex.rolesffa.api.items.Choose;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
 import be.artex.rolesffa.api.items.luffy.Gear4;
 import be.artex.rolesffa.api.items.pixis.Alcool;
+import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
+import be.artex.rolesffa.api.roles.slayer.Sabito;
 import be.artex.rolesffa.api.roles.slayer.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.*;
@@ -26,9 +28,11 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Kusarigama());
         SPItemUtils.registerItem(new Gear4());
         SPItemUtils.registerItem(new Alcool());
+        SPItemUtils.registerItem(new Dash());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
+        RoleUtils.registerRole(new Sabito());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

@@ -32,7 +32,7 @@ public class Stacks {
     public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
-                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "Force I" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+30% de force" + ChatColor.GRAY + ".", " ",
                     StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
                     StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
@@ -56,6 +56,13 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack GEAR4 = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Gear 4")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.  ",
+                    StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
     public static final ItemStack GYOMEI = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Gyomei")
             .setLore(" ",
@@ -71,4 +78,8 @@ public class Stacks {
 
         return border.toItemStack();
     }
+
+    public static ItemStack SABITO_DASH = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Dash")
+            .build();
 }

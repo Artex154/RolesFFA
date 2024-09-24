@@ -2,6 +2,7 @@ package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
+import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
@@ -70,6 +71,9 @@ public class PlayerDeath implements Listener {
                 r.onPlayerKill(event);
         }
 
+        killer.setHealth(killer.getMaxHealth());
+
+        Dash.playerWithSpeed.remove(player.getUniqueId());
 
     }
 }
