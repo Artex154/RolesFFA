@@ -44,11 +44,6 @@ public class Sabito extends Role {
     }
 
     @Override
-    public int getStrength() {
-        return 11;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         RoleUtils.baseSetup(player, this);
 

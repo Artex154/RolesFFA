@@ -52,11 +52,6 @@ public class Gyomei extends Role {
     }
 
     @Override
-    public int getStrength() {
-        return 10;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         RoleUtils.baseSetup(player, this);
 

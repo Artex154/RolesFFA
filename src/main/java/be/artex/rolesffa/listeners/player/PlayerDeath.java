@@ -4,6 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
+import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
@@ -72,7 +73,9 @@ public class PlayerDeath implements Listener {
         killer.setHealth(killer.getMaxHealth());
 
         Dash.playerWithSpeed.remove(player.getUniqueId());
+        Mihawk.playerWithoutResistant.remove(player.getUniqueId());
 
         Strength.playerStrength.put(player.getUniqueId(), null);
+
     }
 }

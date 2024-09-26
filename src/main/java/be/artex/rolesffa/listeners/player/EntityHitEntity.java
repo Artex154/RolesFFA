@@ -3,6 +3,7 @@ package be.artex.rolesffa.listeners.player;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Strength;
+import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -18,6 +19,8 @@ public class EntityHitEntity implements Listener {
 
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
+
+            RoleUtils.getPlayerRole(player.getUniqueId()).onPlayerHit(event);
 
             if (!player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))
                 return;
