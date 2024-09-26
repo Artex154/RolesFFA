@@ -9,7 +9,8 @@ public enum Team {
     SLAYER(20, Stacks.SLAYERS, Bukkit.createInventory(null, 54, "Slayers")),
     SHINOBIS(21, Stacks.SHINOBIS, Bukkit.createInventory(null, 54, "Shinobis")),
     SOLDATS(22, Stacks.SOLDATS, Bukkit.createInventory(null, 54, "Soldats")),
-    PIRATES(23, Stacks.PIRATES, Bukkit.createInventory(null, 54, "Pirates")),;
+    PIRATES(23, Stacks.PIRATES, Bukkit.createInventory(null, 54, "Pirates")),
+    SUP_VIL(33, Stacks.SUP_VIL, Bukkit.createInventory(null, 54, "Association des Super Villains")),;
 
     private final int placement;
     private final ItemStack stack;

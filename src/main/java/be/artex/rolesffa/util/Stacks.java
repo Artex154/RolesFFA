@@ -29,6 +29,10 @@ public class Stacks {
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "PIRATES")
             .build();
 
+    public static final ItemStack SUP_VIL = new ItemBuilder<>(new ItemStack(Material.REDSTONE))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "ASSOCIATION DES SUPER VILLAINS")
+            .build();
+
     public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
