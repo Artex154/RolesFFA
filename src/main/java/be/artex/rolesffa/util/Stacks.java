@@ -2,6 +2,7 @@ package be.artex.rolesffa.util;
 
 import be.raft.crafty.item.Item;
 import be.raft.crafty.item.ItemBuilder;
+import com.sun.org.apache.bcel.internal.generic.IREM;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -41,6 +42,12 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack TOMURA = new ItemBuilder<>(new ItemStack(Material.SULPHUR))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Tomura")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède ses " + ChatColor.BOLD + "Mains" + ChatColor.GRAY + " avec les quelles il peut désactiver l'item en main de son ennemi.", " ")
+            .build();
+
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
@@ -60,11 +67,16 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
-    public static final ItemStack GEAR4 = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
-            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Gear 4")
+    public static final ItemStack UNUSABLE = new ItemBuilder<>(new ItemStack(Material.BARRIER))
+            .displayName(ChatColor.RED + "Unusable")
+            .setLore(StringUtils.dot + ChatColor.GRAY + "Cette item à été désactivé par " + ChatColor.RED + "Tomura" + ChatColor.GRAY + ".")
+            .build();
+
+    public static final ItemStack MAINS = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Mains")
             .setLore(" ",
-                    StringUtils.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.  ",
-                    StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
+                    StringUtils.dot + ChatColor.GRAY + "En frappant quelqu'un vous désactiverez son item pendant 5 secondes.",
+                    StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack GYOMEI = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))

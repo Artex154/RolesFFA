@@ -9,14 +9,12 @@ import org.bukkit.event.player.PlayerInteractEvent;
 public class PlayerInteract implements Listener {
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
-        if (event.getItem() == null) {
+        if (event.getItem() == null)
             return;
-        }
 
         for (SPItem spItem : SPItemUtils.registeredItems) {
-            if (event.getItem().equals(spItem.getItemStack())) {
+            if (event.getItem().equals(spItem.getItemStack()))
                 spItem.onClick(event);
-            }
         }
     }
 }

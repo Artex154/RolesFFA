@@ -1,9 +1,11 @@
 package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
+import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.api.RoleUtils;
+import be.artex.rolesffa.util.api.SPItemUtils;
 import be.artex.rolesffa.util.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +21,11 @@ public class EntityHitEntity implements Listener {
 
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
+
+            for (SPItem spItem : SPItemUtils.registeredItems) {
+                if (player.getItemInHand() != null && player.getItemInHand().equals(spItem.getItemStack()))
+                    spItem.onHit(event);
+            }
 
             RoleUtils.getPlayerRole(player.getUniqueId()).onPlayerHit(event);
 
@@ -50,7 +57,7 @@ public class EntityHitEntity implements Listener {
             Player player = (Player) event.getEntity();
 
             if (Lame.getPlayerLame(player.getUniqueId()) != null && Lame.getPlayerLame(player.getUniqueId()).equals(LameType.RESISTANCE))
-                damage = (damage * 100) / 100;
+                damage = (damage * 100) / 105;
         }
 
         event.setDamage(damage);

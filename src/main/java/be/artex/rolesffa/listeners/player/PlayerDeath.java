@@ -4,6 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
+import be.artex.rolesffa.api.items.tomura.Mains;
 import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.StringUtils;
@@ -40,6 +41,10 @@ public class PlayerDeath implements Listener {
                 case ARROW:
                     arrow += itemStack.getAmount();
                     break;
+
+                case BARRIER:
+                    if (Mains.playerLosedItems.get(player.getUniqueId()) != null && Mains.playerLosedItems.get(player.getUniqueId()).getStack().getType() != null && Mains.playerLosedItems.get(player.getUniqueId()).getStack().getType().equals(Material.GOLDEN_APPLE))
+                        goldenApples += Mains.playerLosedItems.get(player.getUniqueId()).getStack().getAmount();
             }
         }
 
@@ -74,6 +79,7 @@ public class PlayerDeath implements Listener {
 
         Dash.playerWithSpeed.remove(player.getUniqueId());
         Mihawk.playerWithoutResistant.remove(player.getUniqueId());
+        Mains.playerLosedItems.put(player.getUniqueId(), null);
 
         Strength.playerStrength.put(player.getUniqueId(), null);
 

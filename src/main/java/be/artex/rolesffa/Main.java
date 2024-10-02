@@ -4,6 +4,9 @@ import be.artex.rolesffa.api.items.Choose;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
+import be.artex.rolesffa.api.items.tomura.Mains;
+import be.artex.rolesffa.api.items.tomura.Unusable;
+import be.artex.rolesffa.api.roles.ASV.Tomura;
 import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
 import be.artex.rolesffa.api.roles.slayer.Sabito;
@@ -26,11 +29,14 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Lame());
         SPItemUtils.registerItem(new Kusarigama());
         SPItemUtils.registerItem(new Dash());
+        SPItemUtils.registerItem(new Mains());
+        SPItemUtils.registerItem(new Unusable());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
         RoleUtils.registerRole(new Sabito());
         RoleUtils.registerRole(new Mihawk());
+        RoleUtils.registerRole(new Tomura());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
