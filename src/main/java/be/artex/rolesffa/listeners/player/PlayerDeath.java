@@ -18,6 +18,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Objects;
+
 public class PlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -29,31 +31,38 @@ public class PlayerDeath implements Listener {
         Cooldown.removePlayerFromAllCooldowns(player.getUniqueId());
         Cooldown.removePlayerFromAllCooldowns(killer.getUniqueId());
 
-        int goldenApples = 0;
-        int arrow = 0;
+        int droppedGoldenApples = 0;
+        int droppedArrow = 0;
 
         for (ItemStack itemStack : event.getDrops()) {
             switch (itemStack.getType()) {
                 case GOLDEN_APPLE:
-                    goldenApples += itemStack.getAmount();
+                    droppedGoldenApples += itemStack.getAmount();
                     break;
 
                 case ARROW:
-                    arrow += itemStack.getAmount();
+                    droppedArrow += itemStack.getAmount();
                     break;
 
                 case BARRIER:
                     if (Mains.playerLosedItems.get(player.getUniqueId()) != null && Mains.playerLosedItems.get(player.getUniqueId()).getStack().getType() != null && Mains.playerLosedItems.get(player.getUniqueId()).getStack().getType().equals(Material.GOLDEN_APPLE))
-                        goldenApples += Mains.playerLosedItems.get(player.getUniqueId()).getStack().getAmount();
+                        droppedGoldenApples += Mains.playerLosedItems.get(player.getUniqueId()).getStack().getAmount();
+                    break;
             }
         }
 
         event.getDrops().clear();
-        event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, goldenApples));
-        event.getDrops().add(new ItemStack(Material.ARROW, arrow));
+        event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, droppedGoldenApples));
+        event.getDrops().add(new ItemStack(Material.ARROW, droppedArrow));
         event.getDrops().add(new ItemStack(Material.LAVA_BUCKET));
         event.getDrops().add(new ItemStack(Material.WATER_BUCKET));
         event.getDrops().add(new ItemStack(Material.COBBLESTONE, 64));
+
+        Dash.playerWithSpeed.remove(player.getUniqueId());
+        Mihawk.playerWithoutResistant.remove(player.getUniqueId());
+        Mains.playerLosedItems.put(player.getUniqueId(), null);
+
+        Strength.playerStrength.put(player.getUniqueId(), null);
 
         if (role == null) {
             Main.instance.getLogger().warning(player.getUniqueId().toString() + " (" + player.getName() + ") died with no role");
@@ -68,6 +77,16 @@ public class PlayerDeath implements Listener {
             return;
         }
 
+        int killerGoldenApples = droppedGoldenApples;
+
+        for (ItemStack itemStack : killer.getInventory()) {
+            if (Objects.requireNonNull(itemStack.getType()) == Material.GOLDEN_APPLE)
+                killerGoldenApples += itemStack.getAmount();
+        }
+
+        if (killerGoldenApples > 14)
+            player.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 14 - (killerGoldenApples - droppedGoldenApples)));
+
         event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
 
         RoleUtils.setPlayerRole(player.getUniqueId(), null);
@@ -75,13 +94,6 @@ public class PlayerDeath implements Listener {
 
         RoleUtils.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 
-        killer.setHealth(killer.getMaxHealth());
-
-        Dash.playerWithSpeed.remove(player.getUniqueId());
-        Mihawk.playerWithoutResistant.remove(player.getUniqueId());
-        Mains.playerLosedItems.put(player.getUniqueId(), null);
-
-        Strength.playerStrength.put(player.getUniqueId(), null);
-
+        killer.setHealth(killer.getMaxHealth() / 2);
     }
 }
