@@ -44,8 +44,6 @@ public class Tomura extends Role {
 
         RoleUtils.setPlayerRole(player.getUniqueId(), this);
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
-
         player.getInventory().addItem(Stacks.MAINS);
     }
 }

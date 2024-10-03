@@ -17,6 +17,11 @@ public class EntityDamage implements Listener {
 
         Player player = (Player) event.getEntity();
 
+        if (event.getCause().equals(EntityDamageEvent.DamageCause.LIGHTNING)) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (!event.getCause().equals(EntityDamageEvent.DamageCause.FALL))
             return;
 

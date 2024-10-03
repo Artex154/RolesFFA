@@ -7,6 +7,7 @@ import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.items.tomura.Mains;
 import be.artex.rolesffa.api.items.tomura.Unusable;
 import be.artex.rolesffa.api.roles.ASV.Tomura;
+import be.artex.rolesffa.api.roles.hunter.Killua;
 import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
 import be.artex.rolesffa.api.roles.slayer.Sabito;
@@ -37,6 +38,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Sabito());
         RoleUtils.registerRole(new Mihawk());
         RoleUtils.registerRole(new Tomura());
+        RoleUtils.registerRole(new Killua());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

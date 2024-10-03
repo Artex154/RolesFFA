@@ -5,6 +5,7 @@ import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.items.tomura.Mains;
+import be.artex.rolesffa.api.roles.hunter.Killua;
 import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.StringUtils;
@@ -61,6 +62,9 @@ public class PlayerDeath implements Listener {
         Dash.playerWithSpeed.remove(player.getUniqueId());
         Mihawk.playerWithoutResistant.remove(player.getUniqueId());
         Mains.playerLosedItems.put(player.getUniqueId(), null);
+
+        Killua.playerHitNumber.put(player.getUniqueId(), 0);
+        Killua.playerWithSpeed.remove(player.getUniqueId());
 
         Strength.playerStrength.put(player.getUniqueId(), null);
 
