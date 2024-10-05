@@ -17,7 +17,8 @@ public class DescriptionBuilder {
 
     private double strength = 0;
     private HashMap<PotionStyle, Integer> effects = null;
-    private List<SPItem> items = null;
+    private SPItem[] items = null;
+    private String[] customs = null;
 
     public DescriptionBuilder(String name) {
         this.name = name;
@@ -28,7 +29,7 @@ public class DescriptionBuilder {
         return this;
     }
 
-    public DescriptionBuilder effect(List<PotionEffect> effects) {
+    public DescriptionBuilder effect(PotionEffect... effects) {
         this.effects = new HashMap<>();
 
         for (PotionEffect effect : effects) {
@@ -41,10 +42,16 @@ public class DescriptionBuilder {
         return this;
     }
 
-    public DescriptionBuilder item(List<SPItem> items) {
+    public DescriptionBuilder item(SPItem... items) {
         this.items = items;
         return this;
     }
+
+    public DescriptionBuilder custom(String... customs) {
+        this.customs = customs;
+        return this;
+    }
+
 
     public TextComponent build() {
         TextComponent text = new TextComponent(StringUtils.line);
@@ -65,14 +72,22 @@ public class DescriptionBuilder {
         }
 
         if (items != null) {
-            items.forEach(item -> {
+            for (SPItem item : items) {
                 text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez ");
                 text.addExtra(item.getDescription());
                 text.addExtra(ChatColor.GRAY + ".");
-            });
+            }
 
             text.addExtra("\n");
         }
+
+        if (customs != null) {
+            for (String custom : customs) {
+                text.addExtra("\n" + custom);
+                text.addExtra("\n");
+            }
+        }
+
 
         text.addExtra(StringUtils.line);
 
