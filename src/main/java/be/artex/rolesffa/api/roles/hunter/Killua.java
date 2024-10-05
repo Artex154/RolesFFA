@@ -66,12 +66,13 @@ public class Killua extends Role {
 
         Player player = (Player) event.getEntity();
 
-        int hitNumber = playerHitNumber.get(damager.getUniqueId());
+        int hitNumber;
 
         if (playerHitNumber.get(damager.getUniqueId()) == null) {
             playerHitNumber.put(damager.getUniqueId(), 1);
             return;
         } else {
+            hitNumber = playerHitNumber.get(damager.getUniqueId());
             hitNumber++;
 
             playerHitNumber.put(damager.getUniqueId(), hitNumber);
@@ -85,6 +86,8 @@ public class Killua extends Role {
         damager.removePotionEffect(PotionEffectType.SPEED);
 
         damager.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 80, 1));
+
+        playerWithSpeed.add(damager.getUniqueId());
 
         event.getEntity().getWorld().strikeLightning(event.getEntity().getLocation());
 

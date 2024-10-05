@@ -84,8 +84,11 @@ public class PlayerDeath implements Listener {
         int killerGoldenApples = droppedGoldenApples;
 
         for (ItemStack itemStack : killer.getInventory()) {
-            if (Objects.requireNonNull(itemStack.getType()) == Material.GOLDEN_APPLE)
-                killerGoldenApples += itemStack.getAmount();
+            if (itemStack != null && itemStack.getType() != null) {
+                if (itemStack.getType() == Material.GOLDEN_APPLE) {
+                    killerGoldenApples += itemStack.getAmount();
+                }
+            }
         }
 
         if (killerGoldenApples > 14)
@@ -98,6 +101,6 @@ public class PlayerDeath implements Listener {
 
         RoleUtils.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 
-        killer.setHealth(killer.getMaxHealth() / 2);
+        killer.setHealth(killer.getHealth() + killer.getMaxHealth() / 2);
     }
 }
