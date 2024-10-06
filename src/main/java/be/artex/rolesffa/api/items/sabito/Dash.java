@@ -3,7 +3,10 @@ package be.artex.rolesffa.api.items.sabito;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,7 +32,15 @@ public class Dash extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return new TextComponent("qsdzqqds");
+        TextComponent description = new TextComponent(ChatColor.GRAY + "votre " + Stacks.SABITO_DASH.getItemMeta().getDisplayName());
+        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(Stacks.SABITO_DASH.getItemMeta().getDisplayName() + "\n\n" +
+                StringUtils.dot + ChatColor.GRAY + "En faissant un clique, vous ferez un " + ChatColor.AQUA + "dash" + ChatColor.GRAY + " en " + ChatColor.AQUA + "avant" + ChatColor.GRAY + ".      \n" +
+                StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 45 secondes" + ChatColor.GRAY + ".\n"
+        )});
+
+        description.setHoverEvent(event);
+
+        return description;
     }
 
     @Override

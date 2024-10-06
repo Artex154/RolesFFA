@@ -18,11 +18,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 public class Sabito extends Role {
 
     @Override
@@ -32,24 +27,15 @@ public class Sabito extends Role {
 
     @Override
     public TextComponent getDescription() {
-        List<SPItem> items = new ArrayList<>();
-        List<PotionEffect> effects = new ArrayList<>();
-
-        items.add(new Dash());
-        items.add(new Lame());
-
-        effects.add(new PotionEffect(PotionEffectType.SPEED, 1, 0));
-
         return new DescriptionBuilder(getName())
-                .item(items)
-                .effect(effects)
+                .item(new Dash(), new Lame())
+                .effect(new PotionEffect(PotionEffectType.SPEED, 1, 0))
+                .custom(ChatColor.GRAY + "Vous possédez des bottes " + ChatColor.BLUE + "depth strider 2" + ChatColor.GRAY + ".")
                 .build();
     }
-
-    // todo
     @Override
     public ItemStack getItemStack() {
-        return new ItemStack(Material.IRON_SWORD);
+        return Stacks.SABITO;
     }
 
     @Override
@@ -70,7 +56,7 @@ public class Sabito extends Role {
 
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
         player.getInventory().addItem(Stacks.SABITO_DASH);
-        player.getInventory().setItem(0, new ItemBuilder(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
+        player.getInventory().setBoots(new ItemBuilder(new ItemStack(Material.DIAMOND_BOOTS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchant(Enchantment.DEPTH_STRIDER, 2).build());
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
     }

@@ -83,11 +83,10 @@ public class DescriptionBuilder {
 
         if (customs != null) {
             for (String custom : customs) {
-                text.addExtra("\n" + custom);
+                text.addExtra("\n" + StringUtils.dot + custom);
                 text.addExtra("\n");
             }
         }
-
 
         text.addExtra(StringUtils.line);
 

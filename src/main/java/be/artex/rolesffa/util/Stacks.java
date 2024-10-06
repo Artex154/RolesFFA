@@ -46,6 +46,16 @@ public class Stacks {
                     StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack SABITO = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sabito")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède son " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Ses bottes possèdent " + ChatColor.BLUE + "depth strider 2" + ChatColor.GRAY + ".", " ")
+            .build();
+
+
     public static final ItemStack TOMURA = new ItemBuilder<>(new ItemStack(Material.SULPHUR))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Tomura")
             .setLore(" ",

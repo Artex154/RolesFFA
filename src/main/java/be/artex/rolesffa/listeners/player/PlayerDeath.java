@@ -19,8 +19,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.Objects;
-
 public class PlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -101,6 +99,6 @@ public class PlayerDeath implements Listener {
 
         RoleUtils.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 
-        killer.setHealth(killer.getHealth() + killer.getMaxHealth() / 2);
+        killer.setHealth(Math.min(killer.getHealth() + (killer.getMaxHealth() / 2), killer.getMaxHealth()));
     }
 }
