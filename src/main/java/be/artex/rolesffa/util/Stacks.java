@@ -2,7 +2,6 @@ package be.artex.rolesffa.util;
 
 import be.raft.crafty.item.Item;
 import be.raft.crafty.item.ItemBuilder;
-import com.sun.org.apache.bcel.internal.generic.IREM;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

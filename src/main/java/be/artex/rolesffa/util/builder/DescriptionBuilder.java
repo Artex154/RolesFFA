@@ -1,16 +1,13 @@
 package be.artex.rolesffa.util.builder;
 
 import be.artex.rolesffa.api.SPItem;
-import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.StringUtils;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class DescriptionBuilder {
     private final String name;
@@ -64,9 +61,7 @@ public class DescriptionBuilder {
         }
 
         if (effects != null) {
-            effects.forEach((effectStyle, amplifier) -> {
-                text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez " + effectStyle.getColor() + effectStyle.getName() + " " + (amplifier + 1) + ChatColor.GRAY + ".");
-            });
+            effects.forEach((effectStyle, amplifier) -> text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez " + effectStyle.getColor() + effectStyle.getName() + " " + (amplifier + 1) + ChatColor.GRAY + "."));
 
             text.addExtra("\n");
         }

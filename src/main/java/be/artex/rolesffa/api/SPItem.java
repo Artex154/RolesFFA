@@ -1,6 +1,5 @@
 package be.artex.rolesffa.api;
 
-import be.artex.rolesffa.listeners.player.EntityHitEntity;
 import com.avaje.ebean.validation.NotNull;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;

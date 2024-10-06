@@ -1,6 +1,5 @@
 package be.artex.rolesffa.listeners.player;
 
-import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Strength;

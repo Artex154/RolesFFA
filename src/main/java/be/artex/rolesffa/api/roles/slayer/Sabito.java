@@ -1,7 +1,6 @@
 package be.artex.rolesffa.api.roles.slayer;
 
 import be.artex.rolesffa.api.Role;
-import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
@@ -56,7 +55,7 @@ public class Sabito extends Role {
 
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
         player.getInventory().addItem(Stacks.SABITO_DASH);
-        player.getInventory().setBoots(new ItemBuilder(new ItemStack(Material.DIAMOND_BOOTS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchant(Enchantment.DEPTH_STRIDER, 2).build());
+        player.getInventory().setBoots(new ItemBuilder<>(new ItemStack(Material.DIAMOND_BOOTS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).addEnchant(Enchantment.DEPTH_STRIDER, 2).build());
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
     }
