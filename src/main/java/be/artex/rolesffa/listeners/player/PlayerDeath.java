@@ -89,7 +89,7 @@ public class PlayerDeath implements Listener {
             }
         }
 
-        if (killerGoldenApples > 14)
+        if (killerGoldenApples < 14)
             player.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 14 - (killerGoldenApples - droppedGoldenApples)));
 
         event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
