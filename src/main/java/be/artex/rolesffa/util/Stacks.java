@@ -40,8 +40,16 @@ public class Stacks {
     public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
-                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+30% de force" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+25% de force" + ChatColor.GRAY + ".", " ",
                     StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack OBANAI = new ItemBuilder<>(new ItemStack(Material.GHAST_TEAR))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Obanai")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède le " + ChatColor.GREEN + "souffle du serpent" + ChatColor.GRAY + ".",
                     StringUtils.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
@@ -78,6 +86,15 @@ public class Stacks {
             .setLore(" ",
                     StringUtils.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.  ",
                     StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack SOUFFLE = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Souffle du Serpent")
+            .addEnchant(Enchantment.ARROW_DAMAGE, 1)
+            .addItemFlags(ItemFlag.HIDE_ENCHANTS)
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "En tappant quelqu'un, vous lui infligerez " + ChatColor.GREEN + "poison 2" + ChatColor.GRAY + " pendant " + ChatColor.GREEN + "5 secondes" + ChatColor.GRAY + ".  ",
+                    StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack UNUSABLE = new ItemBuilder<>(new ItemStack(Material.BARRIER))
