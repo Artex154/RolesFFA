@@ -3,10 +3,12 @@ package be.artex.rolesffa.api.roles.slayer;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
+Aimport be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.api.RoleUtils;
+import be.artex.rolesffa.util.builder.DescriptionBuilder;
 import org.bukkit.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
@@ -22,18 +24,10 @@ public class Gyomei extends Role {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent text = new TextComponent(StringUtils.line);
-        text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Rôle: " + getName() + ChatColor.GRAY + ".\n");
-        text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez Resistance I.\n");
-        text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez ");
-        text.addExtra(new Kusarigama().getDescription());
-        text.addExtra(ChatColor.GRAY + ".");
-        text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez ");
-        text.addExtra(new Lame().getDescription());
-        text.addExtra(ChatColor.GRAY + ".");
-        text.addExtra(StringUtils.line);
-
-        return text;
+        return new DescriptionBuilder(getName())
+                .item(new Kusarigama(), new Lame())
+                .effect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 1, 0))
+                .build();
     }
 
     @Override
