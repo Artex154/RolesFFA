@@ -2,6 +2,7 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.items.Choose;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
+import be.artex.rolesffa.api.items.obanai.Souffle;
 import be.artex.rolesffa.api.items.sabito.Dash;
 import be.artex.rolesffa.api.items.slayer.Lame;
 import be.artex.rolesffa.api.items.tomura.Mains;
@@ -10,6 +11,7 @@ import be.artex.rolesffa.api.roles.ASV.Tomura;
 import be.artex.rolesffa.api.roles.hunter.Killua;
 import be.artex.rolesffa.api.roles.pirate.Mihawk;
 import be.artex.rolesffa.api.roles.slayer.Gyomei;
+import be.artex.rolesffa.api.roles.slayer.Obanai;
 import be.artex.rolesffa.api.roles.slayer.Sabito;
 import be.artex.rolesffa.api.roles.slayer.Sanemi;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
@@ -32,6 +34,7 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Dash());
         SPItemUtils.registerItem(new Mains());
         SPItemUtils.registerItem(new Unusable());
+        SPItemUtils.registerItem(new Souffle());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
@@ -39,6 +42,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Mihawk());
         RoleUtils.registerRole(new Tomura());
         RoleUtils.registerRole(new Killua());
+        RoleUtils.registerRole(new Obanai());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
