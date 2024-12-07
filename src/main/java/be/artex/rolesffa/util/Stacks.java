@@ -66,7 +66,7 @@ public class Stacks {
     public static final ItemStack TOMURA = new ItemBuilder<>(new ItemStack(Material.SULPHUR))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Tomura")
             .setLore(" ",
-                    StringUtils.dot + ChatColor.GRAY + "Il possède ses " + ChatColor.BOLD + "Mains" + ChatColor.GRAY + " avec les quelles il peut désactiver l'item en main de son ennemi.", " ")
+                    StringUtils.dot + ChatColor.GRAY + "Il possède ses " + ChatColor.BOLD + "Mains" + ChatColor.GRAY + " avec les qu'elles il peut désactiver l'item en main de son ennemi.", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))

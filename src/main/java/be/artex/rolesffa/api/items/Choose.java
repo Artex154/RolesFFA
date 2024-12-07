@@ -37,10 +37,10 @@ public class Choose extends SPItem {
         inv.setItem(52, Stacks.border());
         inv.setItem(53, Stacks.border());
 
-        for (Team team : Team.values()) {
+        for (Team team : Team.values())
             inv.setItem(team.getPlacement(), team.getItemStack());
-        }
 
         event.getPlayer().openInventory(inv);
+
     }
 }

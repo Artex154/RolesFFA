@@ -15,7 +15,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.HashMap;
+import java.util.UUID;
+
 public class Sanemi extends Role {
+
+    public static final HashMap<UUID, Integer> playerSpeedKills = new HashMap<>();
 
     @Override
     public String getName() {
@@ -27,9 +32,9 @@ public class Sanemi extends Role {
         TextComponent description = new TextComponent(StringUtils.line);
         description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Rôle: " + getName());
         description.addExtra("\n");
-        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+30% de force " + ChatColor.GRAY + "de façon permanente.");
+        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+25% de force " + ChatColor.GRAY + "de façon permanente.");
         description.addExtra("\n");
-        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + " supplémentaire. (stackable)");
+        description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + " supplémentaire. (cap à 28%)");
         description.addExtra("\n");
         description.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez une ");
         description.addExtra(new Lame().getDescription());
@@ -64,12 +69,25 @@ public class Sanemi extends Role {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
 
-        Strength.playerStrength.put(player.getUniqueId(), 13f);
+        Strength.playerStrength.put(player.getUniqueId(), 12.5f);
     }
 
     @Override
     public void onPlayerKill(PlayerDeathEvent event) {
-         event.getEntity().getKiller().setWalkSpeed((event.getEntity().getKiller().getWalkSpeed() / 100) * 107);
-         event.getEntity().getKiller().sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez gagné " + ChatColor.DARK_AQUA + ChatColor.BOLD + "7% de vitesse" + ChatColor.AQUA + ".");
+        Player killer = event.getEntity().getKiller();
+
+        if (playerSpeedKills.get(killer.getUniqueId()) == null) {
+            playerSpeedKills.put(killer.getUniqueId(), 1);
+        }  else  {
+            int kills = playerSpeedKills.get(killer.getUniqueId());
+            kills++;
+
+            playerSpeedKills.put(killer.getUniqueId(), kills);
+        }
+
+        if (playerSpeedKills.get(killer.getUniqueId()) <= 4) {
+            event.getEntity().getKiller().setWalkSpeed((event.getEntity().getKiller().getWalkSpeed() / 100) * 107);
+            event.getEntity().getKiller().sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez gagné " + ChatColor.DARK_AQUA + ChatColor.BOLD + "7% de vitesse" + ChatColor.AQUA + ".");
+        }
     }
 }
