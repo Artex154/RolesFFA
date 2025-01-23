@@ -33,6 +33,10 @@ public class Stacks {
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "ASSOCIATION DES SUPER VILLAINS")
             .build();
 
+    public static final ItemStack LG_CAMP = new ItemBuilder<>(new ItemStack(Material.ROTTEN_FLESH))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "LOUPS-GAROUX")
+            .build();
+
     public static final ItemStack HUNTERS = new ItemBuilder<>(new ItemStack(Material.FISHING_ROD))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "HUNTERS")
             .build();
@@ -67,6 +71,13 @@ public class Stacks {
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Tomura")
             .setLore(" ",
                     StringUtils.dot + ChatColor.GRAY + "Il possède ses " + ChatColor.BOLD + "Mains" + ChatColor.GRAY + " avec les qu'elles il peut désactiver l'item en main de son ennemi.", " ")
+            .build();
+
+    public static final ItemStack LG = new ItemBuilder<>(new ItemStack(Material.ROTTEN_FLESH))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Loup-Garou")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+20% de force" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + " et" + ChatColor.YELLOW + " 4 coeurs d'absorption" + ChatColor.GRAY + " pendant 1 minute.    ", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
