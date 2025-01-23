@@ -114,7 +114,7 @@ public class Stacks {
             .build();
 
     public static final ItemStack MAINS = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
-            .displayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Mains")
+            .displayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Vos Mains")
             .setLore(" ",
                     StringUtils.dot + ChatColor.GRAY + "En frappant quelqu'un vous désactiverez son item pendant 5 secondes.",
                     StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")

@@ -3,7 +3,10 @@ package be.artex.rolesffa.api.items.tomura;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.SPItem;
 import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.util.cooldown.Cooldown;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,7 +27,15 @@ public class Mains extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return null;
+        TextComponent description = new TextComponent(Stacks.MAINS.getItemMeta().getDisplayName());
+        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(Stacks.MAINS.getItemMeta().getDisplayName() + "\n\n" +
+                StringUtils.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "quelqu'un, vous " + ChatColor.AQUA + "désactiverez son item" + ChatColor.GRAY + " pendant " +  ChatColor.YELLOW + "5 secondes" + ChatColor.GRAY + ".    \n" +
+                StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".\n"
+        )});
+
+        description.setHoverEvent(event);;
+
+        return description;
     }
 
     @Override
