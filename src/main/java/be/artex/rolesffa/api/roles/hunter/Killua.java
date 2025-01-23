@@ -78,7 +78,7 @@ public class Killua extends Role {
             playerHitNumber.put(damager.getUniqueId(), hitNumber);
         }
 
-        if (hitNumber != 12)
+        if (hitNumber != 10)
             return;
 
         playerHitNumber.put(damager.getUniqueId(), 0);
