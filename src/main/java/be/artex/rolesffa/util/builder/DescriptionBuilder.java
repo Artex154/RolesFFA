@@ -16,6 +16,8 @@ public class DescriptionBuilder {
     private HashMap<PotionStyle, Integer> effects = null;
     private SPItem[] items = null;
     private String[] customs = null;
+    private String onHit = null;
+    private String onKill = null;
 
     public DescriptionBuilder(String name) {
         this.name = name;
@@ -49,6 +51,15 @@ public class DescriptionBuilder {
         return this;
     }
 
+    public DescriptionBuilder onHit(String onHit) {
+        this.onKill = onHit;
+        return this;
+    }
+
+    public DescriptionBuilder onKill(String onKill) {
+        this.onKill = onKill;
+        return this;
+    }
 
     public TextComponent build() {
         TextComponent text = new TextComponent(StringUtils.line);
@@ -56,7 +67,7 @@ public class DescriptionBuilder {
         text.addExtra("\n");
 
         if (strength > 0) {
-            text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+" + this.strength + "%" + ChatColor.GRAY + "de façon permanente.");
+            text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Vous possédez " + ChatColor.RED + "+" + this.strength + "% de force" + ChatColor.GRAY + " de façon permanente.");
             text.addExtra("\n");
         }
 
@@ -81,6 +92,16 @@ public class DescriptionBuilder {
                 text.addExtra("\n" + StringUtils.dot + custom);
                 text.addExtra("\n");
             }
+        }
+
+        if (onHit != null) {
+            text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "frappez " + ChatColor.GRAY + "une personne, " + this.onHit + ChatColor.GRAY + ".");
+            text.addExtra("\n");
+        }
+
+        if (onKill != null) {
+            text.addExtra("\n" + StringUtils.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tuez " + ChatColor.GRAY + "une personne, " + this.onKill + ChatColor.GRAY + ".");
+            text.addExtra("\n");
         }
 
         text.addExtra(StringUtils.line);
