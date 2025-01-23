@@ -3,7 +3,9 @@ package be.artex.rolesffa.api.roles.hunter;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.api.RoleUtils;
+import be.artex.rolesffa.util.builder.DescriptionBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,12 +32,15 @@ public class Killua extends Role {
 
     @Override
     public TextComponent getDescription() {
-        return new TextComponent("qsdzqsdqzds");
+        return new DescriptionBuilder(ChatColor.GREEN + "Killua")
+                .effect(new PotionEffect(PotionEffectType.SPEED, 20, 0))
+                .custom(ChatColor.GRAY + "Après votre " + ChatColor.AQUA + "dixième coup" + ChatColor.GRAY + ", vous faites apparaitre " + ChatColor.AQUA + "un éclaire" + ChatColor.GRAY + " qui fait " + ChatColor.RED + "1,5 coeurs de dégats" + ChatColor.GRAY + " et donne " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " pendant" + ChatColor.YELLOW + " 4 secondes" + ChatColor.GRAY + ".")
+                .build();
     }
 
     @Override
     public ItemStack getItemStack() {
-        return new ItemStack(Material.QUARTZ);
+        return Stacks.KILLUA;
     }
 
     @Override

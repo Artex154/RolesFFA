@@ -77,7 +77,21 @@ public class Stacks {
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Loup-Garou")
             .setLore(" ",
                     StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+20% de force" + ChatColor.GRAY + ".", " ",
-                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + " et" + ChatColor.YELLOW + " 4 coeurs d'absorption" + ChatColor.GRAY + " pendant 1 minute.    ", " ")
+                    StringUtils.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + " et" + ChatColor.YELLOW + " 4 coeurs d'absorption" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "1 minute" + ChatColor.GRAY + ".    ", " ")
+            .build();
+
+    public static final ItemStack VPL = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Vilain Petit Loup")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+15% de force" + ChatColor.GRAY + ".", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1 " + ChatColor.GRAY + ".    ", " ")
+            .build();
+
+    public static final ItemStack KILLUA = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Killua")
+            .setLore(" ",
+                    StringUtils.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1 " + ChatColor.GRAY + "de façon permanente.", " ",
+                    StringUtils.dot + ChatColor.GRAY + "Après son dixième coup, il inflige " + ChatColor.AQUA + "un éclair " + ChatColor.GRAY + "qui fait " + ChatColor.RED + "1.5 coeurs de dégats" + ChatColor.GRAY + " et donne ", ChatColor.YELLOW + " vitesse 2 " + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "4 secondes" + ChatColor.GRAY + ".    ", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
