@@ -52,7 +52,7 @@ public class DescriptionBuilder {
     }
 
     public DescriptionBuilder onHit(String onHit) {
-        this.onKill = onHit;
+        this.onHit = onHit;
         return this;
     }
 

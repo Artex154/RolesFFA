@@ -33,7 +33,7 @@ public class Mains extends SPItem {
                 StringUtils.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".\n"
         )});
 
-        description.setHoverEvent(event);;
+        description.setHoverEvent(event);
 
         return description;
     }
