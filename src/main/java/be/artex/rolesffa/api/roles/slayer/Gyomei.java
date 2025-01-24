@@ -4,6 +4,7 @@ import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.items.gyomei.Kusarigama;
 import be.artex.rolesffa.api.items.slayer.Lame;
+import be.artex.rolesffa.api.roles.RoleType;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.builder.DescriptionBuilder;
@@ -36,6 +37,11 @@ public class Gyomei extends Role {
     @Override
     public Team getCamp() {
         return Team.SLAYER;
+    }
+
+    @Override
+    public RoleType getType() {
+        return RoleType.RESISTANCE;
     }
 
     @Override

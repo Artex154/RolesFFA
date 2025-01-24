@@ -3,6 +3,7 @@ package be.artex.rolesffa.api.roles.ASV;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.items.tomura.Mains;
+import be.artex.rolesffa.api.roles.RoleType;
 import be.artex.rolesffa.util.Stacks;
 import be.artex.rolesffa.util.api.RoleUtils;
 import be.artex.rolesffa.util.builder.DescriptionBuilder;
@@ -32,6 +33,11 @@ public class Tomura extends Role {
     @Override
     public Team getCamp() {
         return Team.SUP_VIL;
+    }
+
+    @Override
+    public RoleType getType() {
+        return RoleType.STRENGTH;
     }
 
     @Override

@@ -3,6 +3,7 @@ package be.artex.rolesffa.api.roles.pirate;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Role;
 import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.roles.RoleType;
 import be.artex.rolesffa.util.Strength;
 import be.artex.rolesffa.util.api.RoleUtils;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -40,6 +41,11 @@ public class Mihawk extends Role {
     @Override
     public Team getCamp() {
         return Team.PIRATES;
+    }
+
+    @Override
+    public RoleType getType() {
+        return RoleType.STRENGTH;
     }
 
     @Override
