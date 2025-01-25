@@ -1,16 +1,15 @@
 package be.artex.rolesffa.listeners.player;
 
 import be.artex.rolesffa.Main;
-import be.artex.rolesffa.api.Role;
-import be.artex.rolesffa.api.items.sabito.Dash;
-import be.artex.rolesffa.api.items.slayer.Lame;
-import be.artex.rolesffa.api.items.tomura.Mains;
-import be.artex.rolesffa.api.roles.hunter.Killua;
-import be.artex.rolesffa.api.roles.pirate.Mihawk;
-import be.artex.rolesffa.util.Strength;
-import be.artex.rolesffa.util.StringUtils;
-import be.artex.rolesffa.util.api.RoleUtils;
-import be.artex.rolesffa.util.cooldown.Cooldown;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.item.items.sabito.Dash;
+import be.artex.rolesffa.api.item.items.slayer.lame.Lame;
+import be.artex.rolesffa.api.item.items.tomura.Mains;
+import be.artex.rolesffa.api.role.roles.hunter.Killua;
+import be.artex.rolesffa.api.role.roles.pirate.Mihawk;
+import be.artex.rolesffa.listeners.player.playerDamagePlayer.Strength;
+import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.api.cooldown.Cooldown;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -74,7 +73,7 @@ public class PlayerDeath implements Listener {
         }
 
         if (killer == null) {
-            event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " est mort.\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
+            event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " est mort.\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
 
             return;
         }
@@ -92,7 +91,7 @@ public class PlayerDeath implements Listener {
         if (killerGoldenApples < 14)
             player.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, 14 - (killerGoldenApples - droppedGoldenApples)));
 
-        event.setDeathMessage(StringUtils.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + StringUtils.line);
+        event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
 
         RoleUtils.setPlayerRole(player.getUniqueId(), null);
         Lame.setPlayerLame(player.getUniqueId(), null);

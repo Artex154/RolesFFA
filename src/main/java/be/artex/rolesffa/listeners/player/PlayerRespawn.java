@@ -1,6 +1,6 @@
 package be.artex.rolesffa.listeners.player;
 
-import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.Stacks;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

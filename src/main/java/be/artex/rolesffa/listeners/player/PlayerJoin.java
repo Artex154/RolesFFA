@@ -1,9 +1,9 @@
 package be.artex.rolesffa.listeners.player;
 
-import be.artex.rolesffa.api.items.slayer.Lame;
-import be.artex.rolesffa.util.Stacks;
-import be.artex.rolesffa.util.Strength;
-import be.artex.rolesffa.util.WorldUtils;
+import be.artex.rolesffa.Main;
+import be.artex.rolesffa.api.item.items.slayer.lame.Lame;
+import be.artex.rolesffa.Stacks;
+import be.artex.rolesffa.listeners.player.playerDamagePlayer.Strength;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -14,16 +14,11 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 
 public class PlayerJoin implements Listener {
+
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PlayerInventory playerInventory = player.getInventory();
-
-        if (!WorldUtils.isWorldInitialized)
-            WorldUtils.initializeWorld();
-
-        if (!WorldUtils.isWorldBorderInitialized(Bukkit.getWorlds().get(0)))
-            WorldUtils.initializeWorldBorder(Bukkit.getWorlds().get(0));
 
         if (!player.getGameMode().equals(GameMode.ADVENTURE))
             player.setGameMode(GameMode.ADVENTURE);

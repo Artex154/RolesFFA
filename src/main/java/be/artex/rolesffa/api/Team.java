@@ -1,6 +1,6 @@
 package be.artex.rolesffa.api;
 
-import be.artex.rolesffa.util.Stacks;
+import be.artex.rolesffa.Stacks;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;

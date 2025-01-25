@@ -1,9 +1,9 @@
 package be.artex.rolesffa.listeners.inventory;
 
-import be.artex.rolesffa.api.Role;
+import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.util.Stacks;
-import be.artex.rolesffa.util.api.RoleUtils;
+import be.artex.rolesffa.Stacks;
+import be.artex.rolesffa.api.role.RoleUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,7 +1,7 @@
 package be.artex.rolesffa.listeners.player;
 
-import be.artex.rolesffa.api.SPItem;
-import be.artex.rolesffa.util.api.SPItemUtils;
+import be.artex.rolesffa.api.item.SPItem;
+import be.artex.rolesffa.api.item.SPItemUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
