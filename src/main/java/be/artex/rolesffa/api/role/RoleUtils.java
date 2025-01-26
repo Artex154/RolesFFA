@@ -1,6 +1,7 @@
 package be.artex.rolesffa.api.role;
 
 import be.artex.rolesffa.Main;
+import be.artex.rolesffa.scoreboard.ScoreboardManagement;
 import be.raft.crafty.item.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -39,6 +40,8 @@ public class RoleUtils {
         player.teleport(location);
 
         player.spigot().sendMessage(role.getDescription());
+
+        ScoreboardManagement.openScoreboard(player);
     }
 
     public static Role getPlayerRole(UUID uuid) {

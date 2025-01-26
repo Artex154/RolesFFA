@@ -4,6 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.item.items.slayer.lame.Lame;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.listeners.player.playerDamagePlayer.Strength;
+import be.artex.rolesffa.scoreboard.ScoreboardManagement;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -19,6 +20,8 @@ public class PlayerJoin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         PlayerInventory playerInventory = player.getInventory();
+
+        ScoreboardManagement.openScoreboard(player);
 
         if (!player.getGameMode().equals(GameMode.ADVENTURE))
             player.setGameMode(GameMode.ADVENTURE);
