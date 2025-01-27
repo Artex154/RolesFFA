@@ -29,6 +29,10 @@ public class Stacks {
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "PIRATES")
             .build();
 
+    public static final ItemStack VILLAGE = new ItemBuilder<>(new ItemStack(Material.LOG))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "VILLAGE")
+            .build();
+
     public static final ItemStack SUP_VIL = new ItemBuilder<>(new ItemStack(Material.REDSTONE))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "ASSOCIATION DES SUPER VILLAINS")
             .build();
@@ -66,6 +70,11 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Ses bottes possèdent " + ChatColor.BLUE + "depth strider 2" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack CUPIDON = new ItemBuilder<>(new ItemStack(Material.BOW))
+            .displayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Cupidon Rancunier")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède un " + ChatColor.AQUA + "arc punch 1" + ChatColor.GRAY + " et une" + ChatColor.AQUA + " épée tranhant 4" +ChatColor.GRAY + ".", " ")
+            .build();
 
     public static final ItemStack TOMURA = new ItemBuilder<>(new ItemStack(Material.SULPHUR))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Tomura")
@@ -132,6 +141,12 @@ public class Stacks {
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "En frappant quelqu'un vous désactiverez son item pendant 5 secondes.",
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack PHILTRUM = new ItemBuilder<>(new ItemStack(Material.BOW))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Philtrum")
+            .addEnchant(Enchantment.ARROW_DAMAGE, 3)
+            .addEnchant(Enchantment.ARROW_KNOCKBACK, 1)
             .build();
 
     public static final ItemStack GYOMEI = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))

@@ -15,7 +15,7 @@ public class ScoreboardManagement {
        objective.setDisplayName(ChatColor.AQUA + "" + ChatColor.BOLD + "    [RolesFFA]     -");
        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
-       Score nul = objective.getScore(" ");
+       Score nul = objective.getScore("  ");
        nul.setScore(16);
 
        Score joueur = objective.getScore(ChatColor.AQUA + "" + ChatColor.BOLD + "JOUEUR:");
@@ -24,7 +24,7 @@ public class ScoreboardManagement {
        Score s2 = objective.getScore(" Rôle: " + ChatColor.AQUA + "Aucun");
        s2.setScore(14);
 
-       Score nul2 = objective.getScore(" ");
+       Score nul2 = objective.getScore("   ");
        nul2.setScore(13);
 
        Score serveur = objective.getScore(ChatColor.AQUA + "" + ChatColor.BOLD + "SERVEUR:");
@@ -42,10 +42,12 @@ public class ScoreboardManagement {
        Score force = objective.getScore(" Force: " + ChatColor.AQUA + "20%");
        force.setScore(8);
 
-       Score resistance = objective.getScore(" Resistance" + ChatColor.AQUA + "20%");
+       Score resistance = objective.getScore(" Resistance: " + ChatColor.AQUA + "20%");
        resistance.setScore(7);
 
        Score vitesse = objective.getScore(" Vitesse: " + ChatColor.AQUA + "20%");
        vitesse.setScore(6);
+
+       player.setScoreboard(scoreboard);
     }
 }

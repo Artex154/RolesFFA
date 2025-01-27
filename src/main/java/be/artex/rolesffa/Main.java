@@ -15,6 +15,7 @@ import be.artex.rolesffa.api.role.roles.slayer.Gyomei;
 import be.artex.rolesffa.api.role.roles.slayer.Obanai;
 import be.artex.rolesffa.api.role.roles.slayer.Sabito;
 import be.artex.rolesffa.api.role.roles.slayer.Sanemi;
+import be.artex.rolesffa.api.role.roles.village.Cupidon;
 import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.*;
 import be.artex.rolesffa.api.role.RoleUtils;
@@ -53,6 +54,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Obanai());
         //RoleUtils.registerRole(new LoupGarou());
         RoleUtils.registerRole(new VPL());
+        RoleUtils.registerRole(new Cupidon());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
