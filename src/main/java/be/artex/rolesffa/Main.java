@@ -9,6 +9,7 @@ import be.artex.rolesffa.api.item.items.tomura.Mains;
 import be.artex.rolesffa.api.item.items.tomura.Unusable;
 import be.artex.rolesffa.api.role.roles.ASV.Tomura;
 import be.artex.rolesffa.api.role.roles.LG.VPL;
+import be.artex.rolesffa.api.role.roles.heros.Kenji;
 import be.artex.rolesffa.api.role.roles.hunter.Killua;
 import be.artex.rolesffa.api.role.roles.pirate.Mihawk;
 import be.artex.rolesffa.api.role.roles.slayer.Gyomei;
@@ -55,6 +56,7 @@ public final class Main extends JavaPlugin {
         //RoleUtils.registerRole(new LoupGarou());
         RoleUtils.registerRole(new VPL());
         RoleUtils.registerRole(new Cupidon());
+        RoleUtils.registerRole(new Kenji());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

@@ -45,7 +45,7 @@ public class Killua extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.HUNTER5;
+        return Team.HUNTERS;
     }
 
     @Override

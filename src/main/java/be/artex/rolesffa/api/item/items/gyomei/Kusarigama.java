@@ -26,7 +26,7 @@ public class Kusarigama extends SPItem {
         TextComponent description = new TextComponent(Stacks.KUSARIGAMA.getItemMeta().getDisplayName());
         HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(Stacks.KUSARIGAMA.getItemMeta().getDisplayName() + "\n\n" +
                 Main.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.     \n" +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".\n"
+                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 90 secondes" + ChatColor.GRAY + ".\n"
         )});
 
         description.setHoverEvent(event);

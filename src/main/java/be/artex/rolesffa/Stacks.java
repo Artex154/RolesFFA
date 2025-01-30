@@ -45,12 +45,23 @@ public class Stacks {
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "HUNTERS")
             .build();
 
+    public static final ItemStack HEROS = new ItemBuilder<>(new ItemStack(Material.GOLDEN_APPLE))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "HEROS")
+            .build();
+
     public static final ItemStack SANEMI = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
             .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Sanemi")
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+25% de force" + ChatColor.GRAY + ".", " ",
                     Main.dot + ChatColor.GRAY + "Pour chaque " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "qu'il tue, il gagne " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + ".    ", " ",
                     Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack KENJI = new ItemBuilder<>(new ItemStack(Material.DIAMOND_CHESTPLATE))
+            .displayName(ChatColor.GREEN + "" + ChatColor.BOLD + "Kenji")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède Resistance I.", " ",
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.AQUA + "Unbreakable" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack OBANAI = new ItemBuilder<>(new ItemStack(Material.GHAST_TEAR))
@@ -113,13 +124,20 @@ public class Stacks {
                     Main.dot + ChatColor.GREEN + "Lame de NoFall", " ")
             .build();
 
+    public static final ItemStack UNBREAKABLE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Unbreakable")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "recevrez" + ChatColor.DARK_GRAY + " weakness 1" + ChatColor.GRAY + " et resistance 2 pendant " + ChatColor.YELLOW + " 7 secondes" + ChatColor.GRAY + ".    ",
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 80 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
     public static final ItemStack KUSARIGAMA = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Kusarigama")
             .addEnchant(Enchantment.ARROW_DAMAGE, 1)
             .addItemFlags(ItemFlag.HIDE_ENCHANTS)
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "En faissant un clique, vous téléporterez tout les " + ChatColor.AQUA + "joueurs" + ChatColor.GRAY + " dans un rayon de 50 blocs sur vous.  ",
-                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 90 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack SOUFFLE = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
