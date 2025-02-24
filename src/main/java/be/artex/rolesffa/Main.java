@@ -1,7 +1,9 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.item.items.Choose;
+import be.artex.rolesffa.api.item.items.GoldenHead;
 import be.artex.rolesffa.api.item.items.gyomei.Kusarigama;
+import be.artex.rolesffa.api.item.items.kenji.Unbreakable;
 import be.artex.rolesffa.api.item.items.obanai.Souffle;
 import be.artex.rolesffa.api.item.items.sabito.Dash;
 import be.artex.rolesffa.api.item.items.slayer.lame.Lame;
@@ -21,7 +23,9 @@ import be.artex.rolesffa.listeners.inventory.InventoryClick;
 import be.artex.rolesffa.listeners.player.*;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.api.item.SPItemUtils;
-import be.artex.rolesffa.listeners.player.playerDamagePlayer.PlayerItemDamage;
+import be.artex.rolesffa.listeners.player.EntityDamage;
+import be.artex.rolesffa.listeners.player.PlayerItemDamage;
+import be.artex.rolesffa.listeners.player.playerDamagePlayer.EntityHitEntity;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.Plugin;
@@ -45,6 +49,8 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Mains());
         SPItemUtils.registerItem(new Unusable());
         SPItemUtils.registerItem(new Souffle());
+        SPItemUtils.registerItem(new Unbreakable());
+        SPItemUtils.registerItem(new GoldenHead());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());

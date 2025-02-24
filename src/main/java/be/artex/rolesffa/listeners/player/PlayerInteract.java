@@ -13,7 +13,7 @@ public class PlayerInteract implements Listener {
             return;
 
         for (SPItem spItem : SPItemUtils.registeredItems) {
-            if (event.getItem().equals(spItem.getItemStack()))
+            if (event.getItem().getItemMeta().equals(spItem.getItemStack().getItemMeta()))
                 spItem.onClick(event);
         }
     }

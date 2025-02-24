@@ -8,6 +8,7 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -47,8 +48,14 @@ public class Unbreakable extends SPItem {
             return;
         }
 
+        player.removePotionEffect(PotionEffectType.DAMAGE_RESISTANCE);
+
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*7, 2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20*7, 0));
+
+        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0));
+        }, 21*7);
 
         cooldown.addPlayer(uuid, 80*20);
     }

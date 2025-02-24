@@ -37,7 +37,7 @@ public class Souffle extends SPItem {
 
     @Override
     public void onHit(EntityDamageByEntityEvent event) {
-        Cooldown cooldown = Cooldown.get("tomura_hands");
+        Cooldown cooldown = Cooldown.get("souffle_serpent");
         Player damager = (Player) event.getDamager();
         UUID damagerUUID = damager.getUniqueId();
 

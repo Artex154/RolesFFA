@@ -8,6 +8,9 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Stacks {
     public static final ItemStack CHOOSE_BOOK = new ItemBuilder<>(new ItemStack(Material.ENCHANTED_BOOK))
             .displayName(ChatColor.RESET + "Choisis ton rôle")
@@ -128,8 +131,23 @@ public class Stacks {
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Unbreakable")
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "recevrez" + ChatColor.DARK_GRAY + " weakness 1" + ChatColor.GRAY + " et resistance 2 pendant " + ChatColor.YELLOW + " 7 secondes" + ChatColor.GRAY + ".    ",
-                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 80 secondes" + ChatColor.GRAY + ".", " ")
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + "80 secondes" + ChatColor.GRAY + ".", " ")
             .build();
+
+    public static final ItemStack HEAD(int amount) {
+        List<String> list = new ArrayList<>();
+        list.add(" ");
+        list.add(Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "mangerez" + ChatColor.YELLOW + " la pomme " + ChatColor.GRAY + "et vous gagnerez " + ChatColor.YELLOW + "20% de vitesse" + ChatColor.GRAY + " et     ");
+        list.add(ChatColor.LIGHT_PURPLE + "régénération 3 " + ChatColor.GRAY + "et " + ChatColor.YELLOW + "absorption 2" + ChatColor.GRAY + " pendant 7 secondes.");
+        list.add(" ");
+
+        Item item = new Item(new ItemStack(Material.GOLDEN_APPLE));
+        item.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Golden Head");
+        item.setLore(list);
+        item.setAmount(amount);
+
+        return item.toItemStack();
+    }
 
     public static final ItemStack KUSARIGAMA = new ItemBuilder<>(new ItemStack(Material.IRON_AXE))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Kusarigama")

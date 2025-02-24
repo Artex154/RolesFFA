@@ -14,7 +14,7 @@ public enum Team {
     HUNTERS(19, Stacks.HUNTERS, Bukkit.createInventory(null, 54, "Hunters")),
     LG(33, Stacks.LG_CAMP, Bukkit.createInventory(null, 54, "Loups-garoux")),
     VILLAGE(24, Stacks.VILLAGE, Bukkit.createInventory(null, 54, "Village")),
-    HEROS(24, Stacks.HEROS, Bukkit.createInventory(null, 54, "Super-Héros")),
+    HEROS(25, Stacks.HEROS, Bukkit.createInventory(null, 54, "Super-Héros")),
     ;
 
     private final int placement;
