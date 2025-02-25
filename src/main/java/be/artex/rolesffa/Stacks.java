@@ -138,10 +138,10 @@ public class Stacks {
         List<String> list = new ArrayList<>();
         list.add(" ");
         list.add(Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "mangerez" + ChatColor.YELLOW + " la pomme " + ChatColor.GRAY + "et vous gagnerez " + ChatColor.YELLOW + "20% de vitesse" + ChatColor.GRAY + " et     ");
-        list.add(ChatColor.LIGHT_PURPLE + "régénération 3 " + ChatColor.GRAY + "et " + ChatColor.YELLOW + "absorption 2" + ChatColor.GRAY + " pendant 7 secondes.");
+        list.add(ChatColor.LIGHT_PURPLE + "régénération 2 " + ChatColor.GRAY + "et " + ChatColor.YELLOW + "absorption 2" + ChatColor.GRAY + " pendant 10 secondes.");
         list.add(" ");
 
-        Item item = new Item(new ItemStack(Material.GOLDEN_APPLE));
+        Item item = new Item(new ItemStack(Material.SKULL_ITEM));
         item.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Golden Head");
         item.setLore(list);
         item.setAmount(amount);

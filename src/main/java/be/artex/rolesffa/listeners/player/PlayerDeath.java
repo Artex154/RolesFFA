@@ -63,7 +63,7 @@ public class PlayerDeath implements Listener {
 
         for (ItemStack itemStack : killer.getInventory()) {
             if (itemStack != null && itemStack.getType() != null) {
-                if (itemStack.getType() == Material.GOLDEN_APPLE)
+                if (itemStack.getType() == Material.GOLDEN_APPLE && itemStack.getItemMeta() != Stacks.HEAD(1).getItemMeta())
                     killerGoldenApples += itemStack.getAmount();
             }
         }

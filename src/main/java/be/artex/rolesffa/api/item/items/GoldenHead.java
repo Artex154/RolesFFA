@@ -41,27 +41,36 @@ public class GoldenHead extends SPItem {
             return;
         }
 
-        if (player.getItemInHand().getAmount() == 1)
-            player.setItemInHand(new ItemStack(Material.AIR));
-        else
-            player.setItemInHand(Stacks.HEAD(player.getItemInHand().getAmount() - 1));
-
         playerSpeed.put(player.getUniqueId(), player.getWalkSpeed());
 
         player.removePotionEffect(PotionEffectType.REGENERATION);
         player.removePotionEffect(PotionEffectType.ABSORPTION);
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20*7, 2));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 20*10, 1));
         player.setWalkSpeed(player.getWalkSpeed() + ((player.getWalkSpeed() / 10) * 2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 120*7, 1));
+
+        int goldenHeads = 0;
+
+        for (ItemStack stack : player.getInventory().getContents()) {
+            if (stack != null && stack.getType() == Material.SKULL_ITEM) {
+                goldenHeads += stack.getAmount();
+            }
+        }
+
+        player.getInventory().remove(Material.SKULL_ITEM);
+
+        goldenHeads--;
+
+        player.getInventory().addItem(Stacks.HEAD(goldenHeads));
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             if (playerSpeed.get(player.getUniqueId()) != null)
                 player.setWalkSpeed(playerSpeed.get(player.getUniqueId()));
 
-        }, 7*20L);
+        }, 10*20L);
 
-        cooldown.addPlayer(player.getUniqueId(), 20);
+        cooldown.addPlayer(player.getUniqueId(), 7);
     }
 
 }
