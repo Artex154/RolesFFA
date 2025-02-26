@@ -76,14 +76,14 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède ses " + ChatColor.BOLD + "Mains" + ChatColor.GRAY + " avec les qu'elles il peut désactiver l'item en main de son ennemi.", " ")
             .build();
 
-    public static final ItemStack VPL = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
+    public static final ItemStack VPL = new ItemBuilder<>(new ItemStack(Material.ROTTEN_FLESH))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Vilain Petit Loup")
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+15% de force" + ChatColor.GRAY + ".", " ",
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".    ", " ")
             .build();
 
-    public static final ItemStack KILLUA = new ItemBuilder<>(new ItemStack(Material.QUARTZ))
+    public static final ItemStack KILLUA = new ItemBuilder<>(new ItemStack(Material.BLAZE_POWDER))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Killua")
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1 " + ChatColor.GRAY + "de façon permanente.", " ",
