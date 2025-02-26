@@ -1,7 +1,7 @@
 package be.artex.rolesffa.api.role;
 
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.api.role.roles.RoleType;
+import be.artex.rolesffa.role.RoleType;
 import com.avaje.ebean.validation.NotNull;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
