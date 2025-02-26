@@ -3,7 +3,6 @@ package be.artex.rolesffa.role.hunter;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -27,12 +26,12 @@ public class Killua extends Role {
 
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Killua";
+        return ChatColor.RED + "Killua";
     }
 
     @Override
     public TextComponent getDescription() {
-        return new DescriptionBuilder(ChatColor.GREEN + "Killua")
+        return new DescriptionBuilder(getName())
                 .effect(new PotionEffect(PotionEffectType.SPEED, 20, 0))
                 .custom(ChatColor.GRAY + "Après votre " + ChatColor.AQUA + "dixième coup" + ChatColor.GRAY + ", vous faites apparaitre " + ChatColor.AQUA + "un éclaire" + ChatColor.GRAY + " qui fait " + ChatColor.RED + "1,5 coeurs de dégats" + ChatColor.GRAY + " et donne " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " pendant" + ChatColor.YELLOW + " 4 secondes" + ChatColor.GRAY + ".")
                 .build();
@@ -45,17 +44,12 @@ public class Killua extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.HUNTERS;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.SPEED;
+        return Team.DPS;
     }
 
     @Override
     public int getPlacement() {
-        return 20;
+        return 10;
     }
 
     @Override

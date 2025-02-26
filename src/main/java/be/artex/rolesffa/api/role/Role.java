@@ -1,7 +1,6 @@
 package be.artex.rolesffa.api.role;
 
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.role.RoleType;
 import com.avaje.ebean.validation.NotNull;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
@@ -14,7 +13,6 @@ public abstract class Role {
     public abstract @NotNull TextComponent getDescription();
     public abstract @NotNull ItemStack getItemStack();
     public abstract @NotNull Team getCamp();
-    public abstract @NotNull RoleType getType();
     public abstract int getPlacement();
 
     public abstract void onAssigned(Player player);

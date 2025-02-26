@@ -3,8 +3,8 @@ package be.artex.rolesffa.role.slayer;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.role.slayer.item.lame.Lame;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import be.artex.rolesffa.api.role.RoleUtils;
@@ -25,24 +25,16 @@ public class Sanemi extends Role {
 
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Sanemi";
+        return ChatColor.RED + "Sanemi";
     }
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(Main.line);
-        description.addExtra("\n" + Main.dot + ChatColor.GRAY + " Rôle: " + getName());
-        description.addExtra("\n");
-        description.addExtra("\n" + Main.dot + ChatColor.GRAY + " Vous possédez " + ChatColor.RED + "+25% de force " + ChatColor.GRAY + "de façon permanente.");
-        description.addExtra("\n");
-        description.addExtra("\n" + Main.dot + ChatColor.GRAY + " Quand vous tuez un " + ChatColor.AQUA + "joueur" + ChatColor.GRAY + ", vous gagnerez " + ChatColor.YELLOW + "7% de vitesse" + ChatColor.GRAY + " supplémentaire. (cap à 28%)");
-        description.addExtra("\n");
-        description.addExtra("\n" + Main.dot + ChatColor.GRAY + " Vous possédez une ");
-        description.addExtra(new Lame().getDescription());
-        description.addExtra(ChatColor.GRAY + ".");
-        description.addExtra(Main.line);
-
-        return description;
+        return new DescriptionBuilder(getName())
+                .strength(25)
+                .item(new Lame())
+                .onHit(ChatColor.GRAY + "vous gagnerez " + ChatColor.YELLOW + "7%" + ChatColor.GRAY + " de " + ChatColor.YELLOW + "vitesse")
+                .build();
     }
 
     @Override
@@ -52,17 +44,12 @@ public class Sanemi extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.SLAYER;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.STRENGTH;
+        return Team.DPS;
     }
 
     @Override
     public int getPlacement() {
-        return 20;
+        return 13;
     }
 
     @Override

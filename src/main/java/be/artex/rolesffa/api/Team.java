@@ -6,15 +6,9 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public enum Team {
-    SLAYER(20, Stacks.SLAYERS, Bukkit.createInventory(null, 54, "Slayers")),
-    SHINOBIS(21, Stacks.SHINOBIS, Bukkit.createInventory(null, 54, "Shinobis")),
-    SOLDATS(22, Stacks.SOLDATS, Bukkit.createInventory(null, 54, "Soldats")),
-    PIRATES(23, Stacks.PIRATES, Bukkit.createInventory(null, 54, "Pirates")),
-    SUP_VIL(34, Stacks.SUP_VIL, Bukkit.createInventory(null, 54, "Association des Super Villains")),
-    HUNTERS(19, Stacks.HUNTERS, Bukkit.createInventory(null, 54, "Hunters")),
-    LG(33, Stacks.LG_CAMP, Bukkit.createInventory(null, 54, "Loups-garoux")),
-    VILLAGE(24, Stacks.VILLAGE, Bukkit.createInventory(null, 54, "Village")),
-    HEROS(25, Stacks.HEROS, Bukkit.createInventory(null, 54, "Super-Héros")),
+    DPS(12, Stacks.DPS, Bukkit.createInventory(null, 36, "Rôles DPS")),
+    TANK(13, Stacks.TANK, Bukkit.createInventory(null, 36, "Rôles Tanks")),
+    TECHNIQUE(14, Stacks.TECHNIQUE, Bukkit.createInventory(null, 36, "Rôles Techniques")),
     ;
 
     private final int placement;

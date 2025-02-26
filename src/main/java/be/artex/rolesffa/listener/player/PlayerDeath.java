@@ -3,13 +3,12 @@ package be.artex.rolesffa.listener.player;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.item.GoldenHead;
-import be.artex.rolesffa.role.heros.kenji.Unbreakable;
+import be.artex.rolesffa.role.heros.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.role.slayer.sabito.Dash;
 import be.artex.rolesffa.role.slayer.item.lame.Lame;
 import be.artex.rolesffa.role.allianceSV.tomura.mains.Mains;
 import be.artex.rolesffa.role.hunter.Killua;
-import be.artex.rolesffa.role.pirate.Mihawk;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.Cooldown;
@@ -34,7 +33,6 @@ public class PlayerDeath implements Listener {
         Cooldown.removePlayerFromAllCooldowns(killer.getUniqueId());
 
         Dash.playerWithSpeed.remove(player.getUniqueId());
-        Mihawk.playerWithoutResistant.remove(player.getUniqueId());
         Mains.playerLosedItems.put(player.getUniqueId(), null);
         Unbreakable.playerWithResistance.remove(player.getUniqueId());
 

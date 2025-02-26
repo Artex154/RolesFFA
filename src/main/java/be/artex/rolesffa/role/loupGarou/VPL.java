@@ -2,7 +2,6 @@ package be.artex.rolesffa.role.loupGarou;
 
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import be.artex.rolesffa.api.role.RoleUtils;
@@ -22,7 +21,7 @@ public class VPL extends Role {
 
     @Override
     public TextComponent getDescription() {
-        return new DescriptionBuilder(ChatColor.RED + "Vilain Petit Loup")
+        return new DescriptionBuilder(getName())
                 .effect(new PotionEffect(PotionEffectType.SPEED, 20, 0))
                 .strength(15)
                 .build();
@@ -35,17 +34,12 @@ public class VPL extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.LG;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.SPEED;
+        return Team.DPS;
     }
 
     @Override
     public int getPlacement() {
-        return 21;
+        return 11;
     }
 
     @Override

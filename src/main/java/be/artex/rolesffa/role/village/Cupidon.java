@@ -5,7 +5,6 @@ import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.role.RoleType;
 import be.raft.crafty.item.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -23,7 +22,7 @@ public class Cupidon extends Role {
     @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(ChatColor.GREEN + "Cupidon Rancunier")
-                .custom(ChatColor.GRAY + "Vous possédez un" + ChatColor.AQUA + " arc punch 1" + ChatColor.GRAY + " et une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
+                .custom(ChatColor.GRAY + "Vous possédez votre" + ChatColor.GREEN + " Philtrum" + ChatColor.GRAY + " et une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
                 .build();
     }
 
@@ -34,17 +33,12 @@ public class Cupidon extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.VILLAGE;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.STRENGTH;
+        return Team.TECHNIQUE;
     }
 
     @Override
     public int getPlacement() {
-        return 20;
+        return 11;
     }
 
     @Override
@@ -54,6 +48,6 @@ public class Cupidon extends Role {
         RoleUtils.setPlayerRole(player.getUniqueId(), this);
 
         player.getInventory().setItem(0, new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
-        player.getInventory().setItem(7, new ItemBuilder<>(new ItemStack(Material.BOW)).addEnchant(Enchantment.ARROW_DAMAGE, 3).addEnchant(Enchantment.ARROW_KNOCKBACK, 1).build());
+        player.getInventory().setItem(7, Stacks.PHILTRUM);
     }
 }

@@ -1,4 +1,4 @@
-package be.artex.rolesffa.role.heros.kenji;
+package be.artex.rolesffa.role.heros.ejiro;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;

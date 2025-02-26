@@ -10,7 +10,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class Choose extends SPItem {
-    public static Inventory inv = Bukkit.createInventory(null, 54, "Teams");
+    public static Inventory inv = Bukkit.createInventory(null, 27, "Teams");
 
     @Override
     public ItemStack getItemStack() {
@@ -30,12 +30,10 @@ public class Choose extends SPItem {
         inv.setItem(8, Stacks.border());
         inv.setItem(9, Stacks.border());
         inv.setItem(17, Stacks.border());
-        inv.setItem(36, Stacks.border());
-        inv.setItem(44, Stacks.border());
-        inv.setItem(45, Stacks.border());
-        inv.setItem(46, Stacks.border());
-        inv.setItem(52, Stacks.border());
-        inv.setItem(53, Stacks.border());
+        inv.setItem(18, Stacks.border());
+        inv.setItem(19, Stacks.border());
+        inv.setItem(25, Stacks.border());
+        inv.setItem(26, Stacks.border());
 
         for (Team team : Team.values())
             inv.setItem(team.getPlacement(), team.getItemStack());

@@ -3,7 +3,6 @@ package be.artex.rolesffa.role.slayer.sabito;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.role.slayer.item.lame.Lame;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -21,7 +20,7 @@ public class Sabito extends Role {
 
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Sabito";
+        return ChatColor.YELLOW + "Sabito";
     }
 
     @Override
@@ -39,17 +38,12 @@ public class Sabito extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.SLAYER;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.SPEED;
+        return Team.TECHNIQUE;
     }
 
     @Override
     public int getPlacement() {
-        return 22;
+        return 12;
     }
 
     @Override

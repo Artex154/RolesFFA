@@ -3,7 +3,6 @@ package be.artex.rolesffa.role.slayer.gyomei;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.role.slayer.item.lame.Lame;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -17,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Gyomei extends Role {
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Gyomei";
+        return ChatColor.BLUE + "Gyomei";
     }
 
     @Override
@@ -35,17 +34,12 @@ public class Gyomei extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.SLAYER;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.RESISTANCE;
+        return Team.TANK;
     }
 
     @Override
     public int getPlacement() {
-        return 21;
+        return 11;
     }
 
     @Override

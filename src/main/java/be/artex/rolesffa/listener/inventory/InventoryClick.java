@@ -45,12 +45,12 @@ public class InventoryClick implements Listener {
             teamInventory.setItem(8, Stacks.border());
             teamInventory.setItem(9, Stacks.border());
             teamInventory.setItem(17, Stacks.border());
-            teamInventory.setItem(36, Stacks.border());
-            teamInventory.setItem(44, Stacks.border());
-            teamInventory.setItem(45, Stacks.border());
-            teamInventory.setItem(46, Stacks.border());
-            teamInventory.setItem(52, Stacks.border());
-            teamInventory.setItem(53, Stacks.border());
+            teamInventory.setItem(18, Stacks.border());
+            teamInventory.setItem(26, Stacks.border());
+            teamInventory.setItem(27, Stacks.border());
+            teamInventory.setItem(28, Stacks.border());
+            teamInventory.setItem(34, Stacks.border());
+            teamInventory.setItem(35, Stacks.border());
 
             event.getWhoClicked().openInventory(foundTeam.getInventory());
             event.setCancelled(true);

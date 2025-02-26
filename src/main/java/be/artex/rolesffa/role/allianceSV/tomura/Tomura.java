@@ -3,7 +3,6 @@ package be.artex.rolesffa.role.allianceSV.tomura;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.role.allianceSV.tomura.mains.Mains;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -15,12 +14,12 @@ import org.bukkit.inventory.ItemStack;
 public class Tomura extends Role {
     @Override
     public String getName() {
-        return ChatColor.RED + "Tomura";
+        return ChatColor.YELLOW + "Tomura";
     }
 
     @Override
     public TextComponent getDescription() {
-        return new DescriptionBuilder(ChatColor.RED + "Tomura")
+        return new DescriptionBuilder(getName())
                 .item(new Mains())
                 .build();
     }
@@ -32,17 +31,12 @@ public class Tomura extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.SUP_VIL;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.STRENGTH;
+        return Team.TECHNIQUE;
     }
 
     @Override
     public int getPlacement() {
-        return 20;
+        return 10;
     }
 
     @Override

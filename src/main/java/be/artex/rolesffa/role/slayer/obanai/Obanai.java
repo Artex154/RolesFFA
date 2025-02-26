@@ -3,7 +3,6 @@ package be.artex.rolesffa.role.slayer.obanai;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.role.slayer.item.lame.Lame;
-import be.artex.rolesffa.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -17,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Obanai extends Role {
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Obanai";
+        return ChatColor.RED + "Obanai";
     }
 
     @Override
@@ -35,17 +34,12 @@ public class Obanai extends Role {
 
     @Override
     public Team getCamp() {
-        return Team.SLAYER;
-    }
-
-    @Override
-    public RoleType getType() {
-        return RoleType.SPEED;
+        return Team.DPS;
     }
 
     @Override
     public int getPlacement() {
-        return 19;
+        return 12;
     }
 
     @Override
