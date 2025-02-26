@@ -3,6 +3,7 @@ package be.artex.rolesffa.listeners.player;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.item.items.GoldenHead;
+import be.artex.rolesffa.api.item.items.kenji.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.item.items.sabito.Dash;
 import be.artex.rolesffa.api.item.items.slayer.lame.Lame;
@@ -35,6 +36,7 @@ public class PlayerDeath implements Listener {
         Dash.playerWithSpeed.remove(player.getUniqueId());
         Mihawk.playerWithoutResistant.remove(player.getUniqueId());
         Mains.playerLosedItems.put(player.getUniqueId(), null);
+        Unbreakable.playerWithResistance.remove(player.getUniqueId());
 
         Killua.playerHitNumber.put(player.getUniqueId(), null);
         Killua.playerWithSpeed.remove(player.getUniqueId());

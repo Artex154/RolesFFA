@@ -15,9 +15,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class Unbreakable extends SPItem {
+
+    public static ArrayList<UUID> playerWithResistance = new ArrayList<>();
+
     @Override
     public ItemStack getItemStack() {
         return Stacks.UNBREAKABLE;
@@ -38,7 +42,7 @@ public class Unbreakable extends SPItem {
 
     @Override
     public void onClick(PlayerInteractEvent event) {
-        Cooldown cooldown = Cooldown.get("kusarigama");
+        Cooldown cooldown = Cooldown.get("unbreakable");
 
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
@@ -53,8 +57,14 @@ public class Unbreakable extends SPItem {
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 20*7, 2));
         player.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 20*7, 0));
 
+        playerWithResistance.add(player.getUniqueId());
+
+
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-            player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0));
+            if (playerWithResistance.contains(player.getUniqueId()))
+                player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0));
+
+            playerWithResistance.remove(player.getUniqueId());
         }, 21*7);
 
         cooldown.addPlayer(uuid, 80*20);
