@@ -2,6 +2,9 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.item.Choose;
 import be.artex.rolesffa.item.GoldenHead;
+import be.artex.rolesffa.role.heros.shoto.Shoto;
+import be.artex.rolesffa.role.heros.shoto.items.Fire;
+import be.artex.rolesffa.role.heros.shoto.items.Ice;
 import be.artex.rolesffa.role.slayer.gyomei.Kusarigama;
 import be.artex.rolesffa.role.heros.ejiro.Unbreakable;
 import be.artex.rolesffa.role.slayer.obanai.Souffle;
@@ -50,6 +53,8 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Souffle());
         SPItemUtils.registerItem(new Unbreakable());
         SPItemUtils.registerItem(new GoldenHead());
+        SPItemUtils.registerItem(new Ice());
+        SPItemUtils.registerItem(new Fire());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
@@ -60,6 +65,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new VPL());
         RoleUtils.registerRole(new Cupidon());
         RoleUtils.registerRole(new Ejiro());
+        RoleUtils.registerRole(new Shoto());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);
@@ -70,6 +76,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new EntityDamage(), this);
         getServer().getPluginManager().registerEvents(new PlayerItemDamage(), this);
+        getServer().getPluginManager().registerEvents(new PlayerBlockBreak(), this);
 
         initializeWorld(Bukkit.getWorlds().get(0));
     }

@@ -4,7 +4,8 @@ import org.bukkit.ChatColor;
 
 public enum PotionStyle {
     SPEED(ChatColor.YELLOW, "vitesse"),
-    RESISTANCE(ChatColor.GRAY, "résistance");
+    RESISTANCE(ChatColor.GRAY, "résistance"),
+    FIRE_RESISTANCE(ChatColor.GOLD, "résistance au feu");
 
     private final ChatColor color;
     private final String name;

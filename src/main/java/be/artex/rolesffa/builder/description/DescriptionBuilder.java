@@ -36,6 +36,8 @@ public class DescriptionBuilder {
                 this.effects.put(PotionStyle.RESISTANCE, effect.getAmplifier());
             else if (effect.getType().equals(PotionEffectType.SPEED))
                 this.effects.put(PotionStyle.SPEED, effect.getAmplifier());
+            else if (effect.getType().equals(PotionEffectType.FIRE_RESISTANCE))
+                this.effects.put(PotionStyle.FIRE_RESISTANCE, effect.getAmplifier());
         }
 
         return this;

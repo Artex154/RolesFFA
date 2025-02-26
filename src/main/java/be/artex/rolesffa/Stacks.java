@@ -90,6 +90,13 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Après son dixième coup, il inflige " + ChatColor.AQUA + "un éclair " + ChatColor.GRAY + "qui fait " + ChatColor.RED + "1.5 coeurs de dégats" + ChatColor.GRAY + " et donne ", ChatColor.YELLOW + " vitesse 2 " + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "4 secondes" + ChatColor.GRAY + ".    ", " ")
             .build();
 
+public static final ItemStack SHOTO = new ItemBuilder<>(new ItemStack(Material.ICE))
+            .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shoto")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.GOLD + "resistance au feu" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "Il possède son coté " + ChatColor.AQUA + "gelé" + ChatColor.GRAY + " et son coté " + ChatColor.GOLD + "enflammé" + ChatColor.GRAY + ". ", "    ")
+            .build();
+
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
@@ -133,8 +140,21 @@ public class Stacks {
     public static final ItemStack MAINS = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.GRAY + "" + ChatColor.BOLD + "Vos Mains")
             .setLore(" ",
-                    Main.dot + ChatColor.GRAY + "En frappant quelqu'un vous désactiverez son item pendant 5 secondes.",
+                    Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, vous désactiverez son item pendant 5 secondes.",
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack ICE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Votre Coté Gelé")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, vous faites apparaitre un cocon de " + ChatColor.AQUA + "glace" + ChatColor.GRAY + " autour de lui.    ",
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack FIRE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Votre Coté Enflammé")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, vous " + ChatColor.GOLD + "enflammerez" + ChatColor.GRAY + " le joueur.  ", " ")
             .build();
 
     public static final ItemStack PHILTRUM = new ItemBuilder<>(new ItemStack(Material.BOW))
