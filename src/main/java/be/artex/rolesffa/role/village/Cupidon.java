@@ -16,12 +16,12 @@ import org.bukkit.inventory.ItemStack;
 public class Cupidon extends Role {
     @Override
     public String getName() {
-        return ChatColor.GREEN + "Cupidon Rancunier";
+        return ChatColor.YELLOW + "Cupidon Rancunier";
     }
 
     @Override
     public TextComponent getDescription() {
-        return new DescriptionBuilder(ChatColor.GREEN + "Cupidon Rancunier")
+        return new DescriptionBuilder(getName())
                 .custom(ChatColor.GRAY + "Vous possédez votre" + ChatColor.GREEN + " Philtrum" + ChatColor.GRAY + " et une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
                 .build();
     }
