@@ -1,7 +1,7 @@
 package be.artex.rolesffa.listener.player;
 
-import be.artex.rolesffa.role.slayer.item.lame.Lame;
-import be.artex.rolesffa.role.slayer.item.lame.LameType;
+import be.artex.rolesffa.item.lame.Lame;
+import be.artex.rolesffa.item.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,6 +1,6 @@
 package be.artex.rolesffa.listener.player;
 
-import be.artex.rolesffa.role.slayer.item.lame.Lame;
+import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import be.artex.rolesffa.scoreboard.ScoreboardManagement;

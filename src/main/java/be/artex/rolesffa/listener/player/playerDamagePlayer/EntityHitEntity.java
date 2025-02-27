@@ -1,10 +1,10 @@
 package be.artex.rolesffa.listener.player.playerDamagePlayer;
 
 import be.artex.rolesffa.api.item.SPItem;
-import be.artex.rolesffa.role.slayer.item.lame.Lame;
+import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.api.item.SPItemUtils;
-import be.artex.rolesffa.role.slayer.item.lame.LameType;
+import be.artex.rolesffa.item.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
