@@ -89,9 +89,8 @@ public class Ice extends SPItem {
 
         loc.getBlock().setType(Material.AIR);
 
-        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, () -> {
-           player.setVelocity(new Vector(0, 0, 0));
-        }, 1L);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(Main.instance, () ->
+           player.setVelocity(new Vector(0, 0, 0)), 1L);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             for (int x = -radius; x <= radius; x++) {

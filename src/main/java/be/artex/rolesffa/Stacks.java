@@ -172,7 +172,7 @@ public static final ItemStack SHOTO = new ItemBuilder<>(new ItemStack(Material.I
             .displayName(ChatColor.RESET + "Choisis ton rôle")
             .build();
 
-    public static final ItemStack HEAD(int amount) {
+    public static ItemStack head(int amount) {
         List<String> list = new ArrayList<>();
         list.add(" ");
         list.add(Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "mangerez" + ChatColor.YELLOW + " la pomme " + ChatColor.GRAY + "et vous gagnerez " + ChatColor.YELLOW + "20% de vitesse" + ChatColor.GRAY + " et     ");

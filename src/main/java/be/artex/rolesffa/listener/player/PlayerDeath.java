@@ -63,7 +63,7 @@ public class PlayerDeath implements Listener {
 
         for (ItemStack itemStack : killer.getInventory()) {
             if (itemStack != null && itemStack.getType() != null) {
-                if (itemStack.getType() == Material.GOLDEN_APPLE && itemStack.getItemMeta() != Stacks.HEAD(1).getItemMeta())
+                if (itemStack.getType() == Material.GOLDEN_APPLE && itemStack.getItemMeta() != Stacks.head(1).getItemMeta())
                     killerGoldenApples += itemStack.getAmount();
             }
         }
@@ -77,7 +77,7 @@ public class PlayerDeath implements Listener {
             return;
         }
 
-        killer.getInventory().addItem(Stacks.HEAD(1));
+        killer.getInventory().addItem(Stacks.head(1));
 
         event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
 

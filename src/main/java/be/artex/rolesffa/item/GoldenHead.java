@@ -23,7 +23,7 @@ public class GoldenHead extends SPItem {
 
     @Override
     public ItemStack getItemStack() {
-        return Stacks.HEAD(1);
+        return Stacks.head(1);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class GoldenHead extends SPItem {
 
         goldenHeads--;
 
-        player.getInventory().addItem(Stacks.HEAD(goldenHeads));
+        player.getInventory().addItem(Stacks.head(goldenHeads));
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             if (playerSpeed.get(player.getUniqueId()) != null)
