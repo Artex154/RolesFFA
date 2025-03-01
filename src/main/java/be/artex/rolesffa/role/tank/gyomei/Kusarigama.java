@@ -4,6 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.item.SPItem;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.Cooldown;
+import be.artex.rolesffa.role.technique.shoto.items.Ice;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -45,6 +46,9 @@ public class Kusarigama extends SPItem {
             player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " " + ChatColor.BOLD + "Kusarigama" + ChatColor.AQUA + " est en cooldown pour encore " + ChatColor.BOLD + cooldown.getTimeLeft(uuid) + ChatColor.AQUA + ".");
             return;
         }
+
+        if (Ice.playersInIce.contains(player.getUniqueId()))
+            return;
 
         int numberOfPlayers = 0;
 

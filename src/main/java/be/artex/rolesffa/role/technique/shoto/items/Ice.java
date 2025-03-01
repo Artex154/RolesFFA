@@ -16,9 +16,14 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Ice extends SPItem {
+
+    public static List<UUID> playersInIce = new ArrayList<>();
+
     @Override
     public ItemStack getItemStack() {
         return Stacks.ICE;
@@ -43,8 +48,11 @@ public class Ice extends SPItem {
     public void onHit(EntityDamageByEntityEvent event) {
         Player player = (Player) event.getEntity();
         Player damager = (Player) event.getDamager();
+
         UUID damagerUUID = event.getDamager().getUniqueId();
         Location loc = player.getLocation();
+
+        playersInIce.add(player.getUniqueId());
 
         Cooldown cooldown = Cooldown.get("ice");
 
@@ -118,6 +126,8 @@ public class Ice extends SPItem {
                     blockLoc.getBlock().setType(Material.AIR);
                 }
             }
+
+            playersInIce.remove(player.getUniqueId());
         }, 7*20L);
 
         cooldown.addPlayer(damagerUUID, 70*20L);

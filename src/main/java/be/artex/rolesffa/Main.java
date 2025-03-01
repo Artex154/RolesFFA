@@ -78,6 +78,7 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerItemDamage(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockBreak(), this);
         getServer().getPluginManager().registerEvents(new PlayerBlockPlace(), this);
+        getServer().getPluginManager().registerEvents(new PlayerEat(), this);
 
         initializeWorld(Bukkit.getWorlds().get(0));
     }

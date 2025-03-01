@@ -7,6 +7,7 @@ import be.artex.rolesffa.role.tank.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.role.technique.sabito.Dash;
 import be.artex.rolesffa.item.lame.Lame;
+import be.artex.rolesffa.role.technique.shoto.items.Ice;
 import be.artex.rolesffa.role.technique.tomura.mains.Mains;
 import be.artex.rolesffa.role.DPS.Killua;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
@@ -35,6 +36,7 @@ public class PlayerDeath implements Listener {
         Dash.playerWithSpeed.remove(player.getUniqueId());
         Mains.playerLosedItems.put(player.getUniqueId(), null);
         Unbreakable.playerWithResistance.remove(player.getUniqueId());
+        Ice.playersInIce.remove(player.getUniqueId());
 
         Killua.playerHitNumber.put(player.getUniqueId(), null);
         Killua.playerWithSpeed.remove(player.getUniqueId());
