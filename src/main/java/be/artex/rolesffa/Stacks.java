@@ -90,11 +90,19 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Après son dixième coup, il inflige " + ChatColor.AQUA + "un éclair " + ChatColor.GRAY + "qui fait " + ChatColor.RED + "1.5 coeurs de dégats" + ChatColor.GRAY + " et donne ", ChatColor.YELLOW + " vitesse 2 " + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "4 secondes" + ChatColor.GRAY + ".    ", " ")
             .build();
 
-public static final ItemStack SHOTO = new ItemBuilder<>(new ItemStack(Material.ICE))
-            .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shoto")
+    public static final ItemStack SHOTO = new ItemBuilder<>(new ItemStack(Material.ICE))
+                .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Shoto")
+                .setLore(" ",
+                        Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.GOLD + "resistance au feu" + ChatColor.GRAY + ".", " ",
+                        Main.dot + ChatColor.GRAY + "Il possède son coté " + ChatColor.AQUA + "gelé" + ChatColor.GRAY + " et son coté " + ChatColor.GOLD + "enflammé" + ChatColor.GRAY + ". ", "    ")
+                .build();
+
+    public static final ItemStack MUICHIRO = new ItemBuilder<>(new ItemStack(Material.DIAMOND))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Muichiro")
             .setLore(" ",
-                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.GOLD + "resistance au feu" + ChatColor.GRAY + ".", " ",
-                    Main.dot + ChatColor.GRAY + "Il possède son coté " + ChatColor.AQUA + "gelé" + ChatColor.GRAY + " et son coté " + ChatColor.GOLD + "enflammé" + ChatColor.GRAY + ". ", "    ")
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "Il possède le " + ChatColor.DARK_AQUA + "Souffle de la Brume" + ChatColor.GRAY + ".",
+                    Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
@@ -130,6 +138,13 @@ public static final ItemStack SHOTO = new ItemBuilder<>(new ItemStack(Material.I
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "En tappant quelqu'un, vous lui infligerez " + ChatColor.GREEN + "poison 2" + ChatColor.GRAY + " pendant " + ChatColor.GREEN + "5 secondes" + ChatColor.GRAY + ".  ",
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack SOUFFLEB = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .displayName(ChatColor.DARK_AQUA + "" + ChatColor.BOLD + "Souffle de la brume")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En faissant un clique droit, vous infligerez " + ChatColor.DARK_GRAY + "blindness I et weakness I" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".  ",
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack UNUSABLE = new ItemBuilder<>(new ItemStack(Material.BARRIER))
