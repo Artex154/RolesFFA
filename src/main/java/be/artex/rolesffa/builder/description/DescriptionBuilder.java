@@ -97,7 +97,7 @@ public class DescriptionBuilder {
         }
 
         if (onHit != null) {
-            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "frappez " + ChatColor.GRAY + "une personne, " + this.onHit + ChatColor.GRAY + ".");
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tappez " + ChatColor.GRAY + "une personne, " + this.onHit + ChatColor.GRAY + ".");
             text.addExtra("\n");
         }
 

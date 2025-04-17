@@ -2,6 +2,7 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.item.Choose;
 import be.artex.rolesffa.item.GoldenHead;
+import be.artex.rolesffa.role.DPS.Knuckles;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
 import be.artex.rolesffa.role.DPS.muichiro.SouffleBrume;
 import be.artex.rolesffa.role.technique.shoto.Shoto;
@@ -69,6 +70,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Ejiro());
         RoleUtils.registerRole(new Shoto());
         RoleUtils.registerRole(new Muichiro());
+        RoleUtils.registerRole(new Knuckles());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

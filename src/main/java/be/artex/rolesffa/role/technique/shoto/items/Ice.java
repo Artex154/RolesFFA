@@ -52,14 +52,14 @@ public class Ice extends SPItem {
         UUID damagerUUID = event.getDamager().getUniqueId();
         Location loc = player.getLocation();
 
-        playersInIce.add(player.getUniqueId());
-
         Cooldown cooldown = Cooldown.get("ice");
 
         if (cooldown.isPlayerInCooldown(damagerUUID)) {
             damager.sendMessage(org.bukkit.ChatColor.DARK_AQUA + "[" + org.bukkit.ChatColor.AQUA + org.bukkit.ChatColor.BOLD + "RolesFFA" + org.bukkit.ChatColor.DARK_AQUA + "]" + org.bukkit.ChatColor.AQUA + " " + org.bukkit.ChatColor.BOLD + "Votre Coté Gelé" + org.bukkit.ChatColor.AQUA + " est en cooldown pour encore " + org.bukkit.ChatColor.BOLD + cooldown.getTimeLeft(damagerUUID) + org.bukkit.ChatColor.AQUA + ".");
             return;
         }
+
+        playersInIce.add(player.getUniqueId());
 
         loc.setX(loc.getBlockX() + 0.5);
         loc.setY(loc.getBlockY());

@@ -83,7 +83,7 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".    ", " ")
             .build();
 
-    public static final ItemStack KILLUA = new ItemBuilder<>(new ItemStack(Material.BLAZE_POWDER))
+    public static final ItemStack KILLUA = new ItemBuilder<>(new ItemStack(Material.BLAZE_ROD))
             .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Killua")
             .setLore(" ",
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1 " + ChatColor.GRAY + "de façon permanente.", " ",
@@ -103,6 +103,13 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
                     Main.dot + ChatColor.GRAY + "Il possède le " + ChatColor.DARK_AQUA + "Souffle de la Brume" + ChatColor.GRAY + ".",
                     Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static final ItemStack KNUCKLES = new ItemBuilder<>(new ItemStack(Material.BLAZE_POWDER))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Knuckles")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.RED + "+15% de force" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, il possède " + ChatColor.AQUA + "15% de chance " + ChatColor.GRAY + "de mettre en" + ChatColor.GOLD + " feu" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
