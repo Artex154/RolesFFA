@@ -48,7 +48,7 @@ public class Unbreakable extends SPItem {
         UUID uuid = player.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(uuid)) {
-            player.sendMessage(org.bukkit.ChatColor.DARK_AQUA + "[" + org.bukkit.ChatColor.AQUA + org.bukkit.ChatColor.BOLD + "RolesFFA" + org.bukkit.ChatColor.DARK_AQUA + "]" + org.bukkit.ChatColor.AQUA + " " + org.bukkit.ChatColor.BOLD + "Kusarigama" + org.bukkit.ChatColor.AQUA + " est en cooldown pour encore " + org.bukkit.ChatColor.BOLD + cooldown.getTimeLeft(uuid) + org.bukkit.ChatColor.AQUA + ".");
+            player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Unbreakable est en cooldown pour encore " + ChatColor.YELLOW + cooldown.getTimeLeft(uuid) + " secondes" + ChatColor.GRAY + ".");
             return;
         }
 

@@ -50,7 +50,7 @@ public class Muichiro extends Role {
         RoleUtils.setPlayerRole(player.getUniqueId(), this);
 
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
-        player.getInventory().addItem(Stacks.SOUFFLEB);
+        player.getInventory().addItem(Stacks.SOUFFLEBRUME);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));

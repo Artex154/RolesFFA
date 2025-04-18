@@ -49,7 +49,7 @@ public class Dash extends SPItem {
         UUID uuid = player.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(uuid)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Votre " + ChatColor.BOLD + "Dash" + ChatColor.AQUA + " est en cooldown pour encore " + ChatColor.BOLD + cooldown.getTimeLeft(uuid) + ChatColor.AQUA + ".");
+            player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Votre " + ChatColor.AQUA + "Dash" + ChatColor.GRAY + " est en cooldown pour encore " + ChatColor.YELLOW + cooldown.getTimeLeft(uuid) + " seconds" + ChatColor.GRAY + ".");
             return;
         }
 

@@ -51,7 +51,7 @@ public class Purgatoire extends SPItem {
         UUID uuid = player.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(uuid)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Votre " + ChatColor.BOLD + "Purgatoire" + ChatColor.AQUA + " a été déjà été utilisé, faites un kill pour le réutiliser.");
+            player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.GRAY + " Le " + ChatColor.GOLD + "Purgatoire" + ChatColor.GRAY + " a été déjà été utilisé, faites un kill pour le réutiliser.");
             return;
         }
 
@@ -68,7 +68,7 @@ public class Purgatoire extends SPItem {
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             if (purgatoireLevel.get(uuid) != 0) {
                 purgatoireLevel.put(uuid, 2);
-                player.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "RolesFFA" + ChatColor.RED + "]" + ChatColor.GRAY + " Vous n'enlevez plus de " + ChatColor.LIGHT_PURPLE + "demis-coeurs" + ChatColor.GRAY + ".");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous n'enlevez plus de " + ChatColor.LIGHT_PURPLE + "demis-coeurs" + ChatColor.GRAY + ".");
             }
 
         }, 10*20);
@@ -76,9 +76,8 @@ public class Purgatoire extends SPItem {
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             if (purgatoireLevel.get(uuid) != 0) {
                 purgatoireLevel.put(uuid, 1);
-                player.sendMessage(ChatColor.RED + "[" + ChatColor.YELLOW + "RolesFFA" + ChatColor.RED + "]" + ChatColor.GRAY + " Vous ne mettez plus les joueurs en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ".");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous ne mettez plus les joueurs en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ".");
             }
-
         }, 45*20);
 
         cooldown.addPlayer(uuid, Integer.MAX_VALUE);

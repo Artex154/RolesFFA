@@ -42,7 +42,7 @@ public class Souffle extends SPItem {
         UUID damagerUUID = damager.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(damagerUUID)) {
-            damager.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Le " + ChatColor.BOLD + "Souffle du Serpent" + ChatColor.AQUA + " est en cooldown pour encore " + ChatColor.BOLD + cooldown.getTimeLeft(damagerUUID) + ChatColor.AQUA + ".");
+            damager.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Le " + ChatColor.GREEN + "Souffle du Serpent" + ChatColor.GRAY + " est en cooldown pour encore " + ChatColor.YELLOW + cooldown.getTimeLeft(damagerUUID) + " secondes" + ChatColor.GRAY + ".");
             return;
         }
 

@@ -43,7 +43,7 @@ public class Kusarigama extends SPItem {
         UUID uuid = player.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(uuid)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " " + ChatColor.BOLD + "Kusarigama" + ChatColor.AQUA + " est en cooldown pour encore " + ChatColor.BOLD + cooldown.getTimeLeft(uuid) + ChatColor.AQUA + ".");
+            player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.AQUA + "Kusarigama" + ChatColor.GRAY + " est en cooldown pour encore " + ChatColor.YELLOW + cooldown.getTimeLeft(uuid) + " secondes" + ChatColor.GRAY + ".");
             return;
         }
 

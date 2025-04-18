@@ -44,7 +44,7 @@ public class Mains extends SPItem {
         UUID damagerUUID = damager.getUniqueId();
 
         if (cooldown.isPlayerInCooldown(damagerUUID)) {
-            damager.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vos " + ChatColor.BOLD + "Mains" + ChatColor.AQUA + " sont en cooldown pour encore " + ChatColor.BOLD + cooldown.getTimeLeft(damagerUUID) + ChatColor.AQUA + ".");
+            damager.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vos Mains sont en cooldown pour encore " + ChatColor.YELLOW + cooldown.getTimeLeft(damagerUUID) + " secondes" + ChatColor.GRAY + ".");
             return;
         }
 

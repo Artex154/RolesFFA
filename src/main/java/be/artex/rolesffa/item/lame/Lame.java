@@ -56,25 +56,25 @@ public class Lame extends SPItem {
         switch (new Random().nextInt(5)) {
             case 0:
                 setPlayerLame(playerUUID, LameType.STRENGTH);
-                player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_AQUA + ChatColor.BOLD + "noire" + ChatColor.AQUA + ". \n" + ChatColor.DARK_AQUA + "(" + ChatColor.AQUA + "+5% de force" + ChatColor.DARK_AQUA + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_GRAY + ChatColor.BOLD + "noire" + ChatColor.GRAY + ". \n" + ChatColor.GRAY + "(" + ChatColor.DARK_GRAY + ChatColor.BOLD + "+5%" + ChatColor.GRAY + " de" + ChatColor.DARK_GRAY + ChatColor.BOLD + " force" + ChatColor.GRAY + ")");
                 break;
             case 1:
                 setPlayerLame(playerUUID, LameType.RESISTANCE);
-                player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_AQUA + ChatColor.BOLD + "grise" + ChatColor.AQUA + ". \n" + ChatColor.DARK_AQUA + "(" + ChatColor.AQUA + "+5% de resistance" + ChatColor.DARK_AQUA + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous avez reçu la lame de nichirine " + ChatColor.BOLD + "grise" + ChatColor.GRAY + ". \n" + ChatColor.GRAY + "(" + ChatColor.BOLD + "+5%" + ChatColor.GRAY + " de" + ChatColor.BOLD + " resistance" + ChatColor.GRAY + ")");
                 break;
             case 2:
                 setPlayerLame(playerUUID, LameType.LIFE);
-                player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_AQUA + ChatColor.BOLD + "vie" + ChatColor.AQUA + ". \n" + ChatColor.DARK_AQUA + "(" + ChatColor.AQUA + "+2 coeurs" + ChatColor.DARK_AQUA + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous avez reçu la lame de nichirine " + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "rose" + ChatColor.GRAY + ". \n" + ChatColor.GRAY + "(" + ChatColor.LIGHT_PURPLE + ChatColor.BOLD + "+2 coeurs" + ChatColor.GRAY + ")");
                 player.setMaxHealth(player.getMaxHealth() + 4);
                 break;
             case 3:
                 setPlayerLame(playerUUID, LameType.SPEED);
-                player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_AQUA + ChatColor.BOLD + "jaune" + ChatColor.AQUA + ". \n" + ChatColor.DARK_AQUA + "(" + ChatColor.AQUA + "+7 de vitesse" + ChatColor.DARK_AQUA + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous avez reçu la lame de nichirine " + ChatColor.YELLOW + ChatColor.BOLD + "jaune" + ChatColor.GRAY + ". \n" + ChatColor.GRAY + "(" + ChatColor.YELLOW + ChatColor.BOLD + "+7%" + ChatColor.GRAY + " de" + ChatColor.YELLOW + ChatColor.BOLD + " vitesse" + ChatColor.GRAY + ")");
                 player.setWalkSpeed((player.getWalkSpeed() / 100) * 107);
                 break;
             case 4:
                 setPlayerLame(playerUUID, LameType.NOFALL);
-                player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.AQUA + " Vous avez reçu la lame de nichirine " + ChatColor.DARK_AQUA + ChatColor.BOLD + "verte" + ChatColor.AQUA + ". \n" + ChatColor.DARK_AQUA + "(" + ChatColor.AQUA + "NoFall" + ChatColor.DARK_AQUA + ")");
+                player.sendMessage(ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + ChatColor.BOLD + "RolesFFA" + ChatColor.DARK_GRAY + "]" + ChatColor.GRAY + " Vous avez reçu la lame de nichirine " + ChatColor.GREEN + ChatColor.BOLD + "verte" + ChatColor.GRAY + ". \n" + ChatColor.GRAY + "(" + ChatColor.GREEN + ChatColor.BOLD + "NoFall" + ChatColor.GRAY +")");
                 break;
         }
 
