@@ -1,7 +1,6 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.item.Choose;
-import be.artex.rolesffa.item.GoldenHead;
 import be.artex.rolesffa.role.DPS.Knuckles;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
 import be.artex.rolesffa.role.DPS.muichiro.SouffleBrume;
@@ -56,7 +55,6 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Unusable());
         SPItemUtils.registerItem(new Souffle());
         SPItemUtils.registerItem(new Unbreakable());
-        SPItemUtils.registerItem(new GoldenHead());
         SPItemUtils.registerItem(new Ice());
         SPItemUtils.registerItem(new Fire());
         SPItemUtils.registerItem(new SouffleBrume());

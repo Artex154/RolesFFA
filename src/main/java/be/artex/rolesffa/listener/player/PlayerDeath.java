@@ -2,7 +2,6 @@ package be.artex.rolesffa.listener.player;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.item.GoldenHead;
 import be.artex.rolesffa.role.tank.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
@@ -47,8 +46,6 @@ public class PlayerDeath implements Listener {
 
         Kyojuro.playerHalfHearts.remove(player.getUniqueId());
         Purgatoire.purgatoireLevel.put(player.getUniqueId(), 0);
-
-        GoldenHead.playerSpeed.put(player.getUniqueId(), null);
 
         RoleUtils.setPlayerRole(player.getUniqueId(), null);
         Lame.setPlayerLame(player.getUniqueId(), null);
