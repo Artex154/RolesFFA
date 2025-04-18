@@ -5,6 +5,8 @@ import be.artex.rolesffa.item.GoldenHead;
 import be.artex.rolesffa.role.DPS.Knuckles;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
 import be.artex.rolesffa.role.DPS.muichiro.SouffleBrume;
+import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
+import be.artex.rolesffa.role.technique.kyojuro.Purgatoire;
 import be.artex.rolesffa.role.technique.shoto.Shoto;
 import be.artex.rolesffa.role.technique.shoto.items.Fire;
 import be.artex.rolesffa.role.technique.shoto.items.Ice;
@@ -58,6 +60,7 @@ public final class Main extends JavaPlugin {
         SPItemUtils.registerItem(new Ice());
         SPItemUtils.registerItem(new Fire());
         SPItemUtils.registerItem(new SouffleBrume());
+        SPItemUtils.registerItem(new Purgatoire());
 
         RoleUtils.registerRole(new Sanemi());
         RoleUtils.registerRole(new Gyomei());
@@ -71,6 +74,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Shoto());
         RoleUtils.registerRole(new Muichiro());
         RoleUtils.registerRole(new Knuckles());
+        RoleUtils.registerRole(new Kyojuro());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

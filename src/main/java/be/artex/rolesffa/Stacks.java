@@ -112,6 +112,15 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, il possède " + ChatColor.AQUA + "15% de chance " + ChatColor.GRAY + "de mettre en" + ChatColor.GOLD + " feu" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack KYOJURO = new ItemBuilder<>(new ItemStack(Material.BLAZE_POWDER))
+            .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Kyojuro")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.GOLD + "resistance au feu" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "Il possède un arc " + ChatColor.GOLD + "flame" + ChatColor.GRAY + ".",
+                    Main.dot + ChatColor.GRAY + "Il possède le " + ChatColor.GOLD + ChatColor.BOLD + "Purgatoire" + ChatColor.GRAY + ".",
+                    Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
+            .build();
+
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
@@ -154,6 +163,7 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
+
     public static final ItemStack UNUSABLE = new ItemBuilder<>(new ItemStack(Material.BARRIER))
             .displayName(ChatColor.RED + "Unusable")
             .setLore(Main.dot + ChatColor.GRAY + "Cette item à été désactivé par " + ChatColor.RED + "Tomura" + ChatColor.GRAY + ".")
@@ -189,6 +199,20 @@ public class Stacks {
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Dash")
             .build();
 
+    public static ItemStack PURGATOIRE = new ItemBuilder<>(new ItemStack(Material.MAGMA_CREAM))
+            .addEnchant(Enchantment.ARROW_KNOCKBACK, 1)
+            .addItemFlags(ItemFlag.HIDE_ENCHANTS)
+            .displayName(ChatColor.GOLD + "" + ChatColor.BOLD + "Purgatoire")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En faissant un clique droit, vous gagnerez " + ChatColor.YELLOW + "Speed II" + ChatColor.GRAY + ". ",
+                    Main.dot + ChatColor.GRAY + "Quand vous infligerez un " + ChatColor.RED + "coup" + ChatColor.GRAY + " sur un joueur, vous le metterez en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ".      ",
+                    Main.dot + ChatColor.GRAY + "Ces pouvoirs durent" + ChatColor.YELLOW + " 45 secondes" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "En plus de mettre le joueur en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ", tout vos prochains coups dans les dix secondes qui suivent,    ",
+                    ChatColor.GRAY + "   vous enlèverez " + ChatColor.LIGHT_PURPLE + "1 demi-coeur " + ChatColor.GRAY + "permanent au joueur tappé.",
+                    Main.dot + ChatColor.GRAY + "Les coeurs sont redonnés après " + ChatColor.YELLOW + "1 minute" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "En contre partie, vous perdrez" + ChatColor.LIGHT_PURPLE  + " 2 coeurs " + ChatColor.GRAY + "permanent pendant " + ChatColor.YELLOW + "1 minute 30" + ChatColor.GRAY + ".  ", " ",
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 1x/kill" + ChatColor.GRAY + ".", " ")
+            .build();
 
     public static final ItemStack CHOOSE_BOOK = new ItemBuilder<>(new ItemStack(Material.ENCHANTED_BOOK))
             .displayName(ChatColor.RESET + "Choisis ton rôle")

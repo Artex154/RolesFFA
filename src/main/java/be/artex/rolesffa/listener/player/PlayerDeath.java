@@ -5,6 +5,8 @@ import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.item.GoldenHead;
 import be.artex.rolesffa.role.tank.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
+import be.artex.rolesffa.role.technique.kyojuro.Purgatoire;
 import be.artex.rolesffa.role.technique.sabito.Dash;
 import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.role.technique.shoto.items.Ice;
@@ -42,6 +44,9 @@ public class PlayerDeath implements Listener {
         Killua.playerWithSpeed.remove(player.getUniqueId());
 
         Strength.playerStrength.put(player.getUniqueId(), null);
+
+        Kyojuro.playerHalfHearts.remove(player.getUniqueId());
+        Purgatoire.purgatoireLevel.put(player.getUniqueId(), 0);
 
         GoldenHead.playerSpeed.put(player.getUniqueId(), null);
 
