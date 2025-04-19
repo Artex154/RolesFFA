@@ -58,7 +58,7 @@ public class Kyojuro extends Role {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
 
-        player.getInventory().setItem(7, Stacks.SOUFFLE);
+        player.getInventory().setItem(7, Stacks.SOUFFLEFEU);
         player.getInventory().addItem(Stacks.PURGATOIRE);
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
     }
