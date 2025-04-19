@@ -223,6 +223,7 @@ public class Stacks {
             .build();
 
     public static final ItemStack SOUFFLEFEU = new ItemBuilder<>(new ItemStack(Material.BOW))
+            .displayName(ChatColor.GOLD + "Souffle du Feu")
             .addEnchant(Enchantment.ARROW_DAMAGE, 3)
             .addEnchant(Enchantment.ARROW_FIRE, 1)
             .build();

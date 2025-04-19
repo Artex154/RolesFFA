@@ -18,7 +18,7 @@ public class SouffleFeu extends SPItem {
     @Override
     public TextComponent getDescription() {
         TextComponent description = new TextComponent(ChatColor.GRAY + "le " + getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n\n" +
+        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n" +
                 ChatColor.GRAY + "Flame I")});
 
         description.setHoverEvent(event);
