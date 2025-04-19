@@ -1,7 +1,7 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.item.Choose;
-import be.artex.rolesffa.role.DPS.Knuckles;
+import be.artex.rolesffa.role.DPS.*;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
 import be.artex.rolesffa.role.DPS.muichiro.SouffleBrume;
 import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
@@ -17,13 +17,10 @@ import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.role.technique.tomura.mains.Mains;
 import be.artex.rolesffa.role.technique.tomura.mains.Unusable;
 import be.artex.rolesffa.role.technique.tomura.Tomura;
-import be.artex.rolesffa.role.DPS.VPL;
 import be.artex.rolesffa.role.tank.ejiro.Ejiro;
-import be.artex.rolesffa.role.DPS.Killua;
 import be.artex.rolesffa.role.tank.gyomei.Gyomei;
 import be.artex.rolesffa.role.DPS.obanai.Obanai;
 import be.artex.rolesffa.role.technique.sabito.Sabito;
-import be.artex.rolesffa.role.DPS.Sanemi;
 import be.artex.rolesffa.role.technique.Cupidon;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.player.*;
@@ -73,6 +70,7 @@ public final class Main extends JavaPlugin {
         RoleUtils.registerRole(new Muichiro());
         RoleUtils.registerRole(new Knuckles());
         RoleUtils.registerRole(new Kyojuro());
+        RoleUtils.registerRole(new Kokushibo());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

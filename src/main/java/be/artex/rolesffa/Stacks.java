@@ -121,6 +121,14 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack KOKUSHIBO = new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD))
+            .displayName(ChatColor.RED + "" + ChatColor.BOLD + "Kokushibo")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.GRAY + "Quand il " + ChatColor.RED + "tue " + ChatColor.GRAY + "un joueur, il gagne un" + ChatColor.LIGHT_PURPLE + " coeur permanent" + ChatColor.GRAY + ".    ", " ",
+                    Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".")
+            .build();
+
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
