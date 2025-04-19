@@ -60,7 +60,7 @@ public class Knuckles extends Role {
     public void onPlayerHit(EntityDamageByEntityEvent event) {
         Random random = new Random();
 
-        if (random.nextInt(20) >= 3) {
+        if (random.nextInt(10) == 1) {
             event.getEntity().setFireTicks(20*10);
         }
     }

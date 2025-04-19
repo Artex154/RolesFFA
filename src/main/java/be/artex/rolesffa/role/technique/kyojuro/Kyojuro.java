@@ -6,6 +6,7 @@ import be.artex.rolesffa.api.Team;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
+import be.artex.rolesffa.item.lame.Lame;
 import be.raft.crafty.item.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -34,7 +35,7 @@ public class Kyojuro extends Role {
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
                 .effect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0))
-                .item(new Purgatoire())
+                .item(new Purgatoire(), new SouffleFeu(),new Lame())
                 .build();
     }
 
@@ -61,8 +62,9 @@ public class Kyojuro extends Role {
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
 
-        player.getInventory().setItem(7, new ItemBuilder<>(new ItemStack(Material.BOW)).addEnchant(Enchantment.ARROW_DAMAGE, 3).addEnchant(Enchantment.ARROW_FIRE, 1).build());
+        player.getInventory().setItem(7, Stacks.SOUFFLE);
         player.getInventory().addItem(Stacks.PURGATOIRE);
+        player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
     }
 
     @Override

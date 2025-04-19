@@ -214,6 +214,11 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 1x/kill" + ChatColor.GRAY + ".", " ")
             .build();
 
+    public static final ItemStack SOUFFLEFEU = new ItemBuilder<>(new ItemStack(Material.BOW))
+            .addEnchant(Enchantment.ARROW_DAMAGE, 3)
+            .addEnchant(Enchantment.ARROW_FIRE, 1)
+            .build();
+
     public static final ItemStack CHOOSE_BOOK = new ItemBuilder<>(new ItemStack(Material.ENCHANTED_BOOK))
             .displayName(ChatColor.RESET + "Choisis ton rôle")
             .build();
