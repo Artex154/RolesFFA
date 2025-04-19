@@ -2,17 +2,13 @@ package be.artex.rolesffa.role.technique.kyojuro;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.item.lame.Lame;
-import be.raft.crafty.item.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
@@ -45,8 +41,8 @@ public class Kyojuro extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.TECHNIQUE;
+    public RoleType getType() {
+        return RoleType.TECHNIQUE;
     }
 
     @Override
@@ -56,9 +52,9 @@ public class Kyojuro extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
 

@@ -1,9 +1,8 @@
 package be.artex.rolesffa.listener.player.playerDamagePlayer;
 
 import be.artex.rolesffa.api.item.SPItem;
+import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.item.lame.Lame;
-import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.api.item.SPItemUtils;
 import be.artex.rolesffa.item.lame.LameType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -20,12 +19,12 @@ public class EntityHitEntity implements Listener {
         if (event.getDamager() instanceof Player) {
             Player player = (Player) event.getDamager();
 
-            for (SPItem spItem : SPItemUtils.registeredItems) {
+            for (SPItem spItem : SPItem.registeredItems) {
                 if (player.getItemInHand() != null && player.getItemInHand().equals(spItem.getItemStack()))
                     spItem.onHit(event);
             }
 
-            RoleUtils.getPlayerRole(player.getUniqueId()).onPlayerHit(event);
+            Role.getPlayerRole(player.getUniqueId()).onPlayerHit(event);
 
             if (!player.hasPotionEffect(PotionEffectType.INCREASE_DAMAGE))
                 return;

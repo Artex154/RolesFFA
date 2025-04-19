@@ -1,9 +1,8 @@
 package be.artex.rolesffa.listener.inventory;
 
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.role.RoleUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,9 +20,9 @@ public class InventoryClick implements Listener {
             return;
         }
 
-        Team foundTeam = null;
+        RoleType foundTeam = null;
 
-        for (Team team : Team.values()) {
+        for (RoleType team : RoleType.values()) {
             if (team.getItemStack().equals(event.getCurrentItem())) {
                 foundTeam = team;
                 break;
@@ -33,8 +32,8 @@ public class InventoryClick implements Listener {
         if (foundTeam != null) {
             Inventory teamInventory = foundTeam.getInventory();
 
-            for (Role role : RoleUtils.registeredRoles) {
-                if (role.getCamp().equals(foundTeam)) {
+            for (Role role : Role.registeredRoles) {
+                if (role.getType().equals(foundTeam)) {
                     teamInventory.setItem(role.getPlacement(), role.getItemStack());
                 }
             }
@@ -59,7 +58,7 @@ public class InventoryClick implements Listener {
 
         Role foundRole = null;
 
-        for (Role role : RoleUtils.registeredRoles) {
+        for (Role role : Role.registeredRoles) {
             if (role.getItemStack().equals(event.getCurrentItem())) {
                 foundRole = role;
                 break;

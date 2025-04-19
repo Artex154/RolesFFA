@@ -1,10 +1,9 @@
 package be.artex.rolesffa.role.tank.ejiro;
 
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -32,8 +31,8 @@ public class Ejiro extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.TANK;
+    public RoleType getType() {
+        return RoleType.TANK;
     }
 
     @Override
@@ -43,9 +42,9 @@ public class Ejiro extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0));
 

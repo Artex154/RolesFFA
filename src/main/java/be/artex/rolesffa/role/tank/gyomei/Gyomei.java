@@ -1,10 +1,9 @@
 package be.artex.rolesffa.role.tank.gyomei;
 
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import org.bukkit.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -33,8 +32,8 @@ public class Gyomei extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.TANK;
+    public RoleType getType() {
+        return RoleType.TANK;
     }
 
     @Override
@@ -44,9 +43,9 @@ public class Gyomei extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 0));
         player.getInventory().addItem(Stacks.KUSARIGAMA);

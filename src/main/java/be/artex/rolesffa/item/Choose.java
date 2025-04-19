@@ -1,7 +1,7 @@
 package be.artex.rolesffa.item;
 
 import be.artex.rolesffa.api.item.SPItem;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -35,7 +35,7 @@ public class Choose extends SPItem {
         inv.setItem(25, Stacks.border());
         inv.setItem(26, Stacks.border());
 
-        for (Team team : Team.values())
+        for (RoleType team : RoleType.values())
             inv.setItem(team.getPlacement(), team.getItemStack());
 
         event.getPlayer().openInventory(inv);

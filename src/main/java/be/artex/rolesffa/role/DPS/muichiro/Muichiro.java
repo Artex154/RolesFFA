@@ -1,12 +1,10 @@
 package be.artex.rolesffa.role.DPS.muichiro;
 
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.item.lame.Lame;
-import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
@@ -34,8 +32,8 @@ public class Muichiro extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.DPS;
+    public RoleType getType() {
+        return RoleType.DPS;
     }
 
     @Override
@@ -45,9 +43,9 @@ public class Muichiro extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
         player.getInventory().addItem(Stacks.SOUFFLEBRUME);

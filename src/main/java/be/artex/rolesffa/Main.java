@@ -1,5 +1,7 @@
 package be.artex.rolesffa;
 
+import be.artex.rolesffa.api.item.SPItem;
+import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.item.Choose;
 import be.artex.rolesffa.role.DPS.*;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
@@ -24,8 +26,6 @@ import be.artex.rolesffa.role.technique.sabito.Sabito;
 import be.artex.rolesffa.role.technique.Cupidon;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.player.*;
-import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.api.item.SPItemUtils;
 import be.artex.rolesffa.listener.player.EntityDamage;
 import be.artex.rolesffa.listener.player.PlayerItemDamage;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.EntityHitEntity;
@@ -44,33 +44,33 @@ public final class Main extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        SPItemUtils.registerItem(new Choose());
-        SPItemUtils.registerItem(new Lame());
-        SPItemUtils.registerItem(new Kusarigama());
-        SPItemUtils.registerItem(new Dash());
-        SPItemUtils.registerItem(new Mains());
-        SPItemUtils.registerItem(new Unusable());
-        SPItemUtils.registerItem(new Souffle());
-        SPItemUtils.registerItem(new Unbreakable());
-        SPItemUtils.registerItem(new Ice());
-        SPItemUtils.registerItem(new Fire());
-        SPItemUtils.registerItem(new SouffleBrume());
-        SPItemUtils.registerItem(new Purgatoire());
+        SPItem.registerItem(new Choose());
+        SPItem.registerItem(new Lame());
+        SPItem.registerItem(new Kusarigama());
+        SPItem.registerItem(new Dash());
+        SPItem.registerItem(new Mains());
+        SPItem.registerItem(new Unusable());
+        SPItem.registerItem(new Souffle());
+        SPItem.registerItem(new Unbreakable());
+        SPItem.registerItem(new Ice());
+        SPItem.registerItem(new Fire());
+        SPItem.registerItem(new SouffleBrume());
+        SPItem.registerItem(new Purgatoire());
 
-        RoleUtils.registerRole(new Sanemi());
-        RoleUtils.registerRole(new Gyomei());
-        RoleUtils.registerRole(new Sabito());
-        RoleUtils.registerRole(new Tomura());
-        RoleUtils.registerRole(new Killua());
-        RoleUtils.registerRole(new Obanai());
-        RoleUtils.registerRole(new VPL());
-        RoleUtils.registerRole(new Cupidon());
-        RoleUtils.registerRole(new Ejiro());
-        RoleUtils.registerRole(new Shoto());
-        RoleUtils.registerRole(new Muichiro());
-        RoleUtils.registerRole(new Knuckles());
-        RoleUtils.registerRole(new Kyojuro());
-        RoleUtils.registerRole(new Kokushibo());
+        Role.registerRole(new Sanemi());
+        Role.registerRole(new Gyomei());
+        Role.registerRole(new Sabito());
+        Role.registerRole(new Tomura());
+        Role.registerRole(new Killua());
+        Role.registerRole(new Obanai());
+        Role.registerRole(new VPL());
+        Role.registerRole(new Cupidon());
+        Role.registerRole(new Ejiro());
+        Role.registerRole(new Shoto());
+        Role.registerRole(new Muichiro());
+        Role.registerRole(new Knuckles());
+        Role.registerRole(new Kyojuro());
+        Role.registerRole(new Kokushibo());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

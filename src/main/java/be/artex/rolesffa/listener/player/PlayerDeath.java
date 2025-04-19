@@ -12,7 +12,6 @@ import be.artex.rolesffa.role.technique.shoto.items.Ice;
 import be.artex.rolesffa.role.technique.tomura.mains.Mains;
 import be.artex.rolesffa.role.DPS.Killua;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.Cooldown;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,7 +28,7 @@ public class PlayerDeath implements Listener {
         Player player = event.getEntity();
         Player killer = player.getKiller();
 
-        Role role = RoleUtils.getPlayerRole(player.getUniqueId());
+        Role role = Role.getPlayerRole(player.getUniqueId());
 
         Cooldown.removePlayerFromAllCooldowns(player.getUniqueId());
         Cooldown.removePlayerFromAllCooldowns(killer.getUniqueId());
@@ -47,7 +46,7 @@ public class PlayerDeath implements Listener {
         Kyojuro.playerHalfHearts.remove(player.getUniqueId());
         Purgatoire.purgatoireLevel.put(player.getUniqueId(), 0);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), null);
+        Role.setPlayerRole(player.getUniqueId(), null);
         Lame.setPlayerLame(player.getUniqueId(), null);
 
         int droppedArrow = 0;
@@ -85,7 +84,7 @@ public class PlayerDeath implements Listener {
 
         event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
 
-        RoleUtils.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
+        Role.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 
         killer.setHealth(killer.getMaxHealth());
     }

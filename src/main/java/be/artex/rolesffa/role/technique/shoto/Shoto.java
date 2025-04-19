@@ -1,9 +1,8 @@
 package be.artex.rolesffa.role.technique.shoto;
 
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.role.technique.shoto.items.Fire;
 import be.artex.rolesffa.role.technique.shoto.items.Ice;
@@ -34,8 +33,8 @@ public class Shoto extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.TECHNIQUE;
+    public RoleType getType() {
+        return RoleType.TECHNIQUE;
     }
 
     @Override
@@ -45,9 +44,9 @@ public class Shoto extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
 

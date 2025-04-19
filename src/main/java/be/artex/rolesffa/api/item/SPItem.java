@@ -6,7 +6,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+
 public abstract class SPItem {
+    public static ArrayList<SPItem> registeredItems = new ArrayList<>();
+
     public abstract @NotNull ItemStack getItemStack();
     public abstract @NotNull TextComponent getDescription();
 
@@ -15,4 +19,9 @@ public abstract class SPItem {
 
     public void onHit(EntityDamageByEntityEvent event) {
     }
+
+    public static void registerItem(SPItem item) {
+        registeredItems.add(item);
+    }
+
 }

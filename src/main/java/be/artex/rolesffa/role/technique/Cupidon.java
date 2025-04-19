@@ -1,10 +1,9 @@
 package be.artex.rolesffa.role.technique;
 
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.Team;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.raft.crafty.item.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -32,8 +31,8 @@ public class Cupidon extends Role {
     }
 
     @Override
-    public Team getCamp() {
-        return Team.TECHNIQUE;
+    public RoleType getType() {
+        return RoleType.TECHNIQUE;
     }
 
     @Override
@@ -43,9 +42,9 @@ public class Cupidon extends Role {
 
     @Override
     public void onAssigned(Player player) {
-        RoleUtils.baseSetup(player, this);
+        Role.baseSetup(player, this);
 
-        RoleUtils.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player.getUniqueId(), this);
 
         player.getInventory().setItem(0, new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
         player.getInventory().setItem(7, Stacks.PHILTRUM);
