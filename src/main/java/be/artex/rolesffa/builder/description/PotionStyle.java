@@ -1,6 +1,7 @@
 package be.artex.rolesffa.builder.description;
 
 import org.bukkit.ChatColor;
+import org.bukkit.potion.PotionEffectType;
 
 public enum PotionStyle {
     SPEED(ChatColor.YELLOW, "vitesse"),
@@ -21,5 +22,16 @@ public enum PotionStyle {
 
     public String getName() {
         return name;
+    }
+
+    public static PotionStyle EffectTypeAsStyle(PotionEffectType type) {
+        if (type.equals(PotionEffectType.DAMAGE_RESISTANCE))
+            return RESISTANCE;
+        else if (type.equals(PotionEffectType.SPEED))
+            return SPEED;
+        else if (type.equals(PotionEffectType.FIRE_RESISTANCE))
+            return FIRE_RESISTANCE;
+
+        return null;
     }
 }
