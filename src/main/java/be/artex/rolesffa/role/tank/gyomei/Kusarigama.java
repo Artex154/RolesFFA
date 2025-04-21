@@ -4,7 +4,7 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.item.SPItem;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.Cooldown;
-import be.artex.rolesffa.role.technique.shoto.items.Ice;
+import be.artex.rolesffa.role.technique.shoto.Ice;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;

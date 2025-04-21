@@ -2,6 +2,7 @@ package be.artex.rolesffa.role.technique.kyojuro;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
+import be.artex.rolesffa.api.ItemHolder;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
@@ -15,23 +16,15 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class Kyojuro extends Role {
     public static final ArrayList<UUID> playerHalfHearts = new ArrayList<>();
 
     @Override
-    public String getName() {
-        return ChatColor.YELLOW + "Kyojuro";
-    }
-
-    @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
-                .effect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0))
-                .item(new Purgatoire(), new SouffleFeu(),new Lame())
+                .role(this)
                 .build();
     }
 
@@ -54,13 +47,19 @@ public class Kyojuro extends Role {
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 
-        Role.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player, this);
 
         player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
+    }
 
-        player.getInventory().setItem(7, Stacks.SOUFFLEFEU);
-        player.getInventory().addItem(Stacks.PURGATOIRE);
-        player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
+    @Override
+    public List<PotionEffect> getEffects() {
+        return Collections.singletonList(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
+    }
+
+    @Override
+    public List<ItemHolder> getItems() {
+        return Arrays.asList(new ItemHolder(new SouffleFeu(), 8), new ItemHolder(new Purgatoire()), new ItemHolder(new Lame()));
     }
 
     @Override

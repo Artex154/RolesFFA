@@ -1,21 +1,23 @@
 package be.artex.rolesffa.builder.description;
 
 import be.artex.rolesffa.Main;
-import be.artex.rolesffa.api.item.SPItem;
+import be.artex.rolesffa.api.ItemHolder;
+import be.artex.rolesffa.api.role.Role;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class DescriptionBuilder {
     private final String name;
 
     private double strength = 0;
-    private HashMap<PotionStyle, Integer> effects = null;
-    private SPItem[] items = null;
-    private String[] customs = null;
+    private final HashMap<PotionStyle, Integer> effects = new HashMap<>();
+    private final ArrayList<ItemHolder> items = new ArrayList<>();
+    private final ArrayList<String> customs = new ArrayList<>();
     private String onHit = null;
     private String onKill = null;
 
@@ -29,27 +31,20 @@ public class DescriptionBuilder {
     }
 
     public DescriptionBuilder effect(PotionEffect... effects) {
-        this.effects = new HashMap<>();
-
         for (PotionEffect effect : effects) {
-            if (effect.getType().equals(PotionEffectType.DAMAGE_RESISTANCE))
-                this.effects.put(PotionStyle.RESISTANCE, effect.getAmplifier());
-            else if (effect.getType().equals(PotionEffectType.SPEED))
-                this.effects.put(PotionStyle.SPEED, effect.getAmplifier());
-            else if (effect.getType().equals(PotionEffectType.FIRE_RESISTANCE))
-                this.effects.put(PotionStyle.FIRE_RESISTANCE, effect.getAmplifier());
+            this.effects.put(PotionStyle.EffectTypeAsStyle(effect.getType()), effect.getAmplifier());
         }
 
         return this;
     }
 
-    public DescriptionBuilder item(SPItem... items) {
-        this.items = items;
+    public DescriptionBuilder item(ItemHolder... items) {
+        Collections.addAll(this.items, items);
         return this;
     }
 
     public DescriptionBuilder custom(String... customs) {
-        this.customs = customs;
+        Collections.addAll(this.customs, customs);
         return this;
     }
 
@@ -63,49 +58,69 @@ public class DescriptionBuilder {
         return this;
     }
 
+    public DescriptionBuilder role(Role role) {
+        for (PotionEffect effect : role.getEffects()) {
+            effects.put(PotionStyle.EffectTypeAsStyle(effect.getType()), effect.getAmplifier());
+        }
+
+        items.addAll(role.getItems());
+
+        this.strength = role.getStrength();
+
+        return this;
+    }
+
     public TextComponent build() {
         TextComponent text = new TextComponent(Main.line);
-        text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Rôle: " + this.name + ChatColor.GRAY + ".\n");
+        text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Rôle: " + this.name + ChatColor.GRAY + ".");
         text.addExtra("\n");
 
-        if (strength > 0) {
-            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez " + ChatColor.RED + "+" + this.strength + "% de force" + ChatColor.GRAY + " de façon permanente.");
-            text.addExtra("\n");
+        if (strength == 0) {
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez " + ChatColor.RED + "+" + ((this.strength - 10) * 10) + "% de force" + ChatColor.GRAY + " de façon permanente.");
+        } else {
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous ne possédez aucune " + ChatColor.RED + "force" + ChatColor.GRAY + " supplémentaire.");
         }
 
-        if (effects != null) {
-            effects.forEach((effectStyle, amplifier) -> text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez " + effectStyle.getColor() + effectStyle.getName() + " " + (amplifier + 1) + ChatColor.GRAY + "."));
+        text.addExtra("\n");
 
-            text.addExtra("\n");
+        if (effects.isEmpty()) {
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous ne possédez aucun effet.");
+        } else {
+            effects.forEach((style, amplifier) ->
+                text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez " + style.getColor() + style.getName() + " " + (amplifier + 1) + ChatColor.GRAY + ".")
+            );
         }
 
-        if (items != null) {
-            for (SPItem item : items) {
+        text.addExtra("\n");
+
+        if (items.isEmpty()) {
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous ne possédez aucun item.");
+        } else {
+            items.forEach(item -> {
                 text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez ");
-                text.addExtra(item.getDescription());
+                text.addExtra(item.getItem().getDescription());
                 text.addExtra(ChatColor.GRAY + ".");
-            }
-
-            text.addExtra("\n");
+            });
         }
 
-        if (customs != null) {
+        if (!customs.isEmpty()) {
             for (String custom : customs) {
-                text.addExtra("\n" + Main.dot + custom);
                 text.addExtra("\n");
+                text.addExtra("\n" + Main.dot + custom);
             }
         }
 
         if (onHit != null) {
-            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tapperez " + ChatColor.GRAY + "une personne, " + this.onHit + ChatColor.GRAY + ".");
             text.addExtra("\n");
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tapperez " + ChatColor.GRAY + "une personne, " + this.onHit + ChatColor.GRAY + ".");
         }
 
         if (onKill != null) {
-            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tuerez " + ChatColor.GRAY + "une personne, " + this.onKill + ChatColor.GRAY + ".");
             text.addExtra("\n");
+            text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Quand vous " + ChatColor.RED + "tuerez " + ChatColor.GRAY + "une personne, " + this.onKill + ChatColor.GRAY + ".");
         }
 
+        text.addExtra("\n");
         text.addExtra(Main.line);
 
         return text;

@@ -1,4 +1,4 @@
-package be.artex.rolesffa.role.technique.shoto.items;
+package be.artex.rolesffa.role.technique.shoto;
 
 import be.artex.rolesffa.Cooldown;
 import be.artex.rolesffa.Main;
@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.UUID;
 
 public class Ice extends SPItem {
-
     public static List<UUID> playersInIce = new ArrayList<>();
 
     @Override

@@ -1,6 +1,7 @@
-package be.artex.rolesffa.role.technique;
+package be.artex.rolesffa.role.technique.cupidon;
 
 import be.artex.rolesffa.Stacks;
+import be.artex.rolesffa.api.ItemHolder;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
@@ -12,12 +13,10 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-public class Cupidon extends Role {
-    @Override
-    public String getName() {
-        return ChatColor.YELLOW + "Cupidon Rancunier";
-    }
+import java.util.Collections;
+import java.util.List;
 
+public class Cupidon extends Role {
     @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
@@ -44,9 +43,14 @@ public class Cupidon extends Role {
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 
-        Role.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player, this);
 
         player.getInventory().setItem(0, new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
         player.getInventory().setItem(7, Stacks.PHILTRUM);
+    }
+
+    @Override
+    public List<ItemHolder> getItems() {
+        return Collections.singletonList(new ItemHolder(new Philitrum(), 8));
     }
 }

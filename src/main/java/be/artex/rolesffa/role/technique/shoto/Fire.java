@@ -1,4 +1,4 @@
-package be.artex.rolesffa.role.technique.shoto.items;
+package be.artex.rolesffa.role.technique.shoto;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;

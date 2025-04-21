@@ -1,4 +1,4 @@
-package be.artex.rolesffa.role.technique.kyojuro;
+package be.artex.rolesffa.role.technique.cupidon;
 
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.item.SPItem;
@@ -8,17 +8,17 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
-public class SouffleFeu extends SPItem {
+public class Philitrum extends SPItem {
     @Override
     public ItemStack getItemStack() {
-        return Stacks.SOUFFLEFEU;
+        return Stacks.PHILTRUM;
     }
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(ChatColor.GRAY + "un arc " + ChatColor.GOLD + "flame I");
+        TextComponent description = new TextComponent(getItemStack().getItemMeta().getDisplayName());
         HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(ChatColor.GOLD + "Arc" + "\n" +
-                ChatColor.GRAY + "Flame I\n" +
+                ChatColor.GRAY + "Punch I\n" +
                 ChatColor.GRAY + "Power III")});
 
         description.setHoverEvent(event);

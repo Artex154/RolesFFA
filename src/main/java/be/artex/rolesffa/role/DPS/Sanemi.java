@@ -1,37 +1,30 @@
 package be.artex.rolesffa.role.DPS;
 
+import be.artex.rolesffa.api.ItemHolder;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.item.lame.Lame;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 public class Sanemi extends Role {
-
     public static final HashMap<UUID, Integer> playerSpeedKills = new HashMap<>();
-
-    @Override
-    public String getName() {
-        return ChatColor.RED + "Sanemi";
-    }
 
     @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
-                .strength(25)
-                .item(new Lame())
-                .onHit(ChatColor.GRAY + "vous gagnerez " + ChatColor.YELLOW + "7%" + ChatColor.GRAY + " de " + ChatColor.YELLOW + "vitesse")
+                .role(this)
+                .onKill(ChatColor.GRAY + "vous gagnerez " + ChatColor.YELLOW + "7%" + ChatColor.GRAY + " de " + ChatColor.YELLOW + "vitesse")
                 .build();
     }
 
@@ -54,13 +47,17 @@ public class Sanemi extends Role {
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 
-        Role.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player, this);
+    }
 
-        player.getInventory().addItem(Stacks.LAME_DE_NICHIRINE);
+    @Override
+    public Float getStrength() {
+        return 12.5f;
+    }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
-
-        Strength.playerStrength.put(player.getUniqueId(), 12.5f);
+    @Override
+    public List<ItemHolder> getItems() {
+        return Collections.singletonList(new ItemHolder(new Lame()));
     }
 
     @Override

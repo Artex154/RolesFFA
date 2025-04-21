@@ -1,6 +1,6 @@
 package be.artex.rolesffa.listener.player;
 
-import be.artex.rolesffa.role.technique.shoto.items.Ice;
+import be.artex.rolesffa.role.technique.shoto.Ice;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

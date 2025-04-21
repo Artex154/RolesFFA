@@ -14,23 +14,16 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.UUID;
+import java.util.*;
 
 public class Killua extends Role {
     public static final HashMap<UUID, Integer> playerHitNumber = new HashMap<>();
     public static final ArrayList<UUID> playerWithSpeed = new ArrayList<>();
 
     @Override
-    public String getName() {
-        return ChatColor.RED + "Killua";
-    }
-
-    @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
-                .effect(new PotionEffect(PotionEffectType.SPEED, 20, 0))
+                .role(this)
                 .custom(ChatColor.GRAY + "Après votre " + ChatColor.AQUA + "dixième coup" + ChatColor.GRAY + ", vous faites apparaitre " + ChatColor.AQUA + "un éclaire" + ChatColor.GRAY + " qui fait " + ChatColor.RED + "1,5 coeurs de dégats" + ChatColor.GRAY + " et donne " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " pendant" + ChatColor.YELLOW + " 4 secondes" + ChatColor.GRAY + ".")
                 .build();
     }
@@ -54,9 +47,12 @@ public class Killua extends Role {
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 
-        Role.setPlayerRole(player.getUniqueId(), this);
+        Role.setPlayerRole(player, this);
+    }
 
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
+    @Override
+    public List<PotionEffect> getEffects() {
+        return Collections.singletonList(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 0));
     }
 
     @Override

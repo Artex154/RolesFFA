@@ -55,15 +55,6 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ")
             .build();
 
-    public static final ItemStack SABITO = new ItemBuilder<>(new ItemStack(Material.IRON_SWORD))
-            .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Sabito")
-            .setLore(" ",
-                    Main.dot + ChatColor.GRAY + "Il possède " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + ".", " ",
-                    Main.dot + ChatColor.GRAY + "Il possède son " + ChatColor.AQUA + "dash" + ChatColor.GRAY + ".",
-                    Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".", " ",
-                    Main.dot + ChatColor.GRAY + "Ses bottes possèdent " + ChatColor.BLUE + "depth strider 2" + ChatColor.GRAY + ".", " ")
-            .build();
-
     public static final ItemStack CUPIDON = new ItemBuilder<>(new ItemStack(Material.BOW))
             .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Cupidon Rancunier")
             .setLore(" ",
@@ -203,10 +194,6 @@ public class Stacks {
             .addEnchant(Enchantment.ARROW_KNOCKBACK, 1)
             .build();
 
-    public static ItemStack SABITO_DASH = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
-            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Dash")
-            .build();
-
     public static ItemStack PURGATOIRE = new ItemBuilder<>(new ItemStack(Material.MAGMA_CREAM))
             .addEnchant(Enchantment.ARROW_KNOCKBACK, 1)
             .addItemFlags(ItemFlag.HIDE_ENCHANTS)
@@ -223,7 +210,6 @@ public class Stacks {
             .build();
 
     public static final ItemStack SOUFFLEFEU = new ItemBuilder<>(new ItemStack(Material.BOW))
-            .displayName(ChatColor.GOLD + "Souffle du Feu")
             .addEnchant(Enchantment.ARROW_DAMAGE, 3)
             .addEnchant(Enchantment.ARROW_FIRE, 1)
             .build();

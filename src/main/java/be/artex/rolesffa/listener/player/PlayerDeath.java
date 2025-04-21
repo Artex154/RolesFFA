@@ -6,9 +6,8 @@ import be.artex.rolesffa.role.tank.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
 import be.artex.rolesffa.role.technique.kyojuro.Purgatoire;
-import be.artex.rolesffa.role.technique.sabito.Dash;
 import be.artex.rolesffa.item.lame.Lame;
-import be.artex.rolesffa.role.technique.shoto.items.Ice;
+import be.artex.rolesffa.role.technique.shoto.Ice;
 import be.artex.rolesffa.role.technique.tomura.mains.Mains;
 import be.artex.rolesffa.role.DPS.Killua;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
@@ -33,7 +32,6 @@ public class PlayerDeath implements Listener {
         Cooldown.removePlayerFromAllCooldowns(player.getUniqueId());
         Cooldown.removePlayerFromAllCooldowns(killer.getUniqueId());
 
-        Dash.playerWithSpeed.remove(player.getUniqueId());
         Mains.playerLosedItems.put(player.getUniqueId(), null);
         Unbreakable.playerWithResistance.remove(player.getUniqueId());
         Ice.playersInIce.remove(player.getUniqueId());
@@ -46,7 +44,7 @@ public class PlayerDeath implements Listener {
         Kyojuro.playerHalfHearts.remove(player.getUniqueId());
         Purgatoire.purgatoireLevel.put(player.getUniqueId(), 0);
 
-        Role.setPlayerRole(player.getUniqueId(), null);
+        Role.setPlayerRole(player, null);
         Lame.setPlayerLame(player.getUniqueId(), null);
 
         int droppedArrow = 0;
