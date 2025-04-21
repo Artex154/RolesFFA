@@ -82,6 +82,10 @@ public final class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerEat(), this);
 
         initializeWorld(Bukkit.getWorlds().get(0));
+
+        Bukkit.getWorlds().get(0).setGameRuleValue("naturalRegeneration", "false");
+        Bukkit.getWorlds().get(0).setGameRuleValue("doDaylightCycle", "false");
+        Bukkit.getWorlds().get(0).setGameRuleValue("doMobSpawning", "false");
     }
     public static void initializeWorld(World world) {
         WorldBorder border = world.getWorldBorder();
