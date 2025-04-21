@@ -40,7 +40,7 @@ public class Kyojuro extends Role {
 
     @Override
     public int getPlacement() {
-        return 14;
+        return 12;
     }
 
     @Override
