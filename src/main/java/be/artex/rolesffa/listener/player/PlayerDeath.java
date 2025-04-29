@@ -44,7 +44,6 @@ public class PlayerDeath implements Listener {
         Kyojuro.playerHalfHearts.remove(player.getUniqueId());
         Purgatoire.purgatoireLevel.put(player.getUniqueId(), 0);
 
-        Role.setPlayerRole(player, null);
         Lame.setPlayerLame(player.getUniqueId(), null);
 
         int droppedArrow = 0;

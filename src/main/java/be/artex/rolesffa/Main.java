@@ -65,7 +65,7 @@ public final class Main extends JavaPlugin {
         Role.registerRole(new Shoto());
         Role.registerRole(new Muichiro());
         Role.registerRole(new Knuckles());
-        Role.registerRole(new Kyojuro());
+        // Role.registerRole(new Kyojuro());
         Role.registerRole(new Kokushibo());
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);

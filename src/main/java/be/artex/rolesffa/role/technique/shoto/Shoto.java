@@ -43,11 +43,6 @@ public class Shoto extends Role {
         Role.baseSetup(player, this);
 
         Role.setPlayerRole(player, this);
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
-
-        player.getInventory().addItem(Stacks.ICE);
-        player.getInventory().addItem(Stacks.FIRE);
     }
 
     @Override

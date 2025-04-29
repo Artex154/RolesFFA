@@ -41,8 +41,6 @@ public class Tomura extends Role {
         Role.baseSetup(player, this);
 
         Role.setPlayerRole(player, this);
-
-        player.getInventory().addItem(Stacks.MAINS);
     }
 
     @Override

@@ -48,8 +48,6 @@ public class Kyojuro extends Role {
         Role.baseSetup(player, this);
 
         Role.setPlayerRole(player, this);
-
-        player.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 0));
     }
 
     @Override

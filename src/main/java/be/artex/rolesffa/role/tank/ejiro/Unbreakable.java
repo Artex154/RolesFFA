@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Unbreakable extends SPItem {
-
     public static ArrayList<UUID> playerWithResistance = new ArrayList<>();
 
     @Override
