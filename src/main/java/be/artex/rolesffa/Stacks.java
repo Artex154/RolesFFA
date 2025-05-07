@@ -2,6 +2,7 @@ package be.artex.rolesffa;
 
 import be.raft.crafty.item.Item;
 import be.raft.crafty.item.ItemBuilder;
+import jdk.internal.icu.impl.CharTrie;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -120,6 +121,12 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Il possède une " + ChatColor.AQUA + "Lame de Nichirine" + ChatColor.GRAY + ".")
             .build();
 
+    public static final ItemStack IZUKU = new ItemBuilder<>(new ItemStack(Material.DIAMOND))
+            .displayName(ChatColor.YELLOW + "" + ChatColor.BOLD + "Izuku")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "Il possède le " + ChatColor.AQUA + "One For All" + ChatColor.GRAY + ".")
+            .build();
+
     public static final ItemStack LAME_DE_NICHIRINE = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
             .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "Lame de Nichirine")
             .setLore(ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:", " ",
@@ -207,6 +214,29 @@ public class Stacks {
                     Main.dot + ChatColor.GRAY + "Les coeurs sont redonnés après " + ChatColor.YELLOW + "1 minute" + ChatColor.GRAY + ".", " ",
                     Main.dot + ChatColor.GRAY + "En contre partie, vous perdrez" + ChatColor.LIGHT_PURPLE  + " 2 coeurs " + ChatColor.GRAY + "permanent pendant " + ChatColor.YELLOW + "1 minute 30" + ChatColor.GRAY + ".  ", " ",
                     Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 1x/kill" + ChatColor.GRAY + ".", " ")
+            .build();
+
+    public static ItemStack OFA = new ItemBuilder<>(new ItemStack(Material.NETHER_STAR))
+            .addEnchant(Enchantment.ARROW_KNOCKBACK, 1)
+            .addItemFlags(ItemFlag.HIDE_ENCHANTS)
+            .displayName(ChatColor.AQUA + "" + ChatColor.BOLD + "One For All")
+            .setLore(" ",
+                    Main.dot + ChatColor.GRAY + "En faissant un clique droit, vous ouvrerez un " + ChatColor.AQUA + "menu" + ChatColor.GRAY + ".",
+                    Main.dot + ChatColor.GRAY + "Dans le " + ChatColor.AQUA + "menu" + ChatColor.GRAY + " vous aurez des choix.", " ",
+                    Main.dot + ChatColor.AQUA + "5%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse" + ChatColor.GRAY + " pendant " + ChatColor.AQUA + "1 minute" + ChatColor.GRAY +  ".", " ",
+                    Main.dot + ChatColor.AQUA + "20%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse" + ChatColor.GRAY + " et "  + ChatColor.RED + "+10% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "45 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.DARK_GRAY + "slowness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "10 secondes" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.AQUA + "40%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " et "  + ChatColor.RED + "+5% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "45 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.DARK_GRAY + "slowness " + ChatColor.GRAY + "et " + ChatColor.DARK_GRAY + "weakness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "10 secondes" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.AQUA + "50%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " et "  + ChatColor.RED + "+10% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "45 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.DARK_GRAY + "slowness " + ChatColor.GRAY + "et " + ChatColor.DARK_GRAY + "weakness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "20 secondes" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.AQUA + "75%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse 1" + ChatColor.GRAY + " et "  + ChatColor.RED + "+20% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "40 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.DARK_GRAY + "slowness " + ChatColor.GRAY + "et " + ChatColor.DARK_GRAY + "weakness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "10 secondes" + ChatColor.GRAY + ".", " ",
+                    Main.dot + ChatColor.AQUA + "90%" + ChatColor.GRAY + " - " + ChatColor.RED + "+30% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "40 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.LIGHT_PURPLE + "-2 coeurs permanents " + ChatColor.GRAY + "et " + ChatColor.DARK_GRAY + "weakness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "20 secondes" + ChatColor.GRAY + ".        ", " ",
+                    Main.dot + ChatColor.AQUA + "100%" + ChatColor.GRAY + " - " + ChatColor.YELLOW + "vitesse 2" + ChatColor.GRAY + " et "  + ChatColor.RED + "+30% de force " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "20 secondes" + ChatColor.GRAY + ".",
+                    ChatColor.GRAY + "   Par la suite, vous aurez " + ChatColor.LIGHT_PURPLE + "-3 coeurs permanents " + ChatColor.GRAY + "et " + ChatColor.DARK_GRAY + "weakness " + ChatColor.GRAY + "pendant " + ChatColor.AQUA + "30 secondes" + ChatColor.GRAY + ".        ", " ",
+                    Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 80 secondes / choix" + ChatColor.GRAY + ".", " ")
             .build();
 
     public static final ItemStack SOUFFLEFEU = new ItemBuilder<>(new ItemStack(Material.BOW))

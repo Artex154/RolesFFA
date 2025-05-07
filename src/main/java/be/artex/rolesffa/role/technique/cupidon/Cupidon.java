@@ -46,6 +46,7 @@ public class Cupidon extends Role {
         Role.setPlayerRole(player, this);
 
         player.getInventory().setItem(0, new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
+        player.getInventory().addItem(Stacks.OFA);
     }
 
     @Override
