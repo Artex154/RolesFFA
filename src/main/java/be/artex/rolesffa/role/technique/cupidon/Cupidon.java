@@ -31,16 +31,6 @@ public class Cupidon extends Role {
     }
 
     @Override
-    public RoleType getType() {
-        return RoleType.TECHNIQUE;
-    }
-
-    @Override
-    public int getPlacement() {
-        return 11;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 

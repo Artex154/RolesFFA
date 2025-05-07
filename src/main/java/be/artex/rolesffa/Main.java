@@ -2,6 +2,7 @@ package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.item.SPItem;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.item.Choose;
 import be.artex.rolesffa.role.DPS.*;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
@@ -54,19 +55,19 @@ public final class Main extends JavaPlugin {
         SPItem.registerItem(new SouffleBrume());
         SPItem.registerItem(new Purgatoire());
 
-        Role.registerRole(new Sanemi());
-        Role.registerRole(new Gyomei());
-        Role.registerRole(new Tomura());
-        Role.registerRole(new Killua());
-        Role.registerRole(new Obanai());
-        Role.registerRole(new VPL());
-        Role.registerRole(new Cupidon());
-        Role.registerRole(new Ejiro());
-        Role.registerRole(new Shoto());
-        Role.registerRole(new Muichiro());
-        Role.registerRole(new Knuckles());
+        Role.registerRole(new Sanemi(), RoleType.DPS);
+        Role.registerRole(new Gyomei(), RoleType.TANK);
+        Role.registerRole(new Tomura(), RoleType.TECHNIQUE);
+        Role.registerRole(new Killua(), RoleType.DPS);
+        Role.registerRole(new Obanai(), RoleType.DPS);
+        Role.registerRole(new VPL(), RoleType.DPS);
+        Role.registerRole(new Cupidon(), RoleType.TECHNIQUE);
+        Role.registerRole(new Ejiro(), RoleType.TANK);
+        Role.registerRole(new Shoto(), RoleType.TECHNIQUE);
+        Role.registerRole(new Muichiro(), RoleType.DPS);
+        Role.registerRole(new Knuckles(), RoleType.DPS);
         // Role.registerRole(new Kyojuro());
-        Role.registerRole(new Kokushibo());
+        Role.registerRole(new Kokushibo(), RoleType.DPS);
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerQuit(), this);

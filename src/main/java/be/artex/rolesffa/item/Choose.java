@@ -24,19 +24,18 @@ public class Choose extends SPItem {
 
     @Override
     public void onClick(PlayerInteractEvent event) {
-        inv.setItem(0, Stacks.border());
-        inv.setItem(1, Stacks.border());
-        inv.setItem(7, Stacks.border());
-        inv.setItem(8, Stacks.border());
-        inv.setItem(9, Stacks.border());
-        inv.setItem(17, Stacks.border());
-        inv.setItem(18, Stacks.border());
-        inv.setItem(19, Stacks.border());
-        inv.setItem(25, Stacks.border());
-        inv.setItem(26, Stacks.border());
+        int[] slots = {0, 1, 7, 8, 9, 17, 18, 19, 25, 26};
 
-        for (RoleType team : RoleType.values())
-            inv.setItem(team.getPlacement(), team.getItemStack());
+        for (int i : slots) {
+            inv.setItem(i, Stacks.border());
+        }
+
+        int i = 12;
+
+        for (RoleType team : RoleType.values()) {
+            inv.setItem(i, team.getItemStack());
+            i++;
+        }
 
         event.getPlayer().openInventory(inv);
 

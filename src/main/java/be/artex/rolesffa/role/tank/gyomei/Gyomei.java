@@ -30,16 +30,6 @@ public class Gyomei extends Role {
     }
 
     @Override
-    public RoleType getType() {
-        return RoleType.TANK;
-    }
-
-    @Override
-    public int getPlacement() {
-        return 11;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 

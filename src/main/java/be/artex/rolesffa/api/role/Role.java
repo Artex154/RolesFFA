@@ -25,14 +25,11 @@ public abstract class Role {
 
     public abstract @NotNull TextComponent getDescription();
     public abstract @NotNull ItemStack getItemStack();
-    public abstract @NotNull RoleType getType();
-    public abstract int getPlacement();
+    public abstract void onAssigned(Player player);
 
     public @NotNull String getName() {
         return getItemStack().getItemMeta().getDisplayName();
     }
-
-    public abstract void onAssigned(Player player);
 
     public List<PotionEffect> getEffects() {
         return Collections.emptyList();
@@ -96,8 +93,9 @@ public abstract class Role {
             player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
     }
 
-    public static void registerRole(Role role) {
+    public static void registerRole(Role role, RoleType type) {
         registeredRoles.add(role);
+        type.getRoles().add(role);
     }
 
     public static void baseSetup(Player player, Role role) {

@@ -30,16 +30,6 @@ public class Obanai extends Role {
     }
 
     @Override
-    public RoleType getType() {
-        return RoleType.DPS;
-    }
-
-    @Override
-    public int getPlacement() {
-        return 12;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 

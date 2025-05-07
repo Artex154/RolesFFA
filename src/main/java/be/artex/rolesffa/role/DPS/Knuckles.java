@@ -27,16 +27,6 @@ public class Knuckles extends Role {
     }
 
     @Override
-    public RoleType getType() {
-        return RoleType.DPS;
-    }
-
-    @Override
-    public int getPlacement() {
-        return 15;
-    }
-
-    @Override
     public void onAssigned(Player player) {
         Role.baseSetup(player, this);
 
