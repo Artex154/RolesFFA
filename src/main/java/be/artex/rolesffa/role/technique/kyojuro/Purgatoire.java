@@ -28,20 +28,7 @@ public class Purgatoire extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(ChatColor.GRAY + "le " + getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En faissant un clique droit, vous gagnerez " + ChatColor.YELLOW + "Speed II" + ChatColor.GRAY + ". \n" +
-                Main.dot + ChatColor.GRAY + "Quand vous infligerez un " + ChatColor.RED + "coup" + ChatColor.GRAY + " sur un joueur, vous le metterez en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ".      \n" +
-                Main.dot + ChatColor.GRAY + "Ces pouvoirs durent" + ChatColor.YELLOW + " 45 secondes" + ChatColor.GRAY + ".\n\n" +
-                Main.dot + ChatColor.GRAY + "En plus de mettre le joueur en " + ChatColor.GOLD + "feu" + ChatColor.GRAY + ", tout vos prochains coups dans les dix secondes qui suivent,    \n" +
-                ChatColor.GRAY + "   vous enlèverez " + ChatColor.LIGHT_PURPLE + "1 demi-coeur " + ChatColor.GRAY + "permanent au joueur tappé.\n" +
-                Main.dot + ChatColor.GRAY + "Les coeurs sont redonnés après " + ChatColor.YELLOW + "1 minute" + ChatColor.GRAY + ".\n\n" +
-                Main.dot + ChatColor.GRAY + "En contre partie, vous perdrez" + ChatColor.LIGHT_PURPLE  + " 2 coeurs " + ChatColor.GRAY + "permanent pendant " + ChatColor.YELLOW + "1 minute 30" + ChatColor.GRAY + ".\n\n" +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 1x/kill" + ChatColor.GRAY + ".\n")});
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "le");
     }
 
     @Override

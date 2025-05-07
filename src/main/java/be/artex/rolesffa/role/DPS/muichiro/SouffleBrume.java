@@ -25,15 +25,7 @@ public class SouffleBrume extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(ChatColor.GRAY + "le " + getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En faissant un clique droit, vous infligerez " + ChatColor.DARK_GRAY + "blindness I et weakness I" + ChatColor.GRAY + " pendant " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".   \n " +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".\n"
-        )});
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "le");
     }
 
     @Override

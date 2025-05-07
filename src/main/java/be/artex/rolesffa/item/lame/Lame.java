@@ -34,18 +34,7 @@ public class Lame extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(ChatColor.GRAY + "une " + getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() +
-                "\n" + ChatColor.GRAY + "Clique droit pour avoir une lame aléatoire entre:       \n\n" +
-                Main.dot + "Lame de Force (+5% de dégats)\n" +
-                Main.dot + ChatColor.YELLOW + "Lame de Vitesse (+7% de vitesse)\n" +
-                Main.dot + ChatColor.LIGHT_PURPLE + "Lame de Vie (+2 coeurs)\n" +
-                Main.dot + ChatColor.GRAY + "Lame de Résistance (+5% de résistance)\n" +
-                Main.dot + ChatColor.GREEN + "Lame de NoFall\n")
-                });
-
-        description.setHoverEvent(event);
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "une");
     }
 
     @Override

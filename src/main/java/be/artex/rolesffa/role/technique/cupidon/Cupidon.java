@@ -20,7 +20,8 @@ public class Cupidon extends Role {
     @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
-                .custom(ChatColor.GRAY + "Vous possédez votre" + ChatColor.GREEN + " Philtrum" + ChatColor.GRAY + " et une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
+                .role(this)
+                .custom(ChatColor.GRAY + "Vous possédez une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
                 .build();
     }
 

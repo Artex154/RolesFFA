@@ -30,17 +30,7 @@ public class Ice extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(getItemStack().getItemMeta().getDisplayName());
-
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{
-                new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n\n" +
-                        Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un joueur, vous faites apparaitre un cocon de " + ChatColor.AQUA + "glace" + ChatColor.GRAY + " autour de lui.     \n" +
-                        Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 70 secondes" + ChatColor.GRAY + ".\n  ")
-        });
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "votre");
     }
 
     @Override

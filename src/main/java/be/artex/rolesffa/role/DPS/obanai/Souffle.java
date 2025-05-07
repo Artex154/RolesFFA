@@ -24,15 +24,7 @@ public class Souffle extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(ChatColor.GRAY + "le " + Stacks.SOUFFLE.getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(Stacks.SOUFFLE.getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En tappant quelqu'un, vous lui infligerez " + ChatColor.GREEN + "poison 2" + ChatColor.GRAY + " pendant " + ChatColor.GREEN + "5 secondes " + ChatColor.GRAY + ".      \n" +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".\n"
-        )});
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "le");
     }
 
     @Override

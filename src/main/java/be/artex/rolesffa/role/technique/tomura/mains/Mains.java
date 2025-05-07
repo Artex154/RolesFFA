@@ -26,15 +26,7 @@ public class Mains extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(Stacks.MAINS.getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(Stacks.MAINS.getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "quelqu'un, vous " + ChatColor.AQUA + "désactiverez son item" + ChatColor.GRAY + " pendant " +  ChatColor.YELLOW + "5 secondes" + ChatColor.GRAY + ".    \n" +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 40 secondes" + ChatColor.GRAY + ".\n"
-        )});
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "vos");
     }
 
     @Override

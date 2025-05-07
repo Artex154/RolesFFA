@@ -27,19 +27,6 @@ public class Unbreakable extends SPItem {
     }
 
     @Override
-    public TextComponent getDescription() {
-        TextComponent description = new TextComponent(getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(getItemStack().getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "recevrez" + ChatColor.DARK_GRAY + " weakness 1" + ChatColor.GRAY + " et resistance 2 pendant " + ChatColor.YELLOW + " 7 secondes" + ChatColor.GRAY + ".    \n\n" +
-                Main.dot + ChatColor.GRAY + "Cooldown:" + ChatColor.YELLOW + " 80 secondes" + ChatColor.GRAY + ".\n"
-        )});
-
-        description.setHoverEvent(event);
-
-        return description;
-    }
-
-    @Override
     public void onClick(PlayerInteractEvent event) {
         Cooldown cooldown = Cooldown.get("unbreakable");
 

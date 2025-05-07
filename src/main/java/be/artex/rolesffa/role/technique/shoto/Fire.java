@@ -19,19 +19,7 @@ public class Fire extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        TextComponent description = new TextComponent(getItemStack().getItemMeta().getDisplayName());
-
-        String hoverText = getItemStack().getItemMeta().getDisplayName() + "\n\n" +
-                Main.dot + ChatColor.GRAY + "En " + ChatColor.RED + "tappant " + ChatColor.GRAY +
-                "un joueur, vous " + ChatColor.GOLD + "enflammerez" + ChatColor.GRAY + " le joueur.   \n ";
-
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-                new BaseComponent[]{new TextComponent(hoverText)}
-        );
-
-        description.setHoverEvent(event);
-
-        return description;
+        return SPItem.getItemDescription(getItemStack(), "votre");
     }
 
     @Override
