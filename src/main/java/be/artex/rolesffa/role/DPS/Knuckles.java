@@ -16,7 +16,7 @@ public class Knuckles extends Role {
     @Override
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
-                .strength(11.5f)
+                .role(this)
                 .onHit("vous avez " + ChatColor.AQUA + "10% de chance" + ChatColor.GRAY + " de mettre en " + ChatColor.GOLD + "feu")
                 .build();
     }

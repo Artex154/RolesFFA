@@ -18,13 +18,6 @@ import java.util.List;
 
 public class Muichiro extends Role {
     @Override
-    public TextComponent getDescription() {
-        return new DescriptionBuilder(getName())
-                .role(this)
-                .build();
-    }
-
-    @Override
     public ItemStack getItemStack() {
         return Stacks.MUICHIRO;
     }

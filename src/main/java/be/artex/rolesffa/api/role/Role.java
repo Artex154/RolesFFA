@@ -2,6 +2,7 @@ package be.artex.rolesffa.api.role;
 
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.ItemHolder;
+import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.listener.player.playerDamagePlayer.Strength;
 import be.artex.rolesffa.scoreboard.ScoreboardManagement;
 import be.raft.crafty.item.ItemBuilder;
@@ -23,12 +24,13 @@ public abstract class Role {
     public static ArrayList<Role> registeredRoles = new ArrayList<>();
     public static HashMap<UUID, Role> playerRoles = new HashMap<>();
 
-    public abstract @NotNull TextComponent getDescription();
     public abstract @NotNull ItemStack getItemStack();
     public abstract void onAssigned(Player player);
 
-    public @NotNull String getName() {
-        return getItemStack().getItemMeta().getDisplayName();
+    public @NotNull TextComponent getDescription() {
+        return new DescriptionBuilder(getName())
+                .role(this)
+                .build();
     }
 
     public List<PotionEffect> getEffects() {
@@ -37,6 +39,10 @@ public abstract class Role {
 
     public List<ItemHolder> getItems() {
         return Collections.emptyList();
+    }
+
+    public @NotNull String getName() {
+        return getItemStack().getItemMeta().getDisplayName();
     }
 
     public Float getStrength() {

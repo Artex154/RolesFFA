@@ -22,13 +22,6 @@ public class Kyojuro extends Role {
     public static final ArrayList<UUID> playerHalfHearts = new ArrayList<>();
 
     @Override
-    public TextComponent getDescription() {
-        return new DescriptionBuilder(getName())
-                .role(this)
-                .build();
-    }
-
-    @Override
     public ItemStack getItemStack() {
         return Stacks.KYOJURO;
     }

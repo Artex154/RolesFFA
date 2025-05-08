@@ -5,6 +5,7 @@ import be.artex.rolesffa.api.ItemHolder;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.item.T4;
 import be.raft.crafty.item.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -21,7 +22,7 @@ public class Cupidon extends Role {
     public TextComponent getDescription() {
         return new DescriptionBuilder(getName())
                 .role(this)
-                .custom(ChatColor.GRAY + "Vous possédez une " + ChatColor.AQUA + "épée tranchant 4" + ChatColor.GRAY + ".")
+                .item(new ItemHolder(new T4()))
                 .build();
     }
 
@@ -37,7 +38,6 @@ public class Cupidon extends Role {
         Role.setPlayerRole(player, this);
 
         player.getInventory().setItem(0, new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 4).build());
-        player.getInventory().addItem(Stacks.OFA);
     }
 
     @Override

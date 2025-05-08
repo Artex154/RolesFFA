@@ -16,13 +16,6 @@ import java.util.List;
 
 public class Ejiro extends Role {
     @Override
-    public TextComponent getDescription() {
-        return new DescriptionBuilder(getName())
-                .role(this)
-                .build();
-    }
-
-    @Override
     public ItemStack getItemStack() {
         return Stacks.EJIRO;
     }
