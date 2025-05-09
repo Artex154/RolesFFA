@@ -2,10 +2,7 @@ package be.artex.rolesffa.role.technique.shoto;
 
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.ItemHolder;
-import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.builder.description.DescriptionBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -35,6 +32,6 @@ public class Shoto extends Role {
 
     @Override
     public List<ItemHolder> getItems() {
-        return Arrays.asList(new ItemHolder(new Fire()), new ItemHolder(new Ice()));
+        return Arrays.asList(ItemHolder.inHand(new Fire()), ItemHolder.inHand(new Ice()));
     }
 }

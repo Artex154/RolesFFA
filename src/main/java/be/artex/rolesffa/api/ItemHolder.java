@@ -8,22 +8,22 @@ public class ItemHolder {
     private final int slot;
     private final EquipmentSlot armor;
 
-    public ItemHolder(SPItem item, EquipmentSlot armor) {
+    private ItemHolder(SPItem item, int slot, EquipmentSlot armor) {
         this.item = item;
-        this.slot = 0;
+        this.slot = slot;
         this.armor = armor;
     }
 
-    public ItemHolder(SPItem item, int slot) {
-        this.item = item;
-        this.slot = slot;
-        this.armor = EquipmentSlot.HAND;
+    public static ItemHolder asArmor(SPItem item, EquipmentSlot slot) {
+        return new ItemHolder(item, 0, slot);
     }
 
-    public ItemHolder(SPItem item) {
-        this.item = item;
-        this.slot = 0;
-        this.armor = EquipmentSlot.HAND;
+    public static ItemHolder inHand(SPItem item, int slot) {
+        return new ItemHolder(item, slot, EquipmentSlot.HAND);
+    }
+
+    public static ItemHolder inHand(SPItem item) {
+        return new ItemHolder(item, 0, EquipmentSlot.HAND);
     }
 
     public SPItem getItem() {

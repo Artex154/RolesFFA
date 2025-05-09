@@ -5,7 +5,6 @@ import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.Stacks;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,66 +13,82 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class InventoryClick implements Listener {
-
-    public static Inventory inv = Bukkit.createInventory(null, 36, "Rôles");
+    private static final Inventory INV = Bukkit.createInventory(null, 36, "Rôles");
+    private static final int[] BORDER_SLOTS = {0, 1, 7, 8, 9, 17, 18, 26, 27, 28, 34, 35};
 
     @EventHandler
     public void onInventoryClick(InventoryClickEvent event) {
-        if (event.getCurrentItem() == null)
+        ItemStack stack = event.getCurrentItem();
+
+        if (stack == null)
             return;
 
-        if (event.getCurrentItem().equals(Stacks.border())) {
+        if (stack.equals(Stacks.border())) {
             event.setCancelled(true);
             return;
         }
 
-        RoleType foundTeam = null;
+        RoleType type = findRoleType(stack);
 
-        for (RoleType team : RoleType.values()) {
-            if (team.getItemStack().equals(event.getCurrentItem())) {
-                foundTeam = team;
-                System.out.println(team.getItemStack().getItemMeta().getDisplayName());
-                break;
-            }
+        if (type != null) {
+            openRoleInventory(event, type);
+            return;
         }
 
-        if (foundTeam != null) {
-            inv.clear();
+        Role role = findRole(stack);
 
-            int[] slots = {0, 1, 7, 8, 9, 17, 18, 26, 27, 28, 34, 35};
+        if (role != null)
+            assignRole(role, event);
+    }
 
-            for (int i : slots) {
-                inv.setItem(i, Stacks.border());
-            }
+    private static RoleType findRoleType(ItemStack stack) {
+        for (RoleType type : RoleType.values()) {
+            if (!stack.equals(type.getItemStack()))
+                continue;
 
-            int i = 10;
-
-            for (Role role : foundTeam.getRoles()) {
-                if (i == 18)
-                    i = 19;
-
-                inv.setItem(i, role.getItemStack());
-                i++;
-            }
-
-            event.getWhoClicked().closeInventory();
-
-            Bukkit.getScheduler().runTask(Main.instance, () -> event.getWhoClicked().openInventory(inv));
+            return type;
         }
 
-        Role foundRole = null;
+        return null;
+    }
 
+    private static Role findRole(ItemStack stack) {
         for (Role role : Role.registeredRoles) {
-            if (role.getItemStack().equals(event.getCurrentItem())) {
-                foundRole = role;
-                break;
-            }
+            if (!stack.equals(role.getItemStack()))
+                continue;
+
+            return role;
         }
 
-        if (foundRole != null) {
-            foundRole.onAssigned((Player) event.getWhoClicked());
-            event.getWhoClicked().closeInventory();
-            event.setCancelled(true);
+        return null;
+    }
+
+    private static void openRoleInventory(InventoryClickEvent event, RoleType type) {
+        INV.clear();
+
+        for (int i : BORDER_SLOTS)
+            INV.setItem(i, Stacks.border());
+
+        int index = 10;
+
+        for (Role role : type.getRoles()) {
+            if (index == 18)
+                index = 19;
+
+            INV.setItem(index++, role.getItemStack());
         }
+
+        event.getWhoClicked().closeInventory();
+
+        Bukkit.getScheduler().runTask(Main.instance, () -> event.getWhoClicked().openInventory(INV));
+    }
+
+    private static void assignRole(Role role, InventoryClickEvent event) {
+        Player player = (Player) event.getWhoClicked();
+
+        role.onAssigned(player);
+        player.closeInventory();
+
+        event.setCancelled(true);
     }
 }

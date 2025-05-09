@@ -2,7 +2,6 @@ package be.artex.rolesffa.role.DPS;
 
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.ItemHolder;
-import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.item.lame.Lame;
@@ -50,6 +49,6 @@ public class Kokushibo extends Role {
 
     @Override
     public List<ItemHolder> getItems() {
-        return Collections.singletonList(new ItemHolder(new Lame()));
+        return Collections.singletonList(ItemHolder.inHand(new Lame()));
     }
 }

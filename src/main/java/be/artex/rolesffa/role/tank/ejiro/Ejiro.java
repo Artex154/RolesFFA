@@ -2,10 +2,7 @@ package be.artex.rolesffa.role.tank.ejiro;
 
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.ItemHolder;
-import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -29,7 +26,7 @@ public class Ejiro extends Role {
 
     @Override
     public List<ItemHolder> getItems() {
-        return Collections.singletonList(new ItemHolder(new Unbreakable()));
+        return Collections.singletonList(ItemHolder.inHand(new Unbreakable()));
     }
 
     @Override

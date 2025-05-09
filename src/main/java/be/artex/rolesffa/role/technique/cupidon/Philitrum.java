@@ -17,7 +17,7 @@ public class Philitrum extends SPItem {
     @Override
     public TextComponent getDescription() {
         TextComponent description = new TextComponent(getItemStack().getItemMeta().getDisplayName());
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(ChatColor.GOLD + "Arc" + "\n" +
+        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(ChatColor.GREEN + "" + ChatColor.BOLD + "Philtrum" + "\n" +
                 ChatColor.GRAY + "Punch I\n" +
                 ChatColor.GRAY + "Power III")});
 

@@ -7,7 +7,6 @@ import be.artex.rolesffa.item.Choose;
 import be.artex.rolesffa.role.DPS.*;
 import be.artex.rolesffa.role.DPS.muichiro.Muichiro;
 import be.artex.rolesffa.role.DPS.muichiro.SouffleBrume;
-import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
 import be.artex.rolesffa.role.technique.kyojuro.Purgatoire;
 import be.artex.rolesffa.role.technique.shoto.Shoto;
 import be.artex.rolesffa.role.technique.shoto.Fire;

@@ -13,16 +13,18 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Role {
-    public static ArrayList<Role> registeredRoles = new ArrayList<>();
-    public static HashMap<UUID, Role> playerRoles = new HashMap<>();
+    public static List<Role> registeredRoles = new ArrayList<>();
+    public static Map<UUID, Role> playerRoles = new HashMap<>();
 
     public abstract @NotNull ItemStack getItemStack();
     public abstract void onAssigned(Player player);
@@ -56,8 +58,10 @@ public abstract class Role {
     }
 
     public static Role getPlayerRole(UUID uuid) {
-        if (playerRoles.get(uuid) != null)
-            return playerRoles.get(uuid);
+        Role role = playerRoles.get(uuid);
+
+        if (role != null)
+            return role;
 
         Main.instance.getLogger().warning(uuid.toString() + " (" + Bukkit.getPlayer(uuid).getName() + ")" + " has no role.");
 
@@ -65,6 +69,8 @@ public abstract class Role {
     }
 
     public static void setPlayerRole(Player player, Role role) {
+        float roleStrength = role.getStrength();
+
         playerRoles.put(player.getUniqueId(), role);
 
         for (PotionEffect effect : role.getEffects()) {
@@ -78,30 +84,35 @@ public abstract class Role {
             switch (holder.getArmor()) {
                 case FEET:
                     inv.setBoots(stack);
+                    break;
                 case LEGS:
                     inv.setLeggings(stack);
+                    break;
                 case CHEST:
                     inv.setChestplate(stack);
+                    break;
                 case HEAD:
                     inv.setHelmet(stack);
+                    break;
                 case HAND:
                     if (holder.getSlot() == 0)
                         inv.addItem(stack);
                     else
                         inv.setItem(holder.getSlot() - 1, stack);
+                    break;
             }
 
         }
 
-        Strength.playerStrength.put(player.getUniqueId(), role.getStrength());
+        Strength.playerStrength.put(player.getUniqueId(), roleStrength);
 
-        if (role.getStrength() != 10f)
+        if (roleStrength != 10f)
             player.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, Integer.MAX_VALUE, 0));
     }
 
     public static void registerRole(Role role, RoleType type) {
         registeredRoles.add(role);
-        type.getRoles().add(role);
+        type.addRole(role);
     }
 
     public static void baseSetup(Player player, Role role) {
@@ -111,7 +122,7 @@ public abstract class Role {
 
         player.setGameMode(GameMode.SURVIVAL);
 
-        Random random = new Random();
+        Random random = ThreadLocalRandom.current();
         Location location = new Location(Bukkit.getWorlds().get(0), random.nextInt(100), 0, random.nextInt(100));
 
         location.setY(location.getWorld().getHighestBlockYAt(location));
@@ -123,25 +134,61 @@ public abstract class Role {
         ScoreboardManagement.openScoreboard(player);
     }
 
-    public static void setupInventory(PlayerInventory playerInventory) {
-        playerInventory.setHelmet(new ItemBuilder<>(new ItemStack(Material.DIAMOND_HELMET)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.setBoots(new ItemBuilder<>(new ItemStack(Material.DIAMOND_BOOTS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.setChestplate(new ItemBuilder<>(new ItemStack(Material.DIAMOND_CHESTPLATE)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2).build());
-        playerInventory.setLeggings(new ItemBuilder<>(new ItemStack(Material.IRON_LEGGINGS)).addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3).build());
+    public static void setupInventory(PlayerInventory inv) {
+        setArmorPiece(inv, EquipmentSlot.HEAD, Material.DIAMOND_HELMET, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+        setArmorPiece(inv, EquipmentSlot.CHEST, Material.DIAMOND_CHESTPLATE, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
+        setArmorPiece(inv, EquipmentSlot.LEGS, Material.IRON_LEGGINGS, Enchantment.PROTECTION_ENVIRONMENTAL, 3);
+        setArmorPiece(inv, EquipmentSlot.FEET, Material.DIAMOND_BOOTS, Enchantment.PROTECTION_ENVIRONMENTAL, 2);
 
-        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD)).addEnchant(Enchantment.DAMAGE_ALL, 3).build());
-        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.DIAMOND_PICKAXE)).addEnchant(Enchantment.DIG_SPEED, 3).build());
-        playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));
-        playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
-        playerInventory.addItem(new ItemStack(Material.GOLDEN_APPLE, 14));
-        playerInventory.addItem(new ItemStack(Material.GOLDEN_CARROT, 64));
-        playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));
-        playerInventory.addItem(new ItemBuilder<>(new ItemStack(Material.BOW)).addEnchant(Enchantment.ARROW_DAMAGE, 3).build());
-        playerInventory.addItem(new ItemStack(Material.WATER_BUCKET));
-        playerInventory.addItem(new ItemStack(Material.WATER_BUCKET));
-        playerInventory.addItem(new ItemStack(Material.LAVA_BUCKET));
-        playerInventory.addItem(new ItemStack(Material.ARROW, 32));
-        playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
-        playerInventory.addItem(new ItemStack(Material.COBBLESTONE, 64));
+        addItem(inv, Material.DIAMOND_SWORD, Enchantment.DAMAGE_ALL, 3);
+        addItem(inv, Material.DIAMOND_PICKAXE, Enchantment.DIG_SPEED, 3);
+        addItem(inv, Material.LAVA_BUCKET);
+        addItem(inv, Material.COBBLESTONE, 64);
+        addItem(inv, Material.GOLDEN_APPLE, 16);
+        addItem(inv, Material.GOLDEN_CARROT, 64);
+        addItem(inv, Material.LAVA_BUCKET);
+        addItem(inv, Material.BOW, Enchantment.ARROW_DAMAGE, 3);
+        addItem(inv, Material.WATER_BUCKET);
+        addItem(inv, Material.LAVA_BUCKET);
+        addItem(inv, Material.ARROW, 32);
+        addItem(inv, Material.COBBLESTONE, 64);
+        addItem(inv, Material.COBBLESTONE, 64);
     }
+
+    private static void addItem(PlayerInventory inv, Material material) {
+        inv.addItem(new ItemStack(material));
+    }
+
+    private static void addItem(PlayerInventory inv, Material material, int amount) {
+        inv.addItem(new ItemStack(material, amount));
+    }
+
+    private static void addItem(PlayerInventory inv, Material material, Enchantment enchantment, int level) {
+        inv.addItem(new ItemBuilder<>(new ItemStack(material))
+                .addEnchant(enchantment, level)
+                .build());
+    }
+
+    private static void setArmorPiece(PlayerInventory inv, EquipmentSlot slot, Material material, Enchantment enchantment, int level) {
+        ItemStack stack = new ItemBuilder<>(new ItemStack(material))
+                .addEnchant(enchantment, level)
+                .build();
+
+        switch (slot) {
+            case FEET:
+                inv.setBoots(stack);
+                break;
+            case LEGS:
+                inv.setLeggings(stack);
+                break;
+            case CHEST:
+                inv.setChestplate(stack);
+                break;
+            case HEAD:
+                inv.setHelmet(stack);
+                break;
+        }
+    }
+
+
 }

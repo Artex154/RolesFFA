@@ -1,7 +1,6 @@
 package be.artex.rolesffa.role.DPS;
 
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import net.md_5.bungee.api.chat.TextComponent;

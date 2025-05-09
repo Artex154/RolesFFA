@@ -1,10 +1,7 @@
 package be.artex.rolesffa.item.lame;
 
-import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.item.SPItem;
 import be.artex.rolesffa.Stacks;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -34,7 +31,7 @@ public class Lame extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return SPItem.getItemDescription(getItemStack(), "une");
+        return SPItem.createItemDescription(getItemStack(), "une");
     }
 
     @Override

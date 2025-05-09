@@ -4,8 +4,6 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.item.SPItem;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.Cooldown;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -26,7 +24,7 @@ public class Mains extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return SPItem.getItemDescription(getItemStack(), "vos");
+        return SPItem.createItemDescription(getItemStack(), "vos");
     }
 
     @Override

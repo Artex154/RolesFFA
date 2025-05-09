@@ -16,18 +16,24 @@ public class EntityDamage implements Listener {
             return;
 
         Player player = (Player) event.getEntity();
+        UUID playerUUID = player.getUniqueId();
+        EntityDamageEvent.DamageCause cause = event.getCause();
 
-        if (event.getCause().equals(EntityDamageEvent.DamageCause.LIGHTNING)) {
-            event.setCancelled(true);
-            return;
+        switch (cause) {
+            case LIGHTNING:
+                event.setCancelled(true);
+                break;
+            case FALL:
+                checkLameVerte(playerUUID, event);
+                break;
         }
 
-        if (!event.getCause().equals(EntityDamageEvent.DamageCause.FALL))
-            return;
+    }
 
-        UUID playerUUID = player.getUniqueId();
+    private static void checkLameVerte (UUID uuid, EntityDamageEvent event) {
+        LameType lame = Lame.getPlayerLame(uuid);
 
-        if (Lame.getPlayerLame(playerUUID) != null && Lame.getPlayerLame(playerUUID).equals(LameType.NOFALL))
+        if (lame == LameType.NOFALL)
             event.setCancelled(true);
     }
 }

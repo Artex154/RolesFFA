@@ -2,15 +2,11 @@ package be.artex.rolesffa;
 
 import be.raft.crafty.item.Item;
 import be.raft.crafty.item.ItemBuilder;
-import jdk.internal.icu.impl.CharTrie;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Stacks {
     public static final ItemStack DPS = new ItemBuilder<>(new ItemStack(Material.DIAMOND_SWORD))
@@ -247,21 +243,6 @@ public class Stacks {
     public static final ItemStack CHOOSE_BOOK = new ItemBuilder<>(new ItemStack(Material.ENCHANTED_BOOK))
             .displayName(ChatColor.RESET + "Choisis ton rôle")
             .build();
-
-    public static ItemStack head(int amount) {
-        List<String> list = new ArrayList<>();
-        list.add(" ");
-        list.add(Main.dot + ChatColor.GRAY + "En faissant un clique, vous " + ChatColor.AQUA + "mangerez" + ChatColor.YELLOW + " la pomme " + ChatColor.GRAY + "et vous gagnerez " + ChatColor.YELLOW + "20% de vitesse" + ChatColor.GRAY + " et     ");
-        list.add(ChatColor.LIGHT_PURPLE + "régénération 2 " + ChatColor.GRAY + "et " + ChatColor.YELLOW + "absorption 2" + ChatColor.GRAY + " pendant 10 secondes.");
-        list.add(" ");
-
-        Item item = new Item(new ItemStack(Material.SKULL_ITEM));
-        item.setName(ChatColor.GOLD + "" + ChatColor.BOLD + "Golden Head");
-        item.setLore(list);
-        item.setAmount(amount);
-
-        return item.toItemStack();
-    }
 
     public static ItemStack border() {
         Item border = new Item(new ItemStack(Material.STAINED_GLASS_PANE, 1, (short) 3));

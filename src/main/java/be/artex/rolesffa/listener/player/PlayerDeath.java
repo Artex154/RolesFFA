@@ -1,7 +1,6 @@
 package be.artex.rolesffa.listener.player;
 
 import be.artex.rolesffa.Main;
-import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.role.tank.ejiro.Unbreakable;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.role.technique.kyojuro.Kyojuro;
@@ -63,12 +62,12 @@ public class PlayerDeath implements Listener {
 
         for (ItemStack itemStack : killer.getInventory()) {
             if (itemStack != null && itemStack.getType() != null) {
-                if (itemStack.getType() == Material.GOLDEN_APPLE && itemStack.getItemMeta() != Stacks.head(1).getItemMeta())
+                if (itemStack.getType() == Material.GOLDEN_APPLE)
                     killerGoldenApples += itemStack.getAmount();
             }
         }
 
-        killer.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
+        killer.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, (16 - killerGoldenApples)));
 
         if (role == null) {
             Main.instance.getLogger().warning(player.getUniqueId().toString() + " (" + player.getName() + ") died with no role");
@@ -77,9 +76,7 @@ public class PlayerDeath implements Listener {
             return;
         }
 
-        killer.getInventory().addItem(Stacks.head(1));
-
-        event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était: " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
+        event.setDeathMessage(Main.line + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été assassiné par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + "(" + Role.getPlayerRole(killer.getUniqueId()).getName() + ChatColor.GRAY + ").\nSon rôle était " + role.getName() + ChatColor.GRAY + ".\n" + Main.line);
 
         Role.getPlayerRole(killer.getUniqueId()).onPlayerKill(event);
 

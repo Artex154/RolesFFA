@@ -4,8 +4,6 @@ import be.artex.rolesffa.Cooldown;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.item.SPItem;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -30,7 +28,7 @@ public class Ice extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return SPItem.getItemDescription(getItemStack(), "votre");
+        return SPItem.createItemDescription(getItemStack(), "votre");
     }
 
     @Override

@@ -75,7 +75,7 @@ public class DescriptionBuilder {
         text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Rôle: " + this.name + ChatColor.GRAY + ".");
         text.addExtra("\n");
 
-        if (strength == 0) {
+        if (strength != 10) {
             text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous possédez " + ChatColor.RED + "+" + ((this.strength - 10) * 10) + "% de force" + ChatColor.GRAY + " de façon permanente.");
         } else {
             text.addExtra("\n" + Main.dot + ChatColor.GRAY + "Vous ne possédez aucune " + ChatColor.RED + "force" + ChatColor.GRAY + " supplémentaire.");

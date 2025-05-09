@@ -1,11 +1,8 @@
 package be.artex.rolesffa.role.DPS.muichiro;
 
 import be.artex.rolesffa.Cooldown;
-import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.item.SPItem;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -25,7 +22,7 @@ public class SouffleBrume extends SPItem {
 
     @Override
     public TextComponent getDescription() {
-        return SPItem.getItemDescription(getItemStack(), "le");
+        return SPItem.createItemDescription(getItemStack(), "le");
     }
 
     @Override

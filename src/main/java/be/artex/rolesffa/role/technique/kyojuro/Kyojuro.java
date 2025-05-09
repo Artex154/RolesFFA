@@ -3,11 +3,8 @@ package be.artex.rolesffa.role.technique.kyojuro;
 import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.ItemHolder;
-import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.builder.description.DescriptionBuilder;
 import be.artex.rolesffa.item.lame.Lame;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -40,7 +37,7 @@ public class Kyojuro extends Role {
 
     @Override
     public List<ItemHolder> getItems() {
-        return Arrays.asList(new ItemHolder(new SouffleFeu(), 8), new ItemHolder(new Purgatoire()), new ItemHolder(new Lame()));
+        return Arrays.asList(ItemHolder.inHand(new SouffleFeu(), 8), ItemHolder.inHand(new Purgatoire()), ItemHolder.inHand(new Lame()));
     }
 
     @Override
