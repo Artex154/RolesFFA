@@ -1,0 +1,70 @@
+package be.artex.rolesffa.api.builder.item;
+
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class ItemBuilder {
+    private final ItemStack stack;
+    private final ItemMeta meta;
+
+    private String name = "";
+    private int amount = 1;
+
+    private final List<String> lore = Collections.emptyList();
+    private final List<EnchantmentHolder> enchants = Collections.emptyList();
+
+    public ItemBuilder(ItemStack stack) {
+        this.stack = stack;
+        this.meta = this.stack.getItemMeta();
+    }
+
+    public ItemBuilder(Material material) {
+        this.stack = new ItemStack(material);
+        this.meta = this.stack.getItemMeta();
+    }
+
+    public ItemBuilder name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ItemBuilder amount(int amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    public ItemBuilder lore(String... strings) {
+        this.lore.addAll(Arrays.asList(strings));
+        return this;
+    }
+
+    public ItemBuilder addEnchant(EnchantmentHolder enchant) {
+        this.enchants.add(enchant);
+        return this;
+    }
+
+    public ItemBuilder addEnchant(Enchantment type, int level) {
+        this.enchants.add(new EnchantmentHolder(type, level));
+        return this;
+    }
+
+    public ItemStack build() {
+        this.meta.setDisplayName(this.name);
+        this.meta.setLore(this.lore);
+
+        this.enchants.forEach((enchant) ->
+                this.stack.addEnchantment(enchant.getType(), enchant.getLevel()));
+
+        this.stack.setAmount(this.amount);
+        this.stack.setItemMeta(this.meta);
+
+
+        return this.stack;
+    }
+}
