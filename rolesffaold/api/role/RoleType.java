@@ -1,3 +1,5 @@
+/*
+
 package be.artex.rolesffaold.api.role;
 
 import be.artex.rolesffaold.Stacks;
@@ -31,3 +33,5 @@ public enum RoleType {
         roles.add(role);
     }
 }
+
+ */

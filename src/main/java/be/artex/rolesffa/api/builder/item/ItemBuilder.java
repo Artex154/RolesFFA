@@ -2,6 +2,7 @@ package be.artex.rolesffa.api.builder.item;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -15,6 +16,8 @@ public class ItemBuilder {
 
     private String name = "";
     private int amount = 1;
+
+    private ItemFlag[] flags = {};
 
     private final List<String> lore = Collections.emptyList();
     private final List<EnchantmentHolder> enchants = Collections.emptyList();
@@ -44,8 +47,8 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder addEnchant(EnchantmentHolder enchant) {
-        this.enchants.add(enchant);
+    public ItemBuilder addEnchants(EnchantmentHolder... enchants) {
+        this.enchants.addAll(Arrays.asList(enchants));
         return this;
     }
 
@@ -54,9 +57,15 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder itemFlags(ItemFlag... flags) {
+        this.flags = flags;
+        return this;
+    }
+
     public ItemStack build() {
         this.meta.setDisplayName(this.name);
         this.meta.setLore(this.lore);
+        this.meta.addItemFlags(this.flags);
 
         this.enchants.forEach((enchant) ->
                 this.stack.addEnchantment(enchant.getType(), enchant.getLevel()));
