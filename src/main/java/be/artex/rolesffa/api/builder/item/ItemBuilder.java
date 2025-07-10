@@ -16,6 +16,7 @@ public class ItemBuilder {
 
     private String name = "";
     private int amount = 1;
+    private int durability = 0;
 
     private ItemFlag[] flags = {};
 
@@ -47,6 +48,11 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder durability(int durability) {
+        this.durability = durability;
+        return this;
+    }
+
     public ItemBuilder addEnchants(EnchantmentHolder... enchants) {
         this.enchants.addAll(Arrays.asList(enchants));
         return this;
@@ -73,6 +79,8 @@ public class ItemBuilder {
         this.stack.setAmount(this.amount);
         this.stack.setItemMeta(this.meta);
 
+       if (this.durability != 0)
+           this.stack.setDurability((short) this.durability);
 
         return this.stack;
     }
