@@ -1,6 +1,6 @@
 package be.artex.rolesffa.listener.entity.player;
 
-import be.artex.rolesffa.Items.PreItems;
+import be.artex.rolesffa.itemStacks.PreItems;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;

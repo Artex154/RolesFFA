@@ -1,11 +1,11 @@
-package be.artex.rolesffa.Items;
+package be.artex.rolesffa.itemStacks;
 
 import be.artex.rolesffa.api.builder.item.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-public enum PreItems {
+public enum PreItems implements ItemStacks {
     CHOOSE_BOOK(new ItemBuilder(Material.ENCHANTED_BOOK)
                     .name(ChatColor.GOLD + "" + ChatColor.BOLD + "Sélectionne un rôle")
                     .build()),
@@ -17,6 +17,7 @@ public enum PreItems {
         this.stack = stack;
     }
 
+    @Override
     public ItemStack getStack() {
         return stack.clone();
     }
