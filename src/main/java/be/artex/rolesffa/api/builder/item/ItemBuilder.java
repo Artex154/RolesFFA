@@ -75,7 +75,7 @@ public class ItemBuilder {
         this.meta.addItemFlags(this.flags);
 
         this.enchants.forEach((enchant) ->
-                this.stack.addEnchantment(enchant.getType(), enchant.getLevel()));
+                this.meta.addEnchant(enchant.getType(), enchant.getLevel(), true));
 
         this.stack.setAmount(this.amount);
         this.stack.setItemMeta(this.meta);
