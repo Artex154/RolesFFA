@@ -1,0 +1,47 @@
+package be.artex.rolesffa.listener.inventory;
+
+import be.artex.rolesffa.Main;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.role.RoleType;
+import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.gui.ChoiceOfRoleGUI;
+import be.artex.rolesffa.itemStacks.items.GuiItems;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+
+public class InventoryClick implements Listener {
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent event) {
+        ItemStack stack = event.getCurrentItem();
+
+        if (stack == null || stack.isSimilar(GuiItems.BORDER.getStack())) {
+            event.setCancelled(true);
+            return;
+        }
+
+        RoleType type = RoleUtils.getRoleTypeFromItem(stack);
+        Player player = (Player) event.getWhoClicked();
+
+        if (type != null) {
+            player.closeInventory();
+
+            Bukkit.getScheduler().runTask(Main.instance, () ->
+                    player.openInventory(ChoiceOfRoleGUI.getInventory(type))
+            );
+
+            return;
+        }
+
+        Role role = RoleUtils.getRoleFromItem(stack);
+
+        if (role != null) {
+            player.closeInventory();
+
+            RoleUtils.playerSetup(player, role);
+        }
+    }
+}

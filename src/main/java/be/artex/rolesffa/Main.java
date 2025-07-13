@@ -1,8 +1,14 @@
 package be.artex.rolesffa;
 
+import be.artex.rolesffa.api.item.RFItems;
+import be.artex.rolesffa.gui.ChoiceOfRoleTypeGUI;
 import be.artex.rolesffa.helper.WorldHelper;
+import be.artex.rolesffa.items.RoleSelection;
+import be.artex.rolesffa.listener.entity.player.PlayerInteract;
 import be.artex.rolesffa.listener.entity.player.PlayerJoin;
+import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
+import be.artex.rolesffa.roles.DPS.VPL;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
@@ -18,13 +24,21 @@ public class Main extends JavaPlugin {
         world = Bukkit.getWorlds().getFirst();
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
+        getServer().getPluginManager().registerEvents(new InventoryClick(), this);
 
         WorldHelper.initializeWorld(world);
 
         world.setGameRuleValue("naturalRegeneration", "false");
         world.setGameRuleValue("doDaylightCycle", "false");
         world.setGameRuleValue("doMobSpawning", "false");
+
+        ChoiceOfRoleTypeGUI.generateInventory();
+
+        RFItems.registerItem(new RoleSelection());
+
+        new VPL().register();
 
     }
 }
