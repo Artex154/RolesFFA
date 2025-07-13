@@ -6,6 +6,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -20,8 +21,8 @@ public class ItemBuilder {
 
     private ItemFlag[] flags = {};
 
-    private final List<String> lore = Collections.emptyList();
-    private final List<EnchantmentHolder> enchants = Collections.emptyList();
+    private final List<String> lore = new ArrayList<>();
+    private final List<EnchantmentHolder> enchants = new ArrayList<>();
 
     public ItemBuilder(ItemStack stack) {
         this.stack = stack;
