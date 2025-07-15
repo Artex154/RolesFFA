@@ -1,3 +1,8 @@
 name: RolesFFA
 version: '${version}'
 main: be.artex.rolesffa.Main
+commands:
+  rf:
+    description: all RolesFFA commands
+    usage: ""
+    permission: rolesffa.all.rf
