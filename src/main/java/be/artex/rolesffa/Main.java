@@ -1,9 +1,12 @@
 package be.artex.rolesffa;
 
 import be.artex.rolesffa.api.item.RFItems;
+import be.artex.rolesffa.commands.RFCommand;
+import be.artex.rolesffa.commands.subCommands.EffectsSubCommand;
 import be.artex.rolesffa.gui.ChoiceOfRoleTypeGUI;
 import be.artex.rolesffa.helper.WorldHelper;
 import be.artex.rolesffa.items.RoleSelection;
+import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
 import be.artex.rolesffa.listener.entity.player.PlayerInteract;
 import be.artex.rolesffa.listener.entity.player.PlayerJoin;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
@@ -25,8 +28,11 @@ public class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+
+        getCommand("rf").setExecutor(new RFCommand());
 
         WorldHelper.initializeWorld(world);
 
@@ -39,6 +45,8 @@ public class Main extends JavaPlugin {
         RFItems.registerItem(new RoleSelection());
 
         new VPL().register();
+
+        new EffectsSubCommand().register();
 
     }
 }
