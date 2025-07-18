@@ -7,8 +7,10 @@ import be.artex.rolesffa.gui.ChoiceOfRoleTypeGUI;
 import be.artex.rolesffa.helper.WorldHelper;
 import be.artex.rolesffa.items.RoleSelection;
 import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
+import be.artex.rolesffa.listener.entity.player.PlayerDeath;
 import be.artex.rolesffa.listener.entity.player.PlayerInteract;
 import be.artex.rolesffa.listener.entity.player.PlayerJoin;
+import be.artex.rolesffa.listener.entity.player.PlayerRespawn;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
 import be.artex.rolesffa.roles.DPS.VPL;
@@ -28,6 +30,8 @@ public class Main extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
         getServer().getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);

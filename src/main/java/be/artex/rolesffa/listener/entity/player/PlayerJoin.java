@@ -26,9 +26,6 @@ public class PlayerJoin implements Listener {
             player.removePotionEffect(effect.getType());
         }
 
-        player.setMaxHealth(20);
-        player.setHealth(20);
-        player.setWalkSpeed(0.2f);
         player.setGameMode(GameMode.ADVENTURE);
 
         player.teleport(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));

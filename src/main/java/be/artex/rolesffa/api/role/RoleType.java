@@ -14,25 +14,30 @@ public enum RoleType {
             .name(ChatColor.RED + "" + ChatColor.BOLD + "DPS")
             .durability(1)
             .build(),
-            "DPS"),
+            "DPS",
+            ChatColor.RED),
     TECHNIQUE(new ItemBuilder(Material.INK_SACK)
             .name(ChatColor.YELLOW + "" + ChatColor.BOLD + "TECHNIQUE")
             .durability(11)
             .build(),
-            "Techniques"),
+            "Techniques",
+            ChatColor.YELLOW),
     TANK(new ItemBuilder(Material.INK_SACK)
             .name(ChatColor.BLUE + "" + ChatColor.BOLD + "TANK")
             .durability(4)
             .build(),
-            "Tanks");
+            "Tanks",
+            ChatColor.BLUE);
 
     private final ItemStack item;
     private final String name;
+    private final ChatColor color;
     private final List<Role> roles;
 
-    RoleType(ItemStack item, String name) {
+    RoleType(ItemStack item, String name, ChatColor color) {
         this.item = item;
         this.name = name;
+        this.color = color;
         this.roles = new ArrayList<>();
     }
 
@@ -42,6 +47,10 @@ public enum RoleType {
 
     public String getName() {
         return name;
+    }
+
+    public ChatColor getColor() {
+        return color;
     }
 
     public List<Role> getRoles() {

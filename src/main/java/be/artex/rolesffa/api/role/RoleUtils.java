@@ -11,11 +11,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
 public class RoleUtils {
     private static final List<Role> roles = new ArrayList<>();
+    private static final HashMap<Player, Role> playerRole = new HashMap<>();
 
     public static RoleType getRoleTypeFromItem(ItemStack stack) {
         for (RoleType type : RoleType.values())
@@ -31,6 +33,14 @@ public class RoleUtils {
                 return role;
 
         return null;
+    }
+
+    public static Role getPlayerRole(Player player) {
+        return playerRole.getOrDefault(player, null);
+    }
+
+    public static void setPlayerRole(Player player, Role role) {
+        playerRole.put(player, role);
     }
 
     public static void addRole(Role role) {
@@ -57,6 +67,8 @@ public class RoleUtils {
         Strength.setPlayerStrength(player, role.getStrength());
 
         player.sendMessage(role.getDescription().getText());
+
+        setPlayerRole(player, role);
     }
 
     private static Location generateRandomLocation(World world) {
