@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 public class InventoryClick implements Listener {
@@ -18,15 +19,25 @@ public class InventoryClick implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         ItemStack stack = event.getCurrentItem();
 
-        if (stack == null || stack.isSimilar(GuiItems.BORDER.getStack())) {
+        if (stack == null)
+            return;
+
+        Player player = (Player) event.getWhoClicked();
+        Inventory inv = event.getClickedInventory();
+
+        if (inv.getHolder() != null && inv.getHolder().equals(player))
+            return;
+
+        if (stack.isSimilar(GuiItems.BORDER.getStack())) {
             event.setCancelled(true);
             return;
         }
 
         RoleType type = RoleUtils.getRoleTypeFromItem(stack);
-        Player player = (Player) event.getWhoClicked();
 
         if (type != null) {
+            event.setCancelled(true);
+
             player.closeInventory();
 
             Bukkit.getScheduler().runTask(Main.instance, () ->
@@ -39,6 +50,8 @@ public class InventoryClick implements Listener {
         Role role = RoleUtils.getRoleFromItem(stack);
 
         if (role != null) {
+            event.setCancelled(true);
+
             player.closeInventory();
 
             RoleUtils.playerSetup(player, role);
