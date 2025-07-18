@@ -10,6 +10,7 @@ import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
 import be.artex.rolesffa.listener.entity.player.*;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
+import be.artex.rolesffa.roles.DPS.Kokushibo;
 import be.artex.rolesffa.roles.DPS.VPL;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import be.artex.rolesffa.roles.technique.nagisa.Nagisa;
@@ -49,6 +50,7 @@ public class Main extends JavaPlugin {
         RFItem.registerItem(new RoleSelection());
         RFItem.registerItem(new CoupParalysant());
 
+        new Kokushibo().register();
         new VPL().register();
         new Nagisa().register();
 
