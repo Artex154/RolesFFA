@@ -55,7 +55,7 @@ public class RoleUtils {
 
         inventorySetup(inv);
 
-        role.getItems().forEach((item) -> inv.addItem(item.getItem().getStack()));
+        role.getItems().forEach((item) -> inv.addItem(item.getItem()));
 
         player.teleport(generateRandomLocation(Bukkit.getWorlds().getFirst()));
 
