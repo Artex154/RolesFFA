@@ -1,6 +1,6 @@
 package be.artex.rolesffa.api.role;
 
-import be.artex.rolesffa.api.item.RFItems;
+import be.artex.rolesffa.api.item.RFItem;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.inventory.ItemStack;
 
@@ -21,7 +21,7 @@ public abstract class Role {
         return 20;
     }
 
-    public List<RFItems> getItems() {
+    public List<RFItem> getItems() {
         return Collections.emptyList();
     }
 

@@ -1,6 +1,6 @@
 package be.artex.rolesffa;
 
-import be.artex.rolesffa.api.item.RFItems;
+import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.commands.RFCommand;
 import be.artex.rolesffa.commands.subCommands.EffectsSubCommand;
 import be.artex.rolesffa.gui.ChoiceOfRoleTypeGUI;
@@ -46,7 +46,7 @@ public class Main extends JavaPlugin {
 
         ChoiceOfRoleTypeGUI.generateInventory();
 
-        RFItems.registerItem(new RoleSelection());
+        RFItem.registerItem(new RoleSelection());
 
         new VPL().register();
 
