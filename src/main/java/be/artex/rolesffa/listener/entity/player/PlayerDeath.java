@@ -19,18 +19,17 @@ public class PlayerDeath implements Listener {
             return;
 
         if (player.getKiller() == null) {
-            player.sendMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " est mort.\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
+            event.setDeathMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " est mort.\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
             return;
         }
 
         Player killer = player.getKiller();
 
-        player.sendMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été tué par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
+        event.setDeathMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été tué par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
 
         Role killerRole = RoleUtils.getPlayerRole(killer);
 
         if (killerRole == null)
             return;
-
     }
 }
