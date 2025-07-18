@@ -8,7 +8,7 @@ import org.bukkit.event.player.PlayerMoveEvent;
 public class PlayerMove implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
-        if (CoupParalysant.FROZEN_PLAYERS.contains(event.getPlayer()))
+        if (!CoupParalysant.FROZEN_PLAYERS.contains(event.getPlayer()))
             return;
 
         event.setCancelled(true);

@@ -1,6 +1,7 @@
 package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.itemStacks.items.PreItems;
+import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -29,5 +30,7 @@ public class PlayerJoin implements Listener {
         player.setGameMode(GameMode.ADVENTURE);
 
         player.teleport(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));
+
+        CoupParalysant.FROZEN_PLAYERS.remove(player);
     }
 }
