@@ -19,4 +19,12 @@ public class InventoryHelper {
 
         return inv;
     }
+
+    public static ItemStack[] resetArmorDurability(ItemStack[] armor) {
+        for (ItemStack stack : armor) {
+            stack.setDurability((short) 0);
+        }
+
+        return armor;
+    }
 }

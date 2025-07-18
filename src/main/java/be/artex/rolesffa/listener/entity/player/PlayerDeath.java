@@ -2,18 +2,27 @@ package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.helper.InventoryHelper;
 import be.artex.rolesffa.helper.StringHelper;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.inventory.ItemStack;
 
 public class PlayerDeath implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         Role playerRole = RoleUtils.getPlayerRole(player);
+
+        event.getDrops().clear();
+        event.getDrops().add(new ItemStack(Material.LAVA_BUCKET));
+        event.getDrops().add(new ItemStack(Material.WATER_BUCKET));
+        event.getDrops().add(new ItemStack(Material.LEAVES, 64));
+        event.getDrops().add(new ItemStack(Material.ARROW, 24));
 
         if (playerRole == null)
             return;
@@ -33,5 +42,18 @@ public class PlayerDeath implements Listener {
             return;
 
         killerRole.onPlayerKill(killer, player);
+
+        int killerGoldenApples = 0;
+
+        for (ItemStack itemStack : killer.getInventory()) {
+            if (itemStack != null && itemStack.getType() != null) {
+                if (itemStack.getType().equals(Material.GOLDEN_APPLE))
+                    killerGoldenApples += itemStack.getAmount();
+            }
+        }
+
+        InventoryHelper.resetArmorDurability(killer.getInventory().getArmorContents());
+
+        event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
     }
 }
