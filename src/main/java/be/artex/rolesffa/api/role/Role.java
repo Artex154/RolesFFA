@@ -2,6 +2,7 @@ package be.artex.rolesffa.api.role;
 
 import be.artex.rolesffa.api.item.RFItem;
 import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collections;
@@ -37,10 +38,13 @@ public abstract class Role {
         return 100f;
     }
 
+    public void onPlayerKill(Player killer, Player player) {
+
+    }
+
     public void register() {
         RoleUtils.addRole(this);
         this.getType().addRole(this);
     }
-
 
 }

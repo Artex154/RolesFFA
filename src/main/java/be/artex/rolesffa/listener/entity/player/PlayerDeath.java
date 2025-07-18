@@ -31,5 +31,7 @@ public class PlayerDeath implements Listener {
 
         if (killerRole == null)
             return;
+
+        killerRole.onPlayerKill(killer, player);
     }
 }
