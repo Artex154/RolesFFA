@@ -7,11 +7,11 @@ import java.util.HashMap;
 public class Speed {
     private static final HashMap<Player, Integer> PLAYER_SPEED = new HashMap<>();
 
+    private static final float PLAYER_BASE_WALK_SPEED = 0.2f;
+
     public static void setPlayerSpeed(Player player, float speed) {
-        // WTF is this shit
-        // TODO: Don't use magic numbers (like 0.2f) use a constant.
-        speed = 0.2f * (speed / 100f);
-        int percentage = Math.round((speed / 0.2f) * 100);
+        speed = PLAYER_BASE_WALK_SPEED * (speed / 100f);
+        int percentage = Math.round((speed / PLAYER_BASE_WALK_SPEED) * 100);
 
         PLAYER_SPEED.put(player, percentage);
 
@@ -23,7 +23,7 @@ public class Speed {
     }
 
     public static void resetPlayerSpeed(Player player) {
-        player.setWalkSpeed(0.2f);
+        player.setWalkSpeed(PLAYER_BASE_WALK_SPEED);
 
         PLAYER_SPEED.put(player, 100);
     }

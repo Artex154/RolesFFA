@@ -1,11 +1,11 @@
 package be.artex.rolesffa.listener.inventory;
 
 import be.artex.rolesffa.Main;
+import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.gui.ChoiceOfRoleGUI;
-import be.artex.rolesffa.itemStacks.items.GuiItems;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -28,7 +28,7 @@ public class InventoryClick implements Listener {
         if (inv.getHolder() != null && inv.getHolder().equals(player))
             return;
 
-        if (stack.isSimilar(GuiItems.BORDER.getStack())) {
+        if (stack.isSimilar(Stacks.BORDER)) {
             event.setCancelled(true);
             return;
         }

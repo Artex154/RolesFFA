@@ -9,6 +9,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Nagisa extends Role {
@@ -46,6 +48,6 @@ public class Nagisa extends Role {
 
     @Override
     public List<RFItem> getItems() {
-        return List.of(new CoupParalysant());
+        return new ArrayList<>(Collections.singletonList(new CoupParalysant()));
     }
 }

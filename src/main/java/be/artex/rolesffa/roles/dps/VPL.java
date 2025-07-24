@@ -1,4 +1,4 @@
-package be.artex.rolesffa.roles.DPS; // TODO: Remove capital letters in package
+package be.artex.rolesffa.roles.dps;
 
 import be.artex.rolesffa.api.builder.item.ItemBuilder;
 import be.artex.rolesffa.api.role.Role;

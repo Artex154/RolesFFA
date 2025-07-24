@@ -1,6 +1,6 @@
 package be.artex.rolesffa.listener.entity.player;
 
-import be.artex.rolesffa.itemStacks.items.PreItems;
+import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -21,7 +21,7 @@ public class PlayerJoin implements Listener {
         inventory.clear();
         inventory.setArmorContents(null);
 
-        inventory.setItem(4, PreItems.SLECTION_BOOK.getStack());
+        inventory.setItem(4, Stacks.ROLE_SELECTION_BOOK);
 
         for (PotionEffect effect : player.getActivePotionEffects()) {
             player.removePotionEffect(effect.getType());

@@ -1,5 +1,6 @@
-package be.artex.rolesffa.api.item;
+package be.artex.rolesffa;
 
+import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.items.RoleSelection;
 import be.artex.rolesffa.registry.RegistryObject;
 import be.artex.rolesffa.registry.RolesRegistries;

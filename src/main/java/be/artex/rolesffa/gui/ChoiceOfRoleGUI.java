@@ -1,9 +1,9 @@
 package be.artex.rolesffa.gui;
 
+import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.helper.InventoryHelper;
-import be.artex.rolesffa.itemStacks.items.GuiItems;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
@@ -22,7 +22,7 @@ public class ChoiceOfRoleGUI {
         Inventory inv = Bukkit.createInventory(null, 54, "Rôles " + type.getName());
 
         for (int i : borderIndex)
-            inv.setItem(i, GuiItems.BORDER.getStack());
+            inv.setItem(i, Stacks.BORDER);
 
         for (Role role : type.getRoles())
             inv.setItem(role.getPlacement(), role.getStack());

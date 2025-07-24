@@ -1,19 +1,14 @@
 package be.artex.rolesffa;
 
-import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.api.item.RFItems;
 import be.artex.rolesffa.commands.RFCommand;
 import be.artex.rolesffa.commands.subCommands.EffectsSubCommand;
-import be.artex.rolesffa.gui.ChoiceOfRoleTypeGUI;
 import be.artex.rolesffa.helper.WorldHelper;
-import be.artex.rolesffa.items.RoleSelection;
 import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
 import be.artex.rolesffa.listener.entity.player.*;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
-import be.artex.rolesffa.roles.DPS.Kokushibo;
-import be.artex.rolesffa.roles.DPS.VPL;
-import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
+import be.artex.rolesffa.roles.dps.Kokushibo;
+import be.artex.rolesffa.roles.dps.VPL;
 import be.artex.rolesffa.roles.technique.nagisa.Nagisa;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
