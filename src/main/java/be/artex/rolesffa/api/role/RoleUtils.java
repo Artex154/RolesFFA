@@ -62,6 +62,7 @@ public class RoleUtils {
         player.setGameMode(GameMode.SURVIVAL);
 
         player.setMaxHealth(role.getMaxHealth());
+        player.setHealth(role.getMaxHealth());
 
         Speed.setPlayerSpeed(player, role.getSpeed());
         Strength.setPlayerStrength(player, role.getStrength());
