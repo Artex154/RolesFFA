@@ -8,8 +8,9 @@ public class Speed {
     private static final HashMap<Player, Integer> PLAYER_SPEED = new HashMap<>();
 
     public static void setPlayerSpeed(Player player, float speed) {
+        // WTF is this shit
+        // TODO: Don't use magic numbers (like 0.2f) use a constant.
         speed = 0.2f * (speed / 100f);
-
         int percentage = Math.round((speed / 0.2f) * 100);
 
         PLAYER_SPEED.put(player, percentage);

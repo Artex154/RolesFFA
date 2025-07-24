@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RoleUtils {
-    private static final List<Role> roles = new ArrayList<>();
+    private static final List<Role> roles = new ArrayList<>(); // TODO: Use the Registry system instead
     private static final HashMap<Player, Role> playerRole = new HashMap<>();
 
     public static RoleType getRoleTypeFromItem(ItemStack stack) {
@@ -57,7 +57,7 @@ public class RoleUtils {
 
         role.getItems().forEach((item) -> inv.addItem(item.getItem()));
 
-        player.teleport(generateRandomLocation(Bukkit.getWorlds().getFirst()));
+        player.teleport(computeRandomLocation(Bukkit.getWorlds().getFirst()));
 
         player.setGameMode(GameMode.SURVIVAL);
 
@@ -71,14 +71,13 @@ public class RoleUtils {
         setPlayerRole(player, role);
     }
 
-    private static Location generateRandomLocation(World world) {
+    private static Location computeRandomLocation(World world) {
         Random random = new Random();
 
         int x = random.nextInt(50);
         int z = random.nextInt(50);
 
         Location loc = new Location(world, x, 0, z);
-
         loc.setY(world.getHighestBlockYAt(loc));
 
         return loc;

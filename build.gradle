@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'be.artex'
-version = '1.0-SNAPSHOT'
+version = '1.0-SNAPSHOT' // TODO: Match with the version inside of plugin.yml or use a processResource task to inject the version in the plugin.yml
 
 repositories {
     mavenCentral()

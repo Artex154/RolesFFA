@@ -46,8 +46,6 @@ public class Main extends JavaPlugin {
         world.setGameRuleValue("doDaylightCycle", "false");
         world.setGameRuleValue("doMobSpawning", "false");
 
-        ChoiceOfRoleTypeGUI.generateInventory();
-
         RFItems.registerItems(); // Register Items
 
         new Kokushibo().register();
