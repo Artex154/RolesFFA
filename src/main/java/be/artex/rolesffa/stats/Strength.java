@@ -8,12 +8,14 @@ public class Strength {
     private static final HashMap<Player, Integer> PLAYER_STRENGTH = new HashMap<>();
 
     public static void setPlayerStrength(Player player, float strength) {
+        // WTF is this shit
+        // TODO: Don't use magic numbers (like 0.2f) use a constant.
         strength = 0.2f * (strength / 100f);
-
         int percentage = Math.round((strength / 0.2f) * 100);
 
         PLAYER_STRENGTH.put(player, percentage);
 
+        // TODO: Why does strength affect player speed?
         player.setWalkSpeed(strength);
     }
 
