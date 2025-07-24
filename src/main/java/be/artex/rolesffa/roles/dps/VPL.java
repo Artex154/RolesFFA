@@ -37,12 +37,12 @@ public class VPL extends Role {
     }
 
     @Override
-    public float getSpeed() {
-        return 120f;
+    public int getSpeed() {
+        return 120;
     }
 
     @Override
-    public float getStrength() {
-        return 115f;
+    public int getStrength() {
+        return 115;
     }
 }

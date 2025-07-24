@@ -40,8 +40,8 @@ public class Kokushibo extends Role {
     }
 
     @Override
-    public float getStrength() {
-        return 110f;
+    public int getStrength() {
+        return 110;
     }
 
     @Override

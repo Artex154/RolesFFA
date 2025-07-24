@@ -42,8 +42,8 @@ public class Nagisa extends Role {
     }
 
     @Override
-    public float getSpeed() {
-        return 120f;
+    public int getSpeed() {
+        return 120;
     }
 
     @Override

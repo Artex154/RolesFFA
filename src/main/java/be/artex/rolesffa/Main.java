@@ -41,13 +41,12 @@ public class Main extends JavaPlugin {
         world.setGameRuleValue("doDaylightCycle", "false");
         world.setGameRuleValue("doMobSpawning", "false");
 
-        RFItems.registerItems(); // Register Items
+        RFItems.registerItems();
 
         new Kokushibo().register();
         new VPL().register();
         new Nagisa().register();
 
         new EffectsSubCommand().register();
-
     }
 }
