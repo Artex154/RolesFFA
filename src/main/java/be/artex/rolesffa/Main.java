@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        world = Bukkit.getWorlds().getFirst();
+        world = Bukkit.getWorlds().get(0);
 
         getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);

@@ -18,15 +18,13 @@ public class EntityDamageByEntity implements Listener {
 
         double damage = event.getDamage();
 
-        double strengthBuff = ((damage / 100) * Strength.getPlayerStrength(damager)) - damage;
-        System.out.println("strength buff : " + strengthBuff);
+        double strengthPercent   = Strength.getPlayerStrength(damager);
+        double resistancePercent = Resistance.getPlayerResistance(player);
 
-        double resistanceBuff = ((damage * 100) / Resistance.getPlayerResistance(player)) - damage;
-        System.out.println("resistance buff : " + resistanceBuff);
+        double netPercent = (strengthPercent - resistancePercent) / 100;
 
-        damage = strengthBuff - resistanceBuff;
-        System.out.println("final damage : " + damage);
+        double finalDamage = damage * (1 + netPercent);
 
-        event.setDamage(damage);
+        event.setDamage(finalDamage);
     }
 }

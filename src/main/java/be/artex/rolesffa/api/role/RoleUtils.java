@@ -57,7 +57,7 @@ public class RoleUtils {
 
         role.getItems().forEach((item) -> inv.addItem(item.getItem()));
 
-        player.teleport(computeRandomLocation(Bukkit.getWorlds().getFirst()));
+        player.teleport(computeRandomLocation(Bukkit.getWorlds().get(0)));
 
         player.setGameMode(GameMode.SURVIVAL);
 
