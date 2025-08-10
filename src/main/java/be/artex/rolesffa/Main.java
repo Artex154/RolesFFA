@@ -32,6 +32,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
+        getServer().getPluginManager().registerEvents(new PlayerFish(), this);
 
         getCommand("rf").setExecutor(new RFCommand());
 
