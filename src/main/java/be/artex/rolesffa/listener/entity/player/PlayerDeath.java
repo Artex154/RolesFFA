@@ -55,5 +55,7 @@ public class PlayerDeath implements Listener {
         InventoryHelper.resetArmorDurability(killer.getInventory().getArmorContents());
 
         event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
+
+        killer.setHealth(killer.getMaxHealth());
     }
 }
