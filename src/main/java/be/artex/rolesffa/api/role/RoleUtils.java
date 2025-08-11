@@ -18,6 +18,7 @@ import java.util.Random;
 public class RoleUtils {
     private static final List<Role> roles = new ArrayList<>(); // TODO: Use the Registry system instead
     private static final HashMap<Player, Role> playerRole = new HashMap<>();
+    public static final List<Player> transformedPlayers = new ArrayList<>();
 
     public static RoleType getRoleTypeFromItem(ItemStack stack) {
         for (RoleType type : RoleType.values())

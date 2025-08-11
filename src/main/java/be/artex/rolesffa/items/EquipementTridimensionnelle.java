@@ -29,16 +29,17 @@ public class EquipementTridimensionnelle extends RFItem {
 
     @Override
     public void onFish(PlayerFishEvent event) {
-        Cooldown cooldown = Cooldown.getCooldown("equip_tridi", 15*20L);
         Player player = event.getPlayer();
 
-        if (cooldown.isPlayerInCooldown(player)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous êtes en cooldown pour encore " + ChatColor.AQUA + cooldown.getPlayerCooldownTimeLeft(player) + " secondes" + ChatColor.GRAY + ".");
+        if (RoleUtils.transformedPlayers.contains(player)) {
+            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous ne pouvez pas utiliser cet item en étant transformé");
             return;
         }
 
-        if (RoleUtils.transformedPlayers.contains(player)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous ne pouvez pas utiliser cet item en étant transformé." +ChatColor.GRAY + ".");
+        Cooldown cooldown = Cooldown.getCooldown("equip_tridi", 15*20L);
+
+        if (cooldown.isPlayerInCooldown(player)) {
+            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous êtes en cooldown pour encore " + ChatColor.AQUA + cooldown.getPlayerCooldownTimeLeft(player) + " secondes" + ChatColor.GRAY + ".");
             return;
         }
 

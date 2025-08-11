@@ -5,12 +5,16 @@ import be.artex.rolesffa.items.EquipementTridimensionnelle;
 import be.artex.rolesffa.items.RoleSelection;
 import be.artex.rolesffa.registry.RegistryObject;
 import be.artex.rolesffa.registry.RolesRegistries;
+import be.artex.rolesffa.roles.technique.machoireTitan.Machoire;
+import be.artex.rolesffa.roles.technique.machoireTitan.Transformation;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 
 public final class RFItems {
     public static final RegistryObject<RFItem> ROLE_SELECTION = RolesRegistries.ITEMS.register("role_selection", new RoleSelection());
     public static final RegistryObject<RFItem> COUP_PARALYSANT = RolesRegistries.ITEMS.register("coup_paralysant", new CoupParalysant());
     public static final RegistryObject<RFItem> EQUIPEMENT_TRIDIMENSIONNELLE = RolesRegistries.ITEMS.register("equipement_tridimensionnelle", new EquipementTridimensionnelle());
+    public static final RegistryObject<RFItem> MACHOIRE_TRANSFORMATION = RolesRegistries.ITEMS.register("machoire_transformation", new Transformation());
+    public static final RegistryObject<RFItem> MACHOIRE = RolesRegistries.ITEMS.register("machoire", new Machoire());
 
     public static void registerItems() {} // Simply loads the class
 }

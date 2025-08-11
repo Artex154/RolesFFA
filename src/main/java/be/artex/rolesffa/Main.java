@@ -9,6 +9,7 @@ import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
 import be.artex.rolesffa.roles.dps.Kokushibo;
 import be.artex.rolesffa.roles.dps.VPL;
+import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
 import be.artex.rolesffa.roles.technique.nagisa.Nagisa;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
@@ -47,6 +48,7 @@ public class Main extends JavaPlugin {
         new Kokushibo().register();
         new VPL().register();
         new Nagisa().register();
+        new TitanMachoire().register();
 
         new EffectsSubCommand().register();
     }
