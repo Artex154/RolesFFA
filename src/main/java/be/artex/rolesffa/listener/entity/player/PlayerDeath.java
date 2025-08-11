@@ -4,6 +4,7 @@ import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.helper.InventoryHelper;
 import be.artex.rolesffa.helper.StringHelper;
+import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,6 +24,9 @@ public class PlayerDeath implements Listener {
         event.getDrops().add(new ItemStack(Material.WATER_BUCKET));
         event.getDrops().add(new ItemStack(Material.LEAVES, 64));
         event.getDrops().add(new ItemStack(Material.ARROW, 24));
+
+        CoupParalysant.RESISTANCE_DEBUFF.remove(player);
+        CoupParalysant.FROZEN_PLAYERS.remove(player);
 
         if (playerRole == null)
             return;
