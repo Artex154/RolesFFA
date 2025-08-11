@@ -1,5 +1,6 @@
 package be.artex.rolesffa.listener.entity;
 
+import be.artex.rolesffa.registry.RolesRegistries;
 import be.artex.rolesffa.stats.Resistance;
 import be.artex.rolesffa.stats.Strength;
 import org.bukkit.entity.Player;
@@ -26,5 +27,7 @@ public class EntityDamageByEntity implements Listener {
         double finalDamage = damage * (1 + netPercent);
 
         event.setDamage(finalDamage);
+
+        RolesRegistries.ITEMS.getItemFromStack(damager.getItemInHand()).ifPresent(item -> item.onHit(event));
     }
 }

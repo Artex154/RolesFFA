@@ -1,5 +1,7 @@
 package be.artex.rolesffa.api.item;
 
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
@@ -11,5 +13,8 @@ public abstract class RFItem {
     }
 
     public void onFish(PlayerFishEvent event) {
+    }
+
+    public void onHit(EntityDamageByEntityEvent event) {
     }
 }
