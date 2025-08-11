@@ -86,18 +86,7 @@ public class RoleUtils {
     }
 
     private static void inventorySetup(PlayerInventory inventory) {
-        inventory.setHelmet(new ItemBuilder(Material.IRON_HELMET).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
-                .build());
-        inventory.setChestplate(new ItemBuilder(Material.DIAMOND_CHESTPLATE).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
-                .build());
-        inventory.setLeggings(new ItemBuilder(Material.IRON_LEGGINGS).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
-                .build());
-        inventory.setBoots(new ItemBuilder(Material.DIAMOND_BOOTS).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
-                .build());
+        armorSetup(inventory);
 
         inventory.addItem(new ItemBuilder(Material.DIAMOND_SWORD).
                 addEnchants(new EnchantmentHolder(Enchantment.DAMAGE_ALL, 3))
@@ -115,5 +104,20 @@ public class RoleUtils {
         inventory.addItem(new ItemStack(Material.ARROW, 24));
         inventory.addItem(new ItemStack(Material.LEAVES, 64));
         inventory.addItem(new ItemStack(Material.LEAVES, 64));
+    }
+
+    public static void armorSetup(PlayerInventory inventory) {
+        inventory.setHelmet(new ItemBuilder(Material.IRON_HELMET).
+                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
+                .build());
+        inventory.setChestplate(new ItemBuilder(Material.DIAMOND_CHESTPLATE).
+                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
+                .build());
+        inventory.setLeggings(new ItemBuilder(Material.IRON_LEGGINGS).
+                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
+                .build());
+        inventory.setBoots(new ItemBuilder(Material.DIAMOND_BOOTS).
+                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
+                .build());
     }
 }

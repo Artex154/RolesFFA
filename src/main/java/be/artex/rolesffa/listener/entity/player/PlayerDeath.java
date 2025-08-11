@@ -52,7 +52,7 @@ public class PlayerDeath implements Listener {
             }
         }
 
-        InventoryHelper.resetArmorDurability(killer.getInventory().getArmorContents());
+        RoleUtils.armorSetup(player.getInventory());
 
         event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
 

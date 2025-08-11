@@ -39,7 +39,6 @@ public abstract class Role {
     }
 
     public void onPlayerKill(Player killer, Player player) {
-
     }
 
     public void register() {
