@@ -2,7 +2,6 @@ package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.helper.InventoryHelper;
 import be.artex.rolesffa.helper.StringHelper;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import org.bukkit.ChatColor;
@@ -55,8 +54,8 @@ public class PlayerDeath implements Listener {
                     killerGoldenApples += itemStack.getAmount();
             }
         }
-
-        RoleUtils.armorSetup(player.getInventory());
+        
+        RoleUtils.armorSetup(killer.getInventory());
 
         event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
 
