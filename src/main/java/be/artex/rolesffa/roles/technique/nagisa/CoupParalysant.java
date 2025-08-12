@@ -45,14 +45,9 @@ public class CoupParalysant extends RFItem {
 
         cooldown.putPlayerInCooldown(player);
 
-        for (Entity entity : player.getNearbyEntities(10, 10, 10)) {
-            if (!(entity instanceof Player))
-                return;
-
-            Player p = (Player) entity;
-
-            freezePlayer(p);
-        }
+        for (Entity entity : player.getNearbyEntities(10, 10, 10))
+            if (entity instanceof Player)
+                freezePlayer((Player) entity);
     }
 
     public static void freezePlayer(Player player) {
@@ -65,10 +60,8 @@ public class CoupParalysant extends RFItem {
         Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) - 15);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-            if (!RESISTANCE_DEBUFF.contains(player))
-                return;
-
-            Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) + 15);
+            if (RESISTANCE_DEBUFF.contains(player))
+                Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) + 15);
         }, 10*20L);
     }
 }
