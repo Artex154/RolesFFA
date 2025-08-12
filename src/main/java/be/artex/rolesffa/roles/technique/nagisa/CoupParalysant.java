@@ -62,13 +62,13 @@ public class CoupParalysant extends RFItem {
 
         RESISTANCE_DEBUFF.add(player);
 
-        Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) - 30);
+        Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) - 15);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             if (!RESISTANCE_DEBUFF.contains(player))
                 return;
 
-            Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) + 30);
+            Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) + 15);
         }, 10*20L);
     }
 }
