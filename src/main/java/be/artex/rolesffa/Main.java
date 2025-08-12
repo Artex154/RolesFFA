@@ -3,6 +3,7 @@ package be.artex.rolesffa;
 import be.artex.rolesffa.commands.RFCommand;
 import be.artex.rolesffa.commands.subCommands.EffectsSubCommand;
 import be.artex.rolesffa.helper.WorldHelper;
+import be.artex.rolesffa.listener.entity.EntityDamage;
 import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
 import be.artex.rolesffa.listener.entity.player.*;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
@@ -34,6 +35,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         getServer().getPluginManager().registerEvents(new PlayerFish(), this);
+        getServer().getPluginManager().registerEvents(new EntityDamage(), this);
 
         getCommand("rf").setExecutor(new RFCommand());
 
