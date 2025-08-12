@@ -31,7 +31,7 @@ public class Machoire extends RFItem {
             return;
         }
 
-        Cooldown cooldown = Cooldown.getCooldown("machoire_transfo", 85*20L);
+        Cooldown cooldown = Cooldown.getCooldown("machoire", 10*20L);
 
         if (cooldown.isPlayerInCooldown(damager)) {
             damager.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA + "]" + ChatColor.GRAY + " Vous êtes en cooldown pour encore " + ChatColor.AQUA + cooldown.getPlayerCooldownTimeLeft(damager) + " secondes" + ChatColor.GRAY + ".");
@@ -40,8 +40,10 @@ public class Machoire extends RFItem {
 
         Player entity = (Player) event.getEntity();
 
+        cooldown.putPlayerInCooldown(damager);
+
         if ((entity.getHealth() - 5) <= 0)
-            entity.setHealth(0);
+            entity.setHealth(1);
         else
             entity.setHealth(entity.getHealth() - 5);
     }
