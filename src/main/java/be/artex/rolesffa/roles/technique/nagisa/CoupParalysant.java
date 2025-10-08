@@ -14,7 +14,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class CoupParalysant extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.NETHER_STAR)
@@ -25,8 +26,8 @@ public class CoupParalysant extends RFItem {
                     " ", ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "40 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
-    public static final ArrayList<Player> FROZEN_PLAYERS = new ArrayList<>();
-    public static final ArrayList<Player> RESISTANCE_DEBUFF = new ArrayList<>();
+    public static final Set<Player> FROZEN_PLAYERS = ConcurrentHashMap.newKeySet();
+    public static final Set<Player> RESISTANCE_DEBUFF = ConcurrentHashMap.newKeySet();
 
     @Override
     public ItemStack getItem() {
@@ -45,23 +46,26 @@ public class CoupParalysant extends RFItem {
 
         cooldown.putPlayerInCooldown(player);
 
-        for (Entity entity : player.getNearbyEntities(10, 10, 10))
-            if (entity instanceof Player)
-                freezePlayer((Player) entity);
-    }
+        for (Entity entity : player.getNearbyEntities(10, 10, 10)) {
+            if (!(entity instanceof Player))
+                return;
 
-    public static void freezePlayer(Player player) {
-        FROZEN_PLAYERS.add(player);
+            Player p = (Player) entity;
 
-        Bukkit.getScheduler().runTaskLater(Main.instance, () -> FROZEN_PLAYERS.remove(player), 100);
+            FROZEN_PLAYERS.add(p);
 
-        RESISTANCE_DEBUFF.add(player);
+            RESISTANCE_DEBUFF.add(p);
+            Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(p) - 15);
 
-        Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) - 15);
+            Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
+                FROZEN_PLAYERS.remove(p);
 
-        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-            if (RESISTANCE_DEBUFF.contains(player))
+                if (!RESISTANCE_DEBUFF.contains(player))
+                    return;
+
+                RESISTANCE_DEBUFF.remove(p);
                 Resistance.setPlayerResistance(player, Resistance.getPlayerResistance(player) + 15);
-        }, 10*20L);
+            }, 3*20L);
+        }
     }
 }
