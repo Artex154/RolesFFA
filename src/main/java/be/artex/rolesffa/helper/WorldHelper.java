@@ -2,7 +2,6 @@ package be.artex.rolesffa.helper;
 
 import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.WorldBorder;
 
 public class WorldHelper {
     public static void initializeWorld(World world) {
@@ -26,12 +25,13 @@ public class WorldHelper {
                     for (int y = 0; y < wallHeight; y++) {
                         world.getBlockAt(centerX + x, centerY + y, centerZ + z).setType(Material.GLASS);
                     }
+
                 }
+
             }
+
         }
 
-        WorldBorder border = world.getWorldBorder();
-        border.setCenter(centerX, centerZ);
-        border.setSize(200);
     }
+
 }

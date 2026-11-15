@@ -2,7 +2,7 @@ name: RolesFFA
 version: '${version}' # TODO: Add a proper version on you plugin
 main: be.artex.rolesffa.Main
 commands:
-  rf: # Don't forget to
+  rf:
     description: all RolesFFA commands
     usage: ""
     permission: rolesffa.all.rf

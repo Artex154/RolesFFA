@@ -21,8 +21,8 @@ public class CoupParalysant extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.NETHER_STAR)
             .name(ChatColor.AQUA + "" + ChatColor.BOLD + "Coup Paralysant")
             .lore(" ",
-                    ChatColor.GRAY + " En faisant un clique droit, vous " + ChatColor.AQUA + "paralyserez " + ChatColor.GRAY + "tous les " + ChatColor.AQUA + "joueurs      ", ChatColor.GRAY + " dans un" + ChatColor.AQUA + " rayon" + ChatColor.GRAY + " de" + ChatColor.AQUA + " 10 blocs" + ChatColor.GRAY + ", pendant " + ChatColor.YELLOW + "5 secondes" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " Les " + ChatColor.YELLOW + "5 secondes" + ChatColor.GRAY + " qui suivent la " + ChatColor.AQUA + "paralysie" + ChatColor.GRAY + ", tout les joueurs " + ChatColor.AQUA + "paralysés      ", ChatColor.GRAY + " seront octroyés " + StringHelper.RESISTANCE_SIGN + ChatColor.GRAY + " -30% de resistance.      ",
+                    ChatColor.GRAY + " En faisant un clique droit, vous " + ChatColor.AQUA + "paralyserez " + ChatColor.GRAY + "tous les " + ChatColor.AQUA + "joueurs      ", ChatColor.GRAY + " dans un" + ChatColor.AQUA + " rayon" + ChatColor.GRAY + " de" + ChatColor.AQUA + " 10 blocs" + ChatColor.GRAY + ", pendant " + ChatColor.YELLOW + "3 secondes" + ChatColor.GRAY + ".", " ",
+                    ChatColor.GRAY + " Les " + ChatColor.AQUA + "joueurs paralysés" + ChatColor.GRAY + " auront " + StringHelper.RESISTANCE_SIGN + ChatColor.GRAY + " -15% de resistance pendant la paralysie.      ",
                     " ", ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "40 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 

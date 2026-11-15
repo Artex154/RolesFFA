@@ -6,6 +6,7 @@ import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.helper.StringHelper;
 import be.artex.rolesffa.items.EquipementTridimensionnelle;
+import be.artex.rolesffa.roles.dps.chainsaw.Pacte;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

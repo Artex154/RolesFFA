@@ -70,7 +70,7 @@ public class SimpleRegistry<T> implements Registry<T> {
 
         this.lock.writeLock().lock();
         try {
-            Preconditions.checkArgument(!this.entries.containsKey(key), "An entry is already registered with this key: %s", key);
+            Preconditions.checkArgument(!this.entries.containsKey(key), "This value has already been registered.");
             Preconditions.checkArgument(!this.entries.containsValue(value), "This value has already been registered.");
 
             this.entries.put(key, value);
