@@ -1,12 +1,10 @@
 package be.artex.rolesffa.roles.technique.machoireTitan;
 
-import be.artex.rolesffa.api.builder.item.ItemBuilder;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.helper.StringHelper;
 import be.artex.rolesffa.items.EquipementTridimensionnelle;
-import be.artex.rolesffa.roles.dps.chainsaw.Pacte;
+import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

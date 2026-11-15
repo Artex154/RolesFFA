@@ -9,16 +9,16 @@ public class StringHelper {
     public static final String DOT = ChatColor.DARK_GRAY + " • ";
     public static final String LINE = ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "------------------------------------";
 
-    public static final String SPEED_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.AQUA + ChatColor.BOLD + "⚡" + ChatColor.DARK_GRAY + "]";
+    public static final String SPEED_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + ChatColor.BOLD + "⚡" + ChatColor.DARK_GRAY + "]";
     public static final String STRENGTH_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.RED + ChatColor.BOLD + "⚔" + ChatColor.DARK_GRAY + "]";
     public static final String RESISTANCE_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.GRAY + ChatColor.BOLD + "☰" + ChatColor.DARK_GRAY + "]";
 
     public static TextComponent speedSignHover() {
         TextComponent description = new TextComponent(SPEED_SIGN);
-        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(SPEED_SIGN + ChatColor.GRAY + " Pourcentages de " + ChatColor.AQUA + "Vitesse\n\n" +
-                StringHelper.DOT + ChatColor.GRAY + "120% de " + ChatColor.AQUA + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.AQUA + " Speed I" + ChatColor.GRAY + ".\n" +
-                StringHelper.DOT + ChatColor.GRAY + "140% de " + ChatColor.AQUA + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.AQUA + " Speed II" + ChatColor.GRAY + ".\n" +
-                StringHelper.DOT + ChatColor.GRAY + "160% de " + ChatColor.AQUA + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.AQUA + " Speed III" + ChatColor.GRAY + ".\n")});
+        HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(SPEED_SIGN + ChatColor.GRAY + " Pourcentages de " + ChatColor.YELLOW + "Vitesse\n\n" +
+                StringHelper.DOT + ChatColor.GRAY + "120% de " + ChatColor.YELLOW + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.YELLOW + " Vitesse I" + ChatColor.GRAY + ".\n" +
+                StringHelper.DOT + ChatColor.GRAY + "140% de " + ChatColor.YELLOW + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.YELLOW + " Vitesse II" + ChatColor.GRAY + ".\n" +
+                StringHelper.DOT + ChatColor.GRAY + "160% de " + ChatColor.YELLOW + "Vitesse " + ChatColor.GRAY + "->" + ChatColor.YELLOW + " Vitesse III" + ChatColor.GRAY + ".\n")});
 
         description.setHoverEvent(event);
 
@@ -28,9 +28,9 @@ public class StringHelper {
     public static TextComponent strengthSignHover() {
         TextComponent description = new TextComponent(STRENGTH_SIGN);
         HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(STRENGTH_SIGN + ChatColor.GRAY + " Pourcentages de " + ChatColor.RED + "Force\n\n" +
-                StringHelper.DOT + ChatColor.GRAY + "120% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Strength I" + ChatColor.GRAY + ".\n" +
-                StringHelper.DOT + ChatColor.GRAY + "140% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Strength II" + ChatColor.GRAY + ".\n" +
-                StringHelper.DOT + ChatColor.GRAY + "160% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Strength III" + ChatColor.GRAY + ".\n")});
+                StringHelper.DOT + ChatColor.GRAY + "115% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Force I" + ChatColor.GRAY + ".\n" +
+                StringHelper.DOT + ChatColor.GRAY + "130% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Force II" + ChatColor.GRAY + ".\n" +
+                StringHelper.DOT + ChatColor.GRAY + "145% de " + ChatColor.RED + "Force " + ChatColor.GRAY + "->" + ChatColor.RED + " Force III" + ChatColor.GRAY + ".\n")});
 
         description.setHoverEvent(event);
 
@@ -40,9 +40,9 @@ public class StringHelper {
     public static TextComponent resistanceSignHover() {
         TextComponent description = new TextComponent(RESISTANCE_SIGN);
         HoverEvent event = new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{new TextComponent(RESISTANCE_SIGN + ChatColor.GRAY + " Pourcentages de Resistance\n\n" +
-                StringHelper.DOT + ChatColor.GRAY + "120% de Resistance -> Resistance I.\n" +
-                StringHelper.DOT + ChatColor.GRAY + "140% de Resistance -> Resistance 2.\n" +
-                StringHelper.DOT + ChatColor.GRAY + "160% de Resistance -> Resistance 3.\n")});
+                StringHelper.DOT + ChatColor.GRAY + "120% de Résistance -> Résistance I.\n" +
+                StringHelper.DOT + ChatColor.GRAY + "140% de Résistance -> Résistance II.\n" +
+                StringHelper.DOT + ChatColor.GRAY + "160% de Résistance -> Résistance III.\n")});
 
         description.setHoverEvent(event);
 

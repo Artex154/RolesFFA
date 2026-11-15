@@ -1,9 +1,8 @@
 package be.artex.rolesffa.api.role;
 
-import be.artex.rolesffa.api.builder.item.EnchantmentHolder;
-import be.artex.rolesffa.api.builder.item.ItemBuilder;
-import be.artex.rolesffa.stats.Speed;
-import be.artex.rolesffa.stats.Strength;
+import be.artex.rolesffa.stats.StatValues;
+import be.artex.rolesffa.stats.Stats;
+import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -52,7 +51,6 @@ public class RoleUtils {
         PlayerInventory inv = player.getInventory();
 
         inv.clear();
-        inv.setArmorContents(null);
 
         inventorySetup(inv);
 
@@ -65,34 +63,40 @@ public class RoleUtils {
         player.setMaxHealth(role.getMaxHealth());
         player.setHealth(role.getMaxHealth());
 
-        Speed.setPlayerSpeed(player, role.getSpeed());
-        Strength.setPlayerStrength(player, role.getStrength());
+        Stats stats = Stats.get(player.getUniqueId());
+
+        stats.setBonus(StatValues.SPEED, role.getBonusSpeed());
+        stats.setBonus(StatValues.RESISTANCE, role.getBonusResistance());
+        stats.setBonus(StatValues.STRENGTH, role.getBonusStrength());
 
         player.sendMessage(role.getDescription().getText());
-
         setPlayerRole(player, role);
     }
 
     private static Location computeRandomLocation(World world) {
         Random random = new Random();
 
-        int x = random.nextInt(50);
-        int z = random.nextInt(50);
+        int x = random.nextInt(25);
+        int z = random.nextInt(25);
 
-        Location loc = new Location(world, x, 0, z);
-        loc.setY(world.getHighestBlockYAt(loc));
+        if (Math.random() < 0.5)
+            x = -x;
+        if (Math.random() < 0.5)
+            z = -z;
 
-        return loc;
+        int y = world.getHighestBlockYAt(x, z);
+
+        return new Location(world, x, y, z);
     }
 
     private static void inventorySetup(PlayerInventory inventory) {
         armorSetup(inventory);
 
-        inventory.addItem(new ItemBuilder(Material.DIAMOND_SWORD).
-                addEnchants(new EnchantmentHolder(Enchantment.DAMAGE_ALL, 3))
+        inventory.addItem(new ItemBuilder(Material.DIAMOND_SWORD)
+                .addEnchant(Enchantment.DAMAGE_ALL, 3)
                 .build());
-        inventory.addItem(new ItemBuilder(Material.BOW).
-                addEnchants(new EnchantmentHolder(Enchantment.ARROW_DAMAGE, 3))
+        inventory.addItem(new ItemBuilder(Material.BOW)
+                .addEnchant(Enchantment.ARROW_DAMAGE, 3)
                 .build());
         inventory.addItem(new ItemStack(Material.LAVA_BUCKET));
         inventory.addItem(new ItemStack(Material.LEAVES, 64));
@@ -107,17 +111,17 @@ public class RoleUtils {
     }
 
     public static void armorSetup(PlayerInventory inventory) {
-        inventory.setHelmet(new ItemBuilder(Material.IRON_HELMET).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
+        inventory.setHelmet(new ItemBuilder(Material.DIAMOND_HELMET)
+                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
                 .build());
-        inventory.setChestplate(new ItemBuilder(Material.DIAMOND_CHESTPLATE).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
+        inventory.setChestplate(new ItemBuilder(Material.DIAMOND_CHESTPLATE)
+                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2)
                 .build());
-        inventory.setLeggings(new ItemBuilder(Material.IRON_LEGGINGS).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 3))
+        inventory.setLeggings(new ItemBuilder(Material.IRON_LEGGINGS)
+                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
                 .build());
-        inventory.setBoots(new ItemBuilder(Material.DIAMOND_BOOTS).
-                addEnchants(new EnchantmentHolder(Enchantment.PROTECTION_ENVIRONMENTAL, 2))
+        inventory.setBoots(new ItemBuilder(Material.DIAMOND_BOOTS)
+                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2)
                 .build());
     }
 }

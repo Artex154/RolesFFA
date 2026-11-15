@@ -2,8 +2,10 @@ package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.helper.StringHelper;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
+import be.artex.rolesffa.stats.Stats;
+import be.artex.strontium.holder.Holder;
+import be.artex.strontium.player.StrontPlayer;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -12,10 +14,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
+import java.text.DecimalFormat;
+
 public class PlayerDeath implements Listener {
+    private final DecimalFormat DF = new DecimalFormat("#.##");
+
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
+
         Role playerRole = RoleUtils.getPlayerRole(player);
 
         event.getDrops().clear();
@@ -31,13 +38,21 @@ public class PlayerDeath implements Listener {
             return;
 
         if (player.getKiller() == null) {
-            event.setDeathMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " est mort.\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
+            event.setDeathMessage(ChatColor.RED + "" + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") est mort(e).");
             return;
         }
 
         Player killer = player.getKiller();
+        StrontPlayer strontKiller = StrontPlayer.getSrontPlayer(killer);
 
-        event.setDeathMessage(StringHelper.LINE + "\n" + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " a été tué par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + ".\nSon rôle était " + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ".\n" + StringHelper.LINE);
+        Holder<String, ChatColor> health = new Holder<>(DF.format((killer.getHealth() + strontKiller.getAbsorptionHealth()) / 2), ChatColor.RED);
+
+        health.set(0, killer.getHealth() + strontKiller.getAbsorptionHealth());
+
+        if (strontKiller.getAbsorptionHealth() > 0)
+            health.set(1, ChatColor.YELLOW);
+
+        event.setDeathMessage(ChatColor.RED + "" + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + health.getObject(0) + "❤" + ChatColor.GRAY + "].");
 
         Role killerRole = RoleUtils.getPlayerRole(killer);
 
@@ -46,18 +61,19 @@ public class PlayerDeath implements Listener {
 
         killerRole.onPlayerKill(killer, player);
 
-        int killerGoldenApples = 0;
+        int rewardAmount = 0;
 
-        for (ItemStack itemStack : killer.getInventory()) {
-            if (itemStack != null && itemStack.getType() != null) {
-                if (itemStack.getType().equals(Material.GOLDEN_APPLE))
-                    killerGoldenApples += itemStack.getAmount();
-            }
-        }
-        
+        for (ItemStack itemStack : killer.getInventory())
+            if (itemStack != null && itemStack.getType() == Material.GOLDEN_APPLE)
+                rewardAmount += itemStack.getAmount();
+
+        rewardAmount = 14 - rewardAmount;
+
+        if (rewardAmount > 1)
+            killer.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, rewardAmount));
+
         RoleUtils.armorSetup(killer.getInventory());
-
-        event.getDrops().add(new ItemStack(Material.GOLDEN_APPLE, (14 - killerGoldenApples)));
+        killer.updateInventory();
 
         killer.setHealth(killer.getMaxHealth());
     }

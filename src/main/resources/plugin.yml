@@ -6,3 +6,6 @@ commands:
     description: all RolesFFA commands
     usage: ""
     permission: rolesffa.all.rf
+depend:
+  - ProtocolLib
+  - Apollo-Bukkit

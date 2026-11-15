@@ -1,6 +1,6 @@
 package be.artex.rolesffa;
 
-import be.artex.rolesffa.api.builder.item.ItemBuilder;
+import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

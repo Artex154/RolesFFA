@@ -26,16 +26,16 @@ public abstract class Role {
         return Collections.emptyList();
     }
 
-    public int getSpeed() {
-        return 100;
+    public int getBonusSpeed() {
+        return 0;
     }
 
-    public int getStrength() {
-        return 100;
+    public int getBonusStrength() {
+        return 0;
     }
 
-    public int getResistance() {
-        return 100;
+    public int getBonusResistance() {
+        return 0;
     }
 
     public void onPlayerKill(Player killer, Player player) {

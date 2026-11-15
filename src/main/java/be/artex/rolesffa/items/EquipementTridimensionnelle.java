@@ -1,9 +1,10 @@
 package be.artex.rolesffa.items;
 
 import be.artex.rolesffa.api.Cooldown;
-import be.artex.rolesffa.api.builder.item.ItemBuilder;
+import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,6 +15,9 @@ import org.bukkit.event.player.PlayerFishEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 
 public class EquipementTridimensionnelle extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.FISHING_ROD)
@@ -32,14 +36,14 @@ public class EquipementTridimensionnelle extends RFItem {
         Player player = event.getPlayer();
 
         if (RoleUtils.transformedPlayers.contains(player)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous ne pouvez pas utiliser cet item en étant transformé");
+            player.sendMessage(Message.generate(" Vous ne pouvez pas utiliser cet item en étant transformé"));
             return;
         }
 
-        Cooldown cooldown = Cooldown.getCooldown("equip_tridi", 15*20L);
+        Cooldown cooldown = Cooldown.getCooldown("equip_tridi", Duration.of(15, ChronoUnit.SECONDS), "Votre " + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnel");
 
         if (cooldown.isPlayerInCooldown(player)) {
-            player.sendMessage(ChatColor.DARK_AQUA + "[" + ChatColor.AQUA + "RolesFFA" + ChatColor.DARK_AQUA+ "]" + ChatColor.GRAY + " Vous êtes en cooldown pour encore " + ChatColor.AQUA + cooldown.getPlayerCooldownTimeLeft(player) + " secondes" + ChatColor.GRAY + ".");
+            player.sendMessage(Message.cooldownTimeLeft(cooldown.getPlayerCooldownTimeLeft(player)));
             return;
         }
 
