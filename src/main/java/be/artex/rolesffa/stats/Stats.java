@@ -77,4 +77,6 @@ public class Stats {
 
         player.setWalkSpeed(totalSpeed);
     }
+
+
 }
