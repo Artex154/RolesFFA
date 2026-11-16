@@ -51,6 +51,9 @@ public class Stats {
                 this.strengthBonus = value;
                 break;
         }
+
+        PlayerStatsChangeEvent event = new PlayerStatsChangeEvent(Bukkit.getPlayer(player), stat, value);
+        Bukkit.getServer().getPluginManager().callEvent(event);
     }
 
     public void addBonus(StatValues stat, double amount) {
@@ -66,6 +69,9 @@ public class Stats {
                 this.strengthBonus += amount;
                 break;
         }
+
+        PlayerStatsChangeEvent event = new PlayerStatsChangeEvent(Bukkit.getPlayer(player), stat, amount);
+        Bukkit.getServer().getPluginManager().callEvent(event);
     }
 
     public static void remove(@NotNull UUID uuid) {
@@ -77,6 +83,5 @@ public class Stats {
 
         player.setWalkSpeed(totalSpeed);
     }
-
 
 }

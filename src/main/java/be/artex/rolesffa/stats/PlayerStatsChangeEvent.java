@@ -5,13 +5,15 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class OnStatsChangeEvent extends Event implements Cancellable {
+public class PlayerStatsChangeEvent extends Event implements Cancellable {
+    private static final HandlerList HANDLER_LIST = new HandlerList();
+
     private final Player player;
     private final StatValues statValue;
-    private final int amountChanged;
+    private final double amountChanged;
     private boolean isCancelled = false;
 
-    public OnStatsChangeEvent(Player player, StatValues statValues, int amountChanged) {
+    public PlayerStatsChangeEvent(Player player, StatValues statValues, double amountChanged) {
         this.player = player;
         this.statValue = statValues;
         this.amountChanged = amountChanged;
@@ -40,7 +42,7 @@ public class OnStatsChangeEvent extends Event implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
+        return HANDLER_LIST;
     }
 
     public Player getPlayer() {
@@ -51,7 +53,11 @@ public class OnStatsChangeEvent extends Event implements Cancellable {
         return statValue;
     }
 
-    public int getAmountChanged() {
+    public double getAmountChanged() {
         return amountChanged;
+    }
+
+    public static HandlerList getHandlerList() {
+        return HANDLER_LIST;
     }
 }

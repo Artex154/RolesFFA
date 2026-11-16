@@ -12,6 +12,7 @@ import be.artex.rolesffa.roles.dps.Kokushibo;
 import be.artex.rolesffa.roles.dps.VPL;
 import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
 import be.artex.rolesffa.roles.technique.nagisa.Nagisa;
+import be.artex.rolesffa.stats.PlayerStatsChangeEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
@@ -30,12 +31,13 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerInteract(), this);
         getServer().getPluginManager().registerEvents(new PlayerDeath(), this);
         getServer().getPluginManager().registerEvents(new PlayerRespawn(), this);
-        getServer().getPluginManager().registerEvents(new PlayerMove(), this);
+        getServer().getPluginManager().registerEvents(new PlayerDismount(), this);
         getServer().getPluginManager().registerEvents(new EntityDamageByEntity(), this);
         getServer().getPluginManager().registerEvents(new ChunkLoad(), this);
         getServer().getPluginManager().registerEvents(new InventoryClick(), this);
         getServer().getPluginManager().registerEvents(new PlayerFish(), this);
         getServer().getPluginManager().registerEvents(new EntityDamage(), this);
+        getServer().getPluginManager().registerEvents(new PlayerStatChange(), this);
 
         getCommand("rf").setExecutor(new RFCommand());
 
