@@ -31,9 +31,6 @@ public class PlayerDeath implements Listener {
         event.getDrops().add(new ItemStack(Material.LEAVES, 64));
         event.getDrops().add(new ItemStack(Material.ARROW, 24));
 
-        CoupParalysant.RESISTANCE_DEBUFF.remove(player);
-        CoupParalysant.FROZEN_PLAYERS.remove(player);
-
         if (playerRole == null)
             return;
 
@@ -61,15 +58,15 @@ public class PlayerDeath implements Listener {
 
         killerRole.onPlayerKill(killer, player);
 
-        int rewardAmount = 0;
+        int AOG = 0;
 
         for (ItemStack itemStack : killer.getInventory())
             if (itemStack != null && itemStack.getType() == Material.GOLDEN_APPLE)
-                rewardAmount += itemStack.getAmount();
+                AOG += itemStack.getAmount();
 
-        rewardAmount = 14 - rewardAmount;
+        int rewardAmount = 14 - AOG;
 
-        if (rewardAmount > 1)
+        if (rewardAmount > 0)
             killer.getInventory().addItem(new ItemStack(Material.GOLDEN_APPLE, rewardAmount));
 
         RoleUtils.armorSetup(killer.getInventory());

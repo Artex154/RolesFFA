@@ -1,5 +1,7 @@
 package be.artex.rolesffa.api.role;
 
+import be.artex.rolesffa.api.Cooldown;
+import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import be.artex.rolesffa.stats.StatValues;
 import be.artex.rolesffa.stats.Stats;
 import be.artex.strontium.itemBuilder.ItemBuilder;
@@ -51,6 +53,8 @@ public class RoleUtils {
         PlayerInventory inv = player.getInventory();
 
         inv.clear();
+        Cooldown.clearAllCooldowns(player);
+        clearFromLists(player);
 
         inventorySetup(inv);
 
@@ -71,6 +75,11 @@ public class RoleUtils {
 
         player.sendMessage(role.getDescription().getText());
         setPlayerRole(player, role);
+    }
+
+    private static void clearFromLists(Player player) {
+        CoupParalysant.RESISTANCE_DEBUFF.remove(player);
+        CoupParalysant.FROZEN_PLAYERS.remove(player);
     }
 
     private static Location computeRandomLocation(World world) {

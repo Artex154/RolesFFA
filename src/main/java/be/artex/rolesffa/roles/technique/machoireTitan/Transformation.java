@@ -24,7 +24,7 @@ public class Transformation extends RFItem {
             .name(ChatColor.GOLD + "" + ChatColor.BOLD + "Transformation")
             .lore(" ",
                     ChatColor.GRAY + " En faisant un clique droit, vous vous " + ChatColor.AQUA + "transformerez. ", ChatColor.GRAY + " Dans cette forme, vous possédez les " + ChatColor.AQUA + "effets " + ChatColor.GRAY + "et" + ChatColor.AQUA + " items" + ChatColor.GRAY + " suivants, pendant " + ChatColor.YELLOW + "35 secondes" + ChatColor.GRAY + ".       ", " ",
-                    ChatColor.LIGHT_PURPLE + "    +3 coeurs" + ChatColor.GRAY + " supplémentaires.", "    " +
+                    ChatColor.RED + "    +3❤" + ChatColor.GRAY + " supplémentaires.", "    " +
                     StringHelper.SPEED_SIGN + ChatColor.YELLOW + " +15% de Vitesse" + ChatColor.GRAY + ".", " ",
                     ChatColor.AQUA + "" + ChatColor.BOLD + "   Mâchoire" + ChatColor.GRAY + ": Cet item vous permettra d'infliger " + ChatColor.LIGHT_PURPLE + "2 coeurs et demi", ChatColor.GRAY + "    quand vous taperez un" + ChatColor.AQUA + " joueur " + ChatColor.GRAY + "avec. Il possède un cooldown de " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".", " ",
                     ChatColor.GRAY + " Cependant, vous ne pourrez plus utiliser", ChatColor.GRAY + " l'" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnelle" + ChatColor.GRAY + " durant la transformation.", " ",
@@ -41,7 +41,7 @@ public class Transformation extends RFItem {
         Player player = event.getPlayer();
 
         if (RoleUtils.transformedPlayers.contains(player)) {
-            player.sendMessage(Message.generate(" Vous êtes déjà transformé."));
+            player.sendMessage(Message.generate("Vous êtes déjà transformé."));
             return;
         }
 

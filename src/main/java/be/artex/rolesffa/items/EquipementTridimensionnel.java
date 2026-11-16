@@ -19,11 +19,11 @@ import org.bukkit.util.Vector;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
-public class EquipementTridimensionnelle extends RFItem {
+public class EquipementTridimensionnel extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.FISHING_ROD)
             .addEnchant(Enchantment.DURABILITY, 255)
             .itemFlags(ItemFlag.HIDE_ENCHANTS)
-            .name(ChatColor.GOLD + "" + ChatColor.BOLD + "Equipement Tridimensionnelle")
+            .name(ChatColor.GOLD + "" + ChatColor.BOLD + "Equipement Tridimensionnel")
             .build();
 
     @Override
@@ -36,7 +36,7 @@ public class EquipementTridimensionnelle extends RFItem {
         Player player = event.getPlayer();
 
         if (RoleUtils.transformedPlayers.contains(player)) {
-            player.sendMessage(Message.generate(" Vous ne pouvez pas utiliser cet item en étant transformé"));
+            player.sendMessage(Message.generate("Vous ne pouvez pas utiliser cet item en étant transformé"));
             return;
         }
 

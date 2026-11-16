@@ -19,7 +19,7 @@ public class Machoire extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.NETHER_STAR)
             .name(ChatColor.AQUA + "" + ChatColor.BOLD + "Mâchoire")
             .lore(" ",
-                    ChatColor.GRAY + " En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "avec, vous " + ChatColor.RED + "infligerez" + ChatColor.LIGHT_PURPLE + " 2,5 coeurs " + ChatColor.GRAY + "de " + ChatColor.RED + "dégats" + ChatColor.GRAY + ".      ", ChatColor.GRAY + " Cependant, vous pouvez utiliser que cet item en étant " + ChatColor.AQUA + "transformé" + ChatColor.GRAY + ".       ", " ", ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".", " ")
+                    ChatColor.GRAY + " En " + ChatColor.RED + "tappant " + ChatColor.GRAY + "un " + ChatColor.AQUA + "joueur " + ChatColor.GRAY + "avec, vous " + ChatColor.RED + "infligerez" + ChatColor.RED + " 2,5❤ " + ChatColor.GRAY + "de " + ChatColor.RED + "dégats" + ChatColor.GRAY + ".      ", ChatColor.GRAY + " Cependant, vous pouvez utiliser que cet item en étant " + ChatColor.AQUA + "transformé" + ChatColor.GRAY + ".       ", " ", ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
     @Override
@@ -32,7 +32,7 @@ public class Machoire extends RFItem {
         Player damager = (Player) event.getDamager();
 
         if (!RoleUtils.transformedPlayers.contains(damager)) {
-            damager.sendMessage(Message.generate(" Vous devez être transformé pour utiliser cet item."));
+            damager.sendMessage(Message.generate("Vous devez être transformé pour utiliser cet item."));
             return;
         }
 

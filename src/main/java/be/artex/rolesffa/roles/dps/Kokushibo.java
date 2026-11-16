@@ -1,5 +1,6 @@
 package be.artex.rolesffa.roles.dps;
 
+import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.helper.StringHelper;
@@ -15,7 +16,7 @@ public class Kokushibo extends Role {
             .name(ChatColor.RED + "Kokushibo")
             .lore(" ",
                     ChatColor.GRAY + " Kokushibo possède " + StringHelper.STRENGTH_SIGN + ChatColor.RED + " 110% de Force" + ChatColor.GRAY + ".    ",
-                    ChatColor.GRAY + " A chaque " + ChatColor.RED + "kill" + ChatColor.GRAY + ", il gagne un " + ChatColor.LIGHT_PURPLE + "coeur" + ChatColor.GRAY + " permanent. (max " + ChatColor.LIGHT_PURPLE + "17 coeurs" + ChatColor.GRAY + ")     ", " ")
+                    ChatColor.GRAY + " A chaque " + ChatColor.RED + "kill" + ChatColor.GRAY + ", il gagne " + ChatColor.RED + "1❤ permanent" + ChatColor.GRAY + ". (max " + ChatColor.RED + "17❤" + ChatColor.GRAY + ")     ", " ")
             .itemFlags(ItemFlag.HIDE_ATTRIBUTES)
             .build();
 
@@ -48,6 +49,8 @@ public class Kokushibo extends Role {
     public void onPlayerKill(Player killer, Player player) {
         if (killer.getMaxHealth() >= 34)
             return;
+
+        killer.sendMessage(Message.generate("Vous gagnez " + ChatColor.RED + "1❤ permanent" + ChatColor.GRAY + " pour avoir tué " + ChatColor.DARK_AQUA + player.getName() + ChatColor.GRAY + "."));
 
         killer.setMaxHealth(killer.getMaxHealth() + 2);
         killer.setHealth(killer.getMaxHealth());

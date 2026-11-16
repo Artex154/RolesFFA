@@ -3,7 +3,7 @@ package be.artex.rolesffa.roles.technique.machoireTitan;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.items.EquipementTridimensionnelle;
+import be.artex.rolesffa.items.EquipementTridimensionnel;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -42,6 +42,6 @@ public class TitanMachoire extends Role {
 
     @Override
     public List<RFItem> getItems() {
-        return Arrays.asList(new Transformation(), new EquipementTridimensionnelle(), new Machoire());
+        return Arrays.asList(new Transformation(), new EquipementTridimensionnel(), new Machoire());
     }
 }

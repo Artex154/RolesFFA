@@ -6,6 +6,7 @@ import be.artex.rolesffa.registry.RolesRegistries;
 import be.artex.rolesffa.stats.StatValues;
 import be.artex.rolesffa.stats.Stats;
 import org.bukkit.GameMode;
+import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -14,6 +15,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 public class EntityDamageByEntity implements Listener {
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+        if (event.getDamager() instanceof FishHook) {
+            event.setCancelled(true);
+            return;
+        }
+
         if (!(event.getEntity() instanceof Player) || !(event.getDamager() instanceof Player))
             return;
 
