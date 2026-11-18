@@ -1,10 +1,9 @@
 package be.artex.rolesffa.listener.entity;
 
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.registry.RolesRegistries;
-import be.artex.rolesffa.stats.RFEffectsType;
-import be.artex.rolesffa.stats.Effects;
+import be.artex.rolesffa.api.stats.RFEffectsType;
+import be.artex.rolesffa.api.stats.Effects;
 import org.bukkit.GameMode;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
@@ -31,8 +30,8 @@ public class EntityDamageByEntity implements Listener {
             return;
         }
 
-        Role playerRole = RoleUtils.getPlayerRole(player);
-        Role damagerRole = RoleUtils.getPlayerRole(damager);
+        Role playerRole = Role.getPlayerRole(player);
+        Role damagerRole = Role.getPlayerRole(damager);
 
         double playerResistanceBonus = Effects.get(player.getUniqueId()).getBonus(RFEffectsType.RESISTANCE);
         double damagerStrengthBonus = Effects.get(damager.getUniqueId()).getBonus(RFEffectsType.STRENGTH);

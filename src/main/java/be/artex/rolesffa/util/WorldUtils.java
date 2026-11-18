@@ -1,9 +1,12 @@
-package be.artex.rolesffa.helper;
+package be.artex.rolesffa.util;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 
-public class WorldHelper {
+import java.util.Random;
+
+public class WorldUtils {
     public static void initializeWorld(World world) {
         final int centerX = 0;
         final int centerY = 120;
@@ -32,6 +35,22 @@ public class WorldHelper {
 
         }
 
+    }
+
+    public static Location computeRandomLocation(World world) {
+        Random random = new Random();
+
+        int x = random.nextInt(25);
+        int z = random.nextInt(25);
+
+        if (Math.random() < 0.5)
+            x = -x;
+        if (Math.random() < 0.5)
+            z = -z;
+
+        int y = world.getHighestBlockYAt(x, z);
+
+        return new Location(world, x, y, z);
     }
 
 }

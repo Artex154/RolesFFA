@@ -2,7 +2,7 @@ package be.artex.rolesffa.gui;
 
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.helper.InventoryHelper;
+import be.artex.rolesffa.util.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
@@ -23,6 +23,6 @@ public class ChoiceOfRoleTypeGUI {
     }
 
     public static Inventory getInventory() {
-        return InventoryHelper.cloneInventory(INVENTORY);
+        return InventoryUtils.cloneInventory(INVENTORY);
     }
 }

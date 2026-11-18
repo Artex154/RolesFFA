@@ -1,4 +1,4 @@
-package be.artex.rolesffa.stats;
+package be.artex.rolesffa.api.stats;
 
 public enum RFEffectsType {
     SPEED,

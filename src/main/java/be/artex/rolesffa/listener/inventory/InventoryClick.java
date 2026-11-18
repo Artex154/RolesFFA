@@ -4,8 +4,9 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.gui.ChoiceOfRoleGUI;
+import be.artex.rolesffa.registry.RolesRegistries;
+import be.artex.rolesffa.util.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import java.util.Optional;
 
 public class InventoryClick implements Listener {
     @EventHandler
@@ -33,7 +36,7 @@ public class InventoryClick implements Listener {
             return;
         }
 
-        RoleType type = RoleUtils.getRoleTypeFromItem(stack);
+        RoleType type = Role.getRoleTypeFromItem(stack);
 
         if (type != null) {
             event.setCancelled(true);
@@ -47,14 +50,14 @@ public class InventoryClick implements Listener {
             return;
         }
 
-        Role role = RoleUtils.getRoleFromItem(stack);
+        Role role = RolesRegistries.ROLES.getRoleFromMenuStack(stack);
 
         if (role != null) {
             event.setCancelled(true);
 
             player.closeInventory();
 
-            RoleUtils.playerSetup(player, role);
+            PlayerUtils.playerSetup(player, role);
         }
     }
 }

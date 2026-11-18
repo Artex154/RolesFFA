@@ -1,12 +1,12 @@
 package be.artex.rolesffa.roles.technique.nagisa;
 
 import be.artex.rolesffa.Main;
-import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.helper.StringHelper;
-import be.artex.rolesffa.stats.RFEffectsType;
-import be.artex.rolesffa.stats.Effects;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.util.StringUtils;
+import be.artex.rolesffa.api.stats.RFEffectsType;
+import be.artex.rolesffa.api.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,8 +17,6 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.jetbrains.annotations.NotNull;
 
 import java.time.Duration;
@@ -31,7 +29,7 @@ public class CoupParalysant extends RFItem {
             .name(ChatColor.AQUA + "" + ChatColor.BOLD + "Coup Paralysant")
             .lore(" ",
                     ChatColor.GRAY + " En faisant un clique droit, vous " + ChatColor.AQUA + "paralyserez " + ChatColor.GRAY + "tous les " + ChatColor.AQUA + "joueurs      ", ChatColor.GRAY + " dans un" + ChatColor.AQUA + " rayon" + ChatColor.GRAY + " de" + ChatColor.AQUA + " 10 blocs" + ChatColor.GRAY + ", pendant " + ChatColor.YELLOW + "3 secondes" + ChatColor.GRAY + ".", " ",
-                    ChatColor.GRAY + " Les " + ChatColor.AQUA + "joueurs paralysés" + ChatColor.GRAY + " auront " + StringHelper.RESISTANCE_SIGN + ChatColor.GRAY + " -15% de resistance lors de la paralysie.      ",
+                    ChatColor.GRAY + " Les " + ChatColor.AQUA + "joueurs paralysés" + ChatColor.GRAY + " auront " + StringUtils.RESISTANCE_SIGN + ChatColor.GRAY + " -15% de resistance lors de la paralysie.      ",
                     " ", ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "40 secondes" + ChatColor.GRAY + ".", " ")
             .build();
 
@@ -45,17 +43,26 @@ public class CoupParalysant extends RFItem {
 
     @Override
     public void onClick(PlayerInteractEvent event) {
-        Cooldown cooldown = Cooldown.getCooldown("coup_paralysant", Duration.of(40, ChronoUnit.SECONDS), "Votre " + ChatColor.AQUA + ChatColor.BOLD + "Coup Paralysant");
         Player player = event.getPlayer();
+        Role role = Role.getPlayerRole(player);
 
-        if (cooldown.isPlayerInCooldown(player)) {
-            player.sendMessage(Message.cooldownTimeLeft(cooldown.getPlayerCooldownTimeLeft(player)));
+        if (!(role instanceof Nagisa)) {
+            player.setItemInHand(new ItemStack(Material.AIR));
+            player.updateInventory();
+
+            return;
+        }
+
+        long CDT = ((Nagisa) role).coupParaCDT;
+
+        if (CDT > 0) {
+            player.sendMessage(Message.cooldownTimeLeft(CDT / 20));
             return;
         }
 
         player.sendMessage(Message.generate("Vous avez utilisé votre " + ChatColor.AQUA + ChatColor.BOLD + "Coup Paralysant" + ChatColor.GRAY + "."));
 
-        cooldown.putPlayerInCooldown(player);
+        ((Nagisa) role).coupParaCDT = 40 * 20L;
 
         for (Entity entity : player.getNearbyEntities(10, 10, 10)) {
             if (!(entity instanceof Player))

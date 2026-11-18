@@ -3,7 +3,7 @@ package be.artex.rolesffa.roles.technique.machoireTitan;
 import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.api.role.Role;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import be.artex.strontium.player.StrontPlayer;
 import org.bukkit.ChatColor;
@@ -31,7 +31,7 @@ public class Machoire extends RFItem {
     public void onHit(EntityDamageByEntityEvent event) {
         Player damager = (Player) event.getDamager();
 
-        if (!RoleUtils.transformedPlayers.contains(damager)) {
+        if (!Role.transformedPlayers.contains(damager)) {
             damager.sendMessage(Message.generate("Vous devez être transformé pour utiliser cet item."));
             return;
         }

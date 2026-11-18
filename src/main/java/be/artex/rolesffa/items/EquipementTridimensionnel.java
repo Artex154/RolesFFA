@@ -3,7 +3,7 @@ package be.artex.rolesffa.items;
 import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.api.role.Role;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,7 +35,7 @@ public class EquipementTridimensionnel extends RFItem {
     public void onFish(PlayerFishEvent event) {
         Player player = event.getPlayer();
 
-        if (RoleUtils.transformedPlayers.contains(player)) {
+        if (Role.transformedPlayers.contains(player)) {
             player.sendMessage(Message.generate("Vous ne pouvez pas utiliser cet item en étant transformé"));
             return;
         }

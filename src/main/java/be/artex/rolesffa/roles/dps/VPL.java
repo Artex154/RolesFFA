@@ -2,8 +2,9 @@ package be.artex.rolesffa.roles.dps;
 
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.helper.StringHelper;
+import be.artex.rolesffa.util.StringUtils;
 import be.artex.strontium.itemBuilder.ItemBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -12,13 +13,18 @@ public class VPL extends Role {
     private static final ItemStack STACK = new ItemBuilder(Material.REDSTONE)
             .name(ChatColor.RED + "Vilain Petit Loup")
             .lore(" ",
-                    ChatColor.GRAY + " Le Vilain Petit Loup possède " + StringHelper.SPEED_SIGN + ChatColor.YELLOW + " 120% de Vitesse" + ChatColor.GRAY + ".    ",
-                    ChatColor.GRAY + " Ainsi que " + StringHelper.STRENGTH_SIGN + ChatColor.RED + " 110% de Force" + ChatColor.GRAY + ".", " ")
+                    ChatColor.GRAY + " Le Vilain Petit Loup possède " + StringUtils.SPEED_SIGN + ChatColor.YELLOW + " 120% de Vitesse" + ChatColor.GRAY + ".    ",
+                    ChatColor.GRAY + " Ainsi que " + StringUtils.STRENGTH_SIGN + ChatColor.RED + " 110% de Force" + ChatColor.GRAY + ".", " ")
             .build();
 
     @Override
     public String getName() {
         return "Vilain Petit Loup";
+    }
+
+    @Override
+    public String getIdentifier() {
+        return "VPL";
     }
 
     @Override
@@ -32,8 +38,8 @@ public class VPL extends Role {
     }
 
     @Override
-    public int getPlacement() {
-        return 19;
+    public TextComponent getDescription() {
+        return new TextComponent("a");
     }
 
     @Override

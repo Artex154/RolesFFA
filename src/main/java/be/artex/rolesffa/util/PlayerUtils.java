@@ -1,10 +1,10 @@
-package be.artex.rolesffa.api.role;
+package be.artex.rolesffa.util;
 
-import be.artex.rolesffa.ScoreboardManager;
 import be.artex.rolesffa.api.Cooldown;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.stats.Effects;
+import be.artex.rolesffa.api.stats.RFEffectsType;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
-import be.artex.rolesffa.stats.RFEffectsType;
-import be.artex.rolesffa.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -12,44 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
-
-public class RoleUtils {
-    private static final List<Role> roles = new ArrayList<>(); // TODO: Use the Registry system instead
-    private static final HashMap<Player, Role> playerRole = new HashMap<>();
-    public static final List<Player> transformedPlayers = new ArrayList<>();
-
-    public static RoleType getRoleTypeFromItem(ItemStack stack) {
-        for (RoleType type : RoleType.values())
-            if (type.getItem().isSimilar(stack))
-                return type;
-
-        return null;
-    }
-
-    public static Role getRoleFromItem(ItemStack stack) {
-        for (Role role : roles)
-            if (role.getStack().isSimilar(stack))
-                return role;
-
-        return null;
-    }
-
-    public static Role getPlayerRole(Player player) {
-        return playerRole.getOrDefault(player, null);
-    }
-
-    public static void setPlayerRole(Player player, Role role) {
-        playerRole.put(player, role);
-    }
-
-    public static void addRole(Role role) {
-        roles.add(role);
-    }
-
+public class PlayerUtils {
     public static void playerSetup(Player player, Role role) {
         PlayerInventory inv = player.getInventory();
 
@@ -61,7 +24,7 @@ public class RoleUtils {
 
         role.getItems().forEach((item) -> inv.addItem(item.getItem()));
 
-        player.teleport(computeRandomLocation(Bukkit.getWorlds().get(0)));
+        player.teleport(WorldUtils.computeRandomLocation(Bukkit.getWorlds().get(0)));
 
         player.setGameMode(GameMode.SURVIVAL);
 
@@ -75,30 +38,14 @@ public class RoleUtils {
         effects.setBonus(RFEffectsType.STRENGTH, role.getBonusStrength());
 
         player.sendMessage(role.getDescription().getText());
-        setPlayerRole(player, role);
+        Role.setPlayerRole(player, role);
 
         ScoreboardManager.updateScoreboard(player);
     }
 
-    private static void clearFromLists(Player player) {
+    public static void clearFromLists(Player player) {
         CoupParalysant.RESISTANCE_DEBUFF.remove(player);
         CoupParalysant.FROZEN_PLAYERS.remove(player);
-    }
-
-    private static Location computeRandomLocation(World world) {
-        Random random = new Random();
-
-        int x = random.nextInt(25);
-        int z = random.nextInt(25);
-
-        if (Math.random() < 0.5)
-            x = -x;
-        if (Math.random() < 0.5)
-            z = -z;
-
-        int y = world.getHighestBlockYAt(x, z);
-
-        return new Location(world, x, y, z);
     }
 
     private static void inventorySetup(PlayerInventory inventory) {
@@ -124,7 +71,7 @@ public class RoleUtils {
 
     public static void armorSetup(PlayerInventory inventory) {
         inventory.setHelmet(new ItemBuilder(Material.DIAMOND_HELMET)
-                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
+                .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2)
                 .build());
         inventory.setChestplate(new ItemBuilder(Material.DIAMOND_CHESTPLATE)
                 .addEnchant(Enchantment.PROTECTION_ENVIRONMENTAL, 2)

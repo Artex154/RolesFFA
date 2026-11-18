@@ -3,7 +3,7 @@ package be.artex.rolesffa.gui;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.helper.InventoryHelper;
+import be.artex.rolesffa.util.InventoryUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.inventory.Inventory;
 
@@ -24,20 +24,24 @@ public class ChoiceOfRoleGUI {
         for (int i : borderIndex)
             inv.setItem(i, Stacks.BORDER);
 
-        for (Role role : type.getRoles())
-            inv.setItem(role.getPlacement(), role.getStack());
+        int slot = 19;
+
+        for (Role role : type.getRoles()) {
+            inv.setItem(slot, role.getStack());
+            slot++;
+        }
 
         return inv;
     }
 
     public static Inventory getInventory(RoleType type) {
         if (inventoryHashMap.containsKey(type))
-            return InventoryHelper.cloneInventory(inventoryHashMap.get(type));
+            return InventoryUtils.cloneInventory(inventoryHashMap.get(type));
 
         Inventory inv = generateInventory(type);
 
         inventoryHashMap.put(type, inv);
 
-        return InventoryHelper.cloneInventory(inv);
+        return InventoryUtils.cloneInventory(inv);
     }
 }

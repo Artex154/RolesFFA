@@ -1,7 +1,7 @@
 package be.artex.rolesffa.listener.entity.player;
 
-import be.artex.rolesffa.ScoreboardManager;
-import be.artex.rolesffa.stats.PlayerRFEffectsChangeEvent;
+import be.artex.rolesffa.util.ScoreboardManager;
+import be.artex.rolesffa.api.stats.PlayerRFEffectsChangeEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 

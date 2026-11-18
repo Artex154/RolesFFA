@@ -5,6 +5,7 @@ import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.items.EquipementTridimensionnel;
 import be.artex.strontium.itemBuilder.ItemBuilder;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -26,6 +27,11 @@ public class TitanMachoire extends Role {
     }
 
     @Override
+    public String getIdentifier() {
+        return "titan_machoire";
+    }
+
+    @Override
     public ItemStack getStack() {
         return STACK;
     }
@@ -36,8 +42,8 @@ public class TitanMachoire extends Role {
     }
 
     @Override
-    public int getPlacement() {
-        return 20;
+    public TextComponent getDescription() {
+        return new TextComponent("a");
     }
 
     @Override

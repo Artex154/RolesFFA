@@ -1,18 +1,18 @@
 package be.artex.rolesffa;
 
+import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.commands.RFCommand;
 import be.artex.rolesffa.commands.subCommands.EffectsSubCommand;
-import be.artex.rolesffa.helper.WorldHelper;
+import be.artex.rolesffa.util.WorldUtils;
 import be.artex.rolesffa.listener.entity.EntityDamage;
 import be.artex.rolesffa.listener.entity.EntityDamageByEntity;
 import be.artex.rolesffa.listener.entity.player.*;
 import be.artex.rolesffa.listener.inventory.InventoryClick;
 import be.artex.rolesffa.listener.world.ChunkLoad;
-import be.artex.rolesffa.roles.dps.Kokushibo;
-import be.artex.rolesffa.roles.dps.VPL;
-import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
-import be.artex.rolesffa.roles.technique.nagisa.Nagisa;
+import be.artex.rolesffa.registries.RFItemRegistries;
+import be.artex.rolesffa.registries.RoleRegistries;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -40,19 +40,22 @@ public class Main extends JavaPlugin {
 
         getCommand("rf").setExecutor(new RFCommand());
 
-        WorldHelper.initializeWorld(world);
+        WorldUtils.initializeWorld(world);
 
         world.setGameRuleValue("naturalRegeneration", "false");
         world.setGameRuleValue("doDaylightCycle", "false");
         world.setGameRuleValue("doMobSpawning", "false");
 
-        RFItems.registerItems();
-
-        new Kokushibo().register();
-        new VPL().register();
-        new Nagisa().register();
-        new TitanMachoire().register();
+        RFItemRegistries.registerItems();
+        RoleRegistries.registerRoles();
 
         new EffectsSubCommand().register();
+
+        Bukkit.getScheduler().runTaskTimer(this, () -> {
+            Role.playerRole.forEach((p, r) -> {
+                if (r.shouldTick())
+                    r.tick(p);
+            });
+        }, 0L, 10L);
     }
 }

@@ -1,11 +1,10 @@
-package be.artex.rolesffa;
+package be.artex.rolesffa.util;
 
 import be.artex.rolesffa.api.role.Role;
-import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.listener.entity.player.PlayerDeath;
 import be.artex.rolesffa.listener.entity.player.PlayerStatsHolder;
-import be.artex.rolesffa.stats.RFEffectsType;
-import be.artex.rolesffa.stats.Effects;
+import be.artex.rolesffa.api.stats.RFEffectsType;
+import be.artex.rolesffa.api.stats.Effects;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
@@ -73,7 +72,7 @@ public class ScoreboardManager {
     }
 
     private static String getRole(Player pl) {
-        Role role = RoleUtils.getPlayerRole(pl);
+        Role role = Role.getPlayerRole(pl);
 
         if (role == null)
             return "Aucun";

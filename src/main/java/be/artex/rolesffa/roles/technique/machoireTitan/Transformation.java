@@ -4,10 +4,10 @@ import be.artex.rolesffa.Main;
 import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.helper.StringHelper;
-import be.artex.rolesffa.stats.RFEffectsType;
-import be.artex.rolesffa.stats.Effects;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.util.StringUtils;
+import be.artex.rolesffa.api.stats.RFEffectsType;
+import be.artex.rolesffa.api.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +25,7 @@ public class Transformation extends RFItem {
             .lore(" ",
                     ChatColor.GRAY + " En faisant un clique droit, vous vous " + ChatColor.AQUA + "transformerez. ", ChatColor.GRAY + " Dans cette forme, vous possédez les " + ChatColor.AQUA + "effets " + ChatColor.GRAY + "et" + ChatColor.AQUA + " items" + ChatColor.GRAY + " suivants, pendant " + ChatColor.YELLOW + "35 secondes" + ChatColor.GRAY + ".       ", " ",
                     ChatColor.RED + "    +3❤" + ChatColor.GRAY + " supplémentaires.", "    " +
-                    StringHelper.SPEED_SIGN + ChatColor.YELLOW + " +15% de Vitesse" + ChatColor.GRAY + ".", " ",
+                    StringUtils.SPEED_SIGN + ChatColor.YELLOW + " +15% de Vitesse" + ChatColor.GRAY + ".", " ",
                     ChatColor.AQUA + "" + ChatColor.BOLD + "   Mâchoire" + ChatColor.GRAY + ": Cet item vous permettra d'infliger " + ChatColor.LIGHT_PURPLE + "2 coeurs et demi", ChatColor.GRAY + "    quand vous taperez un" + ChatColor.AQUA + " joueur " + ChatColor.GRAY + "avec. Il possède un cooldown de " + ChatColor.YELLOW + "10 secondes" + ChatColor.GRAY + ".", " ",
                     ChatColor.GRAY + " Cependant, vous ne pourrez plus utiliser", ChatColor.GRAY + " l'" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnelle" + ChatColor.GRAY + " durant la transformation.", " ",
                     ChatColor.GRAY + " Cooldown : " + ChatColor.YELLOW + "50 secondes" + ChatColor.GRAY + " après l'utilisation", " ")
@@ -40,7 +40,7 @@ public class Transformation extends RFItem {
     public void onClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        if (RoleUtils.transformedPlayers.contains(player)) {
+        if (Role.transformedPlayers.contains(player)) {
             player.sendMessage(Message.generate("Vous êtes déjà transformé."));
             return;
         }
@@ -54,7 +54,7 @@ public class Transformation extends RFItem {
 
         cooldown.putPlayerInCooldown(player);
 
-        RoleUtils.transformedPlayers.add(player);
+        Role.transformedPlayers.add(player);
 
         Effects effects = Effects.get(player.getUniqueId());
 
@@ -64,10 +64,10 @@ public class Transformation extends RFItem {
         player.setHealth(player.getHealth() + 6);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-            if (!RoleUtils.transformedPlayers.contains(player))
+            if (!Role.transformedPlayers.contains(player))
                 return;
 
-            RoleUtils.transformedPlayers.remove(player);
+            Role.transformedPlayers.remove(player);
 
             player.setMaxHealth(20);
             effects.addBonus(RFEffectsType.SPEED, -15);

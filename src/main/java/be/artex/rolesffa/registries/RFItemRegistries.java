@@ -1,4 +1,4 @@
-package be.artex.rolesffa;
+package be.artex.rolesffa.registries;
 
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.items.EquipementTridimensionnel;
@@ -9,12 +9,12 @@ import be.artex.rolesffa.roles.technique.machoireTitan.Machoire;
 import be.artex.rolesffa.roles.technique.machoireTitan.Transformation;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 
-public final class RFItems {
+public final class RFItemRegistries {
     public static final RegistryObject<RFItem> ROLE_SELECTION = RolesRegistries.ITEMS.register("role_selection", new RoleSelection());
     public static final RegistryObject<RFItem> COUP_PARALYSANT = RolesRegistries.ITEMS.register("coup_paralysant", new CoupParalysant());
     public static final RegistryObject<RFItem> EQUIPEMENT_TRIDIMENSIONNELLE = RolesRegistries.ITEMS.register("equipement_tridimensionnelle", new EquipementTridimensionnel());
     public static final RegistryObject<RFItem> MACHOIRE_TRANSFORMATION = RolesRegistries.ITEMS.register("machoire_transformation", new Transformation());
     public static final RegistryObject<RFItem> MACHOIRE = RolesRegistries.ITEMS.register("machoire", new Machoire());
 
-    public static void registerItems() {} // Simply loads the class
+    public static void registerItems() {}
 }

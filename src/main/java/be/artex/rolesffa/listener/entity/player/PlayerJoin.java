@@ -1,9 +1,9 @@
 package be.artex.rolesffa.listener.entity.player;
 
-import be.artex.rolesffa.ScoreboardManager;
+import be.artex.rolesffa.util.ScoreboardManager;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
-import be.artex.rolesffa.stats.Effects;
+import be.artex.rolesffa.api.stats.Effects;
 import fr.mrmicky.fastboard.FastBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -16,9 +16,6 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.potion.PotionEffect;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class PlayerJoin implements Listener {
     @EventHandler
