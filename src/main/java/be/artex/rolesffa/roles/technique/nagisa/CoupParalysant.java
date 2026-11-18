@@ -5,8 +5,8 @@ import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.helper.StringHelper;
-import be.artex.rolesffa.stats.StatValues;
-import be.artex.rolesffa.stats.Stats;
+import be.artex.rolesffa.stats.RFEffectsType;
+import be.artex.rolesffa.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -68,15 +68,15 @@ public class CoupParalysant extends RFItem {
             p.sendMessage(Message.generate("Vous subissez le " + ChatColor.AQUA + ChatColor.BOLD + "Coup Paralysant" + ChatColor.GRAY + " de " + ChatColor.YELLOW + "Nagisa" + ChatColor.GRAY + "."));
 
             RESISTANCE_DEBUFF.add(p);
-            Stats stats = Stats.get(p.getUniqueId());
-            stats.addBonus(StatValues.RESISTANCE, -15);
+            Effects effects = Effects.get(p.getUniqueId());
+            effects.addBonus(RFEffectsType.RESISTANCE, -15);
 
             Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
                 if (!RESISTANCE_DEBUFF.contains(player))
                     return;
 
                 RESISTANCE_DEBUFF.remove(p);
-                stats.addBonus(StatValues.RESISTANCE, 15);
+                effects.addBonus(RFEffectsType.RESISTANCE, 15);
             }, 3*20L);
         }
     }

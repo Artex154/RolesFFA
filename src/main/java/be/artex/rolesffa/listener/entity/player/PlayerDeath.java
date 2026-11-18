@@ -1,9 +1,8 @@
 package be.artex.rolesffa.listener.entity.player;
 
+import be.artex.rolesffa.ScoreboardManager;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
-import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
-import be.artex.rolesffa.stats.Stats;
 import be.artex.strontium.holder.Holder;
 import be.artex.strontium.player.StrontPlayer;
 import org.bukkit.ChatColor;
@@ -15,9 +14,14 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class PlayerDeath implements Listener {
     private final DecimalFormat DF = new DecimalFormat("#.##");
+
+    public static final Map<UUID, PlayerStatsHolder> PLAYER_STATS = new HashMap<>();
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -31,16 +35,28 @@ public class PlayerDeath implements Listener {
         event.getDrops().add(new ItemStack(Material.LEAVES, 64));
         event.getDrops().add(new ItemStack(Material.ARROW, 24));
 
-        if (playerRole == null)
+        PlayerStatsHolder playersStats = PLAYER_STATS.computeIfAbsent(player.getUniqueId(), ignored -> new PlayerStatsHolder());
+
+        playersStats.addDeath();
+
+        if (playerRole == null) {
+            ScoreboardManager.updateScoreboard(player);
             return;
+        }
+
+        RoleUtils.setPlayerRole(player, null);
+        ScoreboardManager.updateScoreboard(player);
 
         if (player.getKiller() == null) {
-            event.setDeathMessage(ChatColor.RED + "" + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") est mort(e).");
+            event.setDeathMessage(ChatColor.RED + " " + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") est mort(e).");
             return;
         }
 
         Player killer = player.getKiller();
         StrontPlayer strontKiller = StrontPlayer.getSrontPlayer(killer);
+
+        PlayerStatsHolder killersStats = PLAYER_STATS.computeIfAbsent(killer.getUniqueId(), ignored -> new PlayerStatsHolder());
+        killersStats.addKill();
 
         Holder<String, ChatColor> health = new Holder<>(DF.format((killer.getHealth() + strontKiller.getAbsorptionHealth()) / 2), ChatColor.RED);
 
@@ -52,6 +68,8 @@ public class PlayerDeath implements Listener {
         event.setDeathMessage(ChatColor.RED + "" + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + health.getObject(0) + "❤" + ChatColor.GRAY + "].");
 
         Role killerRole = RoleUtils.getPlayerRole(killer);
+
+        ScoreboardManager.updateScoreboard(killer);
 
         if (killerRole == null)
             return;

@@ -1,6 +1,6 @@
 package be.artex.rolesffa.stats;
 
-public enum StatValues {
+public enum RFEffectsType {
     SPEED,
     RESISTANCE,
     STRENGTH

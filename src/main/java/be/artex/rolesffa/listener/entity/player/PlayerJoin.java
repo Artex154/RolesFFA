@@ -3,6 +3,7 @@ package be.artex.rolesffa.listener.entity.player;
 import be.artex.rolesffa.ScoreboardManager;
 import be.artex.rolesffa.Stacks;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
+import be.artex.rolesffa.stats.Effects;
 import fr.mrmicky.fastboard.FastBoard;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -20,8 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PlayerJoin implements Listener {
-    private static final Map<Player, FastBoard> BOARDS = new HashMap<>();
-    
     @EventHandler
     public void playerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
@@ -40,19 +39,21 @@ public class PlayerJoin implements Listener {
 
         player.teleport(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));
 
+        Effects.remove(player.getUniqueId());
+
         CoupParalysant.FROZEN_PLAYERS.remove(player);
         
         FastBoard board = new FastBoard(player);
-        board.updateTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "Roless FFA");
+        board.updateTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "Roles FFA");
         ScoreboardManager.updateScoreboard(player, board);
 
-        BOARDS.put(player, board);
+        ScoreboardManager.BOARDS.put(player, board);
 
         ScoreboardManager.updateHeaderFooter(player);
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        BOARDS.remove(event.getPlayer());
+        ScoreboardManager.BOARDS.remove(event.getPlayer());
     }
 }

@@ -1,7 +1,11 @@
 package be.artex.rolesffa;
 
-import be.artex.rolesffa.stats.StatValues;
-import be.artex.rolesffa.stats.Stats;
+import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.role.RoleUtils;
+import be.artex.rolesffa.listener.entity.player.PlayerDeath;
+import be.artex.rolesffa.listener.entity.player.PlayerStatsHolder;
+import be.artex.rolesffa.stats.RFEffectsType;
+import be.artex.rolesffa.stats.Effects;
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.events.PacketContainer;
@@ -11,15 +15,24 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
+import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
+
 public class ScoreboardManager {
+    public static final Map<Player, FastBoard> BOARDS = new HashMap<>();
+    private static final DecimalFormat DF = new DecimalFormat("#.##");
+
     private static String updateHeader() {
         return " \n" + ChatColor.DARK_GRAY + ChatColor.BOLD + "» " + ChatColor.AQUA + ChatColor.BOLD + "Roles FFA" + ChatColor.DARK_GRAY + ChatColor.BOLD + " «\n" + ChatColor.WHITE + "Bonne chance!\n ";
     }
 
     private static String updateFooter(Player player) {
-        Stats stats = Stats.get(player.getUniqueId());
+        Effects effects = Effects.get(player.getUniqueId());
 
-        return " \n " + ChatColor.RED + ChatColor.BOLD + "⚔ " + ChatColor.RED + Math.round(stats.getBonus(StatValues.STRENGTH)) + "%" + ChatColor.DARK_GRAY + " ▏ " + ChatColor.GRAY + "✦ " + Math.round(stats.getBonus(StatValues.RESISTANCE)) + "%" + ChatColor.DARK_GRAY + " ▏ " + ChatColor.YELLOW + ChatColor.BOLD + "⚡ " + ChatColor.YELLOW + Math.round(stats.getBonus(StatValues.SPEED)) + "%" + ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH + "\n----------------------\n" + ChatColor.AQUA + ChatColor.BOLD + "            www.azuriteuhc.fr/discord            \n ";
+        return " \n " + ChatColor.RED + ChatColor.BOLD + "⚔ " + ChatColor.RED + Math.round(effects.getBonus(RFEffectsType.STRENGTH)) + "%" + ChatColor.DARK_GRAY + " ▏ " + ChatColor.GRAY + "✦ " + Math.round(effects.getBonus(RFEffectsType.RESISTANCE)) + "%" + ChatColor.DARK_GRAY + " ▏ " + ChatColor.YELLOW + ChatColor.BOLD + "⚡ " + ChatColor.YELLOW + Math.round(effects.getBonus(RFEffectsType.SPEED)) + "%" + ChatColor.DARK_GRAY + ChatColor.STRIKETHROUGH + "\n----------------------\n" + ChatColor.AQUA + ChatColor.BOLD + "            www.azuriteuhc.fr/discord            \n ";
     }
 
     public static void updateHeaderFooter(Player player) {
@@ -36,18 +49,69 @@ public class ScoreboardManager {
         ProtocolLibrary.getProtocolManager().sendServerPacket(player, packet);
     }
 
+    public static void updateScoreboard(Player player) {
+        FastBoard board = BOARDS.get(player);
+
+        updateScoreboard(player, board);
+    }
+
     public static void updateScoreboard(Player player, FastBoard board) {
         board.updateLines(
+                ChatColor.GRAY + "  " + ChatColor.ITALIC + getDate(),
                 " ",
-                ChatColor.DARK_AQUA + "   • " + ChatColor.AQUA + ChatColor.BOLD + "SERVEUR" + ChatColor.DARK_AQUA + " •",
-                ChatColor.DARK_GRAY + " ▏  " + ChatColor.GRAY + "Joueurs: " + ChatColor.AQUA + Bukkit.getOnlinePlayers().size(),
-                ChatColor.DARK_GRAY + " ▏  " + ChatColor.GRAY + "Kills: " + ChatColor.AQUA + "1",
+                ChatColor.DARK_AQUA + "» " + ChatColor.AQUA + ChatColor.BOLD + "Informations",
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Joueurs: " + ChatColor.AQUA + Bukkit.getOnlinePlayers().size(),
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Rôle: " + ChatColor.AQUA + getRole(player),
                 " ",
-                ChatColor.DARK_AQUA + "   • " + ChatColor.AQUA + ChatColor.BOLD + "TEMPS" + ChatColor.DARK_AQUA + " •",
-                ChatColor.DARK_GRAY + " ▏  " + ChatColor.GRAY + "Temps: " + ChatColor.AQUA + "2mn",
-                ChatColor.DARK_GRAY + " ▏  " + ChatColor.GRAY + "Episode: " + ChatColor.AQUA + "2",
+                ChatColor.DARK_AQUA + "» " + ChatColor.AQUA + ChatColor.BOLD + "Statistiques",
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Kills: " + ChatColor.AQUA + getKillAmount(player),
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Killstreak: " + ChatColor.AQUA + getKillStreakAmount(player),
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "KDA: " + ChatColor.AQUA + getKDA(player),
                 " ",
-                ChatColor.AQUA + " azuriteuhc.fr"
+                ChatColor.GRAY + " azuriteuhc.fr"
         );
+    }
+
+    private static String getRole(Player pl) {
+        Role role = RoleUtils.getPlayerRole(pl);
+
+        if (role == null)
+            return "Aucun";
+
+        return role.getName();
+    }
+
+    private static int getKillAmount(Player pl) {
+        PlayerStatsHolder holder = PlayerDeath.PLAYER_STATS.get(pl.getUniqueId());
+
+        if (holder == null)
+            return 0;
+
+        return holder.getKillAmount();
+    }
+
+    private static int getKillStreakAmount(Player pl) {
+        PlayerStatsHolder holder = PlayerDeath.PLAYER_STATS.get(pl.getUniqueId());
+
+        if (holder == null)
+            return 0;
+
+        return holder.getKillStreakAmount();
+    }
+
+    private static String getKDA(Player pl) {
+        PlayerStatsHolder holder = PlayerDeath.PLAYER_STATS.get(pl.getUniqueId());
+
+        if (holder == null)
+            return "0";
+
+        return DF.format(holder.getKDA());
+    }
+
+    private static String getDate() {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return date.format(formatter);
     }
 }

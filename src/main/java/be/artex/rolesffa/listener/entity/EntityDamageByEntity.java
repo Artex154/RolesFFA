@@ -3,8 +3,8 @@ package be.artex.rolesffa.listener.entity;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.registry.RolesRegistries;
-import be.artex.rolesffa.stats.StatValues;
-import be.artex.rolesffa.stats.Stats;
+import be.artex.rolesffa.stats.RFEffectsType;
+import be.artex.rolesffa.stats.Effects;
 import org.bukkit.GameMode;
 import org.bukkit.entity.FishHook;
 import org.bukkit.entity.Player;
@@ -34,8 +34,8 @@ public class EntityDamageByEntity implements Listener {
         Role playerRole = RoleUtils.getPlayerRole(player);
         Role damagerRole = RoleUtils.getPlayerRole(damager);
 
-        double playerResistanceBonus = Stats.get(player.getUniqueId()).getBonus(StatValues.RESISTANCE);
-        double damagerStrengthBonus = Stats.get(damager.getUniqueId()).getBonus(StatValues.STRENGTH);
+        double playerResistanceBonus = Effects.get(player.getUniqueId()).getBonus(RFEffectsType.RESISTANCE);
+        double damagerStrengthBonus = Effects.get(damager.getUniqueId()).getBonus(RFEffectsType.STRENGTH);
 
         double multiplier = 1 + (damagerStrengthBonus - playerResistanceBonus) / 100;
         double finalDamage = event.getDamage() * multiplier;

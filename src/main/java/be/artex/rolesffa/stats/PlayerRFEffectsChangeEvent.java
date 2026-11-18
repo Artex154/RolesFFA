@@ -5,17 +5,17 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerStatsChangeEvent extends Event implements Cancellable {
+public class PlayerRFEffectsChangeEvent extends Event implements Cancellable {
     private static final HandlerList HANDLER_LIST = new HandlerList();
 
     private final Player player;
-    private final StatValues statValue;
+    private final RFEffectsType effectType;
     private final double amountChanged;
     private boolean isCancelled = false;
 
-    public PlayerStatsChangeEvent(Player player, StatValues statValues, double amountChanged) {
+    public PlayerRFEffectsChangeEvent(Player player, RFEffectsType effectType, double amountChanged) {
         this.player = player;
-        this.statValue = statValues;
+        this.effectType = effectType;
         this.amountChanged = amountChanged;
     }
 
@@ -29,12 +29,12 @@ public class PlayerStatsChangeEvent extends Event implements Cancellable {
         if (isCancelled == b)
             return;
 
-        Stats stats = Stats.get(player.getUniqueId());
+        Effects effects = Effects.get(player.getUniqueId());
 
         if (b) {
-            stats.addBonus(statValue, -amountChanged);
+            effects.addBonus(effectType, -amountChanged);
         } else {
-            stats.addBonus(statValue, amountChanged);
+            effects.addBonus(effectType, amountChanged);
         }
 
         isCancelled = b;
@@ -49,8 +49,8 @@ public class PlayerStatsChangeEvent extends Event implements Cancellable {
         return player;
     }
 
-    public StatValues getStatValue() {
-        return statValue;
+    public RFEffectsType getEffectType() {
+        return effectType;
     }
 
     public double getAmountChanged() {

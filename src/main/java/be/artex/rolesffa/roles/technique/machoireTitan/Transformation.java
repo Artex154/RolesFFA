@@ -6,8 +6,8 @@ import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.RoleUtils;
 import be.artex.rolesffa.helper.StringHelper;
-import be.artex.rolesffa.stats.StatValues;
-import be.artex.rolesffa.stats.Stats;
+import be.artex.rolesffa.stats.RFEffectsType;
+import be.artex.rolesffa.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -56,9 +56,9 @@ public class Transformation extends RFItem {
 
         RoleUtils.transformedPlayers.add(player);
 
-        Stats stats = Stats.get(player.getUniqueId());
+        Effects effects = Effects.get(player.getUniqueId());
 
-        stats.addBonus(StatValues.SPEED, 15);
+        effects.addBonus(RFEffectsType.SPEED, 15);
 
         player.setMaxHealth(26);
         player.setHealth(player.getHealth() + 6);
@@ -70,7 +70,7 @@ public class Transformation extends RFItem {
             RoleUtils.transformedPlayers.remove(player);
 
             player.setMaxHealth(20);
-            stats.addBonus(StatValues.SPEED, -15);
+            effects.addBonus(RFEffectsType.SPEED, -15);
         }, 35*20L);
     }
 }

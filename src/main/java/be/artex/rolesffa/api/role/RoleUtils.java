@@ -1,9 +1,10 @@
 package be.artex.rolesffa.api.role;
 
+import be.artex.rolesffa.ScoreboardManager;
 import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
-import be.artex.rolesffa.stats.StatValues;
-import be.artex.rolesffa.stats.Stats;
+import be.artex.rolesffa.stats.RFEffectsType;
+import be.artex.rolesffa.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -67,14 +68,16 @@ public class RoleUtils {
         player.setMaxHealth(role.getMaxHealth());
         player.setHealth(role.getMaxHealth());
 
-        Stats stats = Stats.get(player.getUniqueId());
+        Effects effects = Effects.get(player.getUniqueId());
 
-        stats.setBonus(StatValues.SPEED, role.getBonusSpeed());
-        stats.setBonus(StatValues.RESISTANCE, role.getBonusResistance());
-        stats.setBonus(StatValues.STRENGTH, role.getBonusStrength());
+        effects.setBonus(RFEffectsType.SPEED, role.getBonusSpeed());
+        effects.setBonus(RFEffectsType.RESISTANCE, role.getBonusResistance());
+        effects.setBonus(RFEffectsType.STRENGTH, role.getBonusStrength());
 
         player.sendMessage(role.getDescription().getText());
         setPlayerRole(player, role);
+
+        ScoreboardManager.updateScoreboard(player);
     }
 
     private static void clearFromLists(Player player) {

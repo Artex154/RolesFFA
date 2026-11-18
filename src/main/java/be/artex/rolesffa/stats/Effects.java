@@ -6,26 +6,26 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class Stats {
-    private static final Map<UUID, Stats> PLAYERS_STATS = new HashMap<>();
+public class Effects {
+    private static final Map<UUID, Effects> PLAYERS_STATS = new HashMap<>();
 
     private final UUID player;
     private double strengthBonus;
     private double resistanceBonus;
     private double speedBonus;
 
-    private Stats(UUID player) {
+    private Effects(UUID player) {
         this.player = player;
         this.strengthBonus = 0;
         this.resistanceBonus = 0;
         this.speedBonus = 0;
     }
 
-    public static @NotNull Stats get(@NotNull UUID uuid) {
-        return PLAYERS_STATS.computeIfAbsent(uuid, Stats::new);
+    public static @NotNull Effects get(@NotNull UUID uuid) {
+        return PLAYERS_STATS.computeIfAbsent(uuid, Effects::new);
     }
 
-    public double getBonus(@NotNull StatValues stat) {
+    public double getBonus(@NotNull RFEffectsType stat) {
         switch (stat) {
             case SPEED:
                 return speedBonus;
@@ -38,7 +38,7 @@ public class Stats {
         }
     }
 
-    public void setBonus(StatValues stat, double value) {
+    public void setBonus(RFEffectsType stat, double value) {
         switch (stat) {
             case SPEED:
                 this.speedBonus = value;
@@ -52,11 +52,11 @@ public class Stats {
                 break;
         }
 
-        PlayerStatsChangeEvent event = new PlayerStatsChangeEvent(Bukkit.getPlayer(player), stat, value);
+        PlayerRFEffectsChangeEvent event = new PlayerRFEffectsChangeEvent(Bukkit.getPlayer(player), stat, value);
         Bukkit.getServer().getPluginManager().callEvent(event);
     }
 
-    public void addBonus(StatValues stat, double amount) {
+    public void addBonus(RFEffectsType stat, double amount) {
         switch (stat) {
             case SPEED:
                 this.speedBonus += amount;
@@ -70,7 +70,7 @@ public class Stats {
                 break;
         }
 
-        PlayerStatsChangeEvent event = new PlayerStatsChangeEvent(Bukkit.getPlayer(player), stat, amount);
+        PlayerRFEffectsChangeEvent event = new PlayerRFEffectsChangeEvent(Bukkit.getPlayer(player), stat, amount);
         Bukkit.getServer().getPluginManager().callEvent(event);
     }
 
