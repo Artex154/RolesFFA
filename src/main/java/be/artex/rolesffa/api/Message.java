@@ -4,7 +4,7 @@ import org.bukkit.ChatColor;
 
 public class Message {
     public static String generate(String string) {
-        return ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " All Stars Party" + ChatColor.GRAY + " ▏ " + ChatColor.GRAY + string;
+        return ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " RolesFFA" + ChatColor.DARK_GRAY + " ▏ " + ChatColor.GRAY + string;
     }
 
     public static String cooldownTimeLeft(long timeLeft) {

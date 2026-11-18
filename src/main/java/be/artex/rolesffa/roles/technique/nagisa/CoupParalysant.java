@@ -86,13 +86,20 @@ public class CoupParalysant extends RFItem {
         h.setPassenger(target);
         h.setVisible(false);
         h.setGravity(false);
-        h.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, Integer.MAX_VALUE, 254, false, false));
         FROZEN_PLAYERS.add(target);
 
         Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
             h.setHealth(0);
             FROZEN_PLAYERS.remove(target);
         }, duration.getSeconds() * 20);
+
+        Bukkit.getLogger().info(
+                "NoDamageTicks: " + target.getNoDamageTicks()
+        );
+
+        Bukkit.getLogger().info(
+                "NoDamageTicks: " + target.getMaximumNoDamageTicks()
+        );
 
     }
 }

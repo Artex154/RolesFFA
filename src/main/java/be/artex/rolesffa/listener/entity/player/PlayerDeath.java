@@ -58,14 +58,14 @@ public class PlayerDeath implements Listener {
         PlayerStatsHolder killersStats = PLAYER_STATS.computeIfAbsent(killer.getUniqueId(), ignored -> new PlayerStatsHolder());
         killersStats.addKill();
 
-        Holder<String, ChatColor> health = new Holder<>(DF.format((killer.getHealth() + strontKiller.getAbsorptionHealth()) / 2), ChatColor.RED);
+        Holder<Double, ChatColor> health = new Holder<>((killer.getHealth() + strontKiller.getAbsorptionHealth()) / 2, ChatColor.RED);
 
         health.set(0, killer.getHealth() + strontKiller.getAbsorptionHealth());
 
         if (strontKiller.getAbsorptionHealth() > 0)
             health.set(1, ChatColor.YELLOW);
 
-        event.setDeathMessage(ChatColor.RED + "" + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + health.getObject(0) + "❤" + ChatColor.GRAY + "].");
+        event.setDeathMessage(ChatColor.RED + " " + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + ((double) health.getObject(1) * 100.0) / 100.0 + "❤" + ChatColor.GRAY + "].");
 
         Role killerRole = RoleUtils.getPlayerRole(killer);
 

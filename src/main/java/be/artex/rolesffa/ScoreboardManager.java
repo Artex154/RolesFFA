@@ -65,7 +65,7 @@ public class ScoreboardManager {
                 " ",
                 ChatColor.DARK_AQUA + "» " + ChatColor.AQUA + ChatColor.BOLD + "Statistiques",
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Kills: " + ChatColor.AQUA + getKillAmount(player),
-                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Killstreak: " + ChatColor.AQUA + getKillStreakAmount(player),
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "KS: " + ChatColor.AQUA + getKillStreakAmount(player),
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "KDA: " + ChatColor.AQUA + getKDA(player),
                 " ",
                 ChatColor.GRAY + " azuriteuhc.fr"
