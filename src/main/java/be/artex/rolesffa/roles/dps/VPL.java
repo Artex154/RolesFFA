@@ -51,4 +51,9 @@ public class VPL extends Role {
     public int getBonusStrength() {
         return 15;
     }
+
+    @Override
+    public String getSBName() {
+        return "VPL";
+    }
 }
