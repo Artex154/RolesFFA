@@ -1,9 +1,10 @@
-package be.artex.rolesffa.roles.technique.machoireTitan;
+package be.artex.rolesffa.roles.technique.machoireTitan.items;
 
-import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
+import be.artex.rolesffa.roles.technique.machoireTitan.TransformationState;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import be.artex.strontium.player.StrontPlayer;
 import org.bukkit.ChatColor;
@@ -11,9 +12,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 public class Machoire extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.NETHER_STAR)
@@ -29,22 +27,30 @@ public class Machoire extends RFItem {
 
     @Override
     public void onHit(EntityDamageByEntityEvent event) {
-        Player damager = (Player) event.getDamager();
+        Player player = (Player) event.getDamager();
+        Role role = Role.getPlayerRole(player);
 
-        if (!Role.transformedPlayers.contains(damager)) {
-            damager.sendMessage(Message.generate("Vous devez être transformé pour utiliser cet item."));
+        if (!(role instanceof TitanMachoire)) {
+            player.setItemInHand(new ItemStack(Material.AIR));
+            player.updateInventory();
+
             return;
         }
 
-        Cooldown cooldown = Cooldown.getCooldown("machoire", Duration.of(10, ChronoUnit.SECONDS), "Votre " + ChatColor.AQUA + ChatColor.BOLD + "Mâchoire");
+        TitanMachoire r = (TitanMachoire) role;
 
-        if (cooldown.isPlayerInCooldown(damager)) {
-            damager.sendMessage(Message.cooldownTimeLeft(cooldown.getPlayerCooldownTimeLeft(damager)));
+        if (r.transformationState == TransformationState.NOT_TRANSFORMED) {
+            player.sendMessage(Message.generate("Vous devez être transformé pour utilser votre mâchoire !"));
             return;
         }
 
-        StrontPlayer.getSrontPlayer((Player) event.getEntity()).inflictTrueDamage(5);
+        if (r.machoireCDT != 0) {
+            player.sendMessage(Message.cooldownTimeLeft(r.machoireCDT / 20));
+            return;
+        }
 
-        cooldown.putPlayerInCooldown(damager);
+        r.machoireCDT = 10 * 20L;
+
+        StrontPlayer.getSrontPlayer(((Player) event.getEntity())).inflictTrueDamage(5);
     }
 }

@@ -20,6 +20,10 @@ public abstract class Role {
     public abstract RoleType getType();
     public abstract TextComponent getDescription();
 
+    public String getSBName() {
+        return getName();
+    }
+
     public boolean shouldTick() {
         return false;
     }

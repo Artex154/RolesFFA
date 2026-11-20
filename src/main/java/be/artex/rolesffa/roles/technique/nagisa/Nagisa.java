@@ -1,9 +1,10 @@
 package be.artex.rolesffa.roles.technique.nagisa;
 
+import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
-import be.artex.rolesffa.util.StringUtils;;
+import be.artex.rolesffa.util.StringUtils;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -67,9 +68,13 @@ public class Nagisa extends Role {
 
     @Override
     public void tick(Player player) {
-        if (coupParaCDT < 10)
+        if (coupParaCDT <= 0)
+            return;
+
+        if (coupParaCDT <= 10) {
             coupParaCDT = 0;
-        else
+            player.sendMessage(Message.generate("Votre " + ChatColor.AQUA + ChatColor.BOLD + "Coup Paralysant" + ChatColor.GRAY + " n'est plus en cooldown."));
+        } else
             coupParaCDT -= 10;
     }
 }

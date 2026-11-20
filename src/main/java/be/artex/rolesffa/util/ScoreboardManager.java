@@ -77,7 +77,7 @@ public class ScoreboardManager {
         if (role == null)
             return "Aucun";
 
-        return role.getName();
+        return role.getSBName();
     }
 
     private static int getKillAmount(Player pl) {

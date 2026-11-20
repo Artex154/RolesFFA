@@ -1,12 +1,12 @@
 package be.artex.rolesffa.registries;
 
 import be.artex.rolesffa.api.item.RFItem;
-import be.artex.rolesffa.items.EquipementTridimensionnel;
+import be.artex.rolesffa.roles.technique.machoireTitan.items.EquipementTridimensionnel;
 import be.artex.rolesffa.items.RoleSelection;
 import be.artex.rolesffa.registry.RegistryObject;
 import be.artex.rolesffa.registry.RolesRegistries;
-import be.artex.rolesffa.roles.technique.machoireTitan.Machoire;
-import be.artex.rolesffa.roles.technique.machoireTitan.Transformation;
+import be.artex.rolesffa.roles.technique.machoireTitan.items.Machoire;
+import be.artex.rolesffa.roles.technique.machoireTitan.items.Transformation;
 import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 
 public final class RFItemRegistries {

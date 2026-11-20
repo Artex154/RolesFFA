@@ -1,23 +1,19 @@
-package be.artex.rolesffa.roles.technique.machoireTitan;
+package be.artex.rolesffa.roles.technique.machoireTitan.items;
 
-import be.artex.rolesffa.Main;
-import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
+import be.artex.rolesffa.roles.technique.machoireTitan.TransformationState;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.rolesffa.api.stats.RFEffectsType;
 import be.artex.rolesffa.api.stats.Effects;
 import be.artex.strontium.itemBuilder.ItemBuilder;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
-
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 public class Transformation extends RFItem {
     private static final ItemStack STACK = new ItemBuilder(Material.FEATHER)
@@ -39,38 +35,36 @@ public class Transformation extends RFItem {
     @Override
     public void onClick(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+        Role role = Role.getPlayerRole(player);
 
-        if (Role.transformedPlayers.contains(player)) {
+        if (!(role instanceof TitanMachoire)) {
+            player.setItemInHand(new ItemStack(Material.AIR));
+            player.updateInventory();
+
+            return;
+        }
+
+        TitanMachoire r = (TitanMachoire) role;
+
+        if (r.transformationState == TransformationState.TRANSFORMED) {
             player.sendMessage(Message.generate("Vous êtes déjà transformé."));
             return;
         }
 
-        Cooldown cooldown = Cooldown.getCooldown("machoire_transfo", Duration.of(85, ChronoUnit.SECONDS), "Votre " + ChatColor.GOLD + ChatColor.BOLD + "Transformation");
-
-        if (cooldown.isPlayerInCooldown(player)) {
-            player.sendMessage(Message.cooldownTimeLeft(cooldown.getPlayerCooldownTimeLeft(player)));
+        if (r.transformationTime != 0) {
+            player.sendMessage(Message.cooldownTimeLeft(r.transformationTime / 20));
             return;
         }
 
-        cooldown.putPlayerInCooldown(player);
+        player.sendMessage(Message.generate("Vous vous êtes transformé."));
 
-        Role.transformedPlayers.add(player);
+        r.transformationTime = 35 * 20L;
+        r.transformationState = TransformationState.TRANSFORMED;
 
         Effects effects = Effects.get(player.getUniqueId());
-
         effects.addBonus(RFEffectsType.SPEED, 15);
 
         player.setMaxHealth(26);
         player.setHealth(player.getHealth() + 6);
-
-        Bukkit.getScheduler().runTaskLater(Main.instance, () -> {
-            if (!Role.transformedPlayers.contains(player))
-                return;
-
-            Role.transformedPlayers.remove(player);
-
-            player.setMaxHealth(20);
-            effects.addBonus(RFEffectsType.SPEED, -15);
-        }, 35*20L);
     }
 }
