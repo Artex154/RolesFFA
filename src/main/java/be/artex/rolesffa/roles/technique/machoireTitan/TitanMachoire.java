@@ -28,7 +28,7 @@ public class TitanMachoire extends Role {
             .name(ChatColor.YELLOW + "Titan Mâchoire")
             .lore(" ",
                     ChatColor.YELLOW + "" + ChatColor.BOLD + " Le Titan Mâchoire " + ChatColor.GRAY + "possède l'" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnel" + ChatColor.GRAY + ".    ",
-                    ChatColor.GRAY + " aAinsi que sa " + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.GRAY + ".", " ")
+                    ChatColor.GRAY + " ainsi que sa " + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.GRAY + ".", " ")
             .build();
 
     public TransformationState transformationState = TransformationState.NOT_TRANSFORMED;

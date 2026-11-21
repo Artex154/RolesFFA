@@ -33,13 +33,16 @@ public class EntityDamageByEntity implements Listener {
         Role playerRole = Role.getPlayerRole(player);
         Role damagerRole = Role.getPlayerRole(damager);
 
-        double playerResistanceBonus = Effects.get(player.getUniqueId()).getBonus(RFEffectsType.RESISTANCE);
-        double damagerStrengthBonus = Effects.get(damager.getUniqueId()).getBonus(RFEffectsType.STRENGTH);
+        double playerResistanceBonus = Effects.get(player.getUniqueId()).getBonus(RFEffectsType.RESISTANCE) + playerRole.getBonusResistanceAgainst(player, damager);
+        double damagerStrengthBonus = Effects.get(damager.getUniqueId()).getBonus(RFEffectsType.STRENGTH) + damagerRole.getBonusStrengthAgainst(player, damager);
 
         double multiplier = 1 + (damagerStrengthBonus - playerResistanceBonus) / 100;
         double finalDamage = event.getDamage() * multiplier;
 
         event.setDamage(finalDamage);
+
+        playerRole.whenHit(player, damager);
+        damagerRole.onHit(player, damager);
 
         RolesRegistries.ITEMS.getItemFromStack(damager.getItemInHand()).ifPresent(item -> item.onHit(event));
     }

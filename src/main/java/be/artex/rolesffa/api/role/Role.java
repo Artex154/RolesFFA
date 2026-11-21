@@ -54,6 +54,24 @@ public abstract class Role {
     public void onPlayerKill(Player killer, Player player) {
     }
 
+    public void onHit(Player player, Player damager) {
+    }
+
+    public void whenHit(Player player, Player damager) {
+    }
+
+    // called to get the amount of bonus strength when hitting that player
+    // damager is the one with the role
+    public int getBonusStrengthAgainst(Player player, Player damager) {
+        return 0;
+    }
+
+    // called to get the amount of bonus resistance when getting hit by that player.
+    // player is the one with the role
+    public int getBonusResistanceAgainst(Player player, Player damager) {
+        return 0;
+    }
+
     @Nullable
     public static RoleType getRoleTypeFromItem(@NotNull ItemStack stack) {
         for (RoleType type : RoleType.values())
