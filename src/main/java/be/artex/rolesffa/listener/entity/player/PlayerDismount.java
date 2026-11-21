@@ -1,7 +1,6 @@
 package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.Main;
-import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,8 +14,5 @@ public class PlayerDismount implements Listener {
             return;
 
         Player player = (Player) event.getEntity();
-
-        if (CoupParalysant.FROZEN_PLAYERS.contains(player))
-            Bukkit.getScheduler().runTaskLater(Main.instance, () -> event.getDismounted().setPassenger(player), 1);
     }
 }

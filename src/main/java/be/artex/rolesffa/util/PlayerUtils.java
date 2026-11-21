@@ -4,7 +4,6 @@ import be.artex.rolesffa.api.Cooldown;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.stats.Effects;
 import be.artex.rolesffa.api.stats.RFEffectsType;
-import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import org.bukkit.*;
 import org.bukkit.enchantments.Enchantment;
@@ -37,15 +36,17 @@ public class PlayerUtils {
         effects.setBonus(RFEffectsType.RESISTANCE, role.getBonusResistance());
         effects.setBonus(RFEffectsType.STRENGTH, role.getBonusStrength());
 
-        player.sendMessage(role.getDescription().getText());
         Role.setPlayerRole(player, role);
 
         ScoreboardManager.updateScoreboard(player);
+
+        player.sendMessage(StringUtils.LINE);
+        player.spigot().sendMessage(role.getDescription());
+        player.sendMessage(StringUtils.LINE);
     }
 
     public static void clearFromLists(Player player) {
-        CoupParalysant.RESISTANCE_DEBUFF.remove(player);
-        CoupParalysant.FROZEN_PLAYERS.remove(player);
+
     }
 
     private static void inventorySetup(PlayerInventory inventory) {

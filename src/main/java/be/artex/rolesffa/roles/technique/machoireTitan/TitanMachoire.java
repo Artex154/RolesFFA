@@ -1,6 +1,8 @@
 package be.artex.rolesffa.roles.technique.machoireTitan;
 
 import be.artex.rolesffa.api.Message;
+import be.artex.rolesffa.api.descriptionBuilder.DescriptionBuilder;
+import be.artex.rolesffa.api.descriptionBuilder.HoverHolder;
 import be.artex.rolesffa.api.item.RFItem;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
@@ -9,6 +11,7 @@ import be.artex.rolesffa.api.stats.RFEffectsType;
 import be.artex.rolesffa.roles.technique.machoireTitan.items.EquipementTridimensionnel;
 import be.artex.rolesffa.roles.technique.machoireTitan.items.Machoire;
 import be.artex.rolesffa.roles.technique.machoireTitan.items.Transformation;
+import be.artex.rolesffa.util.StringUtils;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -24,8 +27,8 @@ public class TitanMachoire extends Role {
     private static final ItemStack STACK = new ItemBuilder(Material.GHAST_TEAR)
             .name(ChatColor.YELLOW + "Titan Mâchoire")
             .lore(" ",
-                    ChatColor.GRAY + " Le Titan Mâchoire possède l'" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnelle" + ChatColor.GRAY + ".    ",
-                    ChatColor.GRAY + " Ainsi que sa " + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.GRAY + ".", " ")
+                    ChatColor.YELLOW + "" + ChatColor.BOLD + " Le Titan Mâchoire " + ChatColor.GRAY + "possède l'" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionnel" + ChatColor.GRAY + ".    ",
+                    ChatColor.GRAY + " aAinsi que sa " + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.GRAY + ".", " ")
             .build();
 
     public TransformationState transformationState = TransformationState.NOT_TRANSFORMED;
@@ -56,7 +59,29 @@ public class TitanMachoire extends Role {
 
     @Override
     public TextComponent getDescription() {
-        return new TextComponent("a");
+        HoverHolder transform = new HoverHolder(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.DARK_GRAY + "]",
+                " \n " + ChatColor.DARK_GRAY + "    [" + ChatColor.GOLD + ChatColor.BOLD + "Transformation" + ChatColor.DARK_GRAY + "]\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Vous pouvez vous " + ChatColor.GOLD + ChatColor.BOLD + "transformer " + ChatColor.WHITE + "avec un clic pour " + ChatColor.YELLOW + "35 secondes" + ChatColor.WHITE + ".\n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Vous gagnez alors " + ChatColor.RED + ChatColor.BOLD + "3❤ permanents" + ChatColor.WHITE + " et " + StringUtils.SPEED_SIGN + ChatColor.YELLOW + " 20% de Vitesse" + ChatColor.WHITE + ".       \n" +
+                        ChatColor.WHITE + "     Vous pourrez alors utiliser votre " + ChatColor.GOLD + ChatColor.BOLD + "Mâchoire" + ChatColor.WHITE + ", mais ne pourrez plus utiliser votre " + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionel" + ChatColor.WHITE + ".\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cooldown: " + ChatColor.YELLOW + ChatColor.BOLD + "50 secondes " + ChatColor.YELLOW + "après détransformation\n"
+        );
+
+        HoverHolder mach = new HoverHolder(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "Mâchoire" + ChatColor.DARK_GRAY + "]",
+                " \n " + ChatColor.DARK_GRAY + "    [" + ChatColor.GOLD + ChatColor.BOLD + "Mâchoire" + ChatColor.DARK_GRAY + "]\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "En infligeant un " + ChatColor.RED + "coup " + ChatColor.WHITE + "avec, vous" + ChatColor.RED + ChatColor.BOLD + " infligerez 2,5❤" + ChatColor.WHITE + ".\n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cooldown: " + ChatColor.YELLOW + ChatColor.BOLD + "10 secondes\n"
+        );
+
+        HoverHolder equiTridi = new HoverHolder(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionel" + ChatColor.DARK_GRAY + "]",
+                " \n " + ChatColor.DARK_GRAY + "    [" + ChatColor.GOLD + ChatColor.BOLD + "Equipement Tridimensionel" + ChatColor.DARK_GRAY + "]\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "En lançant la canne-à-pêche et en la rattrapant, vous effectuerez un " + ChatColor.GOLD + ChatColor.BOLD + "dash" + ChatColor.WHITE + ".\n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cooldown: " + ChatColor.YELLOW + ChatColor.BOLD + "15 secondes\n"
+        );
+
+        DescriptionBuilder description = new DescriptionBuilder(this).activables(transform, mach, equiTridi);
+
+        return description.build();
     }
 
     @Override

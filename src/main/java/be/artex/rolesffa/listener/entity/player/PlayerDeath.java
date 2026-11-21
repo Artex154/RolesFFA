@@ -61,7 +61,7 @@ public class PlayerDeath implements Listener {
         if (strontKiller.getAbsorptionHealth() > 0)
             health.set(1, ChatColor.YELLOW);
 
-        event.setDeathMessage(ChatColor.RED + " " + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + ((double) health.getObject(1) * 100.0) / 100.0 + "❤" + ChatColor.GRAY + "].");
+        event.setDeathMessage(ChatColor.RED + " " + ChatColor.BOLD + "MORT! " + ChatColor.GREEN + player.getName() + ChatColor.GRAY + " (" + playerRole.getType().getColor() + playerRole.getName() + ChatColor.GRAY + ") a été tué(e) par " + ChatColor.RED + killer.getName() + ChatColor.GRAY + " [" + health.getObject(1) + ChatColor.BOLD + ((double) health.getObject(0) * 100.0) / 100.0 + "❤" + ChatColor.GRAY + "].");
 
         Role killerRole = Role.getPlayerRole(killer);
 

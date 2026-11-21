@@ -2,7 +2,6 @@ package be.artex.rolesffa.listener.entity.player;
 
 import be.artex.rolesffa.util.ScoreboardManager;
 import be.artex.rolesffa.Stacks;
-import be.artex.rolesffa.roles.technique.nagisa.CoupParalysant;
 import be.artex.rolesffa.api.stats.Effects;
 import fr.mrmicky.fastboard.FastBoard;
 import org.bukkit.Bukkit;
@@ -37,8 +36,6 @@ public class PlayerJoin implements Listener {
         player.teleport(new Location(Bukkit.getWorlds().get(0), 0, 122, 0));
 
         Effects.remove(player.getUniqueId());
-
-        CoupParalysant.FROZEN_PLAYERS.remove(player);
         
         FastBoard board = new FastBoard(player);
         board.updateTitle(ChatColor.AQUA + "" + ChatColor.BOLD + "Roles FFA");

@@ -7,7 +7,7 @@ import org.bukkit.ChatColor;
 
 public class StringUtils {
     public static final String DOT = ChatColor.DARK_GRAY + " • ";
-    public static final String LINE = ChatColor.DARK_GRAY + "" + ChatColor.STRIKETHROUGH + "------------------------------------";
+    public static final String LINE = ChatColor.WHITE + "" + ChatColor.STRIKETHROUGH + "+------" + ChatColor.AQUA + ChatColor.STRIKETHROUGH + "-------" + ChatColor.DARK_AQUA + ChatColor.STRIKETHROUGH + "--------------" + ChatColor.AQUA + ChatColor.STRIKETHROUGH + "-------" + ChatColor.WHITE + ChatColor.STRIKETHROUGH + "------+";
 
     public static final String SPEED_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + ChatColor.BOLD + "⚡" + ChatColor.DARK_GRAY + "]";
     public static final String STRENGTH_SIGN = ChatColor.DARK_GRAY + "[" + ChatColor.RED + ChatColor.BOLD + "⚔" + ChatColor.DARK_GRAY + "]";

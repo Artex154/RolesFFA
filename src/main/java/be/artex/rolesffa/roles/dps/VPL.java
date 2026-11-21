@@ -1,5 +1,6 @@
 package be.artex.rolesffa.roles.dps;
 
+import be.artex.rolesffa.api.descriptionBuilder.DescriptionBuilder;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.util.StringUtils;
@@ -39,7 +40,7 @@ public class VPL extends Role {
 
     @Override
     public TextComponent getDescription() {
-        return new TextComponent("a");
+        return new DescriptionBuilder(this).build();
     }
 
     @Override
@@ -49,7 +50,7 @@ public class VPL extends Role {
 
     @Override
     public int getBonusStrength() {
-        return 15;
+        return 8;
     }
 
     @Override
