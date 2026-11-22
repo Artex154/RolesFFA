@@ -1,6 +1,7 @@
 package be.artex.rolesffa.util;
 
 import be.artex.rolesffa.api.role.Role;
+import be.artex.rolesffa.api.weather.Weather;
 import be.artex.rolesffa.listener.entity.player.PlayerDeath;
 import be.artex.rolesffa.listener.entity.player.PlayerStatsHolder;
 import be.artex.rolesffa.api.stats.RFEffectsType;
@@ -61,6 +62,7 @@ public class ScoreboardManager {
                 ChatColor.DARK_AQUA + "» " + ChatColor.AQUA + ChatColor.BOLD + "Informations",
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Joueurs: " + ChatColor.AQUA + Bukkit.getOnlinePlayers().size(),
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Rôle: " + ChatColor.AQUA + getRole(player),
+                ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Météo: " + ChatColor.AQUA + Weather.getCurrentWeather().getName(),
                 " ",
                 ChatColor.DARK_AQUA + "» " + ChatColor.AQUA + ChatColor.BOLD + "Statistiques",
                 ChatColor.DARK_AQUA + "" + ChatColor.BOLD + " - " + ChatColor.WHITE + "Kills: " + ChatColor.AQUA + getKillAmount(player),
