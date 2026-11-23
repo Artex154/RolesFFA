@@ -75,7 +75,7 @@ public class Gaara extends Role {
                         ChatColor.RED + ChatColor.BOLD + "      Malus: " + ChatColor.YELLOW + ChatColor.BOLD + "Shukaku" + ChatColor.WHITE + " a " + ChatColor.BOLD + "75% " + ChatColor.WHITE + "de consommer une" + ChatColor.YELLOW + " pomme en or " + ChatColor.WHITE + "au lieu de 50%.       \n"
         );
 
-        return builder.passifs(sand, armor).activables(shukaku).build();
+        return builder.passifs(sand.toComponent(), armor.toComponent()).activables(shukaku).build();
     }
 
     @Override

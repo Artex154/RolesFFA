@@ -6,6 +6,7 @@ import be.artex.rolesffa.registry.RolesRegistries;
 import be.artex.rolesffa.roles.dps.Kokushibo;
 import be.artex.rolesffa.roles.dps.VPL;
 import be.artex.rolesffa.roles.tank.gaara.Gaara;
+import be.artex.rolesffa.roles.technique.hina.Hina;
 import be.artex.rolesffa.roles.technique.machoireTitan.TitanMachoire;
 
 public class RoleRegistries {
@@ -13,6 +14,7 @@ public class RoleRegistries {
     public static final RegistryObject<Class<? extends Role>> VPL = RolesRegistries.ROLES.registerRole(VPL.class);
     public static final RegistryObject<Class<? extends Role>> TITAN_MACHOIRE = RolesRegistries.ROLES.registerRole(TitanMachoire.class);
     public static final RegistryObject<Class<? extends Role>> GAARA = RolesRegistries.ROLES.registerRole(Gaara.class);
+    public static final RegistryObject<Class<? extends Role>> HINA = RolesRegistries.ROLES.registerRole(Hina.class);
 
     public static void registerRoles() {}
 }

@@ -73,7 +73,7 @@ public class Kokushibo extends Role {
         );
 
         DescriptionBuilder description = new DescriptionBuilder(this)
-                .passifs(lame, evolution);
+                .passifs(lame.toComponent(), evolution.toComponent());
 
         return description.build();
     }

@@ -12,7 +12,7 @@ import java.util.List;
 public class DescriptionBuilder {
     private final Role role;
     private boolean hasFireRes = false;
-    private final List<HoverHolder> passifs = new ArrayList<>();
+    private final List<TextComponent> passifs = new ArrayList<>();
     private final List<HoverHolder> activables = new ArrayList<>();
 
     /**
@@ -33,11 +33,11 @@ public class DescriptionBuilder {
     }
 
     /**
-     * @param holders list of HoverHolders to add the list of passives.
+     * @param components list of components to add the list of passives.
      * @return the builder to continue the chain.
      */
-    public DescriptionBuilder passifs(HoverHolder... holders) {
-        Collections.addAll(passifs, holders);
+    public DescriptionBuilder passifs(TextComponent... components) {
+        Collections.addAll(passifs, components);
         return this;
     }
 
@@ -75,7 +75,7 @@ public class DescriptionBuilder {
         if (hasPassives) {
             passifs.forEach(p -> {
                 description.addExtra(ChatColor.DARK_GRAY + "" + ChatColor.BOLD + " - ");
-                description.addExtra(p.toComponent());
+                description.addExtra(p);
                 description.addExtra("\n");
             });
 
