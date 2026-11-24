@@ -5,9 +5,10 @@ import be.artex.rolesffa.api.descriptionBuilder.DescriptionBuilder;
 import be.artex.rolesffa.api.descriptionBuilder.HoverHolder;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
+import be.artex.rolesffa.api.stats.Effects;
+import be.artex.rolesffa.api.stats.RFEffectsType;
 import be.artex.rolesffa.api.weather.WeatherType;
 import be.artex.rolesffa.util.StringUtils;
-import be.artex.strontium.holder.Holder;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
@@ -22,6 +23,10 @@ public class Hina extends Role {
             .lore(" ",
                     ChatColor.YELLOW + "" + ChatColor.BOLD + " Hina " + ChatColor.GRAY + "peut transformer la " + ChatColor.BLUE + ChatColor.BOLD + "Météo " + ChatColor.GRAY + "à sa guise.    ", " ")
             .build();
+
+    public boolean isInZone = true;
+
+    public WeatherType appliedWeather = WeatherType.RAINING;
 
     public Location zoneCenter = null;
     public long zoneTicksLeft = 0;
@@ -89,5 +94,65 @@ public class Hina extends Role {
             return;
 
         player.sendMessage(Message.generate("Vous avez effectué un " + ChatColor.RED + "kill" + ChatColor.WHITE + ", vous récupérez vos " + ChatColor.RED + heartsLost / 2 + "❤ permanents" + ChatColor.WHITE + "."));
+        player.setMaxHealth(player.getMaxHealth() + heartsLost);
+    }
+
+    @Override
+    public boolean shouldTick() {
+        return true;
+    }
+
+    @Override
+    public void tick(Player player) {
+        if (zoneTicksLeft <= 0) {
+            zoneTicksLeft = 30 * 20L;
+            zoneCenter = player.getLocation();
+            zoneWeather = WeatherType.RAINING;
+            isInZone = true;
+        }
+
+        if (sunCDT > 0) {
+            if (sunCDT <= 10)
+                sunCDT = 0;
+            else
+                sunCDT -= 10;
+        }
+
+        if (thunderCDT > 0) {
+            if (thunderCDT <= 10)
+                thunderCDT = 0;
+            else
+                thunderCDT -= 10;
+        }
+
+        Effects effects = Effects.get(player.getUniqueId());
+
+        if (isInZone() != isInZone) {
+            isInZone = !isInZone;
+
+            if (isInZone) {
+                applyWeatherEffects(zoneWeather, player);
+            }
+        }
+    }
+
+    public boolean isInZone() {
+        int radius = 30;
+
+        if (zoneWeather == WeatherType.SUNNY)
+            radius += 20;
+
+        return true;
+    }
+
+    public void applyWeatherEffects(WeatherType type, Player player) {
+        removePlayerRole(player);
+
+
+    }
+
+    public void removeAppliedWeatherEffects(Player player) {
+        if (appliedWeather == WeatherType.RAINING)
+            Effects.get(player.getUniqueId()).addBonus(RFEffectsType.SPEED, -20);
     }
 }
