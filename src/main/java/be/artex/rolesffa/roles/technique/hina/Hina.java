@@ -1,15 +1,19 @@
 package be.artex.rolesffa.roles.technique.hina;
 
+import be.artex.rolesffa.api.Message;
 import be.artex.rolesffa.api.descriptionBuilder.DescriptionBuilder;
 import be.artex.rolesffa.api.descriptionBuilder.HoverHolder;
 import be.artex.rolesffa.api.role.Role;
 import be.artex.rolesffa.api.role.RoleType;
 import be.artex.rolesffa.api.weather.WeatherType;
 import be.artex.rolesffa.util.StringUtils;
+import be.artex.strontium.holder.Holder;
 import be.artex.strontium.itemBuilder.ItemBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class Hina extends Role {
@@ -18,6 +22,13 @@ public class Hina extends Role {
             .lore(" ",
                     ChatColor.YELLOW + "" + ChatColor.BOLD + " Hina " + ChatColor.GRAY + "peut transformer la " + ChatColor.BLUE + ChatColor.BOLD + "Météo " + ChatColor.GRAY + "à sa guise.    ", " ")
             .build();
+
+    public Location zoneCenter = null;
+    public long zoneTicksLeft = 0;
+    public WeatherType zoneWeather = WeatherType.RAINING;
+    public double heartsLost = 0;
+    public long sunCDT = 0;
+    public long thunderCDT = 0;
 
     @Override
     public String getName() {
@@ -47,13 +58,36 @@ public class Hina extends Role {
                         ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "En fonction de la " + ChatColor.BLUE + "météo " + ChatColor.BOLD + "invoquée" + ChatColor.WHITE + ", vous gagnez des " + ChatColor.GREEN + "bonus" + ChatColor.WHITE + ".\n" +
                         ChatColor.BLUE + ChatColor.BOLD + "    " + WeatherType.RAINING.getName() + ChatColor.GRAY + "   ²» " + StringUtils.SPEED_SIGN + ChatColor.YELLOW + " +20% de Vitesse " + ChatColor.WHITE + "ainsi qu'un " + ChatColor.GOLD + ChatColor.BOLD + "double jump " + ChatColor.WHITE + "disponible toutes les 20 secondes.\n" +
                         ChatColor.GOLD + ChatColor.BOLD + "    " + WeatherType.SUNNY.getName() + ChatColor.GRAY + " » " + ChatColor.WHITE + "Une " + ChatColor.LIGHT_PURPLE + "régénération" + ChatColor.WHITE + " à hauteur de " + ChatColor.RED + ChatColor.BOLD + "0,5❤" + ChatColor.WHITE + ChatColor.BOLD + " toutes les 5 secondes" + ChatColor.WHITE + ",\n" +
-                        ChatColor.WHITE + "                          ainsi qu'un effet de " + ChatColor.GOLD + ChatColor.BOLD + "fire aspect" + ChatColor.WHITE + ChatColor.BOLD + " tout les 3 coups" + ChatColor.WHITE + ".\n"
-
+                        ChatColor.WHITE + "                          ainsi qu'un effet de " + ChatColor.GOLD + ChatColor.BOLD + "fire aspect" + ChatColor.WHITE + ChatColor.BOLD + " tout les 5 coups" + ChatColor.WHITE + ".\n"
         );
 
+        HoverHolder soleil = new HoverHolder(ChatColor.DARK_GRAY + "[" + ChatColor.GOLD + ChatColor.BOLD + "Soleil" + ChatColor.DARK_GRAY + "]",
+                " \n " + ChatColor.DARK_GRAY + "    [" + ChatColor.GOLD + ChatColor.BOLD + "Soleil" + ChatColor.DARK_GRAY + "]\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Vous pouvez invoquer le " + ChatColor.GOLD + ChatColor.BOLD + "soleil" + ChatColor.WHITE + ChatColor.BOLD + " pendant 30 secondes " + ChatColor.WHITE + "à un " + ChatColor.BOLD + "rayon de" + ChatColor.YELLOW + ChatColor.BOLD + " 50x50" + ChatColor.WHITE + ".   \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Elle remplacera " + ChatColor.BOLD + "votre zone" + ChatColor.WHITE + ".     \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cependant, effectuer cette action vous coûte " + ChatColor.RED + ChatColor.BOLD + "1❤ permanent" + ChatColor.WHITE + " récupéré à votre prochain" + ChatColor.RED + " kill" + ChatColor.WHITE + ".       \n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cooldown: " + ChatColor.YELLOW + ChatColor.BOLD + "1 minute\n"
+        );
 
-        DescriptionBuilder description = new DescriptionBuilder(this).passifs(meteo, aMeteo.toComponent()).activables();
+        HoverHolder eclair = new HoverHolder(ChatColor.DARK_GRAY + "[" + ChatColor.YELLOW + ChatColor.BOLD + "Eclairs" + ChatColor.DARK_GRAY + "]",
+                " \n " + ChatColor.DARK_GRAY + "    [" + ChatColor.YELLOW + ChatColor.BOLD + "Eclairs" + ChatColor.DARK_GRAY + "]\n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Vous pouvez seulement effectuer cette action dans un temps " + ChatColor.BOLD + ChatColor.BLUE + "pluvieux" + ChatColor.WHITE + ".       \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Vous pouvez invoquer des " + ChatColor.YELLOW + ChatColor.BOLD + "éclairs" + ChatColor.WHITE + " sur un " + ChatColor.YELLOW + "bloc" + ChatColor.WHITE + " ou " + ChatColor.YELLOW + "joueur" + ". \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Ceux-ci effectuent une " + ChatColor.GOLD + "explosion" + ChatColor.WHITE + " et infligent " + ChatColor.RED + "2❤" + ChatColor.WHITE + " aux joueurs proches." +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cependant, invoquer un " + ChatColor.YELLOW + "éclair" + ChatColor.WHITE + " vous coûte " + ChatColor.RED + ChatColor.BOLD + "1❤ permanent" + ChatColor.WHITE + " récupéré à votre prochain" + ChatColor.RED + " kill" + ChatColor.WHITE + ".       \n \n" +
+                        ChatColor.DARK_GRAY + ChatColor.BOLD + " - " + ChatColor.WHITE + "Cooldown: " + ChatColor.YELLOW + ChatColor.BOLD + "1 minute\n"
+        );
+
+        DescriptionBuilder description = new DescriptionBuilder(this).passifs(meteo, aMeteo.toComponent()).activables(soleil, eclair);
 
         return description.build();
+    }
+
+    @Override
+    public void onPlayerKill(Player killer, Player player) {
+        if (heartsLost <= 0)
+            return;
+
+        player.sendMessage(Message.generate("Vous avez effectué un " + ChatColor.RED + "kill" + ChatColor.WHITE + ", vous récupérez vos " + ChatColor.RED + heartsLost / 2 + "❤ permanents" + ChatColor.WHITE + "."));
     }
 }
