@@ -4,6 +4,7 @@ import be.artex.rolesffa.api.item.RFItem;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -58,6 +59,9 @@ public abstract class Role {
     }
 
     public void whenHit(Player player, Player damager) {
+    }
+
+    public void onFlightToggle(PlayerToggleFlightEvent event) {
     }
 
     // called to get the amount of bonus strength when hitting that player

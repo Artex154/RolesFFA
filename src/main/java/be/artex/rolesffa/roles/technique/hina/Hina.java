@@ -10,11 +10,14 @@ import be.artex.rolesffa.api.stats.RFEffectsType;
 import be.artex.rolesffa.api.weather.WeatherType;
 import be.artex.rolesffa.util.StringUtils;
 import be.artex.strontium.itemBuilder.ItemBuilder;
+import be.artex.strontium.player.StrontPlayer;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class Hina extends Role {
@@ -24,16 +27,19 @@ public class Hina extends Role {
                     ChatColor.YELLOW + "" + ChatColor.BOLD + " Hina " + ChatColor.GRAY + "peut transformer la " + ChatColor.BLUE + ChatColor.BOLD + "Météo " + ChatColor.GRAY + "à sa guise.    ", " ")
             .build();
 
-    public boolean isInZone = true;
-
-    public WeatherType appliedWeather = WeatherType.RAINING;
-
     public Location zoneCenter = null;
     public long zoneTicksLeft = 0;
     public WeatherType zoneWeather = WeatherType.RAINING;
+    public boolean isInZone = true;
+
+    public WeatherType appliedWeather = WeatherType.RAINING;
     public double heartsLost = 0;
+
     public long sunCDT = 0;
     public long thunderCDT = 0;
+    public long djCDT = 0;
+
+    public int amountOfSunHits = 0;
 
     @Override
     public String getName() {
@@ -98,6 +104,36 @@ public class Hina extends Role {
     }
 
     @Override
+    public void onHit(Player player, Player damager) {
+        if (appliedWeather == WeatherType.SUNNY) {
+            amountOfSunHits++;
+
+            if (amountOfSunHits == 3) {
+                player.setFireTicks(800);
+                amountOfSunHits = 0;
+            }
+        }
+    }
+
+    @Override
+    public void onFlightToggle(PlayerToggleFlightEvent event) {
+        Player player = event.getPlayer();
+
+        if (appliedWeather != WeatherType.RAINING)
+            return;
+
+        if (djCDT > 0) {
+            player.sendMessage(Message.cooldownTimeLeft(djCDT / 20));
+            return;
+        }
+
+        player.setVelocity(player.getLocation().getDirection().multiply(1.2).setY(2));
+        player.getWorld().playSound(player.getLocation(), Sound.BAT_TAKEOFF, 1f, 1f);
+
+        djCDT = 7 * 20L;
+    }
+
+    @Override
     public boolean shouldTick() {
         return true;
     }
@@ -125,15 +161,37 @@ public class Hina extends Role {
                 thunderCDT -= 10;
         }
 
-        Effects effects = Effects.get(player.getUniqueId());
+        if (djCDT > 0) {
+            if (djCDT <= 10)
+                djCDT = 0;
+            else
+                djCDT -= 10;
+        }
 
         if (isInZone() != isInZone) {
             isInZone = !isInZone;
 
             if (isInZone) {
                 applyWeatherEffects(zoneWeather, player);
+            } else {
+                removeAppliedWeatherEffects(player);
             }
         }
+
+        String aBar = ChatColor.DARK_GRAY + "» " + ChatColor.WHITE + "Météo appliquée: " + appliedWeather.getColor() + appliedWeather.getName() + ChatColor.DARK_GRAY + " ▏ " + ChatColor.GOLD + ChatColor.BOLD;
+
+        if (appliedWeather == WeatherType.RAINING) {
+            String ready = ChatColor.WHITE + "" + djCDT / 20 + " secondes";
+
+            if (djCDT == 0)
+                ready = ChatColor.GREEN + "prêt";
+
+            aBar += "Double Jump: " + ready + ChatColor.DARK_GRAY + " «";
+        } else if (appliedWeather == WeatherType.SUNNY) {
+            aBar += "Coups: " +  amountOfSunHits + ChatColor.WHITE + "/3" + ChatColor.DARK_GRAY + " «";
+        }
+
+        StrontPlayer.getSrontPlayer(player).sendActionBar(aBar);
     }
 
     public boolean isInZone() {
@@ -148,11 +206,16 @@ public class Hina extends Role {
     public void applyWeatherEffects(WeatherType type, Player player) {
         removePlayerRole(player);
 
+        appliedWeather = type;
 
+        if (appliedWeather == WeatherType.RAINING)
+            Effects.get(player.getUniqueId()).addBonus(RFEffectsType.SPEED, 20);
     }
 
     public void removeAppliedWeatherEffects(Player player) {
         if (appliedWeather == WeatherType.RAINING)
             Effects.get(player.getUniqueId()).addBonus(RFEffectsType.SPEED, -20);
+
+        appliedWeather = null;
     }
 }
